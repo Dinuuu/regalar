@@ -1,0 +1,47 @@
+legend#profile-header
+  = t('users.profile')
+.col-sm-3
+  - if @user.avatar.present?
+      = image_tag(@user.avatar.file.url, height: 150, width: 150, class: "img-thumbnail img-profile")
+  - else
+      = image_tag('default_avatar.jpg', height: 150, width: 150, class: "img-thumbnail img-profile")
+  a
+    = link_to t('helpers.submit.user.edit'), edit_user_path(@user), class: 'btn btn-primary btn-violet btn-profile'
+  a
+    = link_to t('helpers.submit.user.edit_password'), edit_password_user_path(@user), class: 'btn btn-primary btn-violet btn-profile'
+.row
+  .col-sm-7
+    .panel.profile-panel
+      .panel-heading
+        = User.human_attribute_name(:full_name)
+      .panel-body
+        = @user.full_name
+    .panel.profile-panel
+      .panel-heading
+        .panel-title
+          = User.human_attribute_name(:email)
+      .panel-body
+        = @user.email
+    .panel.profile-panel
+      .panel-heading
+        = User.human_attribute_name(:created_at)
+      .panel-body
+        = l(@user.created_at, format: :short)
+    .panel.profile-panel
+      .panel-heading
+        .panel-title
+          = t('users.link_accounts')
+      .panel-body
+        - unless provider?("facebook")
+          = link_to "Facebook", user_omniauth_authorize_path(:facebook), class: 'btn btn-primary btn-facebook'
+        - unless provider?("google_oauth2")
+          = link_to "Google", user_omniauth_authorize_path(:google_oauth2), class: 'btn btn-primary btn-google'
+        - unless provider?("twitter")
+          = link_to "Twitter", user_omniauth_authorize_path(:twitter), class: 'btn btn-primary btn-twitter'
+.row
+  legend#profile-subheader
+    = t('users.organizations')
+  = render '/organizations/index_table', organizations: @user.organizations.page(1).per(50)
+  legend#profile-subheader
+    = t('users.contributions')
+  = render '/contributions/index_table', contributions: paginate_scope(@user.contributions)

@@ -1,0 +1,26 @@
+- if user.errors.present?
+  .alert.alert-danger
+    ul
+      - user.errors.each do |attr, msg|
+        li= msg
+= form_for user, html: { class: 'form-horizontal', role: 'form' } do |f|
+  .form-group
+    = f.label :first_name, class: 'control-label col-sm-2'
+    .col-md-4
+      = f.text_field :first_name, class: 'form-control col-md-2', required: true
+  .form-group
+    = f.label :last_name, class: 'control-label col-sm-2'
+    .col-md-4
+      = f.text_field :last_name, class: 'form-control col-md-2', required: true
+  .form-group
+    = f.label :email, class: 'control-label col-sm-2'
+    .col-md-4
+      = f.text_field :email, class: 'form-control col-md-2', required: true
+  .form-group
+    = f.label :avatar, class: 'control-label col-sm-2'
+    .col-md-4
+      = f.file_field :avatar
+
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit t('helpers.submit.user.done_edit_user'), class: 'btn btn-primary btn-violet'

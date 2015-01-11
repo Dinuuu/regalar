@@ -1,0 +1,23 @@
+#footer-upper
+  #footer-sections.col-md-3
+    div
+      p
+        = link_to t('application.footer.create_campaign'), landing_campaigns_path
+      p
+        = link_to t('application.footer.who_are_we'), about_path
+
+  #footer-sponsors
+    div
+      a href='http://www.itba.edu.ar'
+        = image_tag 'logo-itba.png'
+      a href='http://www.ourmark.com'
+        = image_tag 'logo-ourmark.png'
+      a href='http://www.estudiofrenesi.com.ar'
+        = image_tag 'logo-frenesi.png'
+#footer-lower
+  div
+    p.pull-left
+      = link_to t('application.footer.terms'), '#'
+      = ' | '
+      = link_to t('application.footer.privacy'), '#'
+

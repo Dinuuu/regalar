@@ -1,0 +1,10 @@
+- if @milestone.errors.present?
+  .alert.alert-danger
+    ul
+      - @milestone.errors.each do |attr, msg|
+        li= msg
+= form_for [@organization, @campaign, @milestone],
+           html: { class: 'form-horizontal', role: 'form' } do |f|
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit nil, class: 'btn btn-primary'

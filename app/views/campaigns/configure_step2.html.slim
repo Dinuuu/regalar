@@ -1,0 +1,38 @@
+= form_for @campaign, url: configure_step3_campaign_url(@campaign), method: :post, html: { role: 'form' } do |f|
+  .row.violet-row
+    .row
+      .col-sm-9.white-bold
+        = t('campaigns.configure.perks.title')
+  .row#perks
+    = f.fields_for :perks do |f_perk|
+      = render 'perk_fields', f: f_perk
+    = link_to_add_association t('helpers.submit.perk.new'), f, :perks,
+                            class: 'btn btn-primary btn-violet'
+  .row.violet-row
+    .row
+      .col-sm-9.white-bold
+        = t('campaigns.configure.perks.title')
+  .row#history
+    .row
+      .col-sm-12
+        = f.label :main_image, class: 'control-label col-sm-2'
+        .col-sm-8
+          = f.file_field :main_image, class: 'form-control col-sm-2'
+          - if @campaign.main_image.present?
+            = image_tag @campaign.main_image
+    .row
+      .col-sm-12
+        = f.label :video, class: 'control-label col-sm-2'
+        .col-sm-8
+          = f.text_field :video, class: 'form-control col-sm-2'
+    .row
+      .col-sm-12
+        = f.label :history, class: 'control-label col-sm-2'
+        .col-sm-8
+          = f.text_area :history, class: 'tinymce'
+          = tinymce
+
+  .row#submit-row
+    .col-sm-12
+      = button_tag class: 'btn btn-primary btn-green '
+        = t('save')

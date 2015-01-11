@@ -1,0 +1,70 @@
+/* COLORS */
+
+$violet: #723270;
+$green: #40E246;
+$facebook-blue: #315EAF;
+$twitter-blue: #31B6EB;
+$google-red: #F03B3B;
+
+#profile-header {
+  margin: 30px 0;
+  background-color: $violet;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 5px 20px;
+  font-family: Helvetica Neue;
+}
+
+#profile-subheader {
+  margin: 30px 0;
+  background-color: $green;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px 20px;
+  font-family: Helvetica Neue;
+}
+
+.profile-panel {
+  border-color: $green;
+  .panel-heading {
+    font-size: 16px;
+    background-color: $green;
+    color: white;
+    font-weight: bold;
+    font-family: Helvetica Neue;
+  }
+}
+
+.img-profile {
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.btn-profile {
+  margin-top: 20px;
+  margin-right: 7px;
+}
+
+.btn.btn-facebook {
+  margin: 10px;
+  background: $facebook-blue;
+  border-color: $facebook-blue;
+  color: white;
+}
+
+.btn.btn-google {
+  margin: 10px;
+  background-color: $google-red;
+  border-color: $google-red;
+  color: white;
+}
+
+.btn.btn-twitter {
+  margin: 10px;
+  background: $twitter-blue;
+  border-color: $twitter-blue;
+  color: white;
+}

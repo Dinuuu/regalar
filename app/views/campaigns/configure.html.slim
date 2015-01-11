@@ -1,0 +1,60 @@
+= form_for @campaign, url: configure_step2_campaign_url(@campaign), method: :post, html: { role: 'form' } do |f|
+  .row
+    h1
+      = t('campaigns.configure.title')
+  .row
+    p.campaign-info
+      = t('campaigns.configure.text1')
+    p.campaign-info
+      = t('campaigns.configure.text2')
+    p.campaign-info
+      = t('campaigns.configure.text3')
+  .row.violet-row
+    .col-sm-1.white-bold
+      = t('campaigns.configure.milestones')
+    .col-sm-11.white
+      = t('campaigns.configure.milestones_text')
+  .row#milestones
+    .col-sm-3.milestone-card
+      label= t 'campaigns.configure.first_milestone'
+      = f.number_field :amount, value: 0, name: 'milestones[][amount]'
+    .col-sm-3.milestone-card
+      label= t 'campaigns.configure.second_milestone'
+      = f.number_field :amount, value: 0, name: 'milestones[][amount]'
+    .col-sm-3.milestone-card
+      label= t 'campaigns.configure.third_milestone'
+      = f.number_field :amount, value: 0, name: 'milestones[][amount]'
+    .col-sm-3.milestone-card
+      label= t 'campaigns.configure.fourth_milestone'
+      = f.number_field :amount, value: 0, name: 'milestones[][amount]'
+
+  .row.violet-row
+    .row
+      .col-sm-9.white-bold
+        = t('campaigns.new.who_receives')
+  .row.grey#who
+    .row
+      - Campaign::RECIPIENT.each do |recipient|
+        .col-md-12
+          .checkbox
+            label
+              = radio_button_tag :fund_recipient, recipient
+              span.checkbox-label= t "campaigns.configure.recipient.#{recipient}"
+  .row.violet-row
+    .row
+      .col-sm-9.white-bold
+        = t('campaigns.new.funding_type.title')
+  .row.grey#funding-type
+    .row
+      - Campaign::FUNDING_TYPE.each do |type|
+        .col-md-12
+          .checkbox
+            label
+              = radio_button_tag :funding_type, type
+              span.checkbox-label= t "campaigns.configure.funding_type.#{type}"
+  .row#submit-row
+    = button_tag class: 'btn btn-primary btn-green '
+      = t('campaigns.new.configure')
+
+
+  / = render 'form', organization: @organization, campaign: @campaign

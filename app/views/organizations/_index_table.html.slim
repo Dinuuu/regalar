@@ -1,0 +1,24 @@
+- if organizations.empty?
+  p
+    = t('application.no_results')
+- else
+  table.table.table-bordered.table-hover
+    thead
+      tr
+        th
+          = Organization.human_attribute_name(:name)
+        th
+          = Organization.human_attribute_name(:description)
+        th
+          = Organization.human_attribute_name(:locality)
+    tbody
+    - organizations.each do |organization|
+      tr
+        td
+          = link_to organization.name, organization
+        td
+          = organization.description
+        td
+          = organization.locality
+#pagination
+  = paginate organizations

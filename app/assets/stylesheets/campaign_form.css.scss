@@ -1,0 +1,220 @@
+/* COLORS */
+
+$violet: #723270;
+$green: #40E246;
+$facebook-blue: #315EAF;
+$twitter-blue: #31B6EB;
+$google-red: #F03B3B;
+$grey: #C0C0C0;
+
+.tabbed-form {
+  margin-top: 15px;
+}
+
+#next-button-container, #previous-button-container {
+  margin: auto;
+  float: none;
+  margin-top: 15px;
+}
+
+.error {
+  color: red;
+}
+
+.campaign-info {
+  font-size: 17px;
+}
+
+.violet-row {
+  margin-bottom: 15px;
+  height: 30px;
+  background-color: $violet;
+
+  .white-bold {
+    font-weight: bold;
+    color: white;
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .white {
+    color: white;
+    line-height: 36px;
+    font-size: 12px;
+  }
+}
+
+#categories {
+  .category-card {
+    margin-bottom: 15px;
+    padding-right: 7.5px;
+    padding-left: 7.5px;
+    cursor: pointer;
+  }
+
+  .inner-card {
+    background-color: $grey;
+    height: 40px;
+  }
+
+  .category-name {
+    color: white;
+    margin-left: 7px;
+    margin-top: 10px;
+  }
+
+  .cat-image {
+    margin-top: 7px;
+    float: left;
+    margin-left: 10px;
+  }
+}
+
+#goal {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  .goal-text {
+    color: $violet;
+  }
+
+  .goal-help {
+    margin-left: 10px;
+  }
+
+  .input{
+    margin-top: 15px;
+    input {
+      width: 100%;
+    }
+  }
+}
+
+#perks {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  label {
+    padding-left: 0px;
+  }
+}
+
+#who {
+  margin-bottom: 15px;
+  .checkbox-label {
+    margin-left: 10px;
+  }
+
+  .checkbox {
+    padding-left: 0px;
+  }
+}
+
+#funding-type {
+  .checkbox-label {
+    margin-left: 10px;
+  }
+
+  .checkbox {
+    padding-left: 0px;
+  }
+}
+
+#submit-row {
+  margin-top: 15px;
+  padding: 0px;
+  button {
+    float: right;
+    border-radius: 0px;
+  }
+}
+
+#minimum {
+  margin-top: -15px;
+}
+
+.grey {
+  background-color: $grey;
+}
+
+#milestones {
+  background-color: silver;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+  padding-bottom: 15px;
+  padding-top: 15px;
+
+  .milestone-card {
+    color: $violet;
+  }
+}
+
+#basic-info {
+
+  margin-bottom: 15px;
+
+  .small-image-text {
+      color: $violet;
+      margin-bottom: 5px;
+  }
+
+  .small-image-help {
+    margin-left: 10px;
+  }
+
+  #description-row {
+    margin-top: 15px;
+  }
+
+  #image-upload{
+
+    .image-preview {
+      img {
+        width: 250px;
+        height: 280px;
+      }
+    }
+
+    .file-field {
+      .col-sm-12 {
+        padding: 0px;
+      }
+      input {
+        z-index: 100;
+        position: relative;
+        opacity: 0;
+        width: 250px;
+      }
+      .green-button {
+        z-index: 1;
+        background-color: $green;
+        position: absolute;
+        top: 0;
+        height: 20px;
+        color: white;
+        text-align: center;
+        width: 250px;
+      }
+    }
+  }
+}
+
+.requires-address {
+  .requires-address-yes {
+    cursor: pointer;
+    background-color: $grey;
+    color: white;
+    text-align: center;
+  }
+  .requires-address-no {
+    cursor: pointer;
+    background-color: $grey;
+    color: white;
+    text-align: center;
+  }
+}
+
+#history {
+  .row {
+    margin-bottom: 10px;
+  }
+}

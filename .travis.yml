@@ -1,0 +1,33 @@
+language: ruby
+rvm:
+  - 2.0.0
+
+addons:
+  code_climate:
+    repo_token:
+
+env:
+  - RUBY_GC_MALLOC_LIMIT=90000000 RUBY_FREE_MIN=200000 SECURITY_SECRET_TOKEN=traviscitraviscitraviscitraviscitravisci  DEVISE_SECRET_KEY=traviscitraviscitraviscitraviscitravisci
+
+services:
+  - postgresql
+  - redis-server
+
+before_script:
+  - cp config/database.travis.yml config/database.yml
+  - psql -c "CREATE USER regalar WITH PASSWORD 'regalar';" -U postgres
+  - psql -c "DROP DATABASE IF EXISTS regalar_test;" -U postgres
+  - psql -c "CREATE DATABASE regalar_test ENCODING 'utf8';" -U postgres
+  - bundle exec rake db:migrate test:prepare
+
+script:
+  - bundle exec rspec
+  - bundle exec cucumber
+  - bundle exec rubocop app spec features -R --format simple
+
+notifications:
+  email:
+    recipients:
+
+cache:
+  bundler: true

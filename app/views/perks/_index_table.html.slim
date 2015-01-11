@@ -1,0 +1,28 @@
+- if perks.empty?
+  p
+    = t('application.no_results')
+- else
+  table.table.table-bordered.table-hover
+      thead
+        tr
+          th
+            = Perk.human_attribute_name(:amount)
+          th
+            = Perk.human_attribute_name(:name)
+          th
+            = Perk.human_attribute_name(:maximum)
+          th
+            = Perk.human_attribute_name(:description)
+      tbody
+        - perks.each do |perk|
+          tr
+            td
+              = "$ #{perk.amount}"
+            td
+              = perk.name
+            td
+              = perk.maximum
+            td
+              = perk.description
+#pagination
+  = paginate perks

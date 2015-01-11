@@ -1,0 +1,24 @@
+/* COLORS */
+
+$violet: #723270;
+$green: #40E246;
+
+#landing {
+
+  .landing_org{
+    width: 300px;
+
+      text-align: center;
+      vertical-align: middle;
+      font-size: 20px;
+      color: white;
+      padding-left: 20px;
+      height: 50px;
+      margin: 5px;
+  }
+  .landing_org:hover{
+    background-color: $green;
+    border-color: $green;
+  }
+}
+

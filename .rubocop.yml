@@ -1,0 +1,19 @@
+# This is the configuration used to check the rubocop source code.
+
+AllCops:
+  Exclude:
+    - features/support/env.rb
+    - spec/spec_helper.rb
+    - app/mercadopago/*
+
+Documentation:
+  Enabled: false
+
+HasAndBelongsToMany:
+  Enabled: false
+
+LineLength:
+  Max: 99
+
+EmptyLinesAroundBody:
+  Enabled: false

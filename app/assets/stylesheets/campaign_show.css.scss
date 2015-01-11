@@ -1,0 +1,101 @@
+$violet: #723270;
+
+#campaign-nav-title {
+    float: left;
+    margin-right: 30px;
+  }
+
+#campaign-ul
+{
+    list-style-type: none;
+    font-size: 20px;
+}
+
+#text-violet
+{
+  color: $violet;
+  font-size: 18px;
+  text-align: left;
+}
+
+#text-bold
+{
+  font-weight: bold;
+}
+
+.fill-width {
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+.centerize {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+/* Share buttons*/
+
+div nav .share
+{
+  display: inline-block;
+
+}
+
+nav .share div
+{
+  float: left;
+}
+
+nav .share iframe
+{
+  border:0;
+  margin-top:0;
+  padding-top: 0;
+
+}
+
+#___plusone_0
+{
+  font-size: default !important;
+}
+
+.fb_iframe_widget
+{
+  vertical-align: top;
+  margin-bottom:6px;
+
+}
+
+.fb_edge_widget_with_commet
+{
+  vertical-align: top;
+
+}
+
+.fb-like
+{
+  display: inline-block;
+}
+
+.main-video{
+  width: 100%;
+}
+
+.video-container{
+  height: 400px;
+}
+
+img .fit{
+  width: 100%;
+
+}
+
+
+
+
+
+
+
+

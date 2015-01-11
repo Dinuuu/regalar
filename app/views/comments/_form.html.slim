@@ -1,0 +1,13 @@
+- if comment.errors.present?
+  .alert.alert-danger
+    ul
+      - comment.errors.each do |attr, msg|
+        li= msg
+= form_for build_association_chain, html: { class: 'form-horizontal', role: 'form' } do |f|
+  .form-group
+    = f.label :message, class: 'control-label col-sm-2'
+    .col-md-4
+      = f.text_area :message, class: 'form-control col-md-2', required: true
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit nil, class: 'btn btn-primary btn-violet'

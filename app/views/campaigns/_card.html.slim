@@ -1,0 +1,40 @@
+- campaign = locals[:campaign]
+- percentage_done = campaign.contribution > 0 ? (campaign.contribution / campaign.goal) * 100 : 0
+.campaign-card.col-md-3
+  = link_to organization_campaign_path(campaign.organization, campaign) do
+    .thumbnail
+      .col-md-12.no-padding
+        .label.label-success.pull-right.campaign-state
+          = t("campaigns.states.#{campaign.aasm_state}")
+      .row
+        .img-campaign-thumbnail
+          - if campaign.main_image.present?
+            = image_tag campaign.main_image, class: 'center-block'
+          - else
+            = image_tag 'crowdfunding.png', class: 'center-block'
+        .container-fluid
+          .caption
+            h4.campaign-name
+              = campaign.name
+            p.description
+              = campaign.short_description.truncate(180)
+            h5
+              = t('campaigns.card.raised')
+            h5
+              = "$ #{number_with_precision(campaign.contribution, precision: 2,
+                separator: t('application.separator'), delimiter: t('application.delimiter'))}"
+            p
+              .progress
+                .progress-bar.progress-bar-success.p80 aria-valuenow=percentage_done aria-valuemin="0" aria-valuemax="100" style="width: #{percentage_done}%"
+
+          .information
+            .col-sm-6.pull-left.text-center
+              = t('campaigns.card.completed')
+              br
+              = "#{number_with_precision(percentage_done, precision: 2, separator: t('application.separator'))} %"
+            .col-sm-6.pull-right.text-center
+              = t('campaigns.card.days_left')
+              br
+              = (campaign.deadline.to_date - Time.current.to_date).to_i
+
+

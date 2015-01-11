@@ -1,0 +1,5 @@
+legend
+  = t('application.landing.choose_organization')
+- if user_signed_in?
+  = render '/campaigns/landing_org', organizations: current_user.organizations
+

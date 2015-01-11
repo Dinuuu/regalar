@@ -1,0 +1,135 @@
+en:
+  activerecord:
+    errors:
+      models:
+        organization:
+          attributes:
+            name:
+              blank: Name is required
+            description:
+              blank: Description is required
+            locality:
+              blank: Locality is required
+        campaign:
+          attributes:
+            name:
+              blank: Name is required
+            description:
+              blank: Description is required
+            goal:
+              blank: The goal is required
+              only_integer: The goal must be an integer
+              not_a_number: The goal must be a number
+              greater_than: The goal must be grater than %{count}
+            minimum:
+              blank: The minimum pledge is required
+              greater_than: The minimum pledge must be greater than %{count}
+              only_integer: The minimum pledge must be an integer
+              not_a_number: The minimum pledge must be a number
+            deadline:
+              blank: The deadline is required
+              on_or_after: The deadline must be greater than the actual date
+              invalid_datetime: The deadline is not valid
+            category:
+              blank: Category is required
+              inclusion: Category is not valid
+            short_description:
+              blank: The short description is required
+            country:
+              blank: The country is required
+            locality:
+              blank: The locality is required
+        contribution:
+          attributes:
+            amount:
+              not_a_number: Amount not valid
+        user:
+          attributes:
+            email:
+              already_confirmed: The email has been already confirmed
+    models:
+      organization:
+        one: Organization
+        other: Organizations
+      campaign:
+        one: Campaign
+        other: Campaigns
+      contribution:
+        one: Contribution
+        other: Contributions
+      perk:
+        one: Perk
+        other: Perks
+      milestone:
+        one: Milestone
+        other: Milestones
+      user:
+        one: User
+        other: Users
+      admin_user:
+        one: Admin User
+        other: Admin Users
+      comment:
+        one: Comment
+        other: Comments
+    attributes:
+      organization:
+        name: Name
+        description: Description
+        locality: Locality
+        created_at: Created at
+        updated_at: Updated at
+      campaign:
+        name: Name
+        description: Description
+        goal: Goal
+        deadline: End Date
+        minimum: Minimum Pledge
+        category: Category
+        short_description: Short Description
+        locality: Locality
+        organization: Organization
+        contribution: Total Contribution
+        created_at: Created at
+        video: Vimeo video url
+        main_image: Image
+        history: History
+        aasm_state: State
+      contribution:
+        amount: Amount
+        created_at: Contribution date
+        campaign: Campaign
+        perk: Perk
+        user: Contributor
+        first_name: First Name
+        last_name: Last Name
+        email: Email
+        phone: Phone
+      user:
+        created_at: Joined
+        full_name: Name
+        email: Email
+        first_name: First Name
+        last_name: Last Name
+        avatar: Profile Picture
+        last_sign_in_at: Last sign in at
+        sign_in_count: Sign in count
+      admin_user:
+        created_at: Joined
+        sign_in_count: Sign In count
+        password: Password
+        password_confirmation: Password confirmation
+      perk:
+        amount: Minimum Amount
+        name: Name
+        maximum: Maximum
+        description: Description
+      milestone:
+        name: Name
+        description: Description
+        goal_percentage: Goal Percentage
+        done_date: Deadline
+        aasm_state: State
+        amount: Amount
+      purchase:
+        status: Status

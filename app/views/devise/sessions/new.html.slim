@@ -1,0 +1,24 @@
+legend
+  = t('devise.sessions.sign_in')
+= form_for(resource, as: resource_name, url: session_path(resource_name),
+                    html: { class: "form-horizontal", role: "form" }) do |f|
+  .form-group
+    = f.label :email, class: "control-label col-md-2"
+    .col-md-4
+      = f.email_field :email, autofocus: true, class: "form-control"
+  .form-group
+    = f.label :password, class: "control-label col-md-2"
+    .col-md-4
+      = f.password_field :password, class: "form-control"
+  - if devise_mapping.rememberable?
+    .form-group
+      .checkbox
+        .col-md-4.col-md-offset-2
+          = f.check_box :remember_me
+          = f.label t('devise.sessions.remember_me')
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit t('devise.sessions.sign_in'), class: "btn btn-primary btn-green"
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = render "devise/shared/links"

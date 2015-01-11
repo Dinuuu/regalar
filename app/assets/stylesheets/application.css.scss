@@ -1,0 +1,222 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require bootstrap_and_overrides
+ *= require_directory .
+*/
+
+/* COLORS */
+
+$violet: #723270;
+$green: #40E246;
+$dark-grey: #1C1C1C;
+$facebook-blue: #315EAF;
+$twitter-blue: #31B6EB;
+$google-red: #F03B3B;
+
+/* HEADER */
+
+#header {
+
+  padding: 30px 100px 12px 0;
+
+  #login-modal {
+
+    .modal-dialog {
+      width: 475px;
+      margin-top: 115px;
+
+      .modal-content {
+        border-radius: 0;
+
+        .modal-header {
+          background-color: $green;
+          height: 63px;
+          text-align: center;
+          text-transform: uppercase;
+          color: white;
+          margin-bottom: 20px;
+
+          .modal-title {
+            padding: 5px;
+          }
+        }
+
+        .modal-body {
+          padding: 20px 40px 0 40px;
+          color: gray;
+
+          a {
+            color: gray;
+          }
+
+          input[type='submit'] {
+            background-color: $green;
+            border: none;
+            margin-bottom: 10px;
+            width: 390px;
+            padding: 8px;
+            color: white;
+          }
+        }
+
+        .modal-footer {
+          text-align: center;
+
+          .omniauth-button {
+            margin-bottom: 10px;
+            width: 390px;
+            padding: 8px;
+            color: white;
+          }
+
+        }
+
+      }
+
+    }
+  }
+
+  #brand {
+    margin-left: 6.5%;
+  }
+
+  #header-search {
+
+    a:hover, a:focus, a:visited {
+      color: white;
+    }
+
+    input[type='search'] {
+      width: 186px;
+      margin-left: 30px;
+    }
+
+    input[type='image'] {
+      position: relative;
+      top: 13px;
+      height: 34px
+    }
+
+    a {
+      margin-left: 10px;
+    }
+
+  }
+
+  #header-pills {
+
+    margin-top: 15px;
+
+    a {
+      padding: 4px 15px;
+      text-transform: uppercase;
+      color: $green;
+    }
+  }
+}
+
+
+/* CONTENT */
+
+#btn-facebook {
+  background-color: $facebook-blue;
+  border-color: $facebook-blue;
+}
+
+#btn-twitter {
+  background-color: $twitter-blue;
+  border-color: $twitter-blue;
+}
+
+#btn-google_oauth2 {
+  background-color: $google-red;
+  border-color: $google-red;
+}
+
+#content {
+
+  margin: 30px 0 40px 0;
+  text-align: justify;
+
+  #pagination {
+    margin: 0 auto;
+    width: 50%;
+  }
+
+  #header-carousel {
+
+    img {
+      height: 395px;
+    }
+  }
+
+  #campaigns-title {
+    margin: 30px 0;
+    background-color: $violet;
+    color: white;
+    font-size: 20px;
+    padding: 5px 20px;
+
+    a {
+      color: white;
+    }
+  }
+
+  #slogan {
+    margin: 30px 0;
+    text-align: center;
+    font-size: 30px;
+  }
+
+  #slogan-images {
+    margin: 10px 0;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+
+    img {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 15px;
+    }
+  }
+
+  .omniauth-button {
+    margin-bottom: 10px;
+    padding: 8px;
+    color: white;
+  }
+}
+
+/* FOOTER */
+
+#footer {
+
+  a {
+    color: white;
+  }
+  vertical-align: middle;
+  #footer-upper{
+    background-color: black;
+    padding: 40px 200px;
+    padding-bottom: 60px;
+    text-align: left;
+    margin: 1px 0;
+    #footer-sponsors{
+      img{
+        width: 160px;
+        margin: 10px 30px;
+      }
+    }
+  }
+  #footer-lower{
+    background-color: $dark-grey;
+    margin: 1px 0;
+    padding: 30px 200px;
+    padding-bottom: 40px;
+    text-align: left;
+  }
+}

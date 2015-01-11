@@ -1,0 +1,65 @@
+/* COLORS */
+
+$violet: #723270;
+$green: #40E246;
+
+#about-us {
+
+  margin: 30px 0 40px 0;
+  text-align: justify;
+  font-family: Helvetica Neue;
+
+  .about-title {
+    margin: 30px 0;
+    background-color: $violet;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 5px 20px;
+    a {
+      color: white;
+    }
+  }
+
+  .about-subtitle {
+    margin: 30px 0;
+    background-color: $green;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px 20px;
+    a {
+      color: white;
+    }
+  }
+
+  .about-text {
+    margin: 30px 0;
+    color: black;
+    font-size: 18px;
+    padding: 5px 20px;
+    a {
+      color: white;
+    }
+  }
+
+  .about-list {
+    list-style-image: asset-url('icn-meta.png');
+    margin: 30px 0;
+    color: black;
+    font-size: 18px;
+    padding: 5px 20px;
+  }
+
+  .about-sponsor {
+    div{
+      text-align: center;
+      a{
+        img{
+          margin: 30px 100px;
+          width:300px;
+        }
+      }
+    }
+  }
+}

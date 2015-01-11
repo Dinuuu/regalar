@@ -1,0 +1,103 @@
+@import "twitter/bootstrap/bootstrap";
+
+// Set the correct sprite paths
+@iconSpritePath: image-url("twitter/bootstrap/glyphicons-halflings.png");
+@iconWhiteSpritePath: image-url("twitter/bootstrap/glyphicons-halflings-white.png");
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+@fontAwesomeEotPath: asset-url("fontawesome-webfont.eot");
+@fontAwesomeEotPath_iefix: asset-url("fontawesome-webfont.eot?#iefix");
+@fontAwesomeWoffPath: asset-url("fontawesome-webfont.woff");
+@fontAwesomeTtfPath: asset-url("fontawesome-webfont.ttf");
+@fontAwesomeSvgPath: asset-url("fontawesome-webfont.svg#fontawesomeregular");
+
+// Font Awesome
+@import "fontawesome/font-awesome";
+
+// Glyphicons
+//@import "twitter/bootstrap/sprites.less";
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
+//
+// Example:
+// @linkColor: #ff0000;
+
+@green: #40E246;
+@violet: #723270;
+@facebook-blue: #315EAF;
+@twitter-blue: #31B6EB;
+@google-red: #F03B3B;
+
+body {
+
+  a, a:hover, a:focus, a:visited {
+    color: black;
+    text-decoration: none;
+  }
+
+  textarea, input, a.btn.btn-primary, .btn-lg, .btn-group-lg > .btn {
+    border-radius: 0 !important;
+  }
+
+  .btn.btn-green {
+    background-color: @green;
+    border-color: @green;
+    color: white;
+  }
+
+  .btn.btn-violet {
+    background-color: @violet;
+    border-color: @violet;
+    color: white;
+  }
+
+  .nav-pills > li > a {
+    border-radius: 0;
+    border: 1px solid @green;
+  }
+
+  .nav > li > a:hover, .nav > li > a:focus {
+    background-color: transparent;
+  }
+
+  .carousel-control.right, .carousel-control.left {
+    background-image: none;
+  }
+
+  #content {
+
+    .thumbnail {
+      padding: 0;
+    }
+  }
+
+  .progress {
+    margin-bottom: 0;
+
+    .progress-bar-success {
+      background-color: @green;
+    }
+
+  }
+
+  .pagination > .active > a, .pagination > .active > a:hover{
+    background-color: @green;
+    border-color: @green;
+    color: white;
+  }
+
+  .pagination > li > a, .pagination > li > a:hover, .pagination > li > a:focus,
+  .pagination > li > a:visited {
+
+    background-color: transparent;
+    color: black;
+
+  }
+
+}

@@ -1,0 +1,37 @@
+#about-us
+  div
+    .about-title
+      = t('application.about.title')
+    .about-subtitle
+      = t('application.about.introduction.title')
+    .about-text
+      = t('application.about.introduction.content')
+    .about-subtitle
+      = t('application.about.origins.title')
+    .about-text
+      = t('application.about.origins.content')
+    .about-subtitle
+      = t('application.about.goals.title')
+    .about-list
+      ul
+        li
+          = t('application.about.goals.goal1')
+        li
+          = t('application.about.goals.goal2')
+        li
+          = t('application.about.goals.goal3')
+        li
+          = t('application.about.goals.goal4')
+        li
+          = t('application.about.goals.goal5')
+    .about-sponsor
+      div
+        a href='http://www.forodelsectorsocial.org.ar'
+          = image_tag 'logo-foro.png'
+      div
+        a href='http://www.itba.edu.ar'
+          = image_tag 'logo-itba.png'
+        a href='http://www.ourmark.com'
+          = image_tag 'logo-ourmark.png'
+        a href='http://www.estudiofrenesi.com.ar'
+          = image_tag 'logo-frenesi.png'

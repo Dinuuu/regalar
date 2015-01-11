@@ -1,0 +1,41 @@
+.campaign-card {
+
+  .thumbnail {
+
+    height: 500px;
+    max-width: 260px;
+    .caption {
+      padding: 0 9px;
+      .campaign-name{
+        font-weight: bold;
+      }
+    }
+
+    .description {
+      height: 95px;
+    }
+
+    .information {
+      height: 40px;
+
+      .thumbnail-state{
+        padding: 10px;
+        font-weight: bold;
+      }
+
+    }
+  }
+
+  .no-padding{
+    padding: 0;
+  }
+}
+.img-campaign-thumbnail {
+  height: 190px;
+  margin-bottom: 10px;
+  img{
+
+    max-height: 190px;
+    max-width: 250px;
+  }
+}

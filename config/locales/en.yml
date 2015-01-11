@@ -1,0 +1,378 @@
+en:
+  application:
+    title: Regalar
+    no_results: No results found
+    slogan: Crowdfunding platform for non-profits
+    all: See all
+    why_comunidar: "<span>Why COMUNI<strong>DAR</strong>?</span>"
+    easy: EASY
+    vital: VITAL
+    transparent: TRANSPARENT
+    footer:
+      who_are_we: WHO ARE WE?
+      requests: REQUESTS
+      how_to: HOW TO DONATE
+      profile: MY PROFILE
+      create_campaign: CREATE CAMPAIGN
+      public: PUBLIC
+      terms: Terms and Conditions
+      privacy: Privacy Politics
+    about:
+      title: About the forum
+      introduction:
+        title: Who are we?
+        content: The Social Sector Forum is an umbrella organization comprising Civil Associations and Foundations across the country. Currently, brings together more than 200 partner organizations, some of which are themselves federations and networks. Among the members directly and associated networks and confederations reaches 3500 organizations across the country.
+      origins:
+        title: Origins
+        content: In 1994, some of the institutions most experienced in the country in the field of solidarity and participatory activity began a process of working together, built a common agenda and agreed to the creation of the Social Sector Forum - Federation, formally established as an entity of second-degree November 29, 1996.
+      goals:
+        title: Goals
+        goal1: Acting on behalf of the Civil Society Organizations (CSOs) to the public authorities and private institutions in the country and abroad in all that was convenient for the sector.
+        goal2: Disseminate and increase public awareness of CSOs.
+        goal3: Encourage research to identify and understand the social sector and its potential for social, cultural and economic development.
+        goal4: Promoting a system of information and cooperation between CSOs and government and private sectors.
+        goal5: Support initiatives to promote volunteering.
+    landing:
+      choose_organization: Choose Organization
+      no_organizations: You don't have any organization
+    email: Email
+    password: Password
+    separator: '.'
+    delimiter: ','
+  helpers:
+    submit:
+      comment:
+        create: "Comentar"
+        new: "Nuevo Comentario"
+      organization:
+        create: "Create %{model}"
+        new: "New Organization"
+        edit: "Edit Organization"
+        update: "Update Organization"
+      campaign:
+        create: "Create %{model}"
+        new: "New Campaign"
+        edit: "Edit Campaign"
+        update: "Update Campaign"
+      contribution:
+        create: "Create %{model}"
+        new: "New Contribution"
+        edit: "Edit Contribution"
+      perk:
+        create: "Create %{model}"
+        new: "New Perk"
+        edit: "Edit Perk"
+        remove: "Remove Perk"
+      milestone:
+        create: "Create %{model}"
+        new: "New Milestone"
+        edit: "Edit Milestone"
+        remove: "Remove Milestone"
+      user:
+        edit: "Edit Profile"
+        edit_password: "Edit Password"
+        done_edit_password: "Update"
+        done_edit_user: "Update"
+  purchase:
+    status:
+      success: "Confirmed"
+      awaiting_mp_response: "Awaiting MercadoPago confirmation"
+      na: "NA"
+  users:
+    organizations: My Organizations
+    campaigns: My Campaigns
+    profile: My Profile
+    contributions: My Contributions
+    link_accounts: Link accounts
+  contributions:
+    mercadopago: Contribute with MercadoPago
+    anonymous: Anonymous Contribution
+  campaigns:
+    history: History
+    updates: Updates
+    comments: Comments
+    backers: Backers
+    benefits: Benefits
+    next: Siguiente
+    previous: Atrás
+    first_step: 'Paso 1'
+    second_step: 'Paso 2'
+    collected: 'Collected from'
+    card:
+      goal: "of $%{goal}"
+      pledgers: "%{count} Donors"
+      days_left: "Remaining Days"
+      raised: 'Raised'
+      completed: 'Completed'
+    categories:
+      education: Education
+      social: Social
+      health: Health
+    contribute: Contribute
+    states:
+      pending: Pending
+      approved: Approved
+      rejected: Rejected
+      started_not_funded: Started
+      closed_funded: Completed
+      closed_partially_funded: Not Completed
+      closed_not_funded: Not Completed
+    achieve_milestone: Achieve Milestone
+    milestone_achieved: Milestone achieved
+    search: Search
+    new:
+      info: "Comenzá tu campaña y unite a decenas de miles de ONG's que, al igual que vos, recauda fondos a través de ComuniDar"
+      title: "¡Comienza a recaudar fondos en ComuniDar!"
+      category:
+        question: "¿Qué categoría describe mejor tu campaña?"
+        chose: "Elige la categoría que mejor describe tu campaña. Puedes cambiarla después"
+      financing: "¿Cuál es tu meta de financiamiento?"
+      goal: Meta
+      input_message: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim"
+      minimum: "$500 mínimo"
+      who_receives: "¿Qué persona u organización recibirá los fondos de tu campaña?"
+      configure: "CONFIGURA TU CAMPAÑA"
+      basic_info:
+        title: "Datos básicos de la campaña"
+        info: "Tanto el título de tu capaña como una breve descripción de esta se muestran en la ficha de la campaña"
+        small_image: "Imagen pequeña"
+        choose_image: "CARGAR UNA IMAGEN"
+        campaign_title: "Título"
+        short_description: "Breve descripción (Contanos tu campaña en una oración)"
+        description: "Description"
+        country: "País"
+        city: "Ciudad"
+        deadline: "Deadline (mm/dd/yyyy)"
+        minimum: "Minimum pledge"
+        goal: "Goal"
+    twitter_message:
+      introduction: "Lets build a dream together!! help me fundraising"
+      ending: "Enter to the site to follow the development of the project"
+    cant_donate: "The campaign has finished, you can't donate anymore"
+  milestones:
+    achieved: Achieved
+    approved: Approved
+    rejected: Rejected
+    notAchieved: Not Achieved
+  pundit:
+    organization_policy:
+      update?: 'No tienes permisos para editar esta organización'
+    contribute: Contribute
+  date:
+    abbr_day_names:
+    - Sun
+    - Mon
+    - Tue
+    - Wed
+    - Thu
+    - Fri
+    - Sat
+    abbr_month_names:
+    -
+    - Jan
+    - Feb
+    - Mar
+    - Apr
+    - May
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Oct
+    - Nov
+    - Dec
+    day_names:
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
+    formats:
+      default:  '%Y-%m-%d'
+      long:  '%B %d, %Y'
+      short:  '%b %d'
+    month_names:
+    -
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+    order:
+    - :year
+    - :month
+    - :day
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: about 1 hour
+        other: about %{count} hours
+      about_x_months:
+        one: about 1 month
+        other: about %{count} months
+      about_x_years:
+        one: about 1 year
+        other: about %{count} years
+      almost_x_years:
+        one: almost 1 year
+        other: almost %{count} years
+      half_a_minute: half a minute
+      less_than_x_minutes:
+        one: less than a minute
+        other: less than %{count} minutes
+      less_than_x_seconds:
+        one: less than 1 second
+        other: less than %{count} seconds
+      over_x_years:
+        one: over 1 year
+        other: over %{count} years
+      x_days:
+        one: 1 day
+        other:  '%{count} days'
+      x_minutes:
+        one: 1 minute
+        other:  '%{count} minutes'
+      x_months:
+        one: 1 month
+        other:  '%{count} months'
+      x_seconds:
+        one: 1 second
+        other:  '%{count} seconds'
+    prompts:
+      day: Day
+      hour: Hour
+      minute: Minute
+      month: Month
+      second: Seconds
+      year: Year
+  errors:
+    format:  '%{attribute} %{message}'
+    messages:
+      accepted: must be accepted
+      blank: can't be blank
+      present: must be blank
+      confirmation:  "doesn't match %{attribute}"
+      empty: can't be empty
+      equal_to: must be equal to %{count}
+      even: must be even
+      exclusion: is reserved
+      greater_than: must be greater than %{count}
+      greater_than_or_equal_to: must be greater than or equal to %{count}
+      inclusion: is not included in the list
+      invalid: is invalid
+      less_than: must be less than %{count}
+      less_than_or_equal_to: must be less than or equal to %{count}
+      not_a_number: is not a number
+      not_an_integer: must be an integer
+      odd: must be odd
+      record_invalid:  'Validation failed: %{errors}'
+      restrict_dependent_destroy:
+        one: "Cannot delete record because a dependent %{record} exists"
+        many: "Cannot delete record because dependent %{record} exist"
+      taken: has already been taken
+      too_long:
+        one: is too long (maximum is 1 character)
+        other: is too long (maximum is %{count} characters)
+      too_short:
+        one: is too short (minimum is 1 character)
+        other: is too short (minimum is %{count} characters)
+      wrong_length:
+        one: is the wrong length (should be 1 character)
+        other: is the wrong length (should be %{count} characters)
+      other_than: "must be other than %{count}"
+      not_saved: An error ocurred
+    template:
+      body:  'There were problems with the following fields:'
+      header:
+        one: 1 error prohibited this %{model} from being saved
+        other:  '%{count} errors prohibited this %{model} from being saved'
+  number:
+    currency:
+      format:
+        delimiter:  ','
+        format:  '%u%n'
+        precision: 2
+        separator: .
+        significant: false
+        strip_insignificant_zeros: false
+        unit: $
+    format:
+      delimiter:  ','
+      precision: 3
+      separator: .
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format:  '%n %u'
+        units:
+          billion: Billion
+          million: Million
+          quadrillion: Quadrillion
+          thousand: Thousand
+          trillion: Trillion
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format:  '%n %u'
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector:  ', and '
+      two_words_connector:  ' and '
+      words_connector:  ', '
+  time:
+    am: am
+    formats:
+      default:  '%a, %d %b %Y %H:%M:%S %z'
+      long:  '%B %d, %Y %H:%M'
+      short:  '%d %b %H:%M'
+    pm: pm
+  active_admin:
+    dashboard: Dashboard
+    dashboard_welcome:
+      welcome: Welcome to Regalar
+      call_to_action: Here you can manage the campaigns and organizations from the website
+    remove: Remove
+    approve: Approve
+    reject: Reject
+    achieve: Achieve
+    start: Start
+  faq:
+    title: Frequently asked questions
+    question1:
+      title: How do I pledge?
+      answer:
+    question2:
+      title: When is my card charged?
+      answer:
+    question3:
+      title: So I'm only charged if funding succeeds?
+      answer: Yes! If a project isn't successfully funded, no one pays anything.

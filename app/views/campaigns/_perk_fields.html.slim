@@ -1,0 +1,50 @@
+.nested-fields#perks
+  .row
+    .col-sm-3
+      .row
+        .col-sm-12
+          = f.label :amount, class: 'control-label col-sm-12'
+      .row
+        .col-sm-12
+          .input-group
+            span.input-group-addon
+              | $
+            = f.number_field :amount, class: 'form-control col-sm-2', required: true, min: 0.0
+    .col-sm-6
+      .row
+        .col-sm-12
+          = f.label :name, class: 'control-label col-sm-12'
+      .row
+        .col-sm-12
+          = f.text_field :name, class: 'form-control col-sm-12', required: true
+    .col-sm-3
+      .row
+        .col-sm-12
+          = f.label :maximum, class: 'control-label col-sm-12'
+      .row
+        .col-sm-12
+          = f.number_field :maximum, class: 'form-control col-sm-12', required: true, min: 0
+  .row
+    .col-sm-9
+      .row
+        .col-sm-12
+          = f.label :description, class: 'control-label col-sm-12'
+      .row
+        .col-sm-12
+          = f.text_area :description, class: 'form-control col-sm-12', required: true
+    .col-sm-3
+      .row
+        .col-sm-12
+          .row
+            .col-sm-12
+              = f.label :delivery_date, class: 'control-label col-sm-12'
+          .row
+            .col-sm-12
+              = f.date_select :delivery_date, class: 'form-control col-sm-12'
+      .row
+        .col-sm-12
+              = f.label :requires_address, class: 'control-label col-sm-12'
+              = f.check_box :requires_address
+  .row
+    = link_to_remove_association t('helpers.submit.perk.remove'), f,
+                                 class: 'btn btn-primary btn-green'

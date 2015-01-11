@@ -1,0 +1,139 @@
+es:
+  activerecord:
+    errors:
+      models:
+        organization:
+          attributes:
+            name:
+              blank: Nombre es requerido
+            description:
+              blank: Descripción es requerida
+            locality:
+              blank: Localidad es requerida
+        campaign:
+          attributes:
+            name:
+              blank: El título es requerido
+            description:
+              blank: La descripción es requerida
+            goal:
+              blank: El objetivo es requerido
+              only_integer: El objetivo debe ser un número
+              not_a_number: El objetivo debe ser un número
+              greater_than: El objetivo debe ser mayor a %{count}
+            minimum:
+              blank: El monto de la donación mínima es requerida
+              greater_than: El monto de la donación mínima debe ser mayor a %{count}
+              only_integer: El monto mínimo debe ser un número
+              not_a_number: El monto mínimo debe ser un número
+            deadline:
+              blank: La fecha de finalización es requerida
+              on_or_after: La fecha de finalización debe ser posterior a la actual
+              invalid_datetime: La fecha es inválida
+            category:
+              blank: La categoría es requerida
+              inclusion: La categoría es inválida
+            short_description:
+              blank: La descripción breve es requerida
+            country:
+              blank: El país es requerido
+            locality:
+              blank: La localidad es requerida
+        contribution:
+          attributes:
+            amount:
+              not_a_number: Cantidad inválida
+        user:
+          attributes:
+            email:
+              already_confirmed: Email ya confirmado
+    models:
+      comment:
+        one: Comentario
+        other: Comentarios
+      organization:
+        one: Organización
+        other: Organizaciones
+      campaign:
+        one: Campaña
+        other: Campañas
+      contribution:
+        one: Contribución
+        other: Contribuciones
+      perk:
+        one: Beneficio
+        other: Beneficios
+      milestone:
+        one: Hito
+        other: Hitos
+      user:
+        one: Usuario
+        other: Usuarios
+      admin_user:
+        one: Administrador
+        other: Administradores
+    attributes:
+      organization:
+        name: Nombre
+        description: Descripción
+        locality: Localidad
+        created_at: Fecha de Creación
+        updated_at: Ultima actualización
+      campaign:
+        name: Nombre
+        description: Descripción
+        goal: Objetivo
+        deadline: Fecha de finalización
+        minimum: Donación mínima
+        category: Categoría
+        short_description: Descripción breve
+        organization: Organización
+        locality: Localidad
+        contribution: Contribución Total
+        created_at: Fecha de Creación
+        video: Youtube video url
+        main_image: Imagen
+        history: Historia
+        aasm_state: Estado
+      contribution:
+        amount: Donación
+        created_at: Fecha de donación
+        campaign: Campaña
+        perk: Beneficio
+        user: Contribuidor
+        first_name: Nombre
+        last_name: Apellido
+        email: Email
+        phone: Teléfono
+      user:
+        created_at: Fecha de ingreso
+        full_name: Nombre
+        email: Email
+        first_name: Nombre
+        last_name: Apellido
+        last_sign_in_at: Ultimo ingreso
+        sign_in_count: Cantidad de ingresos
+        avatar: Imagen de Perfil
+        password: Contraseña
+        password_confirmation: Repetir Contraseña
+      admin_user:
+        created_at: Fecha de ingreso
+        sign_in_count: Cantidad de ingresos
+        password: Contraseña
+        password_confirmation: Confirmar contraseña
+      perk:
+        amount: Mínima Donación
+        name: Nombre
+        maximum: Cantidad disponible
+        description: Descripción
+        delivery_date: "Fecha de entrega estimada"
+        requires_address: ¿Requiere dirección de envío?
+      milestone:
+        name: Nombre
+        description: Descripción
+        goal_percentage: Porcentaje del Objetivo
+        done_date: Fecha Límite
+        aasm_state: Estado
+        amount: Monto
+      purchase:
+        status: Estado

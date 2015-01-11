@@ -1,0 +1,85 @@
+= form_for [@organization, @campaign], html: { role: 'form' } do |f|
+  - if @campaign.errors.any?
+    .alert.alert-danger
+      ul
+        - @campaign.errors.each do |attr, msg|
+          li = msg
+  .row
+    h1
+      = t('campaigns.new.title')
+  .row
+    p.campaign-info
+      = t('campaigns.new.info')
+  .row.violet-row
+    .col-sm-5.white-bold
+      = t('campaigns.new.category.question')
+    .col-sm-7.white
+      = t('campaigns.new.category.chose')
+  .row#categories
+    = f.hidden_field :category, id: 'category-input', required: true
+    - Campaign::CATEGORIES.each do |c|
+      .col-sm-3.category-card
+        .inner-card data-category=c
+          = image_tag 'cat-blanco.png', class: 'cat-image'
+          .category-name.col-sm-6
+            p = t "campaigns.categories.#{c}"
+  .row.violet-row
+    .row
+      .col-sm-4.white-bold
+        = t('campaigns.new.basic_info.title')
+      .col-sm-8.white
+        = t('campaigns.new.basic_info.info')
+  .row#basic-info
+    .col-sm-3#image-upload
+      .row
+        span.small-image-text
+          = t('campaigns.new.basic_info.small_image')
+        = image_tag 'ayuda.png', class: 'small-image-help'
+      .row.image-preview
+        = image_tag @campaign.main_image
+      .row.file-field
+        .col-sm-12
+          .green-button
+            = t('campaigns.new.basic_info.choose_image')
+          = file_field_tag :main_image
+    .col-sm-9
+      .row
+        .col-sm-6
+          .form-group
+            label.control-label= t('campaigns.new.basic_info.campaign_title')
+            = f.text_field :name, class: 'form-control col-sm-12'
+        .col-sm-6
+          label.control-label= t('campaigns.new.basic_info.goal')
+          .input-group
+            span.input-group-addon
+              | $
+            = f.number_field :goal, class: 'form-control col-sm-12', required: true, min: 1.0
+      .row#description-row
+        .col-sm-6
+          .form-group
+            label.control-label= t('campaigns.new.basic_info.short_description')
+            = f.text_field :short_description, class: 'form-control', rows: 1
+          .form-group
+            label.control-label= t('campaigns.new.basic_info.description')
+            = f.text_area :description, class: 'form-control', rows: 5
+        .col-sm-6
+          label.control-label= t('campaigns.new.basic_info.minimum')
+          .input-group
+            span.input-group-addon
+              | $
+            = f.number_field :minimum, class: 'form-control', required: true, min: 1.0
+          .form-group
+            label.control-label= t('campaigns.new.basic_info.country')
+            = f.text_field :country, class: 'form-control', required: true
+          .form-group
+            label.control-label= t('campaigns.new.basic_info.city')
+            = f.text_field :locality, class: 'form-control', required: true
+          .form-group
+            label.control-label = t('campaigns.new.basic_info.deadline')
+            .input-group
+              = f.date_field :deadline, class: 'form-control', required: true
+  .form-group
+    .col-sm-12
+      = f.submit nil, class: 'btn btn-violet pull-right'
+
+  / = render 'form', organization: @organization, campaign: @campaign
