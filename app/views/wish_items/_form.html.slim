@@ -1,9 +1,9 @@
-- if wish_item.errors.present?
+- if @wish_item.errors.present?
   .alert.alert-danger
     ul
-      - wish_item.errors.each do |attr, msg|
+      - @wish_item.errors.each do |attr, msg|
         li= msg
-= form_for wish_item, html: { class: 'form-horizontal', role: 'form' } do |f|
+= form_for [@organization, @wish_item], html: { class: 'form-horizontal', role: 'form' } do |f|
   .form-group
     = f.label :title, class: 'control-label col-sm-2'
     .col-md-4
@@ -12,6 +12,8 @@
     = f.label :reason, class: 'control-label col-sm-2'
     .col-md-4
       = f.text_area :reason, class: 'form-control col-md-2', required: true
+  .form-group
+    = f.hidden_field :organization_id, value: @organization.id
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit nil, class: 'btn btn-primary btn-violet'

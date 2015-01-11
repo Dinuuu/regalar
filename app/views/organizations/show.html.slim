@@ -18,6 +18,7 @@ legend
           = Organization.human_attribute_name(:locality)
         p.list-group-item-text
           = @organization.locality
+      
 
 - if policy(@organization).update?
   .row
@@ -25,6 +26,20 @@ legend
       p
         = link_to t('helpers.submit.organization.edit'), edit_organization_path(@organization),
               class: 'btn btn-primary btn-violet'
+
+legend
+  |Wish List
+.row
+  .col-md-6
+    ul.list-group
+      = render @organization.wish_items
+
+- if policy(@organization).update?
+  .row
+    .col-md-6
+      p
+        = link_to t('helpers.submit.wish_item.new'), new_organization_wish_item_path(@organization)   , class: 'btn btn-primary btn-violet'
+
 legend
   = Campaign.model_name.human(count: 2)
 = render '/campaigns/index_cards', campaigns: paginate_scope(@organization.campaigns)
