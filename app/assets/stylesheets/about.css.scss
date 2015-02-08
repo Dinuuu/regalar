@@ -1,11 +1,12 @@
 /* COLORS */
 
-$violet: #723270;
+$violet: #AA2878;
 $green: #40E246;
+$blue: #1996A0;
 
 #about-us {
 
-  margin: 30px 0 40px 0;
+  margin: 150px 0 40px 0;
   text-align: justify;
   font-family: Helvetica Neue;
 
@@ -23,7 +24,7 @@ $green: #40E246;
 
   .about-subtitle {
     margin: 30px 0;
-    background-color: $green;
+    background-color: $blue;
     color: white;
     font-size: 20px;
     font-weight: bold;

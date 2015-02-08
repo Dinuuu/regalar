@@ -29,7 +29,8 @@
 // @linkColor: #ff0000;
 
 @green: #40E246;
-@violet: #723270;
+@violet: #AA2878;
+@white: #FFFFFF;
 @facebook-blue: #315EAF;
 @twitter-blue: #31B6EB;
 @google-red: #F03B3B;
@@ -57,9 +58,15 @@ body {
     color: white;
   }
 
+  .btn.btn-white {
+    background-color: @white;
+    border-color: @white;
+    color: @violet;
+  }
+
   .nav-pills > li > a {
     border-radius: 0;
-    border: 1px solid @green;
+    border: 1px solid @white;
   }
 
   .nav > li > a:hover, .nav > li > a:focus {
@@ -99,5 +106,5 @@ body {
     color: black;
 
   }
-
+  
 }

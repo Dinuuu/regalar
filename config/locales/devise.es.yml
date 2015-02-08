@@ -52,7 +52,7 @@ es:
       signed_in: 'Iniciaste sesión correctamente.'
       signed_out: 'Cerraste sesión correctamente.'
       sign_out: "Salir"
-      sign_in: "Ingresar"
+      sign_in: "Iniciar sesión"
       sign_in_with_facebook: "Ingresar con Facebook"
       sign_in_with_google: "Ingresar con Google"
       sign_in_with_twitter: "Ingresar con Twitter"
