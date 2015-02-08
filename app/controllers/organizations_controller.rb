@@ -1,5 +1,4 @@
 class OrganizationsController < ApplicationController
-
   inherit_resources
 
   before_action :authenticate_user!, except: [:index, :show]
@@ -29,5 +28,4 @@ class OrganizationsController < ApplicationController
     return [] if request.get?
     [params.require(:organization).permit(FIELDS)]
   end
-
 end

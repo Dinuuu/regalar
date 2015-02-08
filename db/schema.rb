@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150111165451) do
+ActiveRecord::Schema.define(version: 20150208171310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,30 +49,6 @@ ActiveRecord::Schema.define(version: 20150111165451) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "campaigns", force: true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.float    "goal"
-    t.datetime "deadline"
-    t.float    "minimum"
-    t.string   "category"
-    t.string   "locality"
-    t.integer  "organization_id"
-    t.text     "short_description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.float    "contribution",      default: 0.0
-    t.string   "main_image"
-    t.string   "video"
-    t.text     "history"
-    t.string   "aasm_state"
-    t.string   "fund_recipient"
-    t.string   "funding_type"
-    t.string   "country"
-  end
-
-  add_index "campaigns", ["organization_id"], name: "index_campaigns_on_organization_id", using: :btree
-
   create_table "comments", force: true do |t|
     t.integer  "commentable_id"
     t.string   "commentable_type"
@@ -85,23 +61,6 @@ ActiveRecord::Schema.define(version: 20150111165451) do
   add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
   add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type", using: :btree
 
-  create_table "contributions", force: true do |t|
-    t.integer  "campaign_id"
-    t.integer  "perk_id"
-    t.integer  "user_id"
-    t.float    "amount"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "phone"
-  end
-
-  add_index "contributions", ["campaign_id"], name: "index_contributions_on_campaign_id", using: :btree
-  add_index "contributions", ["perk_id"], name: "index_contributions_on_perk_id", using: :btree
-  add_index "contributions", ["user_id"], name: "index_contributions_on_user_id", using: :btree
-
   create_table "identities", force: true do |t|
     t.string   "provider"
     t.string   "uid"
@@ -109,19 +68,6 @@ ActiveRecord::Schema.define(version: 20150111165451) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "milestones", force: true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "done_date"
-    t.float    "amount"
-    t.integer  "campaign_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "aasm_state"
-  end
-
-  add_index "milestones", ["campaign_id"], name: "index_milestones_on_campaign_id", using: :btree
 
   create_table "organizations", force: true do |t|
     t.string   "name"
@@ -138,43 +84,6 @@ ActiveRecord::Schema.define(version: 20150111165451) do
 
   add_index "organizations_users", ["organization_id", "user_id"], name: "index_organizations_users_on_organization_id_and_user_id", using: :btree
   add_index "organizations_users", ["user_id", "organization_id"], name: "index_organizations_users_on_user_id_and_organization_id", using: :btree
-
-  create_table "perks", force: true do |t|
-    t.integer  "campaign_id"
-    t.float    "amount"
-    t.string   "name"
-    t.integer  "maximum"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.datetime "delivery_date"
-    t.boolean  "requires_address"
-  end
-
-  add_index "perks", ["campaign_id"], name: "index_perks_on_campaign_id", using: :btree
-
-  create_table "purchases", force: true do |t|
-    t.string   "status"
-    t.integer  "contribution_id"
-    t.string   "success_token"
-    t.string   "failure_token"
-    t.string   "pending_token"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "purchases", ["contribution_id"], name: "index_purchases_on_contribution_id", using: :btree
-
-  create_table "updates", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "campaign_id"
-    t.text     "message"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "updates", ["campaign_id"], name: "index_updates_on_campaign_id", using: :btree
-  add_index "updates", ["user_id"], name: "index_updates_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: ""
@@ -209,6 +118,10 @@ ActiveRecord::Schema.define(version: 20150111165451) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "organization_id"
+    t.text     "quantity"
+    t.string   "priority"
+    t.text     "description"
+    t.string   "unit"
   end
 
   add_index "wish_items", ["organization_id"], name: "index_wish_items_on_organization_id", using: :btree

@@ -1,5 +1,4 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-
   def all
     user = User.from_omniauth(request.env['omniauth.auth'], current_user)
     if user.persisted?
@@ -13,5 +12,4 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   alias_method :facebook, :all
   alias_method :google_oauth2, :all
   alias_method :twitter, :all
-
 end

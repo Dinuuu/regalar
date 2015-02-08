@@ -42,6 +42,4 @@ legend#profile-header
   legend#profile-subheader
     = t('users.organizations')
   = render '/organizations/index_table', organizations: @user.organizations.page(1).per(50)
-  legend#profile-subheader
-    = t('users.contributions')
-  = render '/contributions/index_table', contributions: paginate_scope(@user.contributions)
+

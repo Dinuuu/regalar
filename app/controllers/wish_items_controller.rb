@@ -1,12 +1,11 @@
 class WishItemsController < ApplicationController
+  inherit_resources
+  belongs_to :organization
 
-	inherit_resources
-	belongs_to :organization
-
-	def index
-		@wish_items = WishItem.for_organization(@organization)
-		index!
-	end
+  def index
+    @wish_items = WishItem.for_organization(@organization)
+    index!
+  end
 
   def destroy
     destroy! { @organization }
@@ -20,6 +19,7 @@ class WishItemsController < ApplicationController
 
   def resource_params
     return [] if request.get?
-    [params.require(:wish_item).permit(:title, :reason, :organization_id)]
+    [params.require(:wish_item).permit(:title, :reason, :description, :priority,
+                                       :quantity, :unit, :organization_id)]
   end
 end

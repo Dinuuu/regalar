@@ -139,6 +139,8 @@ group :test, :development do
 
   # Save and open page cucumber
   gem 'launchy'
+
+  gem 'byebug'
 end
 
 group :production, :staging do

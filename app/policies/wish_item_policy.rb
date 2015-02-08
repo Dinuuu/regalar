@@ -1,5 +1,4 @@
 class WishItemPolicy < ApplicationPolicy
-
   def show?
     true
   end

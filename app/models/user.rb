@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
   has_many :identities
   has_and_belongs_to_many :organizations
   has_many :comments
-  has_many :contributions
 
   mount_uploader :avatar, AvatarUploader
 

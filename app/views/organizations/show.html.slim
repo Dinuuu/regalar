@@ -29,7 +29,7 @@ legend
 
 legend
   |Wish List
-.row
+.row  
   .col-md-6
     ul.list-group
       = render @organization.wish_items
@@ -41,13 +41,6 @@ legend
         = link_to t('helpers.submit.wish_item.new'), new_organization_wish_item_path(@organization)   , class: 'btn btn-primary btn-violet'
 
 legend
-  = Campaign.model_name.human(count: 2)
-= render '/campaigns/index_cards', campaigns: paginate_scope(@organization.campaigns)
-
-- if policy(@organization).update?
-  p
-    = link_to t('helpers.submit.campaign.new'), new_organization_campaign_path(@organization),
-              class: 'btn btn-primary btn-violet'
 .row
   .col-md-12
     legend
