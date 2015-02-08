@@ -1,6 +1,6 @@
-#main-image
-  = image_tag 'home.jpg'
-
+#title
+	.h1
+  		= t('home.slogan')
 #campaigns-title.row
   .pull-left
     = Campaign.model_name.human(count: 2)

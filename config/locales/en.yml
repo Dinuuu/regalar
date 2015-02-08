@@ -1,4 +1,6 @@
 en:
+  home:
+    slogan: REGALAR THE PLACE TO DONATE AND RECIEVE
   application:
     title: Regalar
     no_results: No results found
@@ -61,6 +63,7 @@ en:
         edit: "Edit Milestone"
         remove: "Remove Milestone"
       user:
+        level: "Level"
         edit: "Edit Profile"
         edit_password: "Edit Password"
         done_edit_password: "Update"
@@ -71,6 +74,7 @@ en:
       awaiting_mp_response: "Awaiting MercadoPago confirmation"
       na: "NA"
   users:
+    donations: My donations
     organizations: My Organizations
     campaigns: My Campaigns
     profile: My Profile

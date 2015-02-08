@@ -12,19 +12,17 @@
 
 
   #header-pills.pull-right
-    - if user_signed_in?
-            = link_to t('devise.sessions.sign_out'), destroy_user_session_path, method: :delete,
-                      class: 'btn btn-primary btn-white'
-    - else
-      = link_to t('devise.sessions.sign_in'), '#',
-                class: 'btn btn-primary btn-white',
-                data: { toggle: 'modal', target: '#login-modal' }
-    ul.nav.nav-pills
+    .pull-left
       - if user_signed_in?
-        li
-          = link_to t('application.footer.profile'), current_user
-      / li
-      /   = link_to t('application.footer.create_campaign'), landing_campaigns_path
-      / li
-      /   = link_to t('application.footer.who_are_we'), about_path
+              = link_to t('devise.sessions.sign_out'), destroy_user_session_path, method: :delete,
+                        class: 'btn btn-primary btn-white'
+      - else
+        = link_to t('devise.sessions.sign_in'), '#',
+                  class: 'btn btn-primary btn-white',
+                  data: { toggle: 'modal', target: '#login-modal' }
+    .pull-right
+      ul.nav.nav-pills
+        - if user_signed_in?
+          li
+            = link_to t('application.footer.profile'), current_user
 = render 'layouts/login_modal'

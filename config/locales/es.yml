@@ -1,4 +1,6 @@
 es:
+  home:
+    slogan: REGALAR EL LUGAR DONDE DONAR Y RECIBIR
   save: Guardar
   application:
     title: Regalar
@@ -62,6 +64,7 @@ es:
         edit: "Editar Hito"
         remove: "Remover Hito"
       user:
+        level: "Nivel"
         edit: "Editar Perfil"
         edit_password: "Editar Contraseña"
         done_edit_password: "Actualizar"
@@ -80,6 +83,7 @@ es:
       awaiting_mp_response: "Pendiente confirmación de MercadoPago"
       na: "NA"
   users:
+    donations: Mis donaciones
     organizations: Mis Organizaciones
     campaigns: Mis Campañas
     profile: Mi Perfil

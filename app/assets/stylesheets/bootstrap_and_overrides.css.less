@@ -28,6 +28,7 @@
 // Example:
 // @linkColor: #ff0000;
 
+@light-violet: #BC468D;
 @green: #40E246;
 @violet: #AA2878;
 @white: #FFFFFF;
@@ -66,11 +67,15 @@ body {
 
   .nav-pills > li > a {
     border-radius: 0;
+    background-color: @white;
+    border-color: @white;
+    color: @violet;
     border: 1px solid @white;
+    margin-left: 20px;
   }
 
   .nav > li > a:hover, .nav > li > a:focus {
-    background-color: transparent;
+    background-color: white;
   }
 
   .carousel-control.right, .carousel-control.left {
@@ -94,8 +99,8 @@ body {
   }
 
   .pagination > .active > a, .pagination > .active > a:hover{
-    background-color: @green;
-    border-color: @green;
+    background-color: @light-violet;
+    border-color: @light-violet;
     color: white;
   }
 
