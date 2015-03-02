@@ -1,4 +1,6 @@
 es:
+  faker:
+    status: [Disponible, Verificando, Regalado]
   home:
     slogan: REGALAR EL LUGAR DONDE DONAR Y RECIBIR
   save: Guardar
@@ -198,9 +200,8 @@ es:
       update?: 'No tienes permisos para editar esta organización'
     contribute: Contribuir
 
-
-
-
+  wishitems:
+    gift: Regalar
 
   date:
     abbr_day_names:
@@ -414,3 +415,7 @@ es:
     question3:
       title: ¿Así que sólo me van a estar cobrando si la financiación tiene éxito?
       answer: ¡Sí! Si un proyecto no está financiado con éxito, nadie paga nada.
+  status: 
+    available: Disponible
+    verifying: Verificando
+    gifted: Regalado

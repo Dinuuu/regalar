@@ -154,6 +154,8 @@ en:
     organization_policy:
       update?: 'No tienes permisos para editar esta organización'
     contribute: Contribute
+  wishitems:
+    gift: Gift
   date:
     abbr_day_names:
     - Sun
@@ -372,3 +374,7 @@ en:
     question3:
       title: So I'm only charged if funding succeeds?
       answer: Yes! If a project isn't successfully funded, no one pays anything.
+  status: 
+    available: Available
+    verifying: Verifying
+    gifted: Gifted

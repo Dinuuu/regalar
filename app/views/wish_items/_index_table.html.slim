@@ -1,0 +1,54 @@
+
+
+- if wish_items.empty?
+  p
+    = t('application.no_results')
+- else
+    h1.col-md-offset-1
+      = @organization.name
+    /item no regaldo 
+    - wish_items.each do |item|
+      div.col-md-8.col-md-offset-1.wishitem
+        div.col-md-6
+          - if item.main_image.present?
+            = image_tag(item.main_image, height: 150, width: 150, class: "img-thumbnail img-profile")
+          - else
+            = image_tag('default_avatar.jpg', height: 150, width: 150, class: "img-thumbnail img-profile")
+
+        div.col-md-6
+          - if item.status == 'status.pending'
+            h3
+              = item.title + ' '
+              small
+                 span.label.label-warning
+                   = item.status
+            p
+              = item.reason
+            
+            a.btn.btn-default disabled="disabled"
+              = t('wishitems.gift')
+
+          - if item.status == 'status.gifted'
+            h3
+              = item.title + ' '
+              small
+                 span.label.label-success
+                   = item.status
+            p
+              = item.reason
+            
+            a.btn.btn-default disabled="disabled"
+              = t('wishitems.gift')         
+        
+          - else
+            h3
+              = item.title + ' '
+            p
+              = item.reason
+            
+            a.btn.btn-success
+              = t('wishitems.gift')         
+        
+      
+/ #pagination
+/   = paginate wish_items
