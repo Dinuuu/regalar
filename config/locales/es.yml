@@ -36,6 +36,7 @@ es:
     password: Contraseña
     separator: ','
     delimiter: '.'
+    login: Iniciar sesión
   helpers:
     submit:
       comment:
@@ -71,6 +72,7 @@ es:
         edit_password: "Editar Contraseña"
         done_edit_password: "Actualizar"
         done_edit_user: "Actualizar"
+        view: "Ver perfil"
     page_entries_info:
       one_page:
         display_entries:
@@ -202,7 +204,7 @@ es:
 
   wishitems:
     gift: Regalar
-
+    gifts: Regalos
   date:
     abbr_day_names:
     - dom
@@ -419,3 +421,7 @@ es:
     available: Disponible
     verifying: Verificando
     gifted: Regalado
+  gift:
+    yes: Si
+    no: No
+    confirm: Confirma que quiere realizar el regalo a la organización 

@@ -1,0 +1,22 @@
+.campaign-card.col-md-3
+  / = link_to organization_campaign_path(campaign.organization, campaign) do
+  .thumbnail
+    / .col-md-12.no-padding
+    /   .label.label-success.pull-right.campaign-state
+    /     = t("campaigns.states.#{campaign.aasm_state}")
+    .row
+      .img-campaign-thumbnail
+        - if item.main_image.present?
+            = image_tag(item.main_image, height: 150, width: 150, class: "img-thumbnail img-profile")
+        - else
+          = image_tag('default_avatar.jpg', height: 150, width: 150, class: "img-thumbnail img-profile")
+      .container-fluid
+        .caption
+          h4.campaign-name
+            = item.title + ' '
+          h5
+            = link_to t(item.organization.name), item.organization
+          p
+            = item.reason.truncate(280)
+
+

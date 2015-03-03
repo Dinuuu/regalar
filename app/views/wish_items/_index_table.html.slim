@@ -1,13 +1,11 @@
 
-
 - if wish_items.empty?
   p
     = t('application.no_results')
 - else
-    h1.col-md-offset-1
-      = @organization.name
     /item no regaldo 
     - wish_items.each do |item|
+
       div.col-md-8.col-md-offset-1.wishitem
         div.col-md-6
           - if item.main_image.present?
@@ -16,17 +14,20 @@
             = image_tag('default_avatar.jpg', height: 150, width: 150, class: "img-thumbnail img-profile")
 
         div.col-md-6
-          - if item.status == 'status.pending'
+          - if item.status == 'status.verifying'
             h3
               = item.title + ' '
               small
                  span.label.label-warning
                    = item.status
+            h5
+              = link_to t(item.organization.name), item.organization
             p
               = item.reason
             
-            a.btn.btn-default disabled="disabled"
-              = t('wishitems.gift')
+            = link_to t('wishitems.gift'), '#',
+                  class: 'btn btn-default',
+                  data: {disabled: 'disabled', toggle: 'modal', target: '#gift-modal' }
 
           - if item.status == 'status.gifted'
             h3
@@ -37,18 +38,23 @@
             p
               = item.reason
             
-            a.btn.btn-default disabled="disabled"
-              = t('wishitems.gift')         
+            = link_to t('wishitems.gift'), '#',
+                  class: 'btn btn-default',
+                  data: { disabled: 'disabled', toggle: 'modal', target: '#gift-modal' }        
         
+          //- if item.status == 'status.available'
           - else
             h3
               = item.title + ' '
             p
               = item.reason
             
-            a.btn.btn-success
-              = t('wishitems.gift')         
+            = link_to t('wishitems.gift'), '#',
+                  class: 'btn btn-success',
+                  data: { toggle: 'modal', target: '#gift-modal' }      
         
-      
+
+          = render 'wish_items/gift_modal', name: item.organization.name
+
 / #pagination
 /   = paginate wish_items

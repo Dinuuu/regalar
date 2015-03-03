@@ -19,9 +19,6 @@
 
 @import url('http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic');
 
-#footer {
-  min-height: 60px !important;
-}
 
 .helvetica {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -51,11 +48,12 @@ $google-red: #F03B3B;
   padding: 10px 100px 12px 30px;
   background-color: $violet;
 
-  #login-modal {
+#login-modal {
 
     .modal-dialog {
       width: 475px;
       margin-top: 115px;
+
 
       .modal-content {
         border-radius: 0;
@@ -107,7 +105,8 @@ $google-red: #F03B3B;
 
     }
   }
-
+  
+  
   #brand {
     margin-left: 6.5%;
   }
@@ -169,7 +168,6 @@ $google-red: #F03B3B;
 
   margin: 30px 0 40px 0;
   text-align: justify;
-  margin-top: 170px;
 
 
   #pagination {
@@ -268,21 +266,23 @@ $google-red: #F03B3B;
   }
 }
 
-/* FOOTER */
+.modal-backdrop.in {
+  position: static !important;
+}
+.modal-title{
+  color: grey;
+}
 
-#footer {
+.alert{
+  margin-top: 90px;
+position: fixed;
+width: 90%;
+}
 
-
-  a {
-    color: white;
-  }
-  #footer-lower{
-    bottom:0px;
-    color: white;
-    background-color: $violet;
-    margin: 1px 0;
-    padding: 30px 200px;
-    padding-bottom: 40px;
-    text-align: left;
-  }
+.container{
+    margin-top: 45px;
+}
+.brand-img{
+    height: 33px;
+    margin-top: 8px;
 }

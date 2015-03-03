@@ -33,6 +33,7 @@ en:
     password: Password
     separator: '.'
     delimiter: ','
+    login: Login
   helpers:
     submit:
       comment:
@@ -68,6 +69,7 @@ en:
         edit_password: "Edit Password"
         done_edit_password: "Update"
         done_edit_user: "Update"
+        view: "View Profile"
   purchase:
     status:
       success: "Confirmed"
@@ -156,6 +158,7 @@ en:
     contribute: Contribute
   wishitems:
     gift: Gift
+    gifts: Gifts
   date:
     abbr_day_names:
     - Sun
@@ -378,3 +381,7 @@ en:
     available: Available
     verifying: Verifying
     gifted: Gifted
+  gift:
+    yes: Yes
+    no: No
+    confirm: Do you confirm that you are going to make a gift to the organization

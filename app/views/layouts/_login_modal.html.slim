@@ -2,8 +2,10 @@
   .modal-dialog
     .modal-content
       .modal-header
+        button.close aria-label="Close" data-dismiss="modal" type="button" 
+          span aria-hidden="true"  &times;
         h4.modal-title
-          = t('devise.sessions.sign_in')
+          = t('application.login')
       .modal-body
         = form_for(:user, url: session_path(:user)) do |f|
           .form-group
@@ -24,16 +26,16 @@
         .row
           .form-group
               = link_to t('devise.registrations.sign_up'), new_registration_path(:user),
-                class: 'btn btn-primary omniauth-button'
+                class: 'btn btn-success'
         .row
           = link_to t('devise.sessions.sign_in_with_facebook'),
                     user_omniauth_authorize_path(:facebook),
-                    class: 'btn btn-primary omniauth-button', id: 'btn-facebook'
+                    class: 'btn', id: 'btn-facebook'
         .row
           = link_to t('devise.sessions.sign_in_with_twitter'),
                     user_omniauth_authorize_path(:twitter),
-                    class: 'btn btn-primary btn-violet omniauth-button', id: 'btn-twitter'
+                    class: 'btn ', id: 'btn-twitter'
         .row
           = link_to t('devise.sessions.sign_in_with_google'),
                     user_omniauth_authorize_path(:google_oauth2),
-                    class: 'btn btn-primary btn-violet omniauth-button', id: 'btn-google_oauth2'
+                    class: 'btn', id: 'btn-google_oauth2'

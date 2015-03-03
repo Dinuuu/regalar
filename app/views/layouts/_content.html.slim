@@ -3,8 +3,8 @@
   		= t('home.slogan')
 #campaigns-title.row
   .pull-left
-    = Campaign.model_name.human(count: 2)
+    = t('wishitems.gifts')
   .pull-right
-    = link_to t('application.all'), campaigns_path
+    = link_to t('application.all'), list_wish_items_path
 #campaigns-cards
-  = render 'campaigns/index_cards', campaigns: campaigns
+  = render 'wish_items/index_cards', wish_items: WishItem.take(4)

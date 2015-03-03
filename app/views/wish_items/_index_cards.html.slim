@@ -1,0 +1,8 @@
+- if wish_items.empty?
+  p
+    = t('application.no_results')
+.row
+  - wish_items.each do |wish_item|
+    = render 'wish_items/card', item: wish_item
+/ #pagination
+/   = paginate wish_items

@@ -20,7 +20,7 @@ module WishItemsCreationHelper
         title: "Wish Item #{time}",
         reason: Faker::Lorem.paragraph,
         organization: Organization.all.sample,
-        status: Faker::Lorem.word
+        status: 'available'
       )
       wish_item.save!
     end

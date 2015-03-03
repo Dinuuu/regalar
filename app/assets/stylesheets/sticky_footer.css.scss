@@ -1,0 +1,27 @@
+
+$violet: #AA2878;
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  margin: 0;
+  width: 102%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: $violet;
+  padding: 30px 200px;
+  color: white;
+  a {
+    color: white !important; 
+  }
+}
+

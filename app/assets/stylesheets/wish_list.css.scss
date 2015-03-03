@@ -1,6 +1,13 @@
 // Place all the styles related to the WishList controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$violet: #AA2878;
+$green: #40E246;
+$white: #FFFFFF;
+$dark-grey: #1C1C1C;
+$facebook-blue: #315EAF;
+$twitter-blue: #31B6EB;
+$google-red: #F03B3B;
 
 p {
 	text-align: left;
@@ -14,3 +21,63 @@ p {
 .wishitem {
 	margin-bottom: 20px;
 }
+
+ #gift-modal {
+
+
+
+    .modal-dialog {
+      width: 475px;
+      margin-top: 115px;
+
+
+      .modal-content {
+        border-radius: 0;
+
+        .modal-header {
+          background-color: $white;
+          height: 30px;
+          text-align: center;
+          text-transform: uppercase;
+          color: white;
+          margin-bottom: 20px;
+
+          .modal-title {
+            padding: 5px;
+          }
+        }
+
+        .modal-body {
+          padding: 20px 40px 0 40px;
+          color: gray;
+
+          a {
+            color: gray;
+          }
+
+          input[type='submit'] {
+            background-color: $violet;
+            border: none;
+            margin-bottom: 10px;
+            width: 390px;
+            padding: 8px;
+            color: white;
+          }
+        }
+
+        .modal-footer {
+          text-align: center;
+
+          .omniauth-button {
+            margin-bottom: 10px;
+            width: 390px;
+            padding: 8px;
+            color: white;
+          }
+
+        }
+
+      }
+
+    }
+  }

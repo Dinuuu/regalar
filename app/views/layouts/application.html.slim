@@ -10,9 +10,9 @@ html lang = I18n.locale
 
 
   body data-controller=controller.controller_path data-action=controller.action_name
-    .container
-      #header.row
-        = render 'layouts/header'
+    /.container
+      /#header.row
+    = render 'layouts/header'
     .container
       #content.row
         - flash.each do |name, msg|
