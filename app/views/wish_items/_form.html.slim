@@ -1,9 +1,10 @@
-- if wish_item.errors.present?
+- if @wish_item.errors.present?
   .alert.alert-danger
     ul
-      - wish_item.errors.each do |attr, msg|
-        li= msg
-= form_for wish_item, html: { class: 'form-horizontal', role: 'form' } do |f|
+      - @wish_item.errors.each do |attr, msg|
+        li 
+          attr msg
+= form_for [@organization, @wish_item], html: { class: 'form-horizontal', role: 'form' } do |f|
   .form-group
     = f.label :title, class: 'control-label col-sm-2'
     .col-md-4
@@ -12,6 +13,22 @@
     = f.label :reason, class: 'control-label col-sm-2'
     .col-md-4
       = f.text_area :reason, class: 'form-control col-md-2', required: true
+  .form-group
+    = f.label :description, class: 'control-label col-sm-2'
+    .col-md-4
+      = f.text_area :description, class: 'form-control col-md-2', required: true
+  .form-group
+      = f.label :priority, 'Prioridad', class: 'control-label col-sm-2'
+      .col-md-4
+        = f.select :priority, ['low' ,'medium', 'high'] , { include_blank:  'Select Priority' }, class: 'form-control col-md-2', required: true
+  .form-group
+    = f.label :quantity, class: 'control-label col-sm-2'
+    .col-md-4
+      = f.text_field :quantity, class: 'form-control col-md-2', required: true
+
+      = f.select :unit, ['liters' ,'kilos', 'units'] , { include_blank:  'Select Unit' }, class: 'form-control col-md-2', required: true
+  .form-group
+    = f.hidden_field :organization_id, value: @organization.id
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit nil, class: 'btn btn-primary btn-violet'

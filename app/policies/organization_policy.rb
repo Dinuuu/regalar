@@ -1,5 +1,4 @@
 class OrganizationPolicy < ApplicationPolicy
-
   class Scope < Struct.new(:user, :scope)
     def resolve
       scope
@@ -9,5 +8,4 @@ class OrganizationPolicy < ApplicationPolicy
   def update?
     record.users.include?(user)
   end
-
 end

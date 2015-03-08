@@ -1,3 +1,2 @@
 class MailPreview < MailView
-
 end

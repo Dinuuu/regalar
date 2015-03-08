@@ -1,8 +1,0 @@
-- if campaigns.empty?
-  p
-    = t('application.no_results')
-.row
-  - campaigns.each do |c|
-    = render 'campaigns/card', locals: { campaign: c }
-#pagination
-  = paginate campaigns

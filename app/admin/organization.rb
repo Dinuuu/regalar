@@ -1,5 +1,4 @@
 ActiveAdmin.register Organization do
-
   permit_params :name, :description, :locality
 
   index do

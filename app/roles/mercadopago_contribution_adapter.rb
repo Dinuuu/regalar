@@ -1,5 +1,4 @@
 class MercadopagoContributionAdapter < SimpleDelegator
-
   include Rails.application.routes.url_helpers
 
   class << self
@@ -31,7 +30,6 @@ class MercadopagoContributionAdapter < SimpleDelegator
                    failure: failure_mercadopago_callback
                   }
     }
-
   end
 
   def items

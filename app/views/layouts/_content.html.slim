@@ -24,13 +24,6 @@
       span.glyphicon.glyphicon-chevron-left
     a.right.carousel-control data-slide="next" href="#header-carousel"
       span.glyphicon.glyphicon-chevron-right
-#campaigns-title.row
-  .pull-left
-    = Campaign.model_name.human(count: 2)
-  .pull-right
-    = link_to t('application.all'), campaigns_path
-#campaigns-cards
-  = render 'campaigns/index_cards', campaigns: campaigns
 #slogan
   p
     = t('application.why_comunidar').html_safe

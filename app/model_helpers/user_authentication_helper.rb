@@ -1,5 +1,4 @@
 module UserAuthenticationHelper
-
   def from_omniauth(auth, current_user)
     identity = Identity.find_with_omniauth(auth)
     if identity.present? && !current_user.present?
@@ -49,9 +48,7 @@ module UserAuthenticationHelper
   end
 
   def update_email_if_necessary(auth, current_user)
-    if current_user.provider == 'twitter'
-      current_user.email = auth.info.email
-      current_user.provider = auth.provider
-    end
+    current_user.email = auth.info.email if current_user.provider == 'twitter'
+    current_user.provider = auth.provider if current_user.provider == 'twitter'
   end
 end

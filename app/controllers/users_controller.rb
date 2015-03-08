@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   inherit_resources
 
   before_action :authenticate_user!
@@ -22,5 +21,4 @@ class UsersController < ApplicationController
     return [] if request.get?
     [params.require(:user).permit(FIELDS)]
   end
-
 end
