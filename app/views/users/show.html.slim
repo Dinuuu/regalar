@@ -36,6 +36,5 @@
           = link_to "Twitter", user_omniauth_authorize_path(:twitter), class: 'btn btn-primary btn-twitter'
 .row
   legend#profile-subheader
-    = t('users.donations')
-  //TODO: VER COMO CARGAR LAS DONACIONES
-  = render '/contributions/index_table', contributions: paginate_scope(@user.contributions)
+    = t('users.organizations')
+  = render '/organizations/index_table', organizations: @user.organizations.page(1).per(50)
