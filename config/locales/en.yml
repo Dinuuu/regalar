@@ -71,6 +71,7 @@ en:
         done_edit_password: "Update"
         done_edit_user: "Update"
   organizations: "Organizations"  
+  organization-link: "Go to organization"
   purchase:
     status:
       success: "Confirmed"

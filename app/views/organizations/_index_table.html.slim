@@ -2,23 +2,26 @@
   p
     = t('application.no_results')
 - else
-  table.table.table-bordered.table-hover
-    thead
-      tr
-        th
-          = Organization.human_attribute_name(:name)
-        th
-          = Organization.human_attribute_name(:description)
-        th
-          = Organization.human_attribute_name(:locality)
-    tbody
-    - organizations.each do |organization|
-      tr
-        td
-          = link_to organization.name, organization
-        td
-          = organization.description
-        td
-          = organization.locality
-#pagination
-  = paginate organizations
+  - organizations.each do |organization|
+    .col-sm-6.col-md-4.organization
+      .thumbnail
+        .caption
+          h3
+            = link_to organization.name, organization
+          p
+            = organization.description.truncate(170)
+          h5
+            i.fa.fa-map-marker
+            = organization.locality
+          p
+            
+            = link_to t('organization_link'), organization, class: 'btn btn-primary'
+          .row
+            /TODO: seleccionar segun un criterio los 3
+            - organization.wish_items.take(3).each do |item|
+              .col-sm-6.col-md-4
+                = link_to item.title, item
+                - if item.main_image.present?
+                  = image_tag(item.main_image, class: "img-wishlist")
+                - else
+                  = image_tag('default_avatar.jpg', class: "img-wishlist")
