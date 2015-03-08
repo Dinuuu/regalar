@@ -1,6 +1,7 @@
 class WishItemsController < ApplicationController
   inherit_resources
   belongs_to :organization
+  before_action :authenticate_user!
 
   def index
     @wish_items = WishItem.for_organization(@organization)

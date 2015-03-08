@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 20150208171310) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "organization_id"
-    t.text     "quantity"
+    t.integer  "quantity"
     t.string   "priority"
     t.text     "description"
     t.string   "unit"
