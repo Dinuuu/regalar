@@ -6,5 +6,6 @@ FactoryGirl.define do
     quantity { Faker::Number.digit }
     priority 'medium'
     unit 'liters'
+    status 'Disponible'
   end
 end
