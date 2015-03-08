@@ -13,6 +13,9 @@ Regalar::Application.routes.draw do
       get :edit_password
       patch :update_password
     end
+    collection do
+      resources :donations, controller: 'user_donations', only: [:destroy]
+    end
   end
 
   # End Users Routes
@@ -21,7 +24,9 @@ Regalar::Application.routes.draw do
 
   resources :organizations do
 
-    resources :wish_items
+    resources :wish_items do
+      resources :donations, controller: 'user_donations', only: [:new, :create, :show]
+    end
 
     collection do
       get :list
@@ -44,6 +49,15 @@ Regalar::Application.routes.draw do
       end
       resources :comments, except: [:edit, :update]
     end
+
+    # OrganizationDonations Routes
+    resources :donations, controller: 'organization_donations', only: [:show, :index] do
+      member do
+        put :confirm
+        delete :cancel
+      end
+    end
+    # End OrganizationDonations Routes
   end
 
   # End Organizations Routes
@@ -74,12 +88,12 @@ Regalar::Application.routes.draw do
 
   # End Campaigns Routes
 
-  #Wish Lists Routes
-  resources :wish_items do
-    collection do
-      get :list
-    end
-  end     
+  # #Wish Lists Routes
+  # resources :wish_items do
+  #   collection do
+  #     get :list
+  #   end
+  # end     
 
   # Mails Preview Routes
 

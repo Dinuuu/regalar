@@ -2,5 +2,6 @@ class Organization < ActiveRecord::Base
   has_and_belongs_to_many :users
   has_many :comments, as: :commentable
   has_many :wish_items
+  has_many :donations
   validates :name, :description, :locality, presence: true
 end
