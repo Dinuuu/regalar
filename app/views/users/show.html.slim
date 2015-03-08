@@ -1,32 +1,28 @@
-legend#profile-header
-  = t('users.profile')
-.col-sm-3
+- level = 3
+// TODO: @user.donations.count > 0 ? (user.donations.count / campaign.goal) * 100 : 0
+.col-sm-12
   - if @user.avatar.present?
-      = image_tag(@user.avatar.file.url, height: 150, width: 150, class: "img-thumbnail img-profile")
+      = image_tag(@user.avatar_url, height: 150, width: 150, class: "img-thumbnail img-profile")
   - else
       = image_tag('default_avatar.jpg', height: 150, width: 150, class: "img-thumbnail img-profile")
-  a
-    = link_to t('helpers.submit.user.edit'), edit_user_path(@user), class: 'btn btn-primary btn-violet btn-profile'
-  a
-    = link_to t('helpers.submit.user.edit_password'), edit_password_user_path(@user), class: 'btn btn-primary btn-violet btn-profile'
-.row
-  .col-sm-7
-    .panel.profile-panel
-      .panel-heading
-        = User.human_attribute_name(:full_name)
-      .panel-body
-        = @user.full_name
-    .panel.profile-panel
-      .panel-heading
-        .panel-title
-          = User.human_attribute_name(:email)
-      .panel-body
+  .panel.main-name
+      = @user.full_name
+      .panel-body.main-email
         = @user.email
-    .panel.profile-panel
-      .panel-heading
-        = User.human_attribute_name(:created_at)
-      .panel-body
-        = l(@user.created_at, format: :short)
+        .information
+        .col-sm-4.col-sm-offset-4.pull-left.text-center
+              = t('user.level')
+              br
+              = "#{level}"
+        .progress.col-sm-4.col-sm-offset-4
+          .progress-bar.progress-bar-success.p80 aria-valuenow=level aria-valuemin="0" aria-valuemax="100" style="width: #{level*20}%"
+      a
+        = link_to t('helpers.submit.user.edit'), edit_user_path(@user), class: 'btn btn-primary btn-violet btn-profile'
+      a
+        = link_to t('helpers.submit.user.edit_password'), edit_password_user_path(@user), class: 'btn btn-primary btn-violet btn-profile'
+    
+.row
+  .col-sm-6.col-sm-offset-3
     .panel.profile-panel
       .panel-heading
         .panel-title
@@ -40,6 +36,6 @@ legend#profile-header
           = link_to "Twitter", user_omniauth_authorize_path(:twitter), class: 'btn btn-primary btn-twitter'
 .row
   legend#profile-subheader
-    = t('users.organizations')
-  = render '/organizations/index_table', organizations: @user.organizations.page(1).per(50)
-
+    = t('users.donations')
+  //TODO: VER COMO CARGAR LAS DONACIONES
+  = render '/contributions/index_table', contributions: paginate_scope(@user.contributions)

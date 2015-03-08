@@ -1,8 +1,3 @@
-	table
-	  tr
-	    th Title
-	    th Reason
-	  - @wish_items.each do |wish_item|
-  	  tr
-  	    td = wish_item.title
-  	    td = wish_item.text
+h1.col-md-offset-1
+	= @organization.name
+= render 'index_table', wish_items: @wish_items

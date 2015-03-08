@@ -2,7 +2,7 @@
 
   .thumbnail {
 
-    height: 500px;
+    height: auto;
     max-width: 260px;
     .caption {
       padding: 0 9px;
@@ -37,5 +37,6 @@
 
     max-height: 190px;
     max-width: 250px;
+    margin-top: 10px;
   }
 }

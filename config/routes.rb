@@ -74,6 +74,13 @@ Regalar::Application.routes.draw do
 
   # End Campaigns Routes
 
+  #Wish Lists Routes
+  resources :wish_items do
+    collection do
+      get :list
+    end
+  end     
+
   # Mails Preview Routes
 
   mount MailPreview => 'mail_view' if Rails.env.development?

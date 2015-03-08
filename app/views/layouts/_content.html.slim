@@ -1,45 +1,10 @@
-.row
-  #header-carousel.carousel.slide data-ride="carousel"
-    ol.carousel-indicators
-      li data-slide-to="0" data-target="#carousel-example-captions"
-      li.active data-slide-to="1" data-target="#header-carousel"
-      li data-slide-to="2" data-target="#cheader-carousel"
-    .carousel-inner
-      .item
-        = image_tag 'first-carousel-image.jpg'
-          .carousel-caption
-            h3 Comedor Infantil
-            p Nulla vitae elit libero, a pharetra augue mollis interdum.
-      .item.active
-        = image_tag 'second-carousel-image.jpg'
-          .carousel-caption
-            h3 Second slide label
-            p Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      .item
-        = image_tag 'third-carousel-image.jpg'
-          .carousel-caption
-            h3 Third slide label
-            p Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-    a.left.carousel-control data-slide="prev" href="#header-carousel"
-      span.glyphicon.glyphicon-chevron-left
-    a.right.carousel-control data-slide="next" href="#header-carousel"
-      span.glyphicon.glyphicon-chevron-right
-#slogan
-  p
-    = t('application.why_comunidar').html_safe
-#slogan-images
-  .col-sm-4
-    = image_tag 'facil.png'
-    p
-      = t('application.easy')
-  .col-sm-4
-    = image_tag 'vital.png'
-    p
-      = t('application.vital')
-  .col-sm-4
-    = image_tag 'transparente.png'
-    p
-      = t('application.transparent')
-
-
-
+#title
+	.h1
+  		= t('home.slogan')
+#campaigns-title.row
+  .pull-left
+    = t('wishitems.gifts')
+  .pull-right
+    = link_to t('application.all'), list_wish_items_path
+#campaigns-cards
+  = render 'wish_items/index_cards', wish_items: WishItem.take(4)

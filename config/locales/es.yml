@@ -1,4 +1,8 @@
 es:
+  faker:
+    status: [Disponible, Verificando, Regalado]
+  home:
+    slogan: REGALAR EL LUGAR DONDE DONAR Y RECIBIR
   save: Guardar
   application:
     title: Regalar
@@ -18,21 +22,13 @@ es:
       create_campaign: CREAR CAMPAÑA
       terms: Términos y Condiciones
       privacy: Políticas de Privacidad
+      copyright: © Regalar 2015
+      aboutus: Acerca de nosotros
     about:
-      title: Acerca del foro
+      title: Acerca de nosotros
       introduction:
         title: ¿Quiénes somos?
-        content: El Foro del Sector Social es una federación que agrupa Asociaciones Civiles y Fundaciones de todo el país. Actualmente, reúne a más de  200  organizaciones asociadas, algunas de las cuales son a su vez confederaciones y redes. Entre los miembros asociados en forma directa y las redes y confederaciones alcanza a 3500 organizaciones en todo el país.
-      origins:
-        title: Orígenes
-        content: En 1994, algunas de las entidades de mayor trayectoria en el país en el campo de la actividad solidaria y participativa iniciaron un proceso de trabajo conjunto, construyeron una agenda común y acordaron la creación del Foro del Sector Social – Federación, formalmente establecido como entidad de segundo grado el 29 de noviembre de 1996.
-      goals:
-        title: Objetivos
-        goal1: Actuar a favor de las Organizaciones de la Sociedad Civil (OSC)  ante los poderes públicos e instituciones privadas del país y del exterior en todo aquello que fuera conveniente para el sector.
-        goal2: Difundir e incrementar el conocimiento público de las OSC.
-        goal3: Estimular investigaciones que permitan definir y comprender el Sector Social y su potencialidad para el desarrollo social, cultural y económico.
-        goal4: Fomentar un sistema de información y cooperación entre las OSC y los sectores gubernamentales y privados.
-        goal5: Apoyar las iniciativas que promuevan el voluntariado.
+        content: Somos un equipo del Instituto Tecnológico de Buenos Aires. Con Regalar buscamos conectar a la gente que quiere realizar donaciones con aquellas instituciones que más lo necesitan.
     landing:
       choose_organization: Elija Organización
       no_organizations: Usted no tiene organizaciones
@@ -40,6 +36,7 @@ es:
     password: Contraseña
     separator: ','
     delimiter: '.'
+    login: Iniciar sesión
   helpers:
     submit:
       comment:
@@ -70,10 +67,12 @@ es:
         edit: "Editar Hito"
         remove: "Remover Hito"
       user:
+        level: "Nivel"
         edit: "Editar Perfil"
         edit_password: "Editar Contraseña"
         done_edit_password: "Actualizar"
         done_edit_user: "Actualizar"
+        view: "Ver perfil"
     page_entries_info:
       one_page:
         display_entries:
@@ -88,6 +87,7 @@ es:
       awaiting_mp_response: "Pendiente confirmación de MercadoPago"
       na: "NA"
   users:
+    donations: Mis donaciones
     organizations: Mis Organizaciones
     campaigns: Mis Campañas
     profile: Mi Perfil
@@ -202,10 +202,9 @@ es:
       update?: 'No tienes permisos para editar esta organización'
     contribute: Contribuir
 
-
-
-
-
+  wishitems:
+    gift: Regalar
+    gifts: Regalos
   date:
     abbr_day_names:
     - dom
@@ -418,3 +417,11 @@ es:
     question3:
       title: ¿Así que sólo me van a estar cobrando si la financiación tiene éxito?
       answer: ¡Sí! Si un proyecto no está financiado con éxito, nadie paga nada.
+  status: 
+    available: Disponible
+    verifying: Verificando
+    gifted: Regalado
+  gift:
+    yes: Si
+    no: No
+    confirm: Confirma que quiere realizar el regalo a la organización 

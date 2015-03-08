@@ -1,0 +1,16 @@
+#gift-modal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close aria-label="Close" data-dismiss="modal" type="button" 
+          span aria-hidden="true"  &times;
+        h3.modal-title 
+          = t('REGALAR')
+      .modal-body 
+          = t('gift.confirm') 
+          = t( name)
+      .modal-footer
+        button.btn.btn-success type="button" 
+          = t('gift.yes')
+        button.btn.btn-danger type="button"  
+          = t('gift.no')

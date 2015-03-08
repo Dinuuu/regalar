@@ -8,9 +8,26 @@
 */
 
 /* COLORS */
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../assets/glyphicons-halflings-regular.eot');
+  src: url('../assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), 
+       url('../assets/glyphicons-halflings-regular.woff') format('woff'), 
+       url('../assets/glyphicons-halflings-regular.ttf') format('truetype'), 
+       url('../assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
 
-$violet: #723270;
+@import url('http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic');
+
+
+.helvetica {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 200;
+}
+
+$violet: #AA2878;
 $green: #40E246;
+$white: #FFFFFF;
 $dark-grey: #1C1C1C;
 $facebook-blue: #315EAF;
 $twitter-blue: #31B6EB;
@@ -18,21 +35,31 @@ $google-red: #F03B3B;
 
 /* HEADER */
 
+.margin-top-8{
+  margin-top: 8px;
+}
 #header {
+  
+  position:fixed !important;
+  z-index: 999;
+  left:0px;
+  top:0px;
+  width: 102%;
+  padding: 10px 100px 12px 30px;
+  background-color: $violet;
 
-  padding: 30px 100px 12px 0;
-
-  #login-modal {
+#login-modal {
 
     .modal-dialog {
       width: 475px;
       margin-top: 115px;
 
+
       .modal-content {
         border-radius: 0;
 
         .modal-header {
-          background-color: $green;
+          background-color: $white;
           height: 63px;
           text-align: center;
           text-transform: uppercase;
@@ -53,7 +80,7 @@ $google-red: #F03B3B;
           }
 
           input[type='submit'] {
-            background-color: $green;
+            background-color: $violet;
             border: none;
             margin-bottom: 10px;
             width: 390px;
@@ -78,7 +105,8 @@ $google-red: #F03B3B;
 
     }
   }
-
+  
+  
   #brand {
     margin-left: 6.5%;
   }
@@ -113,7 +141,7 @@ $google-red: #F03B3B;
     a {
       padding: 4px 15px;
       text-transform: uppercase;
-      color: $green;
+      
     }
   }
 }
@@ -141,9 +169,10 @@ $google-red: #F03B3B;
   margin: 30px 0 40px 0;
   text-align: justify;
 
+
   #pagination {
     margin: 0 auto;
-    width: 50%;
+    margin-left: 36%;
   }
 
   #header-carousel {
@@ -164,6 +193,52 @@ $google-red: #F03B3B;
       color: white;
     }
   }
+
+  #title {
+  
+  background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+  url(home.jpg);
+  background-size: cover;
+  height: 100vh;
+  margin-left: -100px;
+  width: 115%;
+  margin-top: -97px;
+
+  .h1{
+  color: white;
+  text-transform: uppercase;
+  font-size: 40px;
+  white-space: nowrap;
+  padding: 200px;
+  }
+   
+}
+.jumbotron {
+  padding: 30px;
+  margin-bottom: 30px;
+  color: inherit;
+  background-color: #eeeeee;
+}
+.jumbotron h1,
+.jumbotron .h1 {
+  color: inherit;
+}
+.jumbotron p {
+  margin-bottom: 15px;
+  font-size: 21px;
+  font-weight: 200;
+}
+.container .jumbotron {
+  border-radius: 6px;
+}
+.jumbotron .container {
+  max-width: 100%;
+}
+
 
   #slogan {
     margin: 30px 0;
@@ -191,32 +266,23 @@ $google-red: #F03B3B;
   }
 }
 
-/* FOOTER */
+.modal-backdrop.in {
+  position: static !important;
+}
+.modal-title{
+  color: grey;
+}
 
-#footer {
+.alert{
+  margin-top: 90px;
+position: fixed;
+width: 90%;
+}
 
-  a {
-    color: white;
-  }
-  vertical-align: middle;
-  #footer-upper{
-    background-color: black;
-    padding: 40px 200px;
-    padding-bottom: 60px;
-    text-align: left;
-    margin: 1px 0;
-    #footer-sponsors{
-      img{
-        width: 160px;
-        margin: 10px 30px;
-      }
-    }
-  }
-  #footer-lower{
-    background-color: $dark-grey;
-    margin: 1px 0;
-    padding: 30px 200px;
-    padding-bottom: 40px;
-    text-align: left;
-  }
+.container{
+    margin-top: 45px;
+}
+.brand-img{
+    height: 33px;
+    margin-top: 8px;
 }

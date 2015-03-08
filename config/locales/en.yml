@@ -1,4 +1,6 @@
 en:
+  home:
+    slogan: REGALAR THE PLACE TO DONATE AND RECIEVE
   application:
     title: Regalar
     no_results: No results found
@@ -17,21 +19,13 @@ en:
       public: PUBLIC
       terms: Terms and Conditions
       privacy: Privacy Politics
+      copyright: © Regalar 2015
+      aboutus: About Us
     about:
-      title: About the forum
+      title: About us
       introduction:
         title: Who are we?
-        content: The Social Sector Forum is an umbrella organization comprising Civil Associations and Foundations across the country. Currently, brings together more than 200 partner organizations, some of which are themselves federations and networks. Among the members directly and associated networks and confederations reaches 3500 organizations across the country.
-      origins:
-        title: Origins
-        content: In 1994, some of the institutions most experienced in the country in the field of solidarity and participatory activity began a process of working together, built a common agenda and agreed to the creation of the Social Sector Forum - Federation, formally established as an entity of second-degree November 29, 1996.
-      goals:
-        title: Goals
-        goal1: Acting on behalf of the Civil Society Organizations (CSOs) to the public authorities and private institutions in the country and abroad in all that was convenient for the sector.
-        goal2: Disseminate and increase public awareness of CSOs.
-        goal3: Encourage research to identify and understand the social sector and its potential for social, cultural and economic development.
-        goal4: Promoting a system of information and cooperation between CSOs and government and private sectors.
-        goal5: Support initiatives to promote volunteering.
+        content: We are a team of the Instituto Tecnológico de Buenos Aires. Regalar is a project who aims to connect people who want to donate with the organizations that need it most.
     landing:
       choose_organization: Choose Organization
       no_organizations: You don't have any organization
@@ -39,6 +33,7 @@ en:
     password: Password
     separator: '.'
     delimiter: ','
+    login: Login
   helpers:
     submit:
       comment:
@@ -69,16 +64,19 @@ en:
         edit: "Edit Milestone"
         remove: "Remove Milestone"
       user:
+        level: "Level"
         edit: "Edit Profile"
         edit_password: "Edit Password"
         done_edit_password: "Update"
         done_edit_user: "Update"
+        view: "View Profile"
   purchase:
     status:
       success: "Confirmed"
       awaiting_mp_response: "Awaiting MercadoPago confirmation"
       na: "NA"
   users:
+    donations: My donations
     organizations: My Organizations
     campaigns: My Campaigns
     profile: My Profile
@@ -158,6 +156,9 @@ en:
     organization_policy:
       update?: 'No tienes permisos para editar esta organización'
     contribute: Contribute
+  wishitems:
+    gift: Gift
+    gifts: Gifts
   date:
     abbr_day_names:
     - Sun
@@ -376,3 +377,11 @@ en:
     question3:
       title: So I'm only charged if funding succeeds?
       answer: Yes! If a project isn't successfully funded, no one pays anything.
+  status: 
+    available: Available
+    verifying: Verifying
+    gifted: Gifted
+  gift:
+    yes: Yes
+    no: No
+    confirm: Do you confirm that you are going to make a gift to the organization

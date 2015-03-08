@@ -28,8 +28,10 @@
 // Example:
 // @linkColor: #ff0000;
 
+@light-violet: #BC468D;
 @green: #40E246;
-@violet: #723270;
+@violet: #AA2878;
+@white: #FFFFFF;
 @facebook-blue: #315EAF;
 @twitter-blue: #31B6EB;
 @google-red: #F03B3B;
@@ -45,25 +47,17 @@ body {
     border-radius: 0 !important;
   }
 
-  .btn.btn-green {
-    background-color: @green;
-    border-color: @green;
-    color: white;
-  }
-
-  .btn.btn-violet {
-    background-color: @violet;
-    border-color: @violet;
-    color: white;
-  }
-
   .nav-pills > li > a {
     border-radius: 0;
-    border: 1px solid @green;
+    background-color: @white;
+    border-color: @white;
+    color: @violet;
+    border: 1px solid @white;
+    margin-left: 20px;
   }
 
   .nav > li > a:hover, .nav > li > a:focus {
-    background-color: transparent;
+    background-color: white;
   }
 
   .carousel-control.right, .carousel-control.left {
@@ -87,8 +81,8 @@ body {
   }
 
   .pagination > .active > a, .pagination > .active > a:hover{
-    background-color: @green;
-    border-color: @green;
+    background-color: @light-violet;
+    border-color: @light-violet;
     color: white;
   }
 
@@ -99,5 +93,9 @@ body {
     color: black;
 
   }
+  
+}
 
+.boton-salir {
+  margin-right: 10px !important;
 }
