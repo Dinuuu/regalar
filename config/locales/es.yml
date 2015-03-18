@@ -37,6 +37,8 @@ es:
     separator: ','
     delimiter: '.'
     login: Iniciar sesión
+    view_profile: "Ver perfil"
+    edit_profile: "Editar perfil"
   helpers:
     submit:
       comment:
@@ -81,6 +83,7 @@ es:
           other: "Mostrando <b>todos %{count}</b> %{entry_name}"
       more_pages:
         display_entries: "Mostrando %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> en total"
+  organizations: "Organizaciones"
   purchase:
     status:
       success: "Confirmado"

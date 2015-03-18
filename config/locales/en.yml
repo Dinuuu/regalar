@@ -34,6 +34,8 @@ en:
     separator: '.'
     delimiter: ','
     login: Login
+    view_profile: "View Profile"
+    edit_profile: "Edit Profile"
   helpers:
     submit:
       comment:
@@ -65,11 +67,10 @@ en:
         remove: "Remove Milestone"
       user:
         level: "Level"
-        edit: "Edit Profile"
         edit_password: "Edit Password"
         done_edit_password: "Update"
         done_edit_user: "Update"
-        view: "View Profile"
+  organizations: "Organizations"  
   purchase:
     status:
       success: "Confirmed"
