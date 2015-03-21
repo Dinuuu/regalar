@@ -224,22 +224,21 @@ describe OrganizationDonationsController do
       create_list :donation, 7, wish_item: wish_item2, user: user,
                                 organization: organization2, done: false
     end
+    before :each do
+      get :confirmed, organization_id: organization.id
+    end
     context 'Asking for confirmed donations' do
       it 'returns donations that are confirmed' do
-        get :confirmed, organization_id: organization.id
         expect(assigns(:confirmed).all? { |donation| donation[:done] }).to be true
       end
       it 'returns donations of organization' do
-        get :confirmed, organization_id: organization.id
         expect(assigns(:confirmed)
           .all? { |donation| donation[:organization_id] == organization.id }).to be true
       end
       it 'has to be 5' do
-        get :confirmed, organization_id: organization.id
         expect(assigns(:confirmed).count).to eq 5
       end
       it 'renders confirmed' do
-        get :confirmed, organization_id: organization.id
         expect(response).to render_template 'confirmed'
       end
     end
