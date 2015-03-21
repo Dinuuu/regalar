@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302005045) do
+ActiveRecord::Schema.define(version: 20150302070703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,20 @@ ActiveRecord::Schema.define(version: 20150302005045) do
 
   add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
   add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type", using: :btree
+
+  create_table "donations", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "wish_item_id"
+    t.integer  "organization_id"
+    t.integer  "quantity"
+    t.boolean  "done",            default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "donations", ["organization_id"], name: "index_donations_on_organization_id", using: :btree
+  add_index "donations", ["user_id"], name: "index_donations_on_user_id", using: :btree
+  add_index "donations", ["wish_item_id"], name: "index_donations_on_wish_item_id", using: :btree
 
   create_table "identities", force: true do |t|
     t.string   "provider"

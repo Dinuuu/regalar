@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Organization do
-  let(:organization) { build(:organization) }
+  let!(:organization) { build(:organization) }
   describe '#create' do
     context 'Creating an invalid organization' do
       it 'validates the name' do
