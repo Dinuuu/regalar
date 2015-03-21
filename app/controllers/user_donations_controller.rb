@@ -20,8 +20,8 @@ class UserDonationsController < ApplicationController
     user = User.find(params[:id])
     organizations_id = Donation.for_user(user).done.uniq.pluck(:organization_id)
     @donations = []
-    organizations_id.each_with_index do |org_id, index|
-      @donations[index] = concreted_donations_for_organization(org_id, user)
+    organizations_id.each_with_index do |org_id|
+      @donations << concreted_donations_for_organization(org_id, user)
     end
   end
 
