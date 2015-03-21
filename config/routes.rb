@@ -56,6 +56,9 @@ Regalar::Application.routes.draw do
         put :confirm
         delete :cancel
       end
+      collection do
+        get :confirmed
+      end
     end
     # End OrganizationDonations Routes
   end

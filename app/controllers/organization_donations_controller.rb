@@ -1,6 +1,6 @@
 class OrganizationDonationsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :chek_authentication
+  before_action :authenticate_user!, except: [:confirmed]
+  before_action :chek_authentication, except: [:confirmed]
 
   def confirm
     @donation = Donation.find(params[:id])
@@ -19,6 +19,12 @@ class OrganizationDonationsController < ApplicationController
   def show
     @donation = Donation.find(params[:id])
     render 'show'
+  end
+
+  def confirmed
+    organization = Organization.find(params[:organization_id])
+    @confirmed = Donation.for_organization(organization).done
+    render 'confirmed'
   end
 
   private
