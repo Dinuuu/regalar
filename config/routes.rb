@@ -87,7 +87,13 @@ Regalar::Application.routes.draw do
   end
 
   # End Campaigns Routes
-
+  
+  resources :wish_items, only: [] do  
+    collection do
+      get :list 
+    end
+ end
+ 
   # Mails Preview Routes
 
   mount MailPreview => 'mail_view' if Rails.env.development?
