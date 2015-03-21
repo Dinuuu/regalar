@@ -15,6 +15,14 @@ Regalar::Application.routes.draw do
     end
     collection do
       resources :donations, controller: 'user_donations', only: [:destroy]
+    end 
+
+    member do
+      resources :donations, controller: 'user_donations', only: [] do
+        collection do
+          get :confirmed
+        end  
+      end
     end
   end
 
@@ -27,6 +35,7 @@ Regalar::Application.routes.draw do
     resources :wish_items do
       resources :donations, controller: 'user_donations', only: [:new, :create, :show]
     end
+
 
     collection do
       get :list
