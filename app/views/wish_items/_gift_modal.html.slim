@@ -1,14 +1,20 @@
 #gift-modal.modal.fade
   .modal-dialog
     .modal-content
-      .modal-header
-        button.close aria-label="Close" data-dismiss="modal" type="button" 
+      button.close aria-label="Close" data-dismiss="modal" type="button" 
           span aria-hidden="true"  &times;
+      .modal-header
         h3.modal-title 
-          = t('REGALAR')
+          = t('gift.confirmation')
       .modal-body 
           = t('gift.confirm') 
-          = t( name)
+          = " "
+          = t(gift)
+          = " "
+          = t('gift.toOrg')
+          = " "
+          = t(name)
+          = "?"
       .modal-footer
         button.btn.btn-success type="button" 
           = t('gift.yes')

@@ -1,25 +1,4 @@
-legend
-  = Organization.model_name.human
-.row
-  .col-md-6
-    ul.list-group
-      li.list-group-item
-        h4.list-group-item-heading
-          = Organization.human_attribute_name(:name)
-        p.list-group-item-text
-          = @organization.name
-      li.list-group-item
-        h4.list-group-item-heading
-          = Organization.human_attribute_name(:description)
-        p.list-group-item-text
-          = @organization.description
-      li.list-group-item
-        h4.list-group-item-heading
-          = Organization.human_attribute_name(:locality)
-        p.list-group-item-text
-          = @organization.locality
-      
-
+= render 'info', organization: @organization
 - if policy(@organization).update?
   .row
     .col-md-6
