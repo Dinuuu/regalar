@@ -3,9 +3,6 @@
 $light-violet: #BC468D;
 $violet: #AA2878;
 $green: #40E246;
-$facebook-blue: #315EAF;
-$twitter-blue: #31B6EB;
-$google-red: #F03B3B;
 
 #profile-header {
   margin: 30px 0;
@@ -57,25 +54,4 @@ $google-red: #F03B3B;
 
 .btn-profile {
   margin-right: 7px;
-}
-
-.btn.btn-facebook {
-  margin: 10px;
-  background: $facebook-blue;
-  border-color: $facebook-blue;
-  color: white;
-}
-
-.btn.btn-google {
-  margin: 10px;
-  background-color: $google-red;
-  border-color: $google-red;
-  color: white;
-}
-
-.btn.btn-twitter {
-  margin: 10px;
-  background: $twitter-blue;
-  border-color: $twitter-blue;
-  color: white;
 }

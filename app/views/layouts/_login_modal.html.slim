@@ -21,21 +21,15 @@
             .pull-right
               = link_to t('devise.sessions.forgot_password'), new_password_path(:user)
           .form-group
-            = f.submit t('devise.sessions.sign_in')
+            = f.submit t('devise.sessions.sign_in'),
+            class: 'btn btn-succes'
       .modal-footer
-        .row
+        .row.text-center
           .form-group
-              = link_to t('devise.registrations.sign_up'), new_registration_path(:user),
-                class: 'btn btn-success'
-        .row
-          = link_to t('devise.sessions.sign_in_with_facebook'),
-                    user_omniauth_authorize_path(:facebook),
-                    class: 'btn', id: 'btn-facebook'
-        .row
-          = link_to t('devise.sessions.sign_in_with_twitter'),
-                    user_omniauth_authorize_path(:twitter),
-                    class: 'btn ', id: 'btn-twitter'
-        .row
-          = link_to t('devise.sessions.sign_in_with_google'),
-                    user_omniauth_authorize_path(:google_oauth2),
-                    class: 'btn', id: 'btn-google_oauth2'
+          = link_to(image_tag("http://i.stack.imgur.com/pZzc4.png",class: 'btn-login'),user_omniauth_authorize_path(:facebook))
+          = link_to(image_tag("https://developers.google.com/+/images/branding/sign-in-buttons/Red-signin_Long_base_44dp.png",class: 'btn-login'), user_omniauth_authorize_path(:google_oauth2))
+          = link_to(image_tag("http://snapeda.s3.amazonaws.com/pinax/images/assets_home_page/twitter_sign_in.png", class: 'btn-login-tw'),user_omniauth_authorize_path(:twitter))
+        .row.pull-left
+           = link_to t('application.new_account'), new_registration_path(:user)
+                
+          

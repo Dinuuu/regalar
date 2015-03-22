@@ -39,6 +39,7 @@ es:
     login: Iniciar sesión
     view_profile: "Ver perfil"
     edit_profile: "Editar perfil"
+    new_account: "Quiero crear una nueva cuenta"
   helpers:
     submit:
       comment:
