@@ -71,6 +71,25 @@ en:
         edit_password: "Edit Password"
         done_edit_password: "Update"
         done_edit_user: "Update"
+      wish_item:
+        create: "Create %{model}"
+        new: "New Wish Item"
+        edit: "Edit Wish Item"
+        update: 'Update Wish Item'
+        remove: "Remove Wish Item"
+        title: 'Title'
+        reason: 'Reason'
+        description: 'Description'
+        priority: 'Priority'
+        quantity: 'Quantity'
+        select_units: 'Select units'
+        units: 'Units'
+        kilos: 'Kilos'
+        liters: 'Liters'
+        select_priority: 'Select Priority'
+        low: 'Low'
+        medium: 'Medium'
+        high: 'High'
   organizations: "Organizations"  
   organization-link: "Go to organization"
   purchase:

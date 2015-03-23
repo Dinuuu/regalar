@@ -76,6 +76,25 @@ es:
         done_edit_password: "Actualizar"
         done_edit_user: "Actualizar"
         view: "Ver perfil"
+    wish_item:
+      create: "Crear %{model}"
+      new: "Nuevo Wish Item"
+      edit: "Editar Wish Item"
+      update: 'Actualizar Wish Item'
+      remove: "Remover Wish Item"
+      title: 'Titulo'
+      reason: 'Razon'
+      description: 'Descripcion'
+      priority: 'Prioridad'
+      quantity: 'Cantidad'
+      select_units: 'Seleccionar unidad'
+      units: 'Unidades'
+      kilos: 'Kilos'
+      liters: 'Litros'
+      select_priority: 'Seleccionar prioridad'
+      low: 'Baja'
+      medium: 'Mediana'
+      high: 'Alta'
     page_entries_info:
       one_page:
         display_entries:
