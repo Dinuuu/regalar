@@ -256,11 +256,13 @@ $google-red: #F03B3B;
 }
 
 .alert{
-  margin-top: 90px;
-position: fixed;
-width: 90%;
-}
+  position: fixed;
+  z-index: 99999;
+  width: 80%;
+  text-align: center;
+  margin-left: 5%;
 
+}
 .container{
     margin-top: 45px;
 }
