@@ -36,6 +36,7 @@ en:
     login: Login
     view_profile: "View Profile"
     edit_profile: "Edit Profile"
+    new_account: "I want to create a new account"
   helpers:
     submit:
       comment:

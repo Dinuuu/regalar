@@ -53,10 +53,11 @@ $google-red: #F03B3B;
     .modal-dialog {
       width: 475px;
       margin-top: 115px;
-
+      text-align: left;
 
       .modal-content {
         border-radius: 0;
+        padding: 30px;
 
         .modal-header {
           background-color: $white;
@@ -87,18 +88,6 @@ $google-red: #F03B3B;
             padding: 8px;
             color: white;
           }
-        }
-
-        .modal-footer {
-          text-align: center;
-
-          .omniauth-button {
-            margin-bottom: 10px;
-            width: 390px;
-            padding: 8px;
-            color: white;
-          }
-
         }
 
       }
@@ -149,21 +138,14 @@ $google-red: #F03B3B;
 
 /* CONTENT */
 
-#btn-facebook {
-  background-color: $facebook-blue;
-  border-color: $facebook-blue;
+.btn-login{
+  height: 35px;
+  margin-right: 35px;
 }
 
-#btn-twitter {
-  background-color: $twitter-blue;
-  border-color: $twitter-blue;
+.btn-login-tw{
+  height: 40px;
 }
-
-#btn-google_oauth2 {
-  background-color: $google-red;
-  border-color: $google-red;
-}
-
 #content {
 
   margin: 30px 0 40px 0;

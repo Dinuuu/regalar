@@ -1,18 +1,12 @@
 - if devise_mapping.omniauthable?
-    = link_to t('devise.sessions.sign_in_with_facebook'),
-                user_omniauth_authorize_path(:facebook),
-                class: 'btn btn-primary omniauth-button', id: 'btn-facebook'
+    = link_to(image_tag("http://i.stack.imgur.com/pZzc4.png",class: 'btn-login'),user_omniauth_authorize_path(:facebook))
     br
-    = link_to t('devise.sessions.sign_in_with_twitter'),
-                user_omniauth_authorize_path(:twitter),
-                class: 'btn btn-primary btn-violet omniauth-button', id: 'btn-twitter'
+    = link_to(image_tag("https://developers.google.com/+/images/branding/sign-in-buttons/Red-signin_Long_base_44dp.png",class: 'btn-login'), user_omniauth_authorize_path(:google_oauth2))
     br
-    = link_to t('devise.sessions.sign_in_with_google'),
-                user_omniauth_authorize_path(:google_oauth2),
-                class: 'btn btn-primary btn-violet omniauth-button', id: 'btn-google_oauth2'
+    = link_to(image_tag("http://snapeda.s3.amazonaws.com/pinax/images/assets_home_page/twitter_sign_in.png", class: 'btn-login-tw'),user_omniauth_authorize_path(:twitter))
     br
 - if devise_mapping.registerable? && controller_name != 'registrations'
-  = link_to t('devise.registrations.sign_up'), new_registration_path(resource_name), class: 'btn btn-success'
+  = link_to t('application.new_account'), new_registration_path(resource_name)
   br
   br
 - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
