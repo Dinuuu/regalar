@@ -32,5 +32,4 @@ div.col-md-8.col-md-offset-1
 	          class: 'btn btn-success',
 	          data: { toggle: 'modal', target: '#gift-modal' }      
 
-= render 'wish_items/gift_modal', name: @wish_item.organization.name, gift: @wish_item.title
-= render 'organizations/info', organization: @wish_item.organization
+= render 'wish_items/gift_modal', wish_item: @wish_item

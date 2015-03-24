@@ -97,6 +97,7 @@ es:
       high: 'Alta'
       wish_list: Wish List
       photo: 'Foto'
+      make_gift: 'Realizar regalo'
     page_entries_info:
       one_page:
         display_entries:
@@ -447,8 +448,10 @@ es:
     confirmation: Confirmación de regalo
     yes: Si
     no: No
+    cancel: Cancelar
     confirm: Confirma que quiere realizar el regalo
     toOrg:  a la organización
+    introduce_quantity: 'Elija la cantidad que quiere donar: '
   wish_items:
     gift: Regalar
     gifts: Regalos
