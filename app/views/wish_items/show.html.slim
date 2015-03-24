@@ -1,36 +1,37 @@
-.text-center
-	h3
-		= @wish_item.title + ' '
-	h5
-	.row
-		.col-md-3.col-md-offset-3
-			= t('wish_items.organization') 
-			= @wish_item.organization.name 
-		.col-md-3
-			= t('wish_items.location') 
-			= @wish_item.organization.locality
-	br
-	br
+.row.col-md-8
+	.text-center
+		h3
+			= @wish_item.title + ' '
+		h5
+		.row
+			h5
+			.col-md-3.col-md-offset-3
+				= link_to @wish_item.organization.name , @wish_item.organization
+			.col-md-3
+		        i.fa.fa-map-marker
+		        = @wish_item.organization.locality
+		br
+		br
 
-div.col-md-8.col-md-offset-1
-	div.col-md-6
-	  - if @wish_item.main_image.present?
-	    = image_tag(@wish_item.main_image, height: 150, width: 150, class: "img-thumbnail img-profile")
-	  - else
-	    = image_tag('default_avatar.jpg', height: 150, width: 150, class: "img-thumbnail img-profile")
+	div.col-md-offset-1
+		div.col-md-6
+		  - if @wish_item.main_image.present?
+		    = image_tag(@wish_item.main_image, height: 150, width: 150, class: "img-thumbnail img-profile")
+		  - else
+		    = image_tag('default_avatar.jpg', height: 150, width: 150, class: "img-thumbnail img-profile")
 
-	div.col-md-6
-		p
-			= t('wish_items.quantity') 
-			= @wish_item.quantity
-			= ' '
-			= @wish_item.unit
-	    p
-	      = @wish_item.description
-	    
-	    = link_to t('wish_items.gift'), '#',
-	          class: 'btn btn-success',
-	          data: { toggle: 'modal', target: '#gift-modal' }      
+		div.col-md-6
+			p
+				= t('wish_items.quantity') 
+				= @wish_item.quantity
+				= ' '
+				= @wish_item.unit
+		    p
+		      = @wish_item.description
+		    
+		    = link_to t('wish_items.gift'), '#',
+		          class: 'btn btn-success',
+		          data: { toggle: 'modal', target: '#gift-modal' }      
 
 = render 'wish_items/gift_modal', name: @wish_item.organization.name, gift: @wish_item.title
-= render 'organizations/info', organization: @wish_item.organization
+= render 'wish_items/donations_feed', wish_item: @wish_item
