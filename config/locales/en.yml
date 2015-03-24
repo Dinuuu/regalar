@@ -72,7 +72,7 @@ en:
         done_edit_password: "Update"
         done_edit_user: "Update"
       wish_item:
-        create: "Create %{model}"
+        create: "Create Wish Item"
         new: "New Wish Item"
         edit: "Edit Wish Item"
         update: 'Update Wish Item'
@@ -91,6 +91,7 @@ en:
         medium: 'Medium'
         high: 'High'
         wish_list: Lista de deseos
+        photo: 'Photo'
   organizations: "Organizations"  
   organization-link: "Go to organization"
   purchase:

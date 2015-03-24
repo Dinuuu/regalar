@@ -77,7 +77,7 @@ es:
         done_edit_user: "Actualizar"
         view: "Ver perfil"
     wish_item:
-      create: "Crear %{model}"
+      create: "Crear Wish Item"
       new: "Nuevo Wish Item"
       edit: "Editar Wish Item"
       update: 'Actualizar Wish Item'
@@ -96,6 +96,7 @@ es:
       medium: 'Mediana'
       high: 'Alta'
       wish_list: Wish List
+      photo: 'Foto'
     page_entries_info:
       one_page:
         display_entries:
