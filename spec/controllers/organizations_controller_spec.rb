@@ -4,7 +4,7 @@ describe OrganizationsController do
   let!(:organization) { create(:organization) }
   let!(:user) { create(:user, organizations: [organization]) }
   describe '#index' do
-    context 'When a user is logged in' do
+    context 'When a user is logged' do
       before(:each) do
         sign_in user
         user.reload
@@ -17,7 +17,7 @@ describe OrganizationsController do
   end
 
   describe '#create' do
-    context 'When a user is logged in' do
+    context 'When a user is logged' do
       before(:each) do
         sign_in user
         user.reload
@@ -32,7 +32,7 @@ describe OrganizationsController do
       end
     end
 
-    context 'when a user is not logged in' do
+    context 'when a user is not logged' do
       it 'does not increment the count of organizations' do
         expect { post :create, organization: attributes_for(:organization) }
           .not_to change { Organization.count }
