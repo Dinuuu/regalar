@@ -270,3 +270,17 @@ $google-red: #F03B3B;
     height: 33px;
     margin-top: 8px;
 }
+
+button:hover {
+  opacity: 0.75;
+}
+
+.btn-facebook{
+background-color: $facebook-blue;
+}
+.btn-twitter{
+background-color: $twitter-blue;
+}
+.btn-google{
+background-color: $google-red;
+}
