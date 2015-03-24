@@ -90,6 +90,7 @@ en:
         low: 'Low'
         medium: 'Medium'
         high: 'High'
+        wish_list: Lista de deseos
   organizations: "Organizations"  
   organization-link: "Go to organization"
   purchase:
