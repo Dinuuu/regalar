@@ -16,6 +16,11 @@ class WishItemsController < ApplicationController
     create! { @organization }
   end
 
+  def show
+    @pending = WishItem.find(params[:id]).pending_donation?(current_user)
+    show!
+  end
+
   private
 
   def resource_params
