@@ -46,7 +46,12 @@
         .btn-group
             .button
               = link_to "Twitter", user_omniauth_authorize_path(:twitter), class: 'btn btn-twitter'
+
+.row.col-md-6.col-md-offset-3
+  legend
+    = t('users.donations')
+  = render '/users/donations', user: @user
 .row
-  legend#profile-subheader
+  legend
     = t('users.organizations')
   = render '/organizations/index_table', organizations: @user.organizations.page(1).per(50)
