@@ -1,17 +1,12 @@
 = render 'info', organization: @organization
-- if policy(@organization).update?
-  .row
-    .col-md-6
-      p
-        = link_to t('helpers.submit.organization.edit'), edit_organization_path(@organization),
-              class: 'btn btn-primary btn-violet'
-
+.main-name
+  - if policy(@organization).update?
+    = link_to t('helpers.submit.organization.edit'), edit_organization_path(@organization),
+                class: 'btn btn-primary btn-violet'
 legend
-  |Wish List
-.row  
-  .col-md-6
-    ul.list-group
-      = render @organization.wish_items
+  = t('helpers.wish_item.wish_list')
+
+= render 'wish_items/index_cards', wish_items: @organization.wish_items
 
 - if policy(@organization).update?
   .row
@@ -29,3 +24,4 @@ legend
 p
   = link_to t('helpers.submit.comment.new'), new_organization_comment_path(@organization),
             class: 'btn btn-primary btn-violet'
+
