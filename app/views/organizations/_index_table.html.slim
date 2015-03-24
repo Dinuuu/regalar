@@ -20,7 +20,7 @@
             /TODO: seleccionar segun un criterio los 3
             - organization.wish_items.take(3).each do |item|
               .col-sm-6.col-md-4
-                = link_to item.title, item
+                = link_to item.title, organization_wish_item_path(organization,item)
                 - if item.main_image.present?
                   = image_tag(item.main_image, class: "img-wishlist")
                 - else
