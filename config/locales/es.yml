@@ -95,8 +95,6 @@ es:
       low: 'Baja'
       medium: 'Mediana'
       high: 'Alta'
-      previous_donations: Donaciones realizadas
-      gifted: ' regalo '
     page_entries_info:
       one_page:
         display_entries:
