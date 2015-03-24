@@ -9,7 +9,7 @@
     br
     = f.label :quantity
     br
-    = f.text_field :quantity, class: 'control-label col-sm-2'
+    = f.text_field :quantity, type: 'number', class: 'control-label col-sm-2'
 
     = f.hidden_field :organization_id, value: params[:organization_id]
     = f.hidden_field :user_id, value: current_user.id
