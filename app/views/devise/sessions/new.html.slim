@@ -14,11 +14,13 @@ legend
     .form-group
       .checkbox
         .col-md-4.col-md-offset-2
-          = f.check_box :remember_me
-          = f.label t('devise.sessions.remember_me')
-  .form-group
-    .col-sm-offset-2.col-sm-10
-       = f.submit t('devise.sessions.sign_in'),
+          .form-group
+            = f.check_box :remember_me
+            = f.label t('devise.sessions.remember_me')
+            .pull-right
+              = link_to t('devise.sessions.forgot_password'), new_password_path(:user)
+          .form-group
+            = f.submit t('devise.sessions.sign_in'),
             class: 'btn btn-succes'
   .form-group
     .col-sm-offset-2.col-sm-10

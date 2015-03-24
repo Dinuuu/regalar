@@ -1,20 +1,7 @@
 - if devise_mapping.omniauthable?
+  .row.col-sm-8
+    .form-group
     = link_to(image_tag("http://i.stack.imgur.com/pZzc4.png",class: 'btn-login'),user_omniauth_authorize_path(:facebook))
-    br
     = link_to(image_tag("https://developers.google.com/+/images/branding/sign-in-buttons/Red-signin_Long_base_44dp.png",class: 'btn-login'), user_omniauth_authorize_path(:google_oauth2))
-    br
     = link_to(image_tag("http://snapeda.s3.amazonaws.com/pinax/images/assets_home_page/twitter_sign_in.png", class: 'btn-login-tw'),user_omniauth_authorize_path(:twitter))
-    br
-- if devise_mapping.registerable? && controller_name != 'registrations'
-  = link_to t('application.new_account'), new_registration_path(resource_name)
-  br
-  br
-- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
-  = link_to t('devise.sessions.forgot_password'), new_password_path(resource_name)
-  br
-- if devise_mapping.confirmable? && controller_name != 'confirmations'
-  = link_to t('devise.confirmable.didnt_receive_email_confirmation'), new_user_confirmation_path(resource_name)
-  br
-- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
-  = link_to t('devise.confirmable.didnt_receive_unlock_instructions'), new_unlock_path(resource_name)
-  br
+  
