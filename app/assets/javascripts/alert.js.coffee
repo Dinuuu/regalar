@@ -3,5 +3,5 @@ $(document).ready ->
 	window.setTimeout (->
 	  $('.alert').alert 'close'
 	  return
-	), 2000
+	), 200000
 return
