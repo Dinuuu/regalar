@@ -90,6 +90,8 @@ en:
         low: 'Low'
         medium: 'Medium'
         high: 'High'
+        previous_donations: Previous donations
+        gifted: ' gifted '
   organizations: "Organizations"  
   organization-link: "Go to organization"
   purchase:
