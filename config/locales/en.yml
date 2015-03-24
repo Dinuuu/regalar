@@ -159,9 +159,6 @@ en:
     organization_policy:
       update?: 'No tienes permisos para editar esta organización'
     contribute: Contribute
-  wishitems:
-    gift: Gift
-    gifts: Gifts
   date:
     abbr_day_names:
     - Sun
@@ -385,6 +382,14 @@ en:
     verifying: Verifying
     gifted: Gifted
   gift:
+    confirmation: Gift confirmation
     yes: Yes
     no: No
-    confirm: Do you confirm that you are going to make a gift to the organization
+    confirm: Do you confirm that you are going to gift
+    toOrg: to the organization
+  wish_items:
+    gift: Gift
+    gifts: Gifts
+    organization: 'Organization: '
+    location: 'Location: '
+    quantity: 'Quantity needed: '

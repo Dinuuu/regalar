@@ -23,9 +23,8 @@
             h5
               = link_to t(item.organization.name), item.organization
             p
-              = item.reason
-            
-            = link_to t('wishitems.gift'), '#',
+              = item.reason            
+            = link_to t('wish_items.gift'), '#',
                   class: 'btn btn-default',
                   data: {disabled: 'disabled', toggle: 'modal', target: '#gift-modal' }
 
@@ -37,8 +36,7 @@
                    = item.status
             p
               = item.reason
-            
-            = link_to t('wishitems.gift'), '#',
+            = link_to t('wish_items.gift'), '#',
                   class: 'btn btn-default',
                   data: { disabled: 'disabled', toggle: 'modal', target: '#gift-modal' }        
         
@@ -49,12 +47,12 @@
             p
               = item.reason
             
-            = link_to t('wishitems.gift'), '#',
+            = link_to t('wish_items.gift'), '#',
                   class: 'btn btn-success',
                   data: { toggle: 'modal', target: '#gift-modal' }      
         
 
-          = render 'wish_items/gift_modal', name: item.organization.name
+          = render 'wish_items/gift_modal', name: item.organization.name, gift: item.title
 
 / #pagination
 /   = paginate wish_items

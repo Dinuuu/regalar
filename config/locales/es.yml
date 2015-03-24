@@ -206,10 +206,6 @@ es:
     organization_policy:
       update?: 'No tienes permisos para editar esta organización'
     contribute: Contribuir
-
-  wishitems:
-    gift: Regalar
-    gifts: Regalos
   date:
     abbr_day_names:
     - dom
@@ -427,6 +423,14 @@ es:
     verifying: Verificando
     gifted: Regalado
   gift:
+    confirmation: Confirmación de regalo
     yes: Si
     no: No
-    confirm: Confirma que quiere realizar el regalo a la organización 
+    confirm: Confirma que quiere realizar el regalo
+    toOrg:  a la organización
+  wish_items:
+    gift: Regalar
+    gifts: Regalos
+    organization: 'Organizacion: '
+    location: 'Lugar: '
+    quantity: 'Cantidad necesaria: '
