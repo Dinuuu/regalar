@@ -6,29 +6,29 @@
           attr msg
 = form_for [@organization, @wish_item], html: { class: 'form-horizontal', role: 'form' } do |f|
   .form-group
-    = f.label :title, class: 'control-label col-sm-2'
+    = f.label :title, t('helpers.wish_item.title'),class: 'control-label col-sm-2'
     .col-md-4
       = f.text_field :title, class: 'form-control col-md-2', required: true
   .form-group
-    = f.label :reason, class: 'control-label col-sm-2'
+    = f.label :reason, t('helpers.wish_item.reason'),class: 'control-label col-sm-2'
     .col-md-4
       = f.text_area :reason, class: 'form-control col-md-2', required: true
   .form-group
-    = f.label :description, class: 'control-label col-sm-2'
+    = f.label :description, t('helpers.wish_item.description'),class: 'control-label col-sm-2'
     .col-md-4
-      = f.text_area :description, class: 'form-control col-md-2', required: true
+      = f.text_area :description,  class: 'form-control col-md-2', required: true
   .form-group
-      = f.label :priority, 'Prioridad', class: 'control-label col-sm-2'
+      = f.label :priority, t('helpers.wish_item.priority'), class: 'control-label col-sm-2'
       .col-md-4
-        = f.select :priority, ['low' ,'medium', 'high'] , { include_blank:  'Select Priority' }, class: 'form-control col-md-2', required: true
+        = f.select :priority, [t('helpers.wish_item.low') ,t('helpers.wish_item.medium'), t('helpers.wish_item.high')] , { include_blank:  t('helpers.wish_item.select_priority') }, class: 'form-control col-md-2', required: true
   .form-group
-    = f.label :quantity, class: 'control-label col-sm-2'
+    = f.label :quantity, t('helpers.wish_item.quantity'), class: 'control-label col-sm-2'
     .col-md-4
       = f.text_field :quantity, class: 'form-control col-md-2', required: true
 
-      = f.select :unit, ['liters' ,'kilos', 'units'] , { include_blank:  'Select Unit' }, class: 'form-control col-md-2', required: true
+      = f.select :unit, [t('helpers.wish_item.liters') ,t('helpers.wish_item.kilos'), t('helpers.wish_item.units')] , { include_blank:  t('helpers.wish_item.select_units') }, class: 'form-control col-md-2', required: true
   .form-group
     = f.hidden_field :organization_id, value: @organization.id
   .form-group
     .col-sm-offset-2.col-sm-10
-      = f.submit nil, class: 'btn btn-primary btn-violet'
+      = f.submit t('helpers.wish_item.update'), class: 'btn btn-primary btn-violet'
