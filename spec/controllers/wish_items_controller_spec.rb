@@ -3,6 +3,7 @@ require 'spec_helper'
 describe WishItemsController do
   let!(:organization) { create(:organization) }
   let!(:user) { create(:user, organizations: [organization]) }
+  let!(:user2) { create(:user) }
   describe '#create' do
     context 'When creating a wish item while logged ' do
       before(:each) do
@@ -77,6 +78,52 @@ describe WishItemsController do
       it 'renders all the organizations' do
         get :index, organization_id: organization.id
         expect(response).to render_template(:index)
+      end
+    end
+  end
+
+  describe '#show' do
+    context 'When the user is logged' do
+      before :each do
+        sign_in user2
+        user2.reload
+      end
+      context 'when a wish_item exists' do
+        let!(:wish_item) { create :wish_item, organization: organization }
+
+        it 'renders show template' do
+          get :show, organization_id: organization.id, id: wish_item.id
+          expect(response).to render_template(:show)
+        end
+
+        context 'when a donation pending for that wish_item with that user exist' do
+          let!(:donation) do
+            create :donation, organization: organization,
+                              wish_item: wish_item, user: user2, done: false
+          end
+          it 'assigns pending to true' do
+            get :show, organization_id: organization.id, id: wish_item.id
+            expect(assigns(:pending)).to be true
+          end
+        end
+
+        context 'when a donation concreted for that wish_item with that user exist' do
+          let!(:donation) do
+            create :donation, organization: organization,
+                              wish_item: wish_item, user: user2, done: true
+          end
+          it 'assigns pending to false' do
+            get :show, organization_id: organization.id, id: wish_item.id
+            expect(assigns(:pending)).to be false
+          end
+        end
+
+        context 'when no donation for that wish_item with that user exist' do
+          it 'assigns pending to false' do
+            get :show, organization_id: organization.id, id: wish_item.id
+            expect(assigns(:pending)).to be false
+          end
+        end
       end
     end
   end
