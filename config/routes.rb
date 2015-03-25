@@ -33,7 +33,10 @@ Regalar::Application.routes.draw do
   resources :organizations do
 
     resources :wish_items do
-      resources :donations, controller: 'user_donations', only: [:new, :create, :show]
+      member do
+        resources :donations, controller: 'user_donations', only: [:new, :create]
+      end
+      resources :donations, controller: 'user_donations', only: [:show]
     end
 
 

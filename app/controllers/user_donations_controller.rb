@@ -9,7 +9,7 @@ class UserDonationsController < ApplicationController
   FIELDS = [:user_id, :wish_item_id, :quantity, :organization_id]
 
   def create
-    @wish_item = WishItem.find(params[:wish_item_id])
+    @wish_item = WishItem.find(params[:id])
     create! do |success, failure|
       success.html { redirect_to organization_wish_item_path(@wish_item.organization, @wish_item) }
       failure.html { render 'new' }

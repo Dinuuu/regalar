@@ -24,9 +24,13 @@
   .form-group
     = f.label :quantity, t('helpers.wish_item.quantity'), class: 'control-label col-sm-2'
     .col-md-4
-      = f.text_field :quantity, class: 'form-control col-md-2', required: true
+      = f.text_field :quantity, class: 'form-control col-md-2',type: 'number',  required: true
 
       = f.select :unit, [t('helpers.wish_item.liters') ,t('helpers.wish_item.kilos'), t('helpers.wish_item.units')] , { include_blank:  t('helpers.wish_item.select_units') }, class: 'form-control col-md-2', required: true
+  .form-group
+    = f.label :avatar, t('helpers.wish_item.photo'), class: 'control-label col-sm-2'
+    .col-md-4
+      = f.file_field :avatar
   .form-group
     = f.hidden_field :organization_id, value: @organization.id
   .form-group

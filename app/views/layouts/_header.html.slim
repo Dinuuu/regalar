@@ -68,6 +68,9 @@ nav.navbar.navbar-default
       - else
           ul.nav.navbar-nav.navbar-right
             li
+              = link_to t('application.new_account'), new_registration_path(:user)
+            li.divider
+            li
               = link_to t('devise.sessions.sign_in'), '#',
                   data: { toggle: 'modal', target: '#login-modal' }
           

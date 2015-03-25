@@ -36,7 +36,7 @@ en:
     login: Login
     view_profile: "View Profile"
     edit_profile: "Edit Profile"
-    new_account: "I want to create a new account"
+    new_account: "Create account"
   helpers:
     submit:
       comment:
@@ -72,7 +72,7 @@ en:
         done_edit_password: "Update"
         done_edit_user: "Update"
       wish_item:
-        create: "Create %{model}"
+        create: "Create Wish Item"
         new: "New Wish Item"
         edit: "Edit Wish Item"
         update: 'Update Wish Item'
@@ -91,6 +91,8 @@ en:
         medium: 'Medium'
         high: 'High'
         wish_list: Lista de deseos
+        photo: 'Photo'
+        make_gift: 'Make Gift'
   organizations: "Organizations"  
   organization-link: "Go to organization"
   purchase:
@@ -405,8 +407,10 @@ en:
     confirmation: Gift confirmation
     yes: Yes
     no: No
+    cancel: Cancel
     confirm: Do you confirm that you are going to gift
     toOrg: to the organization
+    introduce_quantity: 'Choose the quantity you want to gift: '
   wish_items:
     gift: Gift
     gifts: Gifts
