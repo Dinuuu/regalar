@@ -17,7 +17,7 @@
           = "?"
           p
           = t('gift.introduce_quantity')
-          = form_for :donation, url: organization_donations_path do |f|
+          = form_for :donation, url: organization_donations_path(id: wish_item, organization_id: wish_item.organization) do |f|
             .form-inline
               .form-group
                 .input-group

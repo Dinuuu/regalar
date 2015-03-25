@@ -52,7 +52,4 @@
                   data: { toggle: 'modal', target: '#gift-modal' }      
         
 
-          = render 'wish_items/gift_modal', name: item.organization.name, gift: item.title
-
-/ #pagination
-/   = paginate wish_items
+          = render 'wish_items/gift_modal', wish_item: item

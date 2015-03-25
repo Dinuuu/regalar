@@ -33,6 +33,6 @@
 		          class: 'btn btn-success',
 		          data: { toggle: 'modal', target: '#gift-modal' }      
 
-= render 'wish_items/gift_modal', name: @wish_item.organization.name, gift: @wish_item.title
+= render 'wish_items/gift_modal', wish_item: @wish_item
 = render 'wish_items/donations_feed', wish_item: @wish_item
 

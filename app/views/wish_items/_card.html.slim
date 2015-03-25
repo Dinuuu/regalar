@@ -9,7 +9,7 @@
       .container-fluid
         .caption
           h4.campaign-name
-            = item.title + ' '
+            = link_to t(item.title), organization_wish_item_path(id: item.id,organization_id: item.organization.id)
           h5
             = link_to t(item.organization.name), item.organization
           p
