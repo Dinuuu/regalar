@@ -100,6 +100,7 @@ es:
       wish_list: Wish List
       photo: 'Foto'
       make_gift: 'Realizar regalo'
+      featured: 'Wish Items Destacados'
     page_entries_info:
       one_page:
         display_entries:
