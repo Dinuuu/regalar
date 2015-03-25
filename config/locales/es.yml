@@ -95,6 +95,8 @@ es:
       low: 'Baja'
       medium: 'Mediana'
       high: 'Alta'
+      previous_donations: Regalos anteriores
+      gifted: ' regalado '
       wish_list: Wish List
       photo: 'Foto'
       make_gift: 'Realizar regalo'
