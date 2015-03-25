@@ -1,0 +1,16 @@
+- if user.confirmed_donations.empty?
+  p
+    = t('application.no_results')
+- else
+  - user.confirmed_donations.each do |o|
+    h4
+      = link_to o.organization.name, o.organization
+      
+      - o.donations.each do |d|
+        i.fa.fa-gift
+          = d.wish_item.title
+        p
+        = d.quantity
+        = d.wish_item.unit
+        .pull-right.span.label.label-default
+          = d.created_at.to_s(:short)
