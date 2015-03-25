@@ -90,6 +90,8 @@ en:
         low: 'Low'
         medium: 'Medium'
         high: 'High'
+        previous_donations: Previous gifts   
+        gifted: ' gifted '
         wish_list: Lista de deseos
         photo: 'Photo'
         make_gift: 'Make Gift'
