@@ -1,0 +1,4 @@
+Hello <%= @organization.name %>    
+  The user <%= @user.full_name %> canceled the donation for <%= link_to @wish_item.title, organization_wish_item_path(@wish_item.organization.id, @wish_item.id) %>.
+  You can contact <%= @user.full_name %> writing to <%= @user.email %>
+Have a great day!

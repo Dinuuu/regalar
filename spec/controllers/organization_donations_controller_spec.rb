@@ -36,6 +36,11 @@ describe OrganizationDonationsController do
             expect(response)
               .to redirect_to "/organizations/#{organization.id}/wish_items/#{wish_item.id}"
           end
+          it 'sends an email' do
+            (expect do
+              put :confirm, organization_id: organization.id, id: donation.id
+            end).to change { ActionMailer::Base.deliveries.count }.by(1)
+          end
         end
         context 'When donation is bigger than wish_item' do
           let!(:wish_item) { create :wish_item, organization: organization, quantity: 2 }
@@ -58,6 +63,11 @@ describe OrganizationDonationsController do
             expect(response)
               .to redirect_to "/organizations/#{organization.id}/wish_items/#{wish_item.id}"
           end
+          it 'sends an email' do
+            (expect do
+              put :confirm, organization_id: organization.id, id: donation.id
+            end).to change { ActionMailer::Base.deliveries.count }.by(1)
+          end
         end
       end
       context 'when user does not belong to organization' do
@@ -74,6 +84,11 @@ describe OrganizationDonationsController do
           (expect do
             put :confirm, organization_id: organization.id, id: donation.id
           end).not_to change { donation.reload.done }
+        end
+        it 'does not send an email' do
+          (expect do
+            put :confirm, organization_id: organization.id, id: donation.id
+          end).not_to change { ActionMailer::Base.deliveries.count }
         end
       end
     end
@@ -95,6 +110,11 @@ describe OrganizationDonationsController do
         (expect do
           put :confirm, organization_id: organization.id, id: donation.id
         end).not_to change { donation.reload.done }
+      end
+      it 'does not send an email' do
+        (expect do
+          put :confirm, organization_id: organization.id, id: donation.id
+        end).not_to change { ActionMailer::Base.deliveries.count }
       end
     end
   end
@@ -123,6 +143,11 @@ describe OrganizationDonationsController do
           expect(response)
             .to redirect_to "/organizations/#{organization.id}/wish_items/#{wish_item.id}"
         end
+        it 'sends an email' do
+          (expect do
+            delete :cancel, organization_id: organization.id, id: donation.id
+          end).to change { ActionMailer::Base.deliveries.count }.by(1)
+        end
       end
       context 'when user does not belong to organization' do
         let!(:wish_item) { create :wish_item, organization: organization }
@@ -137,6 +162,11 @@ describe OrganizationDonationsController do
         it 'returns status forbidden' do
           delete :cancel, organization_id: organization.id, id: donation.id
           expect(response.status).to eq 403
+        end
+        it 'does not send an email' do
+          (expect do
+            delete :cancel, organization_id: organization.id, id: donation.id
+          end).not_to change { ActionMailer::Base.deliveries.count }
         end
       end
     end
@@ -159,49 +189,52 @@ describe OrganizationDonationsController do
           delete :cancel, organization_id: organization.id, id: donation.id
         end).not_to change { donation.reload.done }
       end
+      it 'does not send an email' do
+        (expect do
+          delete :cancel, organization_id: organization.id, id: donation.id
+        end).not_to change { ActionMailer::Base.deliveries.count }
+      end
     end
   end
   describe '#show' do
-    describe '#cancel' do
-      context 'When logged' do
-        before(:each) do
-          sign_in user
-          user.reload
-        end
-        context 'when user belongs to organization of donation' do
-          before :each do
-            organization.users << user
-            organization.save!
-          end
-          let!(:wish_item) { create :wish_item, organization: organization }
-          let!(:donation) do
-            create :donation, wish_item: wish_item, user: user, organization: organization
-          end
-          it 'shows the donation' do
-            get :show, organization_id: organization.id, id: donation.id
-            expect(response).to render_template 'show'
-          end
-        end
-        context 'when user does not belongs to organization of donation' do
-          let!(:wish_item) { create :wish_item, organization: organization }
-          let!(:donation) do
-            create :donation, wish_item: wish_item, user: user, organization: organization
-          end
-          it 'returns status forbidden' do
-            get :show, organization_id: organization.id, id: donation.id
-            expect(response.status).to eq 403
-          end
-        end
+    context 'When logged' do
+      before(:each) do
+        sign_in user
+        user.reload
       end
-      context 'When unlogged' do
+      context 'when user belongs to organization of donation' do
+        before :each do
+          organization.users << user
+          organization.save!
+        end
         let!(:wish_item) { create :wish_item, organization: organization }
         let!(:donation) do
           create :donation, wish_item: wish_item, user: user, organization: organization
         end
-        it 'should render login page' do
-          delete :cancel, organization_id: organization.id, id: donation.id
-          expect(response).to redirect_to '/users/sign_in'
+        it 'shows the donation' do
+          get :show, organization_id: organization.id, id: donation.id
+          expect(response).to render_template 'show'
         end
+      end
+      context 'when user does not belongs to organization of donation' do
+        let!(:wish_item) { create :wish_item, organization: organization }
+        let!(:donation) do
+          create :donation, wish_item: wish_item, user: user, organization: organization
+        end
+        it 'returns status forbidden' do
+          get :show, organization_id: organization.id, id: donation.id
+          expect(response.status).to eq 403
+        end
+      end
+    end
+    context 'When unlogged' do
+      let!(:wish_item) { create :wish_item, organization: organization }
+      let!(:donation) do
+        create :donation, wish_item: wish_item, user: user, organization: organization
+      end
+      it 'should render login page' do
+        delete :cancel, organization_id: organization.id, id: donation.id
+        expect(response).to redirect_to '/users/sign_in'
       end
     end
   end
