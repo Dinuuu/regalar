@@ -27,4 +27,10 @@ class User < ActiveRecord::Base
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def level
+    confirmed_donations = Donation.for_user(self).done.count
+    Level.where('levels.from >= ? AND levels.to > ?', confirmed_donations, confirmed_donations)
+      .first
+  end
 end

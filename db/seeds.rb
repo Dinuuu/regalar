@@ -6,6 +6,7 @@ when "development"
   UsersCreationHelper.create_users
   OrganizationsCreationHelper.create_organizations(5)
   WishItemsCreationHelper.create_wish_items(25)
+  LevelsCreationHelper.create_levels
   AdminUser.create(
    email: 'admin@example.com',
    password: '123123123',
