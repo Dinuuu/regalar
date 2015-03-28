@@ -10,6 +10,10 @@ en:
               blank: Description is required
             locality:
               blank: Locality is required
+        level:
+          attributes:
+            to:
+              invalid_range: The specified range is invalid.
         campaign:
           attributes:
             name:

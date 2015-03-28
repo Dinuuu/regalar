@@ -83,6 +83,15 @@ ActiveRecord::Schema.define(version: 20150324171713) do
     t.datetime "updated_at"
   end
 
+  create_table "levels", force: true do |t|
+    t.integer  "level"
+    t.string   "title"
+    t.integer  "from"
+    t.integer  "to"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "organizations", force: true do |t|
     t.string   "name"
     t.text     "description"
