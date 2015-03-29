@@ -19,15 +19,6 @@ class UserDonationsController < ApplicationController
     end
   end
 
-  def confirmed
-    user = User.find(params[:id])
-    organizations_id = Donation.for_user(user).done.uniq.pluck(:organization_id)
-    @donations = []
-    organizations_id.each_with_index do |org_id|
-      @donations << concreted_donations_for_organization(org_id, user)
-    end
-  end
-
   def destroy
     @wish_item = donation.wish_item
     destroy! do |success, _failure|
@@ -39,15 +30,6 @@ class UserDonationsController < ApplicationController
   end
 
   private
-
-  def concreted_donations_for_organization(org_id, user)
-    organization = Organization.find(org_id)
-    organization_donations = {}
-    organization_donations[:organization] = organization
-    organization_donations[:donations] = Donation.for_user(user)
-                                         .for_organization(organization).done
-    organization_donations
-  end
 
   def send_creation_mail(wish_item)
     UserMailer.create_donation_email(current_user, wish_item.organization, wish_item).deliver
