@@ -95,35 +95,6 @@ describe WishItemsController do
           get :show, organization_id: organization.id, id: wish_item.id
           expect(response).to render_template(:show)
         end
-
-        context 'when a donation pending for that wish_item with that user exist' do
-          let!(:donation) do
-            create :donation, organization: organization,
-                              wish_item: wish_item, user: user2, done: false
-          end
-          it 'assigns pending to true' do
-            get :show, organization_id: organization.id, id: wish_item.id
-            expect(assigns(:pending)).to be true
-          end
-        end
-
-        context 'when a donation concreted for that wish_item with that user exist' do
-          let!(:donation) do
-            create :donation, organization: organization,
-                              wish_item: wish_item, user: user2, done: true
-          end
-          it 'assigns pending to false' do
-            get :show, organization_id: organization.id, id: wish_item.id
-            expect(assigns(:pending)).to be false
-          end
-        end
-
-        context 'when no donation for that wish_item with that user exist' do
-          it 'assigns pending to false' do
-            get :show, organization_id: organization.id, id: wish_item.id
-            expect(assigns(:pending)).to be false
-          end
-        end
       end
     end
   end

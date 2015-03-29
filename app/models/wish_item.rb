@@ -5,6 +5,10 @@ class WishItem < ActiveRecord::Base
   scope :for_organization, -> (organization) { where(organization: organization) }
 
   def pending_donation?(user)
-    Donation.where(wish_item_id: id, user_id: user.id).where.not(done: true).any?
+    Donation.for_wish_item(self).for_user(user).where.not(done: true).any?
+  end
+
+  def confirmed_donations
+    Donation.for_wish_item(self).done
   end
 end
