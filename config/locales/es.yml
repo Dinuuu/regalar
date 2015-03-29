@@ -77,11 +77,11 @@ es:
         done_edit_user: "Actualizar"
         view: "Ver perfil"
     wish_item:
-      create: "Crear Wish Item"
-      new: "Nuevo Wish Item"
-      edit: "Editar Wish Item"
-      update: 'Actualizar Wish Item'
-      remove: "Remover Wish Item"
+      create: "Crear Deseo"
+      new: "Nuevo Deseo"
+      edit: "Editar Deseo"
+      update: 'Actualizar Deseo'
+      remove: "Remover Deseo"
       title: 'Titulo'
       reason: 'Razon'
       description: 'Descripcion'
@@ -97,9 +97,10 @@ es:
       high: 'Alta'
       previous_donations: Regalos anteriores
       gifted: ' regalado '
-      wish_list: Wish List
+      wish_list: Lista de deseos
       photo: 'Foto'
       make_gift: 'Realizar regalo'
+      featured: 'Deseos Destacados'
     page_entries_info:
       one_page:
         display_entries:

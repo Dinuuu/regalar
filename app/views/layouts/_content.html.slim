@@ -1,10 +1,9 @@
 #title
 	.h1
   		= t('home.slogan')
-#campaigns-title.row
-  .pull-left
-    = t('wishitems.gifts')
-  .pull-right
-    = link_to t('application.all'), list_wish_items_path
+legend
+    = t('helpers.wish_item.featured')
 #campaigns-cards
   = render 'wish_items/index_cards', wish_items: WishItem.take(4)
+
+= link_to t('application.all'), list_wish_items_path, class: 'btn btn-primary'
