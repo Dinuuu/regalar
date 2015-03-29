@@ -24,7 +24,8 @@ module WishItemsCreationHelper
         priority: 'low',
         quantity: 3,
         description: Faker::Lorem.paragraph,
-        unit: 'kilos'
+        unit: 'kilos',
+        main_image: File.open(File.join(Rails.root, '/spec/fixtures/images/default_avatar.jpg'))
 
       )
       wish_item.save!

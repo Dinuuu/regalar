@@ -26,6 +26,6 @@ class WishItemsController < ApplicationController
   def resource_params
     return [] if request.get?
     [params.require(:wish_item).permit(:title, :reason, :description, :priority,
-                                       :quantity, :unit, :organization_id, :status)]
+                                       :quantity, :unit, :organization_id, :status, :main_image)]
   end
 end
