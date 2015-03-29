@@ -8,8 +8,9 @@
         .caption
           h3
             = link_to organization.name, organization
-          p
-            = organization.description.truncate(170)
+          .description
+            p
+              = organization.description.truncate(170)
           h5
             i.fa.fa-map-marker
             = organization.locality
@@ -25,3 +26,5 @@
                   = image_tag(item.main_image, class: "img-wishlist")
                 - else
                   = image_tag('default_avatar.jpg', class: "img-wishlist")
+#pagination
+  = paginate organizations

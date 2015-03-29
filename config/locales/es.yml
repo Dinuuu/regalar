@@ -65,8 +65,8 @@ es:
       edit: "Editar Deseo"
       update: 'Actualizar Deseo'
       remove: "Remover Deseo"
-      title: 'Titulo'
-      reason: 'Razon: '
+      title: 'Título'
+      reason: 'Razón: '
       description: 'Descripción: '
       priority: 'Prioridad'
       quantity: 'Cantidad'
@@ -335,7 +335,7 @@ es:
   wish_items:
     gift: Regalar
     gifts: Regalos
-    organization: 'Organizacion: '
+    organization: 'Organización: '
     location: 'Lugar: '
     quantity: 'Cantidad necesaria: '
     status: 

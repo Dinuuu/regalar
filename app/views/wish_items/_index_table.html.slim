@@ -15,12 +15,12 @@
         div.col-md-6
           - if item.pending_donation?(current_user)
             h3
-              = link_to t(item.title), organization_wish_item_path(id: item.id, organization_id: item.organization.id)
+              = link_to item.title, organization_wish_item_path(id: item.id, organization_id: item.organization.id)
               small
                  span.label.label-warning
                    = t('wish_items.status.verifying')
             h5
-              = link_to t(item.organization.name), item.organization
+              = link_to item.organization.name, item.organization
             p
               = item.description 
 
@@ -30,10 +30,12 @@
 
           - elsif item.quantity == 0
             h3
-              = link_to t(item.title), organization_wish_item_path(id: item.id, organization_id: item.organization.id)
+              = link_to item.title, organization_wish_item_path(id: item.id, organization_id: item.organization.id)
               small
                  span.label.label-success
                    = t('wish_items.status.gifted')
+            h5
+              = link_to item.organization.name, item.organization
             p
               = item.description
             = link_to t('wish_items.gift'), '#',
@@ -42,7 +44,9 @@
                 
           - else
             h3
-              = link_to t(item.title), organization_wish_item_path(id: item.id, organization_id: item.organization.id)
+              = link_to item.title, organization_wish_item_path(id: item.id, organization_id: item.organization.id)
+            h5
+              = link_to item.organization.name, item.organization
             p
               = item.description
             

@@ -1,4 +1,4 @@
-- level = @user.level
+- user_level = @user.level
 - confirmed_donations = Donation.for_user(@user).done.count
 
 .col-sm-12
@@ -13,11 +13,13 @@
         .information
         .col-sm-4.col-sm-offset-4.pull-left.text-center
               = t('user.level')
+              = ' '
+              = "#{user_level.level}"
               br
-              = "#{level.level}"
+              = "#{user_level.title}"
         .col-sm-4.col-sm-offset-4
           .progress
-            .progress-bar.progress-bar-striped.active aria-valuemax="#{level.to-level.from}" aria-valuemin="0"} aria-valuenow="45" role="progressbar" style=("width: #{confirmed_donations}%") 
+            .progress-bar.progress-bar-striped.active aria-valuemax="#{user_level.to - user_level.from}" aria-valuemin="0"} aria-valuenow="45" role="progressbar" style=("width: #{(confirmed_donations - user_level.from)/(user_level.from - user_level.to)*100}%") 
               
       .btn-group
         .button
@@ -48,11 +50,12 @@
             .button
               = link_to "Twitter", user_omniauth_authorize_path(:twitter), class: 'btn btn-twitter'
 
-.row.col-md-6.col-md-offset-3
+.row.user-donations
   legend
     = t('users.donations')
-  = render '/users/donations', user: @user
+  = render '/users/donations', donations: @user.confirmed_donations
+br
 .row
   legend
     = t('users.organizations')
-  = render '/organizations/index_table', organizations: @user.organizations.page(1).per(50)
+  = render '/organizations/index_table', organizations: paginate_scope(@user.organizations,6)
