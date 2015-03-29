@@ -10,6 +10,8 @@ en:
     easy: EASY
     vital: VITAL
     transparent: TRANSPARENT
+    header:
+      search: Search
     footer:
       who_are_we: WHO ARE WE?
       requests: REQUESTS
@@ -47,25 +49,6 @@ en:
         new: "New Organization"
         edit: "Edit Organization"
         update: "Update Organization"
-      campaign:
-        create: "Create %{model}"
-        new: "New Campaign"
-        edit: "Edit Campaign"
-        update: "Update Campaign"
-      contribution:
-        create: "Create %{model}"
-        new: "New Contribution"
-        edit: "Edit Contribution"
-      perk:
-        create: "Create %{model}"
-        new: "New Perk"
-        edit: "Edit Perk"
-        remove: "Remove Perk"
-      milestone:
-        create: "Create %{model}"
-        new: "New Milestone"
-        edit: "Edit Milestone"
-        remove: "Remove Milestone"
       user:
         level: "Level"
         edit_password: "Edit Password"
@@ -78,8 +61,8 @@ en:
         update: 'Update Wish Item'
         remove: "Remove Wish Item"
         title: 'Title'
-        reason: 'Reason'
-        description: 'Description'
+        reason: 'Reason: '
+        description: 'Description: '
         priority: 'Priority'
         quantity: 'Quantity'
         select_units: 'Select units'
@@ -91,7 +74,7 @@ en:
         medium: 'Medium'
         high: 'High'
         previous_donations: Previous gifts   
-        gifted: ' gifted '
+        gifted: ' has gifted '
         wish_list: Wish List
         photo: 'Photo'
         make_gift: 'Make Gift'
@@ -110,80 +93,6 @@ en:
     profile: My Profile
     contributions: My Contributions
     link_accounts: Link accounts
-  contributions:
-    mercadopago: Contribute with MercadoPago
-    anonymous: Anonymous Contribution
-  campaigns:
-    history: History
-    updates: Updates
-    comments: Comments
-    backers: Backers
-    benefits: Benefits
-    next: Siguiente
-    previous: Atrás
-    first_step: 'Paso 1'
-    second_step: 'Paso 2'
-    collected: 'Collected from'
-    card:
-      goal: "of $%{goal}"
-      pledgers: "%{count} Donors"
-      days_left: "Remaining Days"
-      raised: 'Raised'
-      completed: 'Completed'
-    categories:
-      education: Education
-      social: Social
-      health: Health
-    contribute: Contribute
-    states:
-      pending: Pending
-      approved: Approved
-      rejected: Rejected
-      started_not_funded: Started
-      closed_funded: Completed
-      closed_partially_funded: Not Completed
-      closed_not_funded: Not Completed
-    achieve_milestone: Achieve Milestone
-    milestone_achieved: Milestone achieved
-    search: Search
-    new:
-      info: "Comenzá tu campaña y unite a decenas de miles de ONG's que, al igual que vos, recauda fondos a través de ComuniDar"
-      title: "¡Comienza a recaudar fondos en ComuniDar!"
-      category:
-        question: "¿Qué categoría describe mejor tu campaña?"
-        chose: "Elige la categoría que mejor describe tu campaña. Puedes cambiarla después"
-      financing: "¿Cuál es tu meta de financiamiento?"
-      goal: Meta
-      input_message: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim"
-      minimum: "$500 mínimo"
-      who_receives: "¿Qué persona u organización recibirá los fondos de tu campaña?"
-      configure: "CONFIGURA TU CAMPAÑA"
-      basic_info:
-        title: "Datos básicos de la campaña"
-        info: "Tanto el título de tu capaña como una breve descripción de esta se muestran en la ficha de la campaña"
-        small_image: "Imagen pequeña"
-        choose_image: "CARGAR UNA IMAGEN"
-        campaign_title: "Título"
-        short_description: "Breve descripción (Contanos tu campaña en una oración)"
-        description: "Description"
-        country: "País"
-        city: "Ciudad"
-        deadline: "Deadline (mm/dd/yyyy)"
-        minimum: "Minimum pledge"
-        goal: "Goal"
-    twitter_message:
-      introduction: "Lets build a dream together!! help me fundraising"
-      ending: "Enter to the site to follow the development of the project"
-    cant_donate: "The campaign has finished, you can't donate anymore"
-  milestones:
-    achieved: Achieved
-    approved: Approved
-    rejected: Rejected
-    notAchieved: Not Achieved
-  pundit:
-    organization_policy:
-      update?: 'No tienes permisos para editar esta organización'
-    contribute: Contribute
   date:
     abbr_day_names:
     - Sun

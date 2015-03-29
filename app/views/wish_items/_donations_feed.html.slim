@@ -16,6 +16,8 @@
               .commentText
                 = d.user.first_name
                 = t('helpers.wish_item.gifted')
-                = d.quantity
+                = d.quantity 
+                = ' '
+                = t("helpers.wish_item.#{d.wish_item.unit}")
                 .pull-right.span.label.label-default
                   = d.created_at.to_s(:short)

@@ -1,5 +1,6 @@
-- level = 3
-// TODO: @user.donations.count > 0 ? (user.donations.count / campaign.goal) * 100 : 0
+- level = @user.level
+- confirmed_donations = Donation.for_user(@user).done.count
+
 .col-sm-12
   - if @user.avatar.present?
       = image_tag(@user.avatar_url, height: 150, width: 150, class: "img-thumbnail img-profile")
@@ -13,10 +14,10 @@
         .col-sm-4.col-sm-offset-4.pull-left.text-center
               = t('user.level')
               br
-              = "#{level}"
+              = "#{level.level}"
         .col-sm-4.col-sm-offset-4
           .progress
-            .progress-bar.progress-bar-striped.active aria-valuemax="100" aria-valuemin="0" aria-valuenow="45" role="progressbar" style=("width:  #{level*20}%") 
+            .progress-bar.progress-bar-striped.active aria-valuemax="#{level.to-level.from}" aria-valuemin="0"} aria-valuenow="45" role="progressbar" style=("width: #{confirmed_donations}%") 
               
       .btn-group
         .button

@@ -12,7 +12,7 @@ class UserDonationsController < ApplicationController
     @wish_item = WishItem.find(params[:id])
     create! do |success, failure|
       success.html do
-        send_creation_mail(@wish_item)
+        # send_creation_mail(@wish_item)
         redirect_to organization_wish_item_path(@wish_item.organization, @wish_item)
       end
       failure.html { render 'new' }

@@ -13,6 +13,8 @@ es:
     easy: FÁCIL
     vital: VITAL
     transparent: TRANSPARENTE
+    header:
+      search: Buscar
     footer:
       who_are_we: ¿QUIÉNES SOMOS?
       requests: PEDIDOS
@@ -50,25 +52,6 @@ es:
         new: "Nueva Organización"
         edit: "Editar Organización"
         update: "Actualizar Organización"
-      campaign:
-        create: "Crear %{model}"
-        new: "Nueva Campaña"
-        edit: "Editar Campaña"
-        update: "Actualizar Campaña"
-      contribution:
-        create: "Crear %{model}"
-        new: "Nueva Contribución"
-        edit: "Editar Contribución"
-      perk:
-        create: "Crear %{model}"
-        new: "Nueva Recompensa"
-        edit: "Editar Recompensa"
-        remove: "Remover Recompensa"
-      milestone:
-        create: "Crear %{model}"
-        new: "Nuevo Hito"
-        edit: "Editar Hito"
-        remove: "Remover Hito"
       user:
         level: "Nivel"
         edit: "Editar Perfil"
@@ -83,8 +66,8 @@ es:
       update: 'Actualizar Deseo'
       remove: "Remover Deseo"
       title: 'Titulo'
-      reason: 'Razon'
-      description: 'Descripcion'
+      reason: 'Razon: '
+      description: 'Descripción: '
       priority: 'Prioridad'
       quantity: 'Cantidad'
       select_units: 'Seleccionar unidad'
@@ -96,7 +79,7 @@ es:
       medium: 'Mediana'
       high: 'Alta'
       previous_donations: Regalos anteriores
-      gifted: ' regalado '
+      gifted: ' ha regalado '
       wish_list: Lista de deseos
       photo: 'Foto'
       make_gift: 'Realizar regalo'
@@ -111,11 +94,6 @@ es:
         display_entries: "Mostrando %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> en total"
   organizations: "Organizaciones"
   organization_link: "Ir a la organización"
-  purchase:
-    status:
-      success: "Confirmado"
-      awaiting_mp_response: "Pendiente confirmación de MercadoPago"
-      na: "NA"
   users:
     donations: Mis donaciones
     organizations: Mis Organizaciones
@@ -123,103 +101,6 @@ es:
     profile: Mi Perfil
     contributions: Mis Contribuciones
     link_accounts: Vincular cuentas
-  contributions:
-    mercadopago: Contribuir con MercadoPago
-    anonymous: Contribuir Anónimamente
-  campaigns:
-    history: Historia
-    updates: Actualizaciones
-    comments: Comentarios
-    backers: Financiadores
-    benefits: Beneficios
-    next: Siguiente
-    previous: Atrás
-    first_step: 'Paso 1'
-    second_step: 'Paso 2'
-    collected: 'Recaudados del objetivo de'
-    card:
-      goal: "de $%{goal}"
-      pledgers: "%{count} Donadores"
-      days_left: "Días Restantes"
-      raised: 'Recaudado'
-      completed: 'Completado'
-    categories:
-      education: Educación
-      social: Social
-      health: Salud
-    states:
-      pending: Pendiente
-      approved: Aprobada
-      rejected: Rechazada
-      started_not_funded: En Proceso
-      closed_funded: Completada
-      closed_partially_funded: No Completada
-      closed_not_funded: No Completada
-    achieve_milestone: Cumplir Hito
-    milestone_achieved: Hito cumplido
-    contribute: Dar
-    search: Buscar
-    configure:
-      title: "Configura tu campaña"
-      text1: "¡Felicitaciones! Ahora estás listo para el próximo paso: contarle a la gente por qué debería financiar tu campaña."
-      text2: "En este momento, nadie más puede ver tu campaña. Puedes editar lo que quieras. Cuando estés satisfecho y listo para recibir financiamiento, haz clic en el botón 'Lanzar' en la última página para hacer visible tu campaña."
-      text3: "Después de lanzar tu campaña, podrás cambiar cualquier parte de esta página EXCEPTO tu meta, el tipo de financiamiento y cualquier recompensa que reclame un colaborador."
-      milestones: "Hitos"
-      milestones_text: "Utiliza $0 para omitir el hito"
-      first_milestone: "Monto tope de 1er hito"
-      second_milestone: "Monto tope de 2do hito"
-      third_milestone: "Monto tope de 3er hito"
-      fourth_milestone: "Monto tope de 4to hito"
-      recipient:
-        individual: Un individuo o grupo de personas
-        registered_company: Una empresa registrada
-        npo_501: Una institución sin fines de lucro registrada como 501(c)(3) en Estados Unidos
-        npo: Una insitución sin fines de lucro registrada en un país distinto de Estados Unidos
-        religious_npo: 'Una organización religiosa'
-      funding_type:
-        title: 'Datos de financiamiento'
-        all: 'Financiamiento flexible - conserva lo que recaudas'
-        partial: 'Financiamiento fijo - todo o nada'
-      perks:
-        title: Tus recompenzas
-      history:
-        title: 'Tu Historia'
-    new:
-      info: "Comenzá tu campaña y unite a decenas de miles de ONG's que, al igual que vos, recauda fondos a través de ComuniDar"
-      title: "¡Comienza a recaudar fondos en ComuniDar!"
-      category:
-        question: "¿Qué categoría describe mejor tu campaña?"
-        chose: "Elige la categoría que mejor describe tu campaña. Puedes cambiarla después"
-      financing: "¿Cuál es tu meta de financiamiento?"
-      goal: Meta
-      input_message: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim"
-      minimum: "$500 mínimo"
-      who_receives: "¿Qué persona u organización recibirá los fondos de tu campaña?"
-      configure: "CONFIGURA TU CAMPAÑA"
-      basic_info:
-        title: "Datos básicos de la campaña"
-        info: "Tanto el título de tu capaña como una breve descripción de esta se muestran en la ficha de la campaña"
-        small_image: "Imagen pequeña"
-        choose_image: "CARGAR UNA IMAGEN"
-        campaign_title: "Título"
-        short_description: "Breve descripción (Contanos tu campaña en una oración)"
-        description: "Descripción"
-        country: "País"
-        city: "Ciudad"
-        deadline: "Fecha de finalización (dd/mm/aaaa)"
-        minimum: "Donación mínima"
-        goal: "Objetivo"
-    twitter_message:
-      introduction: "Construyamos un sueño juntos!! ayudame a fundar"
-      ending: "Entra al sitio para enterarte de todo lo que esta pasando en el proyecto"
-    cant_donate: "La campaña ha finalizado, ya no es posible donar "
-
-  milestones:
-    states:
-      achieved: Cumplido
-      approved: Aprobado
-      rejected: Rechazado
-      notAchieved: No cumplido
   views:
     pagination:
       first: "&laquo; Primera"
@@ -443,10 +324,6 @@ es:
     question3:
       title: ¿Así que sólo me van a estar cobrando si la financiación tiene éxito?
       answer: ¡Sí! Si un proyecto no está financiado con éxito, nadie paga nada.
-  status: 
-    available: Disponible
-    verifying: Verificando
-    gifted: Regalado
   gift:
     confirmation: Confirmación de regalo
     yes: Si
@@ -461,3 +338,7 @@ es:
     organization: 'Organizacion: '
     location: 'Lugar: '
     quantity: 'Cantidad necesaria: '
+    status: 
+      available: Disponible
+      verifying: Verificando
+      gifted: Regalado
