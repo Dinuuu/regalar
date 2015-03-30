@@ -11,7 +11,7 @@ describe WishItem do
         create :donation, organization: organization,
                           wish_item: wish_item, user: user2, done: false
       end
-      it 'assigns pending to true' do
+      it 'returns true' do
         expect(wish_item.pending_donation?(user2)).to be true
       end
     end
@@ -21,13 +21,13 @@ describe WishItem do
         create :donation, organization: organization,
                           wish_item: wish_item, user: user2, done: true
       end
-      it 'assigns pending to false' do
+      it 'returns false' do
         expect(wish_item.pending_donation?(user2)).to be false
       end
     end
 
     context 'when no donation for that wish_item with that user exist' do
-      it 'assigns pending to false' do
+      it 'returns false' do
         expect(wish_item.pending_donation?(user2)).to be false
       end
     end
