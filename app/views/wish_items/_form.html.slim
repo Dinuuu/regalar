@@ -28,9 +28,9 @@
 
       = f.select :unit, [t('helpers.wish_item.liters') ,t('helpers.wish_item.kilos'), t('helpers.wish_item.units')] , { include_blank:  t('helpers.wish_item.select_units') }, class: 'form-control col-md-2', required: true
   .form-group
-    = f.label :avatar, t('helpers.wish_item.photo'), class: 'control-label col-sm-2'
+    = f.label :main_image, t('helpers.wish_item.photo'), class: 'control-label col-sm-2'
     .col-md-4
-      = f.file_field :avatar
+      = f.file_field :main_image
   .form-group
     = f.hidden_field :organization_id, value: @organization.id
   .form-group
