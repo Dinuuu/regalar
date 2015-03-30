@@ -75,10 +75,12 @@ en:
         high: 'High'
         previous_donations: Previous gifts   
         gifted: ' has gifted '
-        wish_list: Wish List
         photo: 'Photo'
         make_gift: 'Make Gift'
         featured: 'Featured Wish Items'
+      wish_list:  
+        name: Wish List
+        finished: Recived Gifts
   organizations: "Organizations"  
   organization-link: "Go to organization"
   purchase:
