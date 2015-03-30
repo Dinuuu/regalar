@@ -1,7 +1,7 @@
 class WishItem < ActiveRecord::Base
   belongs_to :organization
   has_many :donations
-  validates :title, :reason, :priority, :quantity, :status,
+  validates :title, :reason, :priority, :quantity,
             :description, :main_image, :unit, presence: true
 
   mount_uploader :main_image, ImageUploader
