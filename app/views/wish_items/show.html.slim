@@ -36,12 +36,11 @@
 						.h5
 							= t('helpers.wish_item.reason')
 						= @wish_item.reason
-					= link_to t('wish_items.gift'), '#',
-					      class: 'btn btn-default disabled',
-					      data: {disabled: 'disabled'}
+					= link_to t('gift.cancel'), cancel_organization_donation_path(id: @wish_item, organization_id: @wish_item.organization), 
+					class: 'btn btn-danger', method: "delete"
 
 				- elsif @wish_item.quantity == 0
-					span.label.label-success
+					span.label.label-danger
 						= t('wish_items.status.gifted')
 					p
 						.h5
