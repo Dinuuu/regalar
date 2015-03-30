@@ -1,7 +1,7 @@
 es:
   devise:
     confirmations:
-      confirmed: 'Tu cuenta fue confirmada. Has iniciado sesión.'
+      confirmed: 'Tu cuenta fue confirmada.'
       send_instructions: 'Recibirás instrucciones para confirmar tu cuenta en tu email en unos minutos.'
       send_paranoid_instructions: 'Si tu email existe en el sistema, recibirás instrucciones para confirmar tu cuenta en tu email en unos minutos.'
     failure:
