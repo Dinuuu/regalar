@@ -5,14 +5,15 @@ describe WishItem do
   let!(:user) { create(:user, organizations: [organization]) }
   let!(:user2) { create(:user) }
   let!(:wish_item) { create :wish_item, organization: organization }
-  describe '#pending_donation?' do
+
+  describe '#pending_donation' do
     context 'when a donation pending for that wish_item with that user exist' do
       let!(:donation) do
         create :donation, organization: organization,
                           wish_item: wish_item, user: user2, done: false
       end
       it 'returns true' do
-        expect(wish_item.pending_donation?(user2)).to be true
+        expect(wish_item.pending_donation(user2)).to eq donation
       end
     end
 
@@ -22,13 +23,13 @@ describe WishItem do
                           wish_item: wish_item, user: user2, done: true
       end
       it 'returns false' do
-        expect(wish_item.pending_donation?(user2)).to be false
+        expect(wish_item.pending_donation(user2)).to be nil
       end
     end
 
     context 'when no donation for that wish_item with that user exist' do
       it 'returns false' do
-        expect(wish_item.pending_donation?(user2)).to be false
+        expect(wish_item.pending_donation(user2)).to be nil
       end
     end
   end

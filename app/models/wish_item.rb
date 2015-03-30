@@ -10,11 +10,11 @@ class WishItem < ActiveRecord::Base
   scope :finished, -> { where(quantity: 0) }
   scope :not_finished, -> { where.not(quantity: 0) }
 
-  def pending_donation?(user)
-    Donation.for_wish_item(self).for_user(user).where.not(done: true).any?
-  end
-
   def confirmed_donations
     Donation.for_wish_item(self).done
+  end
+
+  def pending_donation(user)
+    Donation.for_wish_item(self).for_user(user).where.not(done: true).first
   end
 end
