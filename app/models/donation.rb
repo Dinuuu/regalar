@@ -7,4 +7,5 @@ class Donation < ActiveRecord::Base
   scope :for_organization, -> (organization) { where(organization: organization) }
   scope :for_user, -> (user) { where(user: user) }
   scope :done, -> { where(done: true) }
+  scope :for_wish_item, -> (wish_item) { where(wish_item: wish_item) }
 end
