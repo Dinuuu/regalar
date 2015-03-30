@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>
+      Hello <%= @organization.name %>
+        You have a new donation from <%= @user.full_name %> for <%= link_to @wish_item.title, organization_wish_item_path(@wish_item.organization.id, @wish_item.id) %>
+        You can contact <%= @user.full_name %> writing to <%= @user.email %>
+      <p>Have a great day!</p>
+    </p>
+  </body>
+</html>

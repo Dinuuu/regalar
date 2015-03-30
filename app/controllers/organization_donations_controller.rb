@@ -7,12 +7,14 @@ class OrganizationDonationsController < ApplicationController
     @wish_item = @donation.wish_item
     update_wish_item_quantity(@wish_item, @donation.quantity)
     @donation.update_attributes!(done: true)
+    send_confirmation_email(@donation)
     redirect_to organization_wish_item_path(@wish_item.organization, @wish_item)
   end
 
   def cancel
     @donation = Donation.find(params[:id])
     @donation.destroy
+    send_cancelation_email(@donation)
     redirect_to organization_wish_item_path(@donation.organization, @donation.wish_item)
   end
 
@@ -28,6 +30,16 @@ class OrganizationDonationsController < ApplicationController
   end
 
   private
+
+  def send_confirmation_email(donation)
+    OrganizationMailer
+      .confirm_donation_email(donation.user, donation.organization, donation.wish_item).deliver
+  end
+
+  def send_cancelation_email(donation)
+    OrganizationMailer
+      .cancel_donation_email(donation.user, donation.organization, donation.wish_item).deliver
+  end
 
   def update_wish_item_quantity(wish_item, quantity)
     if wish_item.quantity > quantity

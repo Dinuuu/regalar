@@ -11,7 +11,8 @@ module OrganizationsCreationHelper
           name: "Organization #{time}",
           description: Faker::Lorem.sentence,
           locality: Faker::Address.city,
-          user_ids: User.all.pluck(:id).sample(rand(1..User.count))
+          user_ids: User.all.pluck(:id).sample(rand(1..User.count)),
+          email: Faker::Internet.email
         )
       end
 

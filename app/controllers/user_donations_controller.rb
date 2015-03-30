@@ -11,7 +11,10 @@ class UserDonationsController < ApplicationController
   def create
     @wish_item = WishItem.find(params[:id])
     create! do |success, failure|
-      success.html { redirect_to organization_wish_item_path(@wish_item.organization, @wish_item) }
+      success.html do
+        send_creation_mail(@wish_item)
+        render 'create'
+      end
       failure.html { render 'new' }
     end
   end
@@ -28,7 +31,10 @@ class UserDonationsController < ApplicationController
   def destroy
     @wish_item = donation.wish_item
     destroy! do |success, _failure|
-      success.html { redirect_to organization_wish_item_path(@wish_item.organization, @wish_item) }
+      success.html do
+        send_cancelation_mail(@wish_item)
+        redirect_to organization_wish_item_path(@wish_item.organization, @wish_item)
+      end
     end
   end
 
@@ -41,6 +47,14 @@ class UserDonationsController < ApplicationController
     organization_donations[:donations] = Donation.for_user(user)
                                          .for_organization(organization).done
     organization_donations
+  end
+
+  def send_creation_mail(wish_item)
+    UserMailer.create_donation_email(current_user, wish_item.organization, wish_item).deliver
+  end
+
+  def send_cancelation_mail(wish_item)
+    UserMailer.cancel_donation_email(current_user, wish_item.organization, wish_item).deliver
   end
 
   def check_ownership

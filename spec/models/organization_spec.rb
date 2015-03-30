@@ -19,6 +19,11 @@ describe Organization do
         expect(organization.valid?).to be false
         expect(organization.errors).not_to be_nil
       end
+      it 'validates the email' do
+        organization.email = nil
+        expect(organization.valid?).to be false
+        expect(organization.errors).not_to be_nil
+      end
     end
     context 'Creating a valid organization' do
       it 'creates the organization' do
