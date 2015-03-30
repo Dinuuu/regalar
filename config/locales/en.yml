@@ -28,6 +28,9 @@ en:
       introduction:
         title: Who are we?
         content: We are a team of the Instituto Tecnológico de Buenos Aires. Regalar is a project who aims to connect people who want to donate with the organizations that need it most.
+      itba:
+        title: About ITBA
+        description: Since its creation as a private university in 1959 Instituto Tecnológico de Buenos Aires (ITBA) is well known for its calling for innovation technology and academic excellence. The successful labour performance of more than 7000 professional graduates is the best support to ITBA’s academic proposal. ITBA offers the following undergraduate courses Industrial Engineering; Administration and Systems; Computer Engineering; Mechanical Engineering; Electronic Engineering; Naval Architecture; Oil Engineering; Chemical Engineering and Bioengineering.
     landing:
       choose_organization: Choose Organization
       no_organizations: You don't have any organization

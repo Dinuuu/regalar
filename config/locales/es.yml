@@ -31,6 +31,9 @@ es:
       introduction:
         title: ¿Quiénes somos?
         content: Somos un equipo del Instituto Tecnológico de Buenos Aires. Con Regalar buscamos conectar a la gente que quiere realizar donaciones con aquellas instituciones que más lo necesitan.
+      itba:
+        title: Acerca del ITBA
+        description: Desde su creación como universidad privada en 1959 el Instituto Tecnológico de Buenos Aires es reconocido por su vocación por la innovación; la tecnología y la excelencia académica. El desempeño profesional exitoso de sus más de 7000 graduados es el mejor respaldo a su propuesta académica. En el ITBA se puede estudiar las carreras de Ingeniería Industrial; Administración y Sistemas; Ingeniería Informática; Ingeniería Mecánica; Ingeniería Eléctrica; Ingeniería Electrónica; Ingeniería Naval; Ingeniería en Petróleo; Ingeniería Química y Bioingeniería.
     landing:
       choose_organization: Elija Organización
       no_organizations: Usted no tiene organizaciones
