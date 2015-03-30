@@ -81,9 +81,12 @@ en:
         photo: 'Photo'
         make_gift: 'Make Gift'
         featured: 'Featured Wish Items'
+        gifted_by: 'Gifted by: '
       wish_list:  
         name: Wish List
         finished: Recived Gifts
+        verifying: Verifying Gifts
+        verifying_expl: These are the gifts that needs your confirmation. If the transaction has been completed successfully click Confirm. If you could not recive the gift click Reject.
   organizations: "Organizations"  
   organization-link: "Go to organization"
   purchase:
@@ -331,6 +334,8 @@ en:
     introduce_quantity: 'Choose the quantity you want to gift: '
     wait_email: The organization will contact you to arrange the delivery.
     continue: Continue
+    confirm: Confirm
+    reject: Reject
   wish_items:
     gift: Gift
     gifts: Gifts

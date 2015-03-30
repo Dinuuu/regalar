@@ -1,0 +1,26 @@
+- item = gift.wish_item
+.campaign-card.col-md-3
+  .thumbnail
+    .row
+      .img-campaign-thumbnail
+        - if item.main_image.present?
+            = image_tag(item.main_image, height: 150, width: 150, class: "img-thumbnail img-profile")
+        - else
+          = image_tag('default_avatar.jpg', height: 150, width: 150, class: "img-thumbnail img-profile")
+      .container-fluid
+        .caption
+          h4.campaign-name
+            = link_to t(item.title), organization_wish_item_path(id: item.id, organization_id: item.organization.id)
+            .pull-right.span.label.label-default
+              = gift.created_at.to_s(:short)
+          h5
+            = t('helpers.wish_item.gifted_by')
+            = gift.user.first_name
+            = gift.user.last_name
+          p
+            = item.description.truncate(150)
+          p
+          
+          = link_to t('gift.confirm'), confirm_organization_donation_path(organization_id: gift.organization.id , id: gift.id), class: 'btn btn-success', method: "put"
+          
+          = link_to t('gift.reject'), cancel_organization_donation_path(organization_id: gift.organization.id , id: gift.id), class: 'btn btn-danger', method: "delete"

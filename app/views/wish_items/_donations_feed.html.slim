@@ -4,7 +4,7 @@
       label 
         = t('helpers.wish_item.previous_donations')
     .actionBox
-        - wish_item.donations.each do |d|
+        - wish_item.confirmed_donations.each do |d|
           ul.commentList
             li
               .commenterImage

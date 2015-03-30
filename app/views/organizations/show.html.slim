@@ -4,26 +4,7 @@
     = link_to t('helpers.submit.organization.edit'), edit_organization_path(@organization),
                 class: 'btn btn-primary btn-violet'
 
-ul.nav.nav-tabs.nav-margin data-tabs="tabs" 
-  li.active
-    a data-toggle="tab" href="#not-finished"
-      = t('helpers.wish_list.name')
-  li
-    a data-toggle="tab" href="#finished"
-      = t('helpers.wish_list.finished')
- 
-.tab-content
-  #not-finished.tab-pane.active
-    = render 'wish_items/index_cards', wish_items: WishItem.for_organization(@organization).not_finished
-    - if policy(@organization).update?
-      .row
-        .col-md-6
-          p
-            = link_to t('helpers.submit.wish_item.new'), new_organization_wish_item_path(@organization)   , class: 'btn btn-primary btn-violet'
-  #finished.tab-pane
-    = render 'wish_items/index_cards', wish_items: WishItem.for_organization(@organization).finished
-
-
+= render 'tabs', organization: @organization
 
 .row
   .col-md-12
