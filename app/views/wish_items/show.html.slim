@@ -14,6 +14,7 @@
 		br
 
 	div.col-md-offset-1
+
 		div.col-md-6
 		  - if @wish_item.main_image.present?
 		    = image_tag(@wish_item.main_image, height: 150, width: 150, class: "img-thumbnail img-profile")
@@ -22,16 +23,56 @@
 
 		div.col-md-6
 			p
-				= t('wish_items.quantity') 
-				= @wish_item.quantity
-				= ' '
-				= @wish_item.unit
-		    p
-		      = @wish_item.description
-		    
-		    = link_to t('wish_items.gift'), '#',
-		          class: 'btn btn-success',
-		          data: { toggle: 'modal', target: '#gift-modal' }      
+
+				- if @wish_item.pending_donation?(current_user)
+					span.label.label-warning
+					       = t('wish_items.status.verifying')
+					
+					p
+						.h5
+							= t('helpers.wish_item.description')
+						= @wish_item.description 
+					p
+						.h5
+							= t('helpers.wish_item.reason')
+						= @wish_item.reason
+					= link_to t('wish_items.gift'), '#',
+					      class: 'btn btn-default disabled',
+					      data: {disabled: 'disabled'}
+
+				- elsif @wish_item.quantity == 0
+					span.label.label-success
+						= t('wish_items.status.gifted')
+					p
+						.h5
+							= t('helpers.wish_item.description')
+						= @wish_item.description
+					p
+						.h5
+							= t('helpers.wish_item.reason')
+						= @wish_item.reason
+					= link_to t('wish_items.gift'), '#',
+					     class: 'btn btn-default disabled',
+					      data: {disabled: 'disabled'}
+				    
+				- else
+					.h5
+						= t('wish_items.quantity') 
+					= @wish_item.quantity
+					= ' '
+					= @wish_item.unit
+					p
+						.h5
+							= t('helpers.wish_item.description')
+						= @wish_item.description
+					p
+						.h5
+							= t('helpers.wish_item.reason')
+					 	= @wish_item.reason
+
+					= link_to t('wish_items.gift'), '#',
+					      class: 'btn btn-success',
+					      data: { toggle: 'modal', target: '#gift-modal' }      
 
 = render 'wish_items/gift_modal', wish_item: @wish_item
 = render 'wish_items/donations_feed', wish_item: @wish_item

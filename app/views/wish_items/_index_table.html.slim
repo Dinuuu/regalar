@@ -3,7 +3,6 @@
   p
     = t('application.no_results')
 - else
-    /item no regaldo 
     - wish_items.each do |item|
 
       div.col-md-8.col-md-offset-1.wishitem
@@ -14,42 +13,45 @@
             = image_tag('default_avatar.jpg', height: 150, width: 150, class: "img-thumbnail img-profile")
 
         div.col-md-6
-          - if item.status == 'status.verifying'
+          - if item.pending_donation?(current_user)
             h3
-              = item.title + ' '
+              = link_to item.title, organization_wish_item_path(id: item.id, organization_id: item.organization.id)
               small
                  span.label.label-warning
-                   = item.status
+                   = t('wish_items.status.verifying')
             h5
-              = link_to t(item.organization.name), item.organization
+              = link_to item.organization.name, item.organization
             p
-              = item.reason            
-            = link_to t('wish_items.gift'), '#',
-                  class: 'btn btn-default',
-                  data: {disabled: 'disabled', toggle: 'modal', target: '#gift-modal' }
+              = item.description 
 
-          - if item.status == 'status.gifted'
+            = link_to t('wish_items.gift'), '#',
+                  class: 'btn btn-default disabled',
+                  data: {disabled: 'disabled'}
+
+          - elsif item.quantity == 0
             h3
-              = item.title + ' '
+              = link_to item.title, organization_wish_item_path(id: item.id, organization_id: item.organization.id)
               small
                  span.label.label-success
-                   = item.status
+                   = t('wish_items.status.gifted')
+            h5
+              = link_to item.organization.name, item.organization
             p
-              = item.reason
+              = item.description
             = link_to t('wish_items.gift'), '#',
-                  class: 'btn btn-default',
-                  data: { disabled: 'disabled', toggle: 'modal', target: '#gift-modal' }        
-        
-          //- if item.status == 'status.available'
+                 class: 'btn btn-default disabled',
+                  data: {disabled: 'disabled'}
+                
           - else
             h3
-              = item.title + ' '
+              = link_to item.title, organization_wish_item_path(id: item.id, organization_id: item.organization.id)
+            h5
+              = link_to item.organization.name, item.organization
             p
-              = item.reason
+              = item.description
             
             = link_to t('wish_items.gift'), '#',
                   class: 'btn btn-success',
                   data: { toggle: 'modal', target: '#gift-modal' }      
         
-
           = render 'wish_items/gift_modal', wish_item: item
