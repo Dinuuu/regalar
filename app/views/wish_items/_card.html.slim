@@ -13,7 +13,7 @@
           h5
             = link_to t(item.organization.name), item.organization
           p
-            = item.description.truncate(280)
+            = item.description.truncate(150)
           p
             = link_to t('wish_items.gift'), '#',
               class: 'btn btn-success',
