@@ -1,5 +1,8 @@
+$violet: #AA2878;
+
+
 .comment-card {
-  border-left: 3px solid #f0ad4e;
+  border-left: 3px solid $violet;
   margin: 15px;
 
   .row {
@@ -7,6 +10,6 @@
   }
 
   h4 {
-    color: #f0ad4e;
+    color: $violet;
   }
 }
