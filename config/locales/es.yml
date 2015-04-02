@@ -333,10 +333,13 @@ es:
     confirmation: Confirmación de regalo
     yes: Si
     no: No
+    cancel_modal: Cancelar
     cancel: Cancelar regalo
     confirm: Confirma que quiere realizar el regalo
     toOrg:  a la organización
     introduce_quantity: 'Elija la cantidad que quiere donar: '
+    wait_email: La organización se va a estar contactando con vos a la brevedad para coordinar la entrega del mismo.
+    continue: Continuar
   wish_items:
     gift: Regalar
     gifts: Regalos
