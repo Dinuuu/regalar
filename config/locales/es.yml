@@ -338,7 +338,7 @@ es:
     confirm: Confirma que quiere realizar el regalo
     toOrg:  a la organización
     introduce_quantity: 'Elija la cantidad que quiere donar: '
-    wait_email: La organización se va a estar contactando con vos a la brevedad para coordinar el pago y la entrega del mismo.
+    wait_email: La organización se va a estar contactando con vos a la brevedad para coordinar la entrega del mismo.
     continue: Continuar
   wish_items:
     gift: Regalar
