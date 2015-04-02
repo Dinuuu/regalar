@@ -7,6 +7,9 @@ describe UserDonationsController do
   let!(:donation) do
     build(:donation, user: user, organization: organization, wish_item: wish_item)
   end
+  before(:each) do
+    request.env['HTTP_REFERER'] = organizations_url
+  end
   describe '#create' do
     context 'When logged' do
       before(:each) do
@@ -38,16 +41,16 @@ describe UserDonationsController do
                           id: wish_item.id, donation: donation.attributes
           end).to change(wish_item.donations, :count).by(1)
         end
-        it 'renders create page' do
-          post :create, organization_id: organization.id,
-                        id: wish_item.id, donation: donation.attributes
-          expect(response).to render_template :create
-        end
-        it 'sends an email' do
+        it 'sends two emails' do
           (expect do
             post :create, organization_id: organization.id,
                           id: wish_item.id, donation: donation.attributes
-          end).to change { ActionMailer::Base.deliveries.count }.by(1)
+          end).to change { ActionMailer::Base.deliveries.count }.by(2)
+        end
+        it 'redirect_to same page' do
+          post :create, organization_id: organization.id,
+                        id: wish_item.id, donation: donation.attributes
+          expect(response).to redirect_to :back
         end
       end
       context 'when trying to create an invalid donation' do
@@ -143,10 +146,10 @@ describe UserDonationsController do
               delete :destroy, id: donation.id
             end).to change(wish_item.donations, :count).by(-1)
           end
-          it 'sends an email' do
+          it 'sends two emails' do
             (expect do
               delete :destroy, id: donation.id
-            end).to change { ActionMailer::Base.deliveries.count }.by(1)
+            end).to change { ActionMailer::Base.deliveries.count }.by(2)
           end
         end
       end
