@@ -15,7 +15,8 @@
           p
             = item.description.truncate(150)
           p
-            - pending_donation = item.pending_donation(current_user)
+            - if current_user.present?
+              - pending_donation = item.pending_donation(current_user)
 
             - if pending_donation.present?
               = link_to t('gift.cancel'), cancel_donation_path(pending_donation), class: 'btn btn-danger', method: "delete"
