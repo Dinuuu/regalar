@@ -29,13 +29,13 @@ class User < ActiveRecord::Base
   end
 
   def level
-    confirmed_donations = Donation.for_user(self).done.count
+    confirmed_donations = Donation.for_user(self).confirmed.count
     Level.where('levels.from <= ? AND levels.to > ?', confirmed_donations, confirmed_donations)
       .first
   end
 
   def confirmed_donations
-    organizations_id = Donation.for_user(self).done.uniq.pluck(:organization_id)
+    organizations_id = Donation.for_user(self).confirmed.uniq.pluck(:organization_id)
     donations = []
     organizations_id.each do |org_id|
       donations << concreted_donations_for_organization(org_id)
@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
     organization_donations = {}
     organization_donations[:organization] = organization
     organization_donations[:donations] = Donation.for_user(self)
-                                         .for_organization(organization).done
+                                         .for_organization(organization).confirmed
     organization_donations
   end
 end

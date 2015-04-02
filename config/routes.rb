@@ -62,6 +62,7 @@ Regalar::Application.routes.draw do
       end
       collection do
         get :confirmed
+        get :pending
       end
     end
     # End OrganizationDonations Routes

@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe Organization do
-  let!(:organization) { build(:organization) }
+  let!(:user) { create :user }
+  let!(:organization) { create :organization }
+  let!(:organization2) { create :organization }
   describe '#create' do
     context 'Creating an invalid organization' do
       it 'validates the name' do
@@ -28,6 +30,76 @@ describe Organization do
     context 'Creating a valid organization' do
       it 'creates the organization' do
         expect(organization.valid?).to be true
+      end
+    end
+  end
+  describe '#pending_donations' do
+    context 'when user belongs to organization' do
+      before :each do
+        organization.users << user
+        organization.save!
+      end
+      let!(:wish_item) { create :wish_item, organization: organization, quantity: 10 }
+      let!(:wish_item2) { create :wish_item, organization: organization2, quantity: 10 }
+      let!(:donations_done) do
+        create_list :donation, 5, wish_item: wish_item, user: user,
+                                  organization: organization, done: true
+      end
+      let!(:donations_undone) do
+        create_list :donation, 3, wish_item: wish_item, user: user,
+                                  organization: organization, done: false
+      end
+      let!(:donations_done2) do
+        create_list :donation, 9, wish_item: wish_item2, user: user,
+                                  organization: organization2, done: true
+      end
+      let!(:donations_undone2) do
+        create_list :donation, 7, wish_item: wish_item2, user: user,
+                                  organization: organization2, done: false
+      end
+      context 'asking for pending donations' do
+        it 'returns donations that are pending' do
+          expect(organization.pending_donations.all? { |donation| donation[:done] }).to be false
+        end
+        it 'returns donations of organization' do
+          expect(organization.pending_donations
+            .all? { |donation| donation[:organization_id] == organization.id }).to be true
+        end
+        it 'has to be 3' do
+          expect(organization.pending_donations.count).to eq 3
+        end
+      end
+    end
+  end
+  describe '#confirmed_donations' do
+    let!(:wish_item) { create :wish_item, organization: organization, quantity: 10 }
+    let!(:wish_item2) { create :wish_item, organization: organization2, quantity: 10 }
+    let!(:donations_done) do
+      create_list :donation, 5, wish_item: wish_item, user: user,
+                                organization: organization, done: true
+    end
+    let!(:donations_undone) do
+      create_list :donation, 3, wish_item: wish_item, user: user,
+                                organization: organization, done: false
+    end
+    let!(:donations_done2) do
+      create_list :donation, 9, wish_item: wish_item2, user: user,
+                                organization: organization2, done: true
+    end
+    let!(:donations_undone2) do
+      create_list :donation, 7, wish_item: wish_item2, user: user,
+                                organization: organization2, done: false
+    end
+    context 'asking for confirmed donations' do
+      it 'returns donations that are confirmed' do
+        expect(organization.confirmed_donations.all? { |donation| donation[:done] }).to be true
+      end
+      it 'returns donations of organization' do
+        expect(organization.confirmed_donations
+          .all? { |donation| donation[:organization_id] == organization.id }).to be true
+      end
+      it 'has to be 5' do
+        expect(organization.confirmed_donations.count).to eq 5
       end
     end
   end
