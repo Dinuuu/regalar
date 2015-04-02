@@ -38,11 +38,10 @@ describe UserDonationsController do
                           id: wish_item.id, donation: donation.attributes
           end).to change(wish_item.donations, :count).by(1)
         end
-        it 'should redirect to show wish item' do
+        it 'render create page' do
           post :create, organization_id: organization.id,
                         id: wish_item.id, donation: donation.attributes
-          expect(response)
-            .to redirect_to "/organizations/#{organization.id}/wish_items/#{wish_item.id}"
+          expect(response).to render_template :create
         end
         it 'sends an email' do
           (expect do
