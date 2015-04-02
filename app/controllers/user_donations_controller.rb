@@ -13,7 +13,7 @@ class UserDonationsController < ApplicationController
     create! do |success, failure|
       success.html do
         send_creation_mail(@wish_item)
-        redirect_to organization_wish_item_path(@wish_item.organization, @wish_item)
+        render 'create'
       end
       failure.html { render 'new' }
     end
