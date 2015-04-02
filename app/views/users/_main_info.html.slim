@@ -1,0 +1,31 @@
+//- confirmed_donations = Donation.for_user(@user).done.count
+- confirmed_donations = 4
+- user_level = user.level
+.panel.main-name
+    = user.full_name
+    - if user.avatar.present?
+      = image_tag(user.avatar_url, height: 150, width: 150, class: "img-thumbnail img-profile")
+    - else
+      = image_tag('default_avatar.jpg', height: 150, width: 150, class: "img-thumbnail img-profile")
+
+    .panel-body.main-email
+      = user.email
+      .information
+      .col-sm-4.col-sm-offset-4.pull-left.text-center
+            = t('user.level')
+            = ' '
+            = "#{user_level.level}"
+            br
+            = "#{user_level.title}"
+      .col-sm-4.col-sm-offset-4
+        .progress
+          .progress-bar.progress-bar-striped.active aria-valuemax="#{user_level.to - user_level.from}" aria-valuemin="0"} aria-valuenow="45" role="progressbar" style=("width: #{(confirmed_donations - user_level.from)/(user_level.from - user_level.to)*100}%") 
+            
+    .btn-group
+      .button
+        a
+          = link_to t('helpers.submit.user.edit'), edit_user_path(user), class: 'btn btn-default'
+    .btn-group
+      .button
+        a
+          = link_to t('helpers.submit.user.edit_password'), edit_password_user_path(user), class: 'btn btn-default'

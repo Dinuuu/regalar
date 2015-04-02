@@ -22,11 +22,18 @@
 		    = image_tag('default_avatar.jpg', height: 150, width: 150, class: "img-thumbnail img-profile")
 
 		div.col-md-6
+
 			p
 				- pending_donation = @wish_item.pending_donation(current_user)
 				- if pending_donation.present?
 					span.label.label-warning
 					       = t('wish_items.status.verifying')
+					p
+						.h5
+							= t('helpers.wish_item.quantity')
+						= @wish_item.quantity
+						= ' '
+						= @wish_item.unit
 					
 					p
 						.h5
@@ -42,6 +49,12 @@
 				- elsif @wish_item.quantity == 0
 					span.label.label-danger
 						= t('wish_items.status.gifted')
+					p
+						.h5
+							= t('helpers.wish_item.quantity')
+						= @wish_item.quantity
+						= ' '
+						= @wish_item.unit
 					p
 						.h5
 							= t('helpers.wish_item.description')

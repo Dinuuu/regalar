@@ -5,6 +5,11 @@ class OrganizationsController < ApplicationController
 
   FIELDS = [:name, :description, :locality, :email]
 
+  def show
+    @comment = Comment.new
+    show!
+  end
+  
   def list
     @organizations = current_user.organizations.page(params[:page] || 1)
   end
