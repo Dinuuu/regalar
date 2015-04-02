@@ -17,6 +17,8 @@
             = t(wish_item.organization.name)
             = "?"
             p
+            = t('gift.wait_email')
+            p
             = t('gift.introduce_quantity')
             = form_for :donation, url: organization_donations_path(id: wish_item, organization_id: wish_item.organization) do |f|
               .form-inline
@@ -27,6 +29,7 @@
                     = f.hidden_field :user_id, value: current_user.id
                     = f.hidden_field :wish_item_id, value: wish_item.id
                 = f.submit t('helpers.wish_item.make_gift'), class: "btn btn-success"
+
         .modal-footer
           button.close data-dismiss="modal"  type="button" 
-            = t('gift.cancel')
+            = t('gift.cancel_modal')
