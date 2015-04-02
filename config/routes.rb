@@ -14,7 +14,7 @@ Regalar::Application.routes.draw do
       patch :update_password
     end
     collection do
-      resources :donations, controller: 'user_donations', only: [:destroy]
+      resources :donations, controller: 'user_donations', only: [:destroy], as: 'cancel_donation'
     end 
   end
 
