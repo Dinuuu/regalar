@@ -13,7 +13,7 @@ class UserDonationsController < ApplicationController
     create! do |success, failure|
       success.html do
         send_creation_mail(@wish_item)
-        render 'create'
+        redirect_to :back
       end
       failure.html { render 'new' }
     end
@@ -24,7 +24,7 @@ class UserDonationsController < ApplicationController
     destroy! do |success, _failure|
       success.html do
         send_cancelation_mail(@wish_item)
-        redirect_to organization_wish_item_path(@wish_item.organization, @wish_item)
+        redirect_to :back
       end
     end
   end
@@ -32,11 +32,17 @@ class UserDonationsController < ApplicationController
   private
 
   def send_creation_mail(wish_item)
-    UserMailer.create_donation_email(current_user, wish_item.organization, wish_item).deliver
+    UserMailer.create_donation_email_to_org(current_user,
+                                            wish_item.organization, wish_item).deliver
+    UserMailer.create_donation_email_to_user(current_user,
+                                             wish_item.organization, wish_item).deliver
   end
 
   def send_cancelation_mail(wish_item)
-    UserMailer.cancel_donation_email(current_user, wish_item.organization, wish_item).deliver
+    UserMailer.cancel_donation_email_to_org(current_user,
+                                            wish_item.organization, wish_item).deliver
+    UserMailer.cancel_donation_email_to_user(current_user,
+                                             wish_item.organization, wish_item).deliver
   end
 
   def check_ownership

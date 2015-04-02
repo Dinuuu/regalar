@@ -39,13 +39,15 @@ class OrganizationDonationsController < ApplicationController
   private
 
   def send_confirmation_email(donation)
-    OrganizationMailer
-      .confirm_donation_email(donation.user, donation.organization, donation.wish_item).deliver
+    OrganizationMailer.confirm_donation_email_to_user(donation.user,
+                                                      donation.organization,
+                                                      donation.wish_item).deliver
   end
 
   def send_cancelation_email(donation)
-    OrganizationMailer
-      .cancel_donation_email(donation.user, donation.organization, donation.wish_item).deliver
+    OrganizationMailer.cancel_donation_email_to_user(donation.user,
+                                                     donation.organization,
+                                                     donation.wish_item).deliver
   end
 
   def update_wish_item_quantity(wish_item, quantity)
