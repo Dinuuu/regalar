@@ -6,6 +6,7 @@ class Donation < ActiveRecord::Base
   validates :quantity, numericality: { greater_than: 0 }
   scope :for_organization, -> (organization) { where(organization: organization) }
   scope :for_user, -> (user) { where(user: user) }
-  scope :done, -> { where(done: true) }
   scope :for_wish_item, -> (wish_item) { where(wish_item: wish_item) }
+  scope :confirmed, -> { where(done: true) }
+  scope :pending, -> { where(done: false) }
 end

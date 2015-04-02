@@ -15,7 +15,7 @@ Regalar::Application.routes.draw do
     end
     collection do
       resources :donations, controller: 'user_donations', only: [:destroy]
-    end 
+    end
   end
 
   # End Users Routes
@@ -62,6 +62,7 @@ Regalar::Application.routes.draw do
       end
       collection do
         get :confirmed
+        get :pending
       end
     end
     # End OrganizationDonations Routes

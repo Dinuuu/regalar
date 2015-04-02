@@ -75,6 +75,10 @@ describe OrganizationDonationsController do
         let!(:donation) do
           create :donation, wish_item: wish_item, user: user, organization: organization
         end
+        it 'returns status forbidden' do
+          put :confirm, organization_id: organization.id, id: donation.id
+          expect(response.status).to eq 403
+        end
         it 'does not change the quant of wish_item' do
           (expect do
             put :confirm, organization_id: organization.id, id: donation.id
@@ -260,7 +264,7 @@ describe OrganizationDonationsController do
     before :each do
       get :confirmed, organization_id: organization.id
     end
-    context 'Asking for confirmed donations' do
+    context 'asking for confirmed donations' do
       it 'returns donations that are confirmed' do
         expect(assigns(:confirmed).all? { |donation| donation[:done] }).to be true
       end
@@ -273,6 +277,68 @@ describe OrganizationDonationsController do
       end
       it 'renders confirmed' do
         expect(response).to render_template 'confirmed'
+      end
+    end
+  end
+  describe '#pending' do
+    context 'When logged' do
+      before(:each) do
+        sign_in user
+        user.reload
+      end
+      context 'when user belongs to organization' do
+        before :each do
+          organization.users << user
+          organization.save!
+        end
+        let!(:wish_item) { create :wish_item, organization: organization, quantity: 10 }
+        let!(:wish_item2) { create :wish_item, organization: organization2, quantity: 10 }
+        let!(:donations_done) do
+          create_list :donation, 5, wish_item: wish_item, user: user,
+                                    organization: organization, done: true
+        end
+        let!(:donations_undone) do
+          create_list :donation, 3, wish_item: wish_item, user: user,
+                                    organization: organization, done: false
+        end
+        let!(:donations_done2) do
+          create_list :donation, 9, wish_item: wish_item2, user: user,
+                                    organization: organization2, done: true
+        end
+        let!(:donations_undone2) do
+          create_list :donation, 7, wish_item: wish_item2, user: user,
+                                    organization: organization2, done: false
+        end
+        before :each do
+          get :pending, organization_id: organization.id
+        end
+        context 'asking for pending donations' do
+          it 'returns donations that are pending' do
+            expect(assigns(:pending).all? { |donation| donation[:done] }).to be false
+          end
+          it 'returns donations of organization' do
+            expect(assigns(:pending)
+              .all? { |donation| donation[:organization_id] == organization.id }).to be true
+          end
+          it 'has to be 3' do
+            expect(assigns(:pending).count).to eq 3
+          end
+          it 'renders pending' do
+            expect(response).to render_template 'pending'
+          end
+        end
+      end
+      context 'when user does not belong to organization' do
+        it 'returns status forbidden' do
+          get :pending, organization_id: organization.id
+          expect(response.status).to eq 403
+        end
+      end
+    end
+    context 'When unlogged' do
+      it 'should render login page' do
+        get :pending, organization_id: organization.id
+        expect(response).to redirect_to '/users/sign_in'
       end
     end
   end
