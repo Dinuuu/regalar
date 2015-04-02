@@ -9,7 +9,7 @@ class OrganizationsController < ApplicationController
     @comment = Comment.new
     show!
   end
-  
+
   def list
     @organizations = current_user.organizations.page(params[:page] || 1)
   end
