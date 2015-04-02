@@ -91,7 +91,7 @@ es:
       name: Lista de deseos
       finished: Regalos recibidos
       verifying: Regalos en verificación
-      verifying_expl: Estos son los regalos que están pendientes de una confirmación. Si la transaccion se ha realizado con éxito hacer click en Confirmar. Si no se pudo concretar el regalo hacer click en Rechazar.
+      verifying_expl: Estos son los regalos que están pendientes de una confirmación. Si la transacción se ha realizado con éxito hacer click en Confirmar. Si no se pudo concretar el regalo hacer click en Rechazar.
     page_entries_info:
       one_page:
         display_entries:
