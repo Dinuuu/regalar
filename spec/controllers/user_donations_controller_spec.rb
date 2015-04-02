@@ -38,11 +38,16 @@ describe UserDonationsController do
                           id: wish_item.id, donation: donation.attributes
           end).to change(wish_item.donations, :count).by(1)
         end
-        it 'should redirect to show wish item' do
+        it 'render create page' do
           post :create, organization_id: organization.id,
                         id: wish_item.id, donation: donation.attributes
-          expect(response)
-            .to redirect_to "/organizations/#{organization.id}/wish_items/#{wish_item.id}"
+          expect(response).to render_template :create
+        end
+        it 'sends an email' do
+          (expect do
+            post :create, organization_id: organization.id,
+                          id: wish_item.id, donation: donation.attributes
+          end).to change { ActionMailer::Base.deliveries.count }.by(1)
         end
       end
       context 'when trying to create an invalid donation' do
@@ -59,6 +64,12 @@ describe UserDonationsController do
           post :create, organization_id: organization.id,
                         id: wish_item.id, donation: donation.attributes
           expect(response).to render_template :new
+        end
+        it 'does not send an email' do
+          (expect do
+            post :create, organization_id: organization.id,
+                          id: wish_item.id, donation: donation.attributes
+          end).not_to change { ActionMailer::Base.deliveries.count }
         end
       end
     end
@@ -91,6 +102,12 @@ describe UserDonationsController do
         post :create, organization_id: organization.id,
                       id: wish_item.id, donation: donation.attributes
         expect(response).to redirect_to '/users/sign_in'
+      end
+      it 'does not send an email' do
+        (expect do
+          post :create, organization_id: organization.id,
+                        id: wish_item.id, donation: donation.attributes
+        end).not_to change { ActionMailer::Base.deliveries.count }
       end
     end
   end
@@ -126,6 +143,11 @@ describe UserDonationsController do
               delete :destroy, id: donation.id
             end).to change(wish_item.donations, :count).by(-1)
           end
+          it 'sends an email' do
+            (expect do
+              delete :destroy, id: donation.id
+            end).to change { ActionMailer::Base.deliveries.count }.by(1)
+          end
         end
       end
       context 'when a donation that is not mine exists' do
@@ -141,6 +163,11 @@ describe UserDonationsController do
         end
         it 'does not changes the amount of donations' do
           expect { delete :destroy, id: donation.id }.not_to change { Donation.count }
+        end
+        it 'does not send an email' do
+          (expect do
+            delete :destroy, id: donation.id
+          end).not_to change { ActionMailer::Base.deliveries.count }
         end
       end
       context 'when a donation does not exist' do
@@ -163,12 +190,17 @@ describe UserDonationsController do
           it 'does not changes the amount of donations' do
             expect { delete :destroy, id: donation.id }.not_to change { Donation.count }
           end
+          it 'does not send an email' do
+            (expect do
+              delete :destroy, id: donation.id
+            end).not_to change { ActionMailer::Base.deliveries.count }
+          end
         end
       end
     end
   end
 
-  describe 'confirmed' do
+  describe '#confirmed' do
     context 'When there are existing donations for wish_items' do
       let!(:organization1) { create :organization }
       let!(:organization2) { create :organization }

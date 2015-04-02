@@ -5,5 +5,6 @@ FactoryGirl.define do
     name { Faker::Company.name }
     description { Faker::Company.catch_phrase }
     locality { Faker::Address.city }
+    email { Faker::Internet.email }
   end
 end
