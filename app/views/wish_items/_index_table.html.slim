@@ -13,7 +13,9 @@
             = image_tag('default_avatar.jpg', height: 150, width: 150, class: "img-thumbnail img-profile")
 
         div.col-md-6
-          - if item.pending_donation?(current_user)
+          - pending_donation = item.pending_donation(current_user)
+          
+          - if pending_donation.present?
             h3
               = link_to item.title, organization_wish_item_path(id: item.id, organization_id: item.organization.id)
               small.gift-label
@@ -24,8 +26,7 @@
             p
               = item.description 
             
-            = link_to t('gift.cancel'), cancel_organization_donation_path(id: item, organization_id: item.organization),
-                  class: 'btn btn-danger', method: "delete"
+            = link_to t('gift.cancel'), cancel_donation_path(pending_donation), class: 'btn btn-danger', method: "delete"
 
           - elsif item.quantity == 0
             h3

@@ -1,31 +1,32 @@
-#gift-modal.modal.fade
-  .modal-dialog
-    .modal-content
-      .modal-header
-        button.close aria-label="Close" data-dismiss="modal" type="button" 
-          span aria-hidden="true"  &times;
-        h4.modal-title
-          = t('gift.confirmation')
-      .modal-body
-          = t('gift.confirm') 
-          = " "
-          = t(wish_item.title)
-          = " "
-          = t('gift.toOrg')
-          = " "
-          = t(wish_item.organization.name)
-          = "?"
-          p
-          = t('gift.introduce_quantity')
-          = form_for :donation, url: organization_donations_path(id: wish_item, organization_id: wish_item.organization) do |f|
-            .form-inline
-              .form-group
-                .input-group
-                  = f.text_field :quantity, class: 'form-control col-md-2', type: 'number', min: "1" , max: wish_item.quantity, required: true
-                  = f.hidden_field :organization_id, value: params[:organization_id]
-                  = f.hidden_field :user_id, value: current_user.id
-                  = f.hidden_field :wish_item_id, value: wish_item.id
-              = f.submit t('helpers.wish_item.make_gift'), class: "btn btn-success"
-      .modal-footer
-        button.close data-dismiss="modal"  type="button" 
-          = t('gift.cancel')
+- if current_user.present?
+  #gift-modal.modal.fade
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close aria-label="Close" data-dismiss="modal" type="button" 
+            span aria-hidden="true"  &times;
+          h4.modal-title
+            = t('gift.confirmation')
+        .modal-body
+            = t('gift.confirm') 
+            = " "
+            = t(wish_item.title)
+            = " "
+            = t('gift.toOrg')
+            = " "
+            = t(wish_item.organization.name)
+            = "?"
+            p
+            = t('gift.introduce_quantity')
+            = form_for :donation, url: organization_donations_path(id: wish_item, organization_id: wish_item.organization) do |f|
+              .form-inline
+                .form-group
+                  .input-group
+                    = f.text_field :quantity, class: 'form-control col-md-2', type: 'number', min: "1" , max: wish_item.quantity, required: true
+                    = f.hidden_field :organization_id, value: params[:organization_id]
+                    = f.hidden_field :user_id, value: current_user.id
+                    = f.hidden_field :wish_item_id, value: wish_item.id
+                = f.submit t('helpers.wish_item.make_gift'), class: "btn btn-success"
+        .modal-footer
+          button.close data-dismiss="modal"  type="button" 
+            = t('gift.cancel')

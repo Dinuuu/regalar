@@ -15,8 +15,13 @@
           p
             = item.description.truncate(150)
           p
-            = link_to t('wish_items.gift'), '#',
-              class: 'btn btn-success',
-              data: { toggle: 'modal', target: '#gift-modal' }      
+            - pending_donation = item.pending_donation(current_user)
+
+            - if pending_donation.present?
+              = link_to t('gift.cancel'), cancel_donation_path(pending_donation), class: 'btn btn-danger', method: "delete"
+            - else
+              = link_to t('wish_items.gift'), '#',
+                class: 'btn btn-success',
+                data: { toggle: 'modal', target: '#gift-modal' }
         
 = render 'wish_items/gift_modal', wish_item: item

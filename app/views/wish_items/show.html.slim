@@ -23,8 +23,8 @@
 
 		div.col-md-6
 			p
-
-				- if @wish_item.pending_donation?(current_user)
+				- pending_donation = @wish_item.pending_donation(current_user)
+				- if pending_donation.present?
 					span.label.label-warning
 					       = t('wish_items.status.verifying')
 					
@@ -36,7 +36,7 @@
 						.h5
 							= t('helpers.wish_item.reason')
 						= @wish_item.reason
-					= link_to t('gift.cancel'), cancel_organization_donation_path(id: @wish_item, organization_id: @wish_item.organization), 
+					= link_to t('gift.cancel'), cancel_donation_path(pending_donation), 
 					class: 'btn btn-danger', method: "delete"
 
 				- elsif @wish_item.quantity == 0
@@ -75,4 +75,3 @@
 
 = render 'wish_items/gift_modal', wish_item: @wish_item
 = render 'wish_items/donations_feed', wish_item: @wish_item
-
