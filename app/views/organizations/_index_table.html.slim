@@ -7,7 +7,7 @@
       .thumbnail
         .caption
           h3
-            = link_to organization.name, organization
+            = link_to organization.name.truncate(25), organization
           .description
             p
               = organization.description.truncate(170)
@@ -18,10 +18,9 @@
             
             = link_to t('organization_link'), organization, class: 'btn btn-primary'
           .row
-            /TODO: seleccionar segun un criterio los 3
-            - organization.wish_items.take(3).each do |item|
+            - organization.trending_wish_items.each do |item|
               .col-sm-6.col-md-4
-                = link_to item.title, organization_wish_item_path(organization,item)
+                = link_to item.title.truncate(12), organization_wish_item_path(organization,item)
                 - if item.main_image.present?
                   = image_tag(item.main_image, class: "img-wishlist")
                 - else
