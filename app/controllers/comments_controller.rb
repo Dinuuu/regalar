@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   inherit_resources
 
   before_action :authenticate_user!
-  polymorphic_belongs_to :organization, :campaign
+  polymorphic_belongs_to :organization
 
   FIELDS = [:message]
 
