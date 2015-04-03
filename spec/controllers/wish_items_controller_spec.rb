@@ -98,4 +98,61 @@ describe WishItemsController do
       end
     end
   end
+
+  describe '#list' do
+    let!(:wish_items_silla) do
+      create_list :wish_item, 2, title: 'sillas'
+    end
+    let!(:wish_items_silla_caps) do
+      create_list :wish_item, 2, title: 'SILLA'
+    end
+    let!(:wish_items_sillas) do
+      create_list :wish_item, 3, description: 'Se necesita asillas de interior'
+    end
+    let!(:wish_items_sillas_caps) do
+      create_list :wish_item, 3, description: 'SE NECESITAN AASILLASSSS'
+    end
+    let!(:wish_items_witout_sillas) do
+      create_list :wish_item, 4, title: 'mesas', description: 'Mesas para comer de madera'
+    end
+    context "When listing a wish_item with query= 'silla'" do
+      it 'returns 10 results' do
+        get :list, query: 'silla'
+        expected_size = wish_items_silla.count + wish_items_silla_caps.count +
+                        wish_items_sillas.count + wish_items_sillas_caps.count
+        expect(assigns(:wish_items).count).to eq expected_size
+      end
+      it 'renders list template' do
+        get :list, query: 'silla'
+        expect(response).to render_template(:list)
+      end
+    end
+    context 'When listing a wish_item without query' do
+      it 'returns 14 results' do
+        get :list, query: nil
+        expected_size = wish_items_silla.count + wish_items_silla_caps.count +
+                        wish_items_sillas.count + wish_items_sillas_caps.count +
+                        wish_items_witout_sillas.count
+        expect(assigns(:wish_items).count).to eq expected_size
+      end
+      it 'returns 14 results' do
+        get :list, query: ''
+        expected_size = wish_items_silla.count + wish_items_silla_caps.count +
+                        wish_items_sillas.count + wish_items_sillas_caps.count +
+                        wish_items_witout_sillas.count
+        expect(assigns(:wish_items).count).to eq expected_size
+      end
+      it 'returns 14 results' do
+        get :list
+        expected_size = wish_items_silla.count + wish_items_silla_caps.count +
+                        wish_items_sillas.count + wish_items_sillas_caps.count +
+                        wish_items_witout_sillas.count
+        expect(assigns(:wish_items).count).to eq expected_size
+      end
+      it 'renders list template' do
+        get :list, query: nil
+        expect(response).to render_template(:list)
+      end
+    end
+  end
 end
