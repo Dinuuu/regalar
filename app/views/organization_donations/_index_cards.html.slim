@@ -1,0 +1,7 @@
+- if gifts.empty?
+	h4
+	  p
+	    = t('application.no_results')
+.row
+  - gifts.each do |gift|
+    = render 'organization_donations/card', gift: gift
