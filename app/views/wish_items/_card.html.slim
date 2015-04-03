@@ -9,10 +9,10 @@
       .container-fluid
         .caption
           h4.campaign-name
-            = link_to t(item.title), organization_wish_item_path(id: item.id, organization_id: item.organization.id)
+            = link_to item.title.truncate(21), organization_wish_item_path(id: item.id, organization_id: item.organization.id)
           h5
-            = link_to t(item.organization.name), item.organization
-          p
+            = link_to item.organization.name.truncate(30), item.organization
+          p.card-description
             = item.description.truncate(150)
           p
             - if current_user.present?

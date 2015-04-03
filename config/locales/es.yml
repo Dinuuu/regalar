@@ -85,8 +85,8 @@ es:
       gifted: ' ha regalado '
       photo: 'Foto'
       make_gift: 'Realizar regalo'
-      featured: 'Deseos Destacados'
       gifted_by: 'Regalado por: '
+      featured: 'Regalos Destacados'
     wish_list:
       name: Lista de deseos
       finished: Regalos recibidos

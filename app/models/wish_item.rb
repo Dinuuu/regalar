@@ -17,4 +17,8 @@ class WishItem < ActiveRecord::Base
   def pending_donation(user)
     Donation.for_wish_item(self).for_user(user).where.not(done: true).first
   end
+
+  def self.trending
+    WishItem.not_finished.last(4)
+  end
 end

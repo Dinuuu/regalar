@@ -14,4 +14,8 @@ class Organization < ActiveRecord::Base
   def confirmed_donations
     Donation.for_organization(self).confirmed
   end
+
+  def trending_wish_items
+    WishItem.for_organization(self).not_finished.last(3)
+  end
 end
