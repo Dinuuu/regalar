@@ -22,4 +22,10 @@ class WishItem < ActiveRecord::Base
   def self.trending
     WishItem.not_finished.last(4)
   end
+
+  def self.search(search)
+    search_condition = '%' + search.downcase + '%'
+    find(:all, conditions:
+         ['lower(title) LIKE ? OR lower(description) LIKE ?', search_condition, search_condition])
+  end
 end

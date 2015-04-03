@@ -1,7 +1,7 @@
 class WishItemsController < ApplicationController
   inherit_resources
   belongs_to :organization
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :list]
 
   def index
     @wish_items = WishItem.for_organization(@organization)
@@ -14,6 +14,10 @@ class WishItemsController < ApplicationController
 
   def create
     create! { @organization }
+  end
+
+  def list
+    @wish_items = params[:query].present? ? WishItem.search(params[:query]) : WishItem.all
   end
 
   private

@@ -63,4 +63,29 @@ describe WishItem do
       end
     end
   end
+
+  describe '#search' do
+    let!(:wish_items_silla) do
+      create_list :wish_item, 2, title: 'sillas'
+    end
+    let!(:wish_items_silla_caps) do
+      create_list :wish_item, 2, title: 'SILLA'
+    end
+    let!(:wish_items_sillas) do
+      create_list :wish_item, 3, description: 'Se necesita asillas de interior'
+    end
+    let!(:wish_items_sillas_caps) do
+      create_list :wish_item, 3, description: 'SE NECESITAN AASILLASSSS'
+    end
+    let!(:wish_items_witout_sillas) do
+      create_list :wish_item, 4, title: 'mesas', description: 'Mesas para comer de madera'
+    end
+    context 'When searching silla' do
+      it 'returns 10 results' do
+        expected_size = wish_items_silla.count + wish_items_silla_caps.count +
+                        wish_items_sillas.count + wish_items_sillas_caps.count
+        expect(WishItem.search('silla').count).to eq expected_size
+      end
+    end
+  end
 end

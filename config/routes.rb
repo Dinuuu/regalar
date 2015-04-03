@@ -98,7 +98,7 @@ Regalar::Application.routes.draw do
   
   resources :wish_items, only: [] do  
     collection do
-      get :list 
+      get :list
     end
  end
  
