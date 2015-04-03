@@ -6,8 +6,8 @@ module DonationsCreationHelper
     def create_donations
       puts 'Creating Donations'
 
-      1.upto(WishItem.count) do |wish_item_id|
-        create_donation_for_wish_item(wish_item_id)
+      WishItem.all.each do |wish_item|
+        create_donation_for_wish_item(wish_item)
       end
 
       puts 'Finished Creating Donations'
@@ -15,8 +15,7 @@ module DonationsCreationHelper
 
     private
 
-    def create_donation_for_wish_item(wish_item_id)
-        wish_item = WishItem.find(wish_item_id)
+    def create_donation_for_wish_item(wish_item)
         1.upto((3..10).to_a.sample) do
         donation = Donation.create(
           user: User.all.sample,
