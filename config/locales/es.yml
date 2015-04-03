@@ -103,11 +103,9 @@ es:
   organizations: "Organizaciones"
   organization_link: "Ir a la organización"
   users:
-    donations: Mis donaciones
-    organizations: Mis Organizaciones
-    campaigns: Mis Campañas
+    donations: Donaciones
+    organizations: Organizaciones
     profile: Mi Perfil
-    contributions: Mis Contribuciones
     link_accounts: Vincular cuentas
   views:
     pagination:
