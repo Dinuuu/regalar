@@ -12,7 +12,8 @@ module OrganizationsCreationHelper
           description: Faker::Lorem.paragraph(15),
           locality: Faker::Address.city,
           user_ids: User.all.pluck(:id).sample(rand(1..User.count)),
-          email: Faker::Internet.email
+          email: Faker::Internet.email,
+          remote_logo_url: 'https://civicrm.org/civicrm/contact/imagefile?photo=logo4fb_b89280142d836e742f5d7fcff2aa3809.png'
         )
       end
 

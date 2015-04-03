@@ -3,7 +3,7 @@ class OrganizationsController < ApplicationController
 
   before_action :authenticate_user!, except: [:index, :show]
 
-  FIELDS = [:name, :description, :locality, :email]
+  FIELDS = [:name, :description, :locality, :email, :logo]
 
   def list
     @organizations = current_user.organizations.page(params[:page] || 1)

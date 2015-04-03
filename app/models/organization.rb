@@ -3,9 +3,11 @@ class Organization < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :wish_items
   has_many :donations
-  validates :name, :description, :locality, :email, presence: true
+  validates :name, :description, :locality, :email, :logo, presence: true
   validates :email, format: { with: Devise.email_regexp }
   validates :email, uniqueness: { case_sensitive: false }
+
+  mount_uploader :logo, ImageUploader
 
   def pending_donations
     Donation.for_organization(self).pending
