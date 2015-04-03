@@ -17,16 +17,17 @@ module WishItemsCreationHelper
 
     def create_wish_item(time)
       wish_item = WishItem.create(
-        title: "Wish Item #{time}",
+        title: Faker::Commerce.product_name,
         reason: Faker::Lorem.paragraph,
         organization: Organization.all.sample,
-        priority: 'low',
-        quantity: 3,
+        priority: ['low', 'medium', 'high'].sample,
+        quantity: Faker::Number.number(2),
         description: Faker::Lorem.paragraph,
-        unit: 'kilos',
-        main_image: File.open(File.join(Rails.root, '/spec/fixtures/images/default_avatar.jpg'))
+        unit: ['kilos', 'liters', 'units'].sample,
+        remote_main_image_url: 'http://kevy.com/wp-content/uploads/2013/09/total-product-marketing.jpg'
 
       )
+      wish_item.quantity = 0 if (time % 3) == 0
       wish_item.save!
     end
 

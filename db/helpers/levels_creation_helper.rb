@@ -9,7 +9,7 @@ module LevelsCreationHelper
       0.upto(10) do |time|
         level = Level.create(
           level: time + 1,
-          title: Faker::Lorem.word,
+          title: Faker::Address.street_name,
           from: (time * 10),
           to: (time + 1) * 10
         )

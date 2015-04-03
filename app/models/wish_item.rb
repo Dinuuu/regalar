@@ -3,6 +3,7 @@ class WishItem < ActiveRecord::Base
   has_many :donations
   validates :title, :reason, :priority, :quantity,
             :description, :main_image, :unit, presence: true
+  validates :quantity, numericality: { greater_than_or_equal_to: 0 }
 
   mount_uploader :main_image, ImageUploader
 

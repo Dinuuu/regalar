@@ -8,8 +8,8 @@ module OrganizationsCreationHelper
 
       1.upto(times) do |time|
         organization = Organization.create(
-          name: "Organization #{time}",
-          description: Faker::Lorem.sentence,
+          name: Faker::Company.name,
+          description: Faker::Lorem.paragraph(15),
           locality: Faker::Address.city,
           user_ids: User.all.pluck(:id).sample(rand(1..User.count)),
           email: Faker::Internet.email

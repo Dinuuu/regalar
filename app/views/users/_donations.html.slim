@@ -8,10 +8,11 @@
         = link_to o[:organization].name, o[:organization]
       .col-sm-offset-1
           - o[:donations].each do |d|
-            = d.wish_item.title
-            = ' '
-            = d.quantity
-            = ' '
-            = d.wish_item.unit
-            .pull-right.span.label.label-default
-              = d.created_at.to_s(:short)
+            .row
+              = d.wish_item.title
+              = ' '
+              = d.quantity
+              = ' '
+              = d.wish_item.unit
+              .pull-right.span.label.label-default
+                = d.created_at.to_s(:short)
