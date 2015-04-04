@@ -30,9 +30,11 @@ nav.navbar.navbar-default
 
       form.navbar-form.navbar-left role="search" 
         .form-group
-          = search_field_tag 'query', nil, class: 'form-control', placeholder: t('application.header.search')
-          button.btn.btn-default aria-label=("Left Align") type="submit"
-            span.glyphicon.glyphicon-search aria-hidden="true" 
+          = form_tag url_for(:controller => 'wish_items', :action => 'list'), :method => 'get' do 
+            = search_field_tag 'query', nil, class: 'form-control', placeholder: t('application.header.search')
+            button.btn.btn-default aria-label=("Left Align") type="submit"
+              span.glyphicon.glyphicon-search aria-hidden="true" 
+          
 
       ul.nav.navbar-nav
         li

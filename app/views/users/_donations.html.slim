@@ -9,10 +9,11 @@
       .col-sm-offset-1
           - o[:donations].each do |d|
             .row
-              = d.wish_item.title
-              = ' '
-              = d.quantity
-              = ' '
-              = d.wish_item.unit
+              .col-md-6
+                = link_to d.wish_item.title.truncate(32), organization_wish_item_path(id: d.wish_item.id, organization_id: d.wish_item.organization.id)
+              .col-md-4
+                = d.quantity
+                = ' '
+                = t("helpers.wish_item.#{d.wish_item.unit}")
               .pull-right.span.label.label-default
                 = d.created_at.to_s(:short)

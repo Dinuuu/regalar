@@ -95,11 +95,9 @@ en:
       awaiting_mp_response: "Awaiting MercadoPago confirmation"
       na: "NA"
   users:
-    donations: My donations
-    organizations: My Organizations
-    campaigns: My Campaigns
+    donations: Donations
+    organizations: Organizations
     profile: My Profile
-    contributions: My Contributions
     link_accounts: Link accounts
   date:
     abbr_day_names:

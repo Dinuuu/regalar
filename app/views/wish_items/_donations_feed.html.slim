@@ -1,4 +1,4 @@
-.row.col-md-4
+.col-md-5
   .detailBox.text-center
     .titleBox
       label 
@@ -14,7 +14,7 @@
                   = image_tag('default_avatar.jpg', height: 150, width: 150, class: "img-thumbnail img-profile")
 
               .commentText
-                = d.user.first_name
+                = link_to d.user.first_name, d.user
                 = t('helpers.wish_item.gifted')
                 = d.quantity 
                 = ' '
