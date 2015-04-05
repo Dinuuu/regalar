@@ -1,8 +1,4 @@
 = render 'info', organization: @organization
-.main-name
-  - if policy(@organization).update?
-    = link_to t('helpers.submit.organization.edit'), edit_organization_path(@organization),
-                class: 'btn btn-primary btn-violet'
 
 = render 'tabs', organization: @organization
 
