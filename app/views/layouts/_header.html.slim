@@ -28,13 +28,12 @@ nav.navbar.navbar-default
             li
               a href="#"  One more separated link
 
-      form.navbar-form.navbar-left role="search" 
+      .navbar-form.navbar-left
         .form-group
-          = form_tag url_for(:controller => 'wish_items', :action => 'list'), :method => 'get' do 
-            = search_field_tag 'query', nil, class: 'form-control', placeholder: t('application.header.search')
+          = form_tag list_wish_items_path, method: 'get' do
+            = text_field_tag 'query', params[:query], class: 'form-control', placeholder: t('application.header.search')
             button.btn.btn-default aria-label=("Left Align") type="submit"
               span.glyphicon.glyphicon-search aria-hidden="true" 
-          
 
       ul.nav.navbar-nav
         li
