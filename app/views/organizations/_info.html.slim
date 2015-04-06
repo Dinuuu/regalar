@@ -1,9 +1,19 @@
-.row
-  .main-name
-    = link_to @organization.name, @organization
-    h4
-		i.fa.fa-map-marker
-        = @organization.locality
-    h6
-      = @organization.description
-    
+.main-name
+	.row
+		.col-md-8.col-md-offset-2
+		    - if @organization.logo.present?
+		      = image_tag(@organization.logo_url, class: "img-organization img-thumbnail")
+		    - else
+		      = image_tag('default_avatar.jpg', class: "img-organization img-thumbnail")
+		    h3
+		    	= link_to @organization.name, @organization
+			
+	.row
+		.col-md-8.col-md-offset-2
+			h6
+				= @organization.description
+			h4
+				i.fa.fa-map-marker
+			    = @organization.locality
+	- if policy(@organization).update?
+		= link_to t('helpers.submit.organization.edit'), edit_organization_path(@organization), class: 'btn btn-primary btn-violet'
