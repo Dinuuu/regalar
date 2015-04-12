@@ -88,7 +88,7 @@ Regalar::Application.routes.draw do
     collection do
       get :list
     end
- end
+  end
  
   # Mails Preview Routes
 

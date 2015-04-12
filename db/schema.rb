@@ -75,6 +75,23 @@ ActiveRecord::Schema.define(version: 20150419214221) do
   add_index "donations", ["user_id"], name: "index_donations_on_user_id", using: :btree
   add_index "donations", ["wish_item_id"], name: "index_donations_on_wish_item_id", using: :btree
 
+  create_table "gift_items", force: true do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.integer  "quantity"
+    t.string   "unit"
+    t.text     "description"
+    t.boolean  "active",      default: true
+    t.string   "used_time"
+    t.string   "measures"
+    t.string   "weight"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "gift_items", ["user_id"], name: "index_gift_items_on_user_id", using: :btree
+
   create_table "identities", force: true do |t|
     t.string   "provider"
     t.string   "uid"
