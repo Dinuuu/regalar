@@ -42,7 +42,6 @@ describe Organization do
     context 'when user belongs to organization' do
       before :each do
         organization.users << user
-        organization.save!
       end
       let!(:wish_item) { create :wish_item, organization: organization, quantity: 10 }
       let!(:wish_item2) { create :wish_item, organization: organization2, quantity: 10 }

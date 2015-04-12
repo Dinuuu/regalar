@@ -13,7 +13,6 @@ describe OrganizationDonationsController do
       context 'when user belongs to organization of donation' do
         before :each do
           organization.users << user
-          organization.save!
         end
         context 'when wish_item is bigger than donation' do
           let!(:wish_item) { create :wish_item, organization: organization, quantity: 4 }
@@ -21,37 +20,15 @@ describe OrganizationDonationsController do
             create :donation, wish_item: wish_item, user: user,
                               organization: organization, quantity: 2
           end
-          it 'decrements quant of wish_item by quant of donation' do
+          it 'increments obtained of wish_item by quant of donation' do
             (expect do
               put :confirm, organization_id: organization.id, id: donation.id
-            end).to change { wish_item.reload.quantity }.by(-donation.quantity)
+            end).to change { wish_item.reload.obtained }.by(donation.quantity)
           end
-          it 'sets done of donation to true' do
+          it 'Does not modify quantity of wish_item' do
             (expect do
               put :confirm, organization_id: organization.id, id: donation.id
-            end).to change { donation.reload.done }.to(true)
-          end
-          it 'redirects to wish_item' do
-            put :confirm, organization_id: organization.id, id: donation.id
-            expect(response)
-              .to redirect_to "/organizations/#{organization.id}/wish_items/#{wish_item.id}"
-          end
-          it 'sends an email' do
-            (expect do
-              put :confirm, organization_id: organization.id, id: donation.id
-            end).to change { ActionMailer::Base.deliveries.count }.by(1)
-          end
-        end
-        context 'When donation is bigger than wish_item' do
-          let!(:wish_item) { create :wish_item, organization: organization, quantity: 2 }
-          let!(:donation) do
-            create :donation, wish_item: wish_item, user: user,
-                              organization: organization, quantity: 4
-          end
-          it 'decrements quant of wish_item by quant of donation' do
-            (expect do
-              put :confirm, organization_id: organization.id, id: donation.id
-            end).to change { wish_item.reload.quantity }.to(0)
+            end).not_to change { wish_item.reload.quantity }
           end
           it 'sets done of donation to true' do
             (expect do
@@ -131,7 +108,6 @@ describe OrganizationDonationsController do
       context 'when user belongs to organization of donation' do
         before :each do
           organization.users << user
-          organization.save!
         end
         let!(:wish_item) { create :wish_item, organization: organization }
         let!(:donation) do
@@ -209,7 +185,6 @@ describe OrganizationDonationsController do
       context 'when user belongs to organization of donation' do
         before :each do
           organization.users << user
-          organization.save!
         end
         let!(:wish_item) { create :wish_item, organization: organization }
         let!(:donation) do
@@ -289,7 +264,6 @@ describe OrganizationDonationsController do
       context 'when user belongs to organization' do
         before :each do
           organization.users << user
-          organization.save!
         end
         let!(:wish_item) { create :wish_item, organization: organization, quantity: 10 }
         let!(:wish_item2) { create :wish_item, organization: organization2, quantity: 10 }
