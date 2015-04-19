@@ -73,6 +73,8 @@ es:
       description: 'Descripción: '
       priority: 'Prioridad'
       quantity: 'Cantidad'
+      obteined_quantity: 'Cantidad obtenida: '
+      of: ' de '
       select_units: 'Seleccionar unidad'
       units: 'Unidades'
       kilos: 'Kilos'

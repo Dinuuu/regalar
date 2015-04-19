@@ -68,6 +68,8 @@ en:
         description: 'Description: '
         priority: 'Priority'
         quantity: 'Quantity'
+        obteined_quantity: 'Obtained quantity: '
+        of: ' of '
         select_units: 'Select units'
         units: 'Units'
         kilos: 'Kilos'
