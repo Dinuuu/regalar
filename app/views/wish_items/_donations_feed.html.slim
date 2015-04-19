@@ -11,7 +11,7 @@
                 - if d.user.avatar.present?
                   = image_tag(d.user.avatar_url, height: 150, width: 150, class: "img-thumbnail img-profile")
                 - else
-                  = image_tag('default_avatar.jpg', height: 150, width: 150, class: "img-thumbnail img-profile")
+                  = image_tag('default_avatar.png', height: 150, width: 150, class: "img-thumbnail img-profile")
 
               .commentText
                 = link_to d.user.first_name, d.user

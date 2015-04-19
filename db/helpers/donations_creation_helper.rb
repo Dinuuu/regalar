@@ -24,7 +24,7 @@ module DonationsCreationHelper
           quantity: Faker::Number.number(2),
           done: [true, false].sample,
         )
-        done = true if wish_item.pending_donation(donation.user).present?
+        donation.done = true if wish_item.pending_donation(donation.user).present?
         donation.save!
       end
     end

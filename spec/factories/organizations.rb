@@ -7,6 +7,6 @@ FactoryGirl.define do
     locality { Faker::Address.city }
     email { Faker::Internet.email }
     logo Rack::Test::UploadedFile.new(
-    File.open(File.join(Rails.root, '/spec/fixtures/images/default_avatar.jpg')))
+    File.open(File.join(Rails.root, '/spec/fixtures/images/default_org.png')))
   end
 end
