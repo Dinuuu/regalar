@@ -6,8 +6,16 @@ class Organization < ActiveRecord::Base
   validates :name, :description, :locality, :email, :logo, presence: true
   validates :email, format: { with: Devise.email_regexp }
   validates :email, uniqueness: { case_sensitive: false }
-
+  validate :uri_format, if: proc { website.present? }
   mount_uploader :logo, ImageUploader
+
+  def uri_format
+    uri = URI.parse(website)
+    errors.add(:website, 'invalid website') unless
+      %w( http https ).include?(uri.scheme)
+  rescue StandardError
+    errors.add(:website, 'invalid website')
+  end
 
   def pending_donations
     Donation.for_organization(self).pending

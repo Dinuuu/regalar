@@ -8,5 +8,6 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     logo Rack::Test::UploadedFile.new(
     File.open(File.join(Rails.root, '/spec/fixtures/images/default_org.png')))
+    website { Faker::Internet.url }
   end
 end
