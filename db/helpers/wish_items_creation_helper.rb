@@ -16,7 +16,7 @@ module WishItemsCreationHelper
     private
 
     def create_wish_item(time)
-      wish_item = WishItem.create(
+      wish_item = WishItem.new(
         title: Faker::Commerce.product_name,
         reason: Faker::Lorem.paragraph,
         organization: Organization.all.sample,
@@ -24,7 +24,7 @@ module WishItemsCreationHelper
         quantity: Faker::Number.number(2),
         description: Faker::Lorem.paragraph,
         unit: ['kilos', 'liters', 'units'].sample,
-        remote_main_image_url: 'http://kevy.com/wp-content/uploads/2013/09/total-product-marketing.jpg'
+        main_image: Rails.root.join('app/assets/images/default_pic.png').open
 
       )
       wish_item.quantity = 0 if (time % 3) == 0

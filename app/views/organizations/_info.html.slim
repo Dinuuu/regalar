@@ -4,7 +4,7 @@
 		    - if @organization.logo.present?
 		      = image_tag(@organization.logo_url, class: "img-organization img-thumbnail")
 		    - else
-		      = image_tag('default_avatar.jpg', class: "img-organization img-thumbnail")
+		      = image_tag('default_org.png', class: "img-organization img-thumbnail")
 		    h3
 		    	= link_to @organization.name, @organization
 			

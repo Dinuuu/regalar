@@ -17,14 +17,14 @@ module DonationsCreationHelper
 
     def create_donation_for_wish_item(wish_item)
         1.upto((3..10).to_a.sample) do
-        donation = Donation.create(
+        donation = Donation.new(
           user: User.all.sample,
           organization: wish_item.organization,
           wish_item: wish_item,
-          quantity: Faker::Number.number(2),
+          quantity: Faker::Number.number(2).to_i + 1,
           done: [true, false].sample,
         )
-        done = true if wish_item.pending_donation(donation.user).present?
+        donation.done = true if wish_item.pending_donation(donation.user).present?
         donation.save!
       end
     end

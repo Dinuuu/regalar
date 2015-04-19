@@ -20,10 +20,10 @@
           .row
             - organization.trending_wish_items.each do |item|
               .col-sm-6.col-md-4
-                = link_to item.title.truncate(14), organization_wish_item_path(organization, item)
+                = link_to item.title.truncate(10), organization_wish_item_path(organization, item)
                 - if item.main_image.present?
                   = image_tag(item.main_image, class: "img-wishlist")
                 - else
-                  = image_tag('default_avatar.jpg', class: "img-wishlist")
+                  = image_tag('default_pic.png', class: "img-wishlist")
 #pagination
   = paginate organizations

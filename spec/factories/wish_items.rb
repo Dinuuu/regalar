@@ -7,6 +7,6 @@ FactoryGirl.define do
     priority 'medium'
     unit 'liters'
     main_image Rack::Test::UploadedFile.new(
-    File.open(File.join(Rails.root, '/spec/fixtures/images/default_avatar.jpg')))
+    File.open(File.join(Rails.root, '/spec/fixtures/images/default_pic.png')))
   end
 end
