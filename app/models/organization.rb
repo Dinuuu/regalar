@@ -26,6 +26,6 @@ class Organization < ActiveRecord::Base
   end
 
   def trending_wish_items
-    WishItem.for_organization(self).not_finished.last(3)
+    WishItem.for_organization(self).goal_not_reached.last(3)
   end
 end

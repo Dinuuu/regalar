@@ -171,6 +171,7 @@ ActiveRecord::Schema.define(version: 20150426202741) do
     t.integer  "obtained",        default: 0,    null: false
     t.string   "measures"
     t.string   "weight"
+    t.datetime "finish_date"
   end
 
   add_index "wish_items", ["organization_id"], name: "index_wish_items_on_organization_id", using: :btree

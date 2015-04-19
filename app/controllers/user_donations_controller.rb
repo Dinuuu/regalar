@@ -6,6 +6,7 @@ class UserDonationsController < ApplicationController
   before_action :authenticate_user!, except: [:confirmed]
   before_action :check_ownership, only: [:destroy]
   before_action :cancelable, only: [:destroy]
+  before_action :check_finish_date, only: [:create]
   FIELDS = [:user_id, :wish_item_id, :quantity, :organization_id]
 
   def create
@@ -30,6 +31,10 @@ class UserDonationsController < ApplicationController
   end
 
   private
+
+  def check_finish_date
+    WishItem.find(params[:id]).finished?
+  end
 
   def send_creation_mail(wish_item)
     UserMailer.create_donation_email_to_org(current_user,
