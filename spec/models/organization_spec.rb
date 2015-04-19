@@ -31,6 +31,11 @@ describe Organization do
         expect(organization.valid?).to be false
         expect(organization.errors[:logo]).not_to be_nil
       end
+      it 'validates the website' do
+        organization.website = 'InvalidWebsite'
+        expect(organization.valid?).to be false
+        expect(organization.errors[:website]).not_to be_nil
+      end
     end
     context 'Creating a valid organization' do
       it 'creates the organization' do

@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 20150419214221) do
     t.datetime "updated_at"
     t.string   "email"
     t.string   "logo"
+    t.string   "website"
   end
 
   create_table "organizations_users", id: false, force: true do |t|
@@ -150,6 +151,8 @@ ActiveRecord::Schema.define(version: 20150419214221) do
     t.string   "main_image"
     t.boolean  "active",          default: true
     t.integer  "obtained",        default: 0,    null: false
+    t.string   "measures"
+    t.string   "weight"
   end
 
   add_index "wish_items", ["organization_id"], name: "index_wish_items_on_organization_id", using: :btree
