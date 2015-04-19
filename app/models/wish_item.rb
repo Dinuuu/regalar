@@ -1,9 +1,9 @@
 class WishItem < ActiveRecord::Base
   belongs_to :organization
   has_many :donations
-  validates :title, :reason, :priority, :quantity,
+  validates :title, :reason, :priority, :quantity, :obtained,
             :description, :main_image, :unit, presence: true
-  validates :quantity, numericality: { greater_than_or_equal_to: 0 }
+  validates :quantity, :obtained, numericality: { greater_than_or_equal_to: 0 }
 
   mount_uploader :main_image, ImageUploader
 
@@ -23,9 +23,16 @@ class WishItem < ActiveRecord::Base
     WishItem.not_finished.last(4)
   end
 
-  def self.search(search)
-    search_condition = '%' + search.downcase + '%'
-    find(:all, conditions:
-         ['lower(title) LIKE ? OR lower(description) LIKE ?', search_condition, search_condition])
+  def self.search(search_condition)
+    where('lower(title) LIKE ? OR lower(description) LIKE ?',
+          "%#{search_condition.downcase}%", "%#{search_condition.downcase}%")
+  end
+
+  def stop
+    update_attributes!(active: false)
+  end
+
+  def resume
+    update_attributes!(active: true)
   end
 end

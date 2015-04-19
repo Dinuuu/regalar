@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe WishItemsController do
   let!(:organization) { create(:organization) }
-  let!(:user) { create(:user, organizations: [organization]) }
+  let!(:user) { create(:user) }
   let!(:user2) { create(:user) }
   describe '#create' do
     context 'When creating a wish item while logged ' do
@@ -10,17 +10,29 @@ describe WishItemsController do
         sign_in user
         user.reload
       end
-      it 'changes the count of wish items' do
-        (expect do
-          post :create, organization_id: organization.id,
-                        wish_item: attributes_for(:wish_item, organization_id: organization.id)
-        end).to change(WishItem, :count).by(1)
+      context 'When user belongs to organization' do
+        before :each do
+          organization.users << user
+        end
+        it 'changes the count of wish items' do
+          (expect do
+            post :create, organization_id: organization.id,
+                          wish_item: attributes_for(:wish_item, organization_id: organization.id)
+          end).to change(WishItem, :count).by(1)
+        end
+        it 'add a wish item to the organization' do
+          (expect do
+            post :create, organization_id: organization.id,
+                          wish_item: attributes_for(:wish_item, organization_id: organization.id)
+          end).to change(organization.wish_items, :count).by(1)
+        end
       end
-      it 'add a wish item to the organization' do
-        (expect do
+      context 'When user does not belong to organization' do
+        it 'returns status forbidden' do
           post :create, organization_id: organization.id,
                         wish_item: attributes_for(:wish_item, organization_id: organization.id)
-        end).to change(organization.wish_items, :count).by(1)
+          expect(response.status).to eq 403
+        end
       end
     end
 
@@ -48,13 +60,24 @@ describe WishItemsController do
         sign_in user
         user.reload
       end
-      it 'changes the count of wish items' do
-        expect { delete :destroy, organization_id: organization.id, id: wish_item.id }
-          .to change(WishItem, :count).by(-1)
+      context 'When user belongs to organization' do
+        before :each do
+          organization.users << user
+        end
+        it 'changes the count of wish items' do
+          expect { delete :destroy, organization_id: organization.id, id: wish_item.id }
+            .to change(WishItem, :count).by(-1)
+        end
+        it 'add a wish item to the organization' do
+          expect { delete :destroy, organization_id: organization.id, id: wish_item.id }
+            .to change(organization.wish_items, :count).by(-1)
+        end
       end
-      it 'add a wish item to the organization' do
-        expect { delete :destroy, organization_id: organization.id, id: wish_item.id }
-          .to change(organization.wish_items, :count).by(-1)
+      context 'When user does not belong to organization' do
+        it 'returns status forbidden' do
+          delete :destroy, organization_id: organization.id, id: wish_item.id
+          expect(response.status).to eq 403
+        end
       end
     end
 
@@ -152,6 +175,72 @@ describe WishItemsController do
       it 'renders list template' do
         get :list, query: nil
         expect(response).to render_template(:list)
+      end
+    end
+  end
+
+  describe '#stop' do
+    let!(:wish_item) { create(:wish_item, organization_id: organization.id) }
+    context 'When stopping a wish item while logged ' do
+      before(:each) do
+        sign_in user
+        user.reload
+      end
+      context 'When user belongs to organization' do
+        before :each do
+          organization.users << user
+        end
+        it 'redirects to wish_item' do
+          post :stop, organization_id: organization.id, id: wish_item.id
+          expect(response)
+            .to redirect_to "/organizations/#{organization.id}/wish_items/#{wish_item.id}"
+        end
+      end
+      context 'When user does not belong to organization' do
+        it 'returns status forbidden' do
+          post :stop, organization_id: organization.id, id: wish_item.id
+          expect(response.status).to eq 403
+        end
+      end
+    end
+
+    context 'When trying to stop a wish item while not logged' do
+      it 'should render login page' do
+        post :stop, organization_id: organization.id, id: wish_item.id
+        expect(response).to redirect_to '/users/sign_in'
+      end
+    end
+  end
+
+  describe '#resume' do
+    let!(:wish_item) { create(:wish_item, organization_id: organization.id) }
+    context 'When resuming a wish item while logged ' do
+      before(:each) do
+        sign_in user
+        user.reload
+      end
+      context 'When user belongs to organization' do
+        before :each do
+          organization.users << user
+        end
+        it 'redirects to wish_item' do
+          post :resume, organization_id: organization.id, id: wish_item.id
+          expect(response)
+            .to redirect_to "/organizations/#{organization.id}/wish_items/#{wish_item.id}"
+        end
+      end
+      context 'When user does not belong to organization' do
+        it 'returns status forbidden' do
+          post :resume, organization_id: organization.id, id: wish_item.id
+          expect(response.status).to eq 403
+        end
+      end
+    end
+
+    context 'When trying to resume a wish item while not logged' do
+      it 'should render login page' do
+        post :resume, organization_id: organization.id, id: wish_item.id
+        expect(response).to redirect_to '/users/sign_in'
       end
     end
   end

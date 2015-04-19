@@ -26,6 +26,8 @@ Regalar::Application.routes.draw do
 
     resources :wish_items do
       member do
+        post :stop
+        post :resume
         resources :donations, controller: 'user_donations', only: [:new, :create]
       end
       resources :donations, controller: 'user_donations', only: [:show]
