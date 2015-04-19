@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411225504) do
+ActiveRecord::Schema.define(version: 20150419214221) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -149,7 +149,7 @@ ActiveRecord::Schema.define(version: 20150411225504) do
     t.string   "unit"
     t.string   "main_image"
     t.boolean  "active",          default: true
-    t.integer  "obtained"
+    t.integer  "obtained",        default: 0,    null: false
   end
 
   add_index "wish_items", ["organization_id"], name: "index_wish_items_on_organization_id", using: :btree
