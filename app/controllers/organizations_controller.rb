@@ -22,6 +22,11 @@ class OrganizationsController < ApplicationController
     index! { @organizations = @organizations.page(params[:page] || 1) }
   end
 
+  def show
+    @comment = Comment.new(commentable: Organization.find(params[:id]))
+    show!
+  end
+
   private
 
   def resource_params

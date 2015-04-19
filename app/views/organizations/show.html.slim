@@ -8,7 +8,5 @@
       = Comment.model_name.human(count: 2)
     - @organization.comments.each do |comment|
       = render 'comments/comment_card', comment: comment
-p
-  = link_to t('helpers.submit.comment.new'), new_organization_comment_path(@organization),
-            class: 'btn btn-primary btn-violet'
-
+      
+= render 'comments/new', comment: @comment, url: organization_comments_path(@organization)
