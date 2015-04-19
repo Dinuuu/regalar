@@ -1,8 +1,9 @@
 es:
-  faker:
-    status: [Disponible, Verificando, Regalado]
   home:
-    slogan: REGALAR EL LUGAR DONDE DONAR Y RECIBIR
+    slogan: REGALAR ES EL LUGAR DONDE DONAR Y RECIBIR
+    join_us: Únete para hacer regalos a aquellos que más lo necesitan
+    organization: Si sos una organizaión en busca de un regalo haz
+    here: clik aquí
   save: Guardar
   application:
     title: Regalar
@@ -62,6 +63,8 @@ es:
         done_edit_password: "Actualizar"
         done_edit_user: "Actualizar"
         view: "Ver perfil"
+      gift_item:
+        new: Hacer un regalo
     wish_item:
       create: "Crear Deseo"
       new: "Nuevo Deseo"

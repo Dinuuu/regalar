@@ -1,6 +1,17 @@
 #title
-	.h1
-  		= t('home.slogan')
+	.col-md-2.col-md-offset-2.slogan
+		= image_tag('default_pic.png', class: 'photo')
+	.col-md-6.slogan
+		.h1
+	  		= t('home.slogan')
+	  	.h2
+			= t('home.join_us')
+		= link_to t('helpers.submit.gift_item.new'), new_user_gift_item_path(current_user), class: 'btn btn-primary btn-lg call-to-action'
+		.h4
+			= t('home.organization')
+			= ' '
+			= link_to t('home.here'), list_wish_items_path
+
 legend
     = t('helpers.wish_item.featured')
 #campaigns-cards

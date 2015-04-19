@@ -189,18 +189,34 @@ a.btn-danger:link {color: #FFFFFF}
     ),
   url(home.jpg);
   background-size: cover;
-  height: 80vh;
+  height: 500px;
   margin-left: -150px;
   width: 125%;
   margin-top: -97px;
   margin-bottom: 30px;
 
   .h1{
-  color: white;
-  text-transform: uppercase;
-  font-size: 40px;
-  white-space: nowrap;
-  padding: 200px;
+    color: white;
+    text-transform: uppercase;
+    font-size: 40px;
+  }
+  .h2{
+    color: white;
+  }
+  .h4{
+    color: white;  
+  }
+  .slogan{
+    padding-top: 150px;
+    padding-left: 100px;
+  }
+  .call-to-action{
+    padding: 20px;
+    width: 275px;
+  }
+  .photo{
+    margin-top: 20px;
+    height: 150px
   }
    
 }
