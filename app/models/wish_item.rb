@@ -1,6 +1,7 @@
 class WishItem < ActiveRecord::Base
   belongs_to :organization
   has_many :donations
+  has_many :comments, as: :commentable
   validates :title, :reason, :priority, :quantity, :obtained,
             :description, :main_image, :unit, presence: true
   validates :quantity, :obtained, numericality: { greater_than_or_equal_to: 0 }

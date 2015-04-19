@@ -30,6 +30,7 @@ Regalar::Application.routes.draw do
         post :resume
         resources :donations, controller: 'user_donations', only: [:new, :create]
       end
+      resources :comments, except: [:edit, :update]
       resources :donations, controller: 'user_donations', only: [:show]
     end
 
@@ -40,22 +41,7 @@ Regalar::Application.routes.draw do
 
     resources :comments, except: [:edit, :update]
 
-    resources :campaigns do
-      resources :milestones do
-        member do
-          get :achieve
-          patch :confirm_achieved
-        end
-      end
-      resources :contributions do
-        collection do
-          get :landing
-          post :anonymous
-        end
-      end
-      resources :comments, except: [:edit, :update]
-    end
-
+    
     # OrganizationDonations Routes
     resources :donations, controller: 'organization_donations', only: [:show, :index] do
       member do
