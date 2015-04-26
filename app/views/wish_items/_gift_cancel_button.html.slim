@@ -1,0 +1,14 @@
+- if current_user.present?
+	- pending_donation = wish_item.pending_donation(current_user)
+- unless wish_item.gifted?
+    - if pending_donation.present?
+		= link_to t('gift.cancel'), cancel_donation_path(pending_donation), class: 'btn btn-danger', method: "delete"
+	
+	- elsif wish_item.active?
+		= link_to t('wish_items.gift'), '#',
+		  class: 'btn btn-success glyphicon glyphicon-gift',
+		  data: { toggle: 'modal', target: '#gift-modal' }
+	- else
+		  = link_to t('wish_items.gift'), '#',
+                 class: 'btn btn-default disabled',
+                  data: {disabled: 'disabled'}

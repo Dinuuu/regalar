@@ -33,53 +33,17 @@
 
 		p
 			- pending_donation = @wish_item.pending_donation(current_user)
-			- if @wish_item.quantity == 0
+			- if @wish_item.gifted?
 				span.label.label-danger
 					= t('wish_items.status.gifted')
-				p
-					.h5
-						= t('helpers.wish_item.description')
-					= @wish_item.description
-				p
-					.h5
-						= t('helpers.wish_item.reason')
-					= @wish_item.reason
-				= link_to t('wish_items.gift'), '#',
-				     class: 'btn btn-default disabled',
-				      data: {disabled: 'disabled'}
-
+			
 			- elsif pending_donation.present?
 				span.label.label-warning
 				       = t('wish_items.status.verifying')
-				p
-					.h5
-						= t('helpers.wish_item.description')
-					= @wish_item.description 
-				p
-					.h5
-						= t('helpers.wish_item.reason')
-					= @wish_item.reason
-				= link_to t('gift.cancel'), cancel_donation_path(pending_donation), 
-				class: 'btn btn-danger', method: "delete"
-			    
-			- else
-				.h5
-					= t('wish_items.quantity') 
-				= @wish_item.quantity
-				= ' '
-				= t("helpers.wish_item.#{@wish_item.unit}")
-				p
-					.h5
-						= t('helpers.wish_item.description')
-					= @wish_item.description
-				p
-					.h5
-						= t('helpers.wish_item.reason')
-				 	= @wish_item.reason
-
-				= link_to t('wish_items.gift'), '#',
-				      class: 'btn btn-success',
-				      data: { toggle: 'modal', target: '#gift-modal' }      
+				
+			= render 'wish_items/main_info', wish_item: @wish_item	
+			= render 'wish_items/gift_cancel_button', wish_item: @wish_item
+			= render 'wish_items/pause_and_resume', wish_item: @wish_item
 
 = render 'wish_items/gift_modal', wish_item: @wish_item
 = render 'wish_items/donations_feed', wish_item: @wish_item

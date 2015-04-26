@@ -15,15 +15,7 @@
           p.card-description
             = item.description.truncate(120)
           p
-            - if current_user.present?
-              - pending_donation = item.pending_donation(current_user)
-            
-            - unless item.quantity == 0
-              - if pending_donation.present?
-                = link_to t('gift.cancel'), cancel_donation_path(pending_donation), class: 'btn btn-danger', method: "delete"
-              - else
-                = link_to t('wish_items.gift'), '#',
-                  class: 'btn btn-success',
-                  data: { toggle: 'modal', target: '#gift-modal' }
+            =render 'wish_items/gift_cancel_button', wish_item: item
+            =render 'wish_items/pause_and_resume', wish_item: item
         
 = render 'wish_items/gift_modal', wish_item: item

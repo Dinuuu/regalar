@@ -89,13 +89,13 @@ describe WishItem do
     end
   end
 
-  describe '#stop' do
-    context 'when stopping an active wish_item' do
+  describe '#pause' do
+    context 'when pausing an active wish_item' do
       let!(:wish_item) do
         create :wish_item, active: true
       end
       before :each do
-        wish_item.stop
+        wish_item.pause
       end
       it 'sets active to false' do
         expect(wish_item.active).to be false
@@ -104,7 +104,7 @@ describe WishItem do
   end
 
   describe '#resume' do
-    context 'when resuming a stopped wish_item' do
+    context 'when resuming a paused wish_item' do
       let!(:wish_item) do
         create :wish_item, active: false
       end
