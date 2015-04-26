@@ -1,4 +1,5 @@
 class GiftItem < ActiveRecord::Base
+  has_many :comments, as: :commentable
   belongs_to :user
   validates :quantity, numericality: { greater_than: 0 }
   validates :given, numericality: { greater_than_or_equal_to: 0 }
@@ -6,7 +7,6 @@ class GiftItem < ActiveRecord::Base
   accepts_nested_attributes_for :gift_item_images
   validates :title, :quantity, :unit, :description, :used_time,
             :status, presence: true
-
   scope :for_user, -> (user) { where(user: user) }
 
   after_initialize :initialize_attributes
@@ -15,14 +15,14 @@ class GiftItem < ActiveRecord::Base
     where('lower(title) LIKE ? OR lower(description) LIKE ?',
           "%#{search_condition.downcase}%", "%#{search_condition.downcase}%")
   end
-  private
-
-  def initialize_attributes
-    self.given ||= 0
-  end
 
   def gifted?
     quantity < given
   end
 
+  private
+
+  def initialize_attributes
+    self.given ||= 0
+  end
 end

@@ -109,7 +109,7 @@ es:
       title: 'Título'
       description: 'Descripción: '
       quantity: 'Cantidad'
-      obteined_quantity: 'Cantidad obtenida: '
+      given_quantity: 'Cantidad obtenida: '
       of: ' de '
       select_units: 'Seleccionar unidad'
       units: 'Unidades'
@@ -128,6 +128,7 @@ es:
       regular: Regular
       measures: Medidas
       weight: Peso
+      size_mesage: Maximum Size 4 MB
     page_entries_info:
       one_page:
         display_entries:
@@ -140,6 +141,7 @@ es:
   organization_link: "Ir a la organización"
   users:
     donations: Donaciones
+    gifts: Regalos
     organizations: Organizaciones
     profile: Mi Perfil
     link_accounts: Vincular cuentas

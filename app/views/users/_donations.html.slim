@@ -1,19 +1,18 @@
-.col-md-6
-  - if donations.empty?
-    p
-      = t('application.no_results')
-  - else
-    - donations.each do |o|
-      h4
-        = link_to o[:organization].name, o[:organization]
-      .col-sm-offset-1
-          - o[:donations].each do |d|
-            .row
-              .col-md-6
-                = link_to d.wish_item.title.truncate(32), organization_wish_item_path(id: d.wish_item.id, organization_id: d.wish_item.organization.id)
-              .col-md-4
-                = d.quantity
-                = ' '
-                = t("helpers.wish_item.#{d.wish_item.unit}")
-              .pull-right.span.label.label-default
-                = d.created_at.to_s(:short)
+- if donations.empty?
+  p
+    = t('application.no_results')
+- else
+  - donations.each do |o|
+    h4
+      = link_to o[:organization].name, o[:organization]
+    .col-sm-offset-1
+        - o[:donations].each do |d|
+          .row
+            .col-md-6
+              = link_to d.wish_item.title.truncate(32), organization_wish_item_path(id: d.wish_item.id, organization_id: d.wish_item.organization.id)
+            .col-md-4
+              = d.quantity
+              = ' '
+              = t("helpers.wish_item.#{d.wish_item.unit}")
+            .pull-right.span.label.label-default
+              = d.created_at.to_s(:short)

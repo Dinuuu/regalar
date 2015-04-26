@@ -1,0 +1,19 @@
+.col-md-6
+  - if gifts.empty?
+    p
+      = t('application.no_results')
+  - else
+    - gifts.each do |g|
+      h4
+        = link_to g[:user].full_name, g[:user]
+      .col-sm-offset-1
+          - g[:gifts].each do |d|
+            .row
+              .col-md-6
+                = d.gift_item.title.truncate(32)
+              .col-md-4
+                = d.quantity
+                = ' '
+                = t("helpers.gift_item.#{d.gift_item.unit}")
+              .pull-right.span.label.label-default
+                = d.created_at.to_s(:short)

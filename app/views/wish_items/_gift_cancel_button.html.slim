@@ -1,14 +1,17 @@
-- if current_user.present?
+- if user_signed_in?
 	- pending_donation = wish_item.pending_donation(current_user)
-- unless wish_item.gifted?
-    - if pending_donation.present?
-		= link_to t('gift.cancel'), cancel_donation_path(pending_donation), class: 'btn btn-danger', method: "delete"
-	
-	- elsif wish_item.active?
-		= link_to t('wish_items.gift'), '#',
-		  class: 'btn btn-success glyphicon glyphicon-gift',
-		  data: { toggle: 'modal', target: '#gift-modal' }
-	- else
-		  = link_to t('wish_items.gift'), '#',
-                 class: 'btn btn-default disabled',
-                  data: {disabled: 'disabled'}
+	- unless wish_item.gifted?
+	    - if pending_donation.present?
+			= link_to t('gift.cancel'), cancel_donation_path(pending_donation), class: 'btn btn-danger', method: "delete"
+		
+		- elsif wish_item.active?
+			= link_to t('wish_items.gift'), '#',
+			  class: 'btn btn-success glyphicon glyphicon-gift',
+			  data: { toggle: 'modal', target: '#gift-modal' }
+		- else
+			  = link_to t('wish_items.gift'), '#',
+	                 class: 'btn btn-default disabled',
+	                  data: {disabled: 'disabled'}
+- else
+	= link_to t('wish_items.gift'), '#', class: 'btn btn-success glyphicon glyphicon-gift',
+                  data: { toggle: 'modal', target: '#login-modal' }

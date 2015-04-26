@@ -125,6 +125,7 @@ en:
         regular: Regular
         measures: Measures
         weight: Weight
+        size_mesage: Tamaño máximo 4 MB
   organizations: "Organizations"  
   organization-link: "Go to organization"
   purchase:
@@ -134,6 +135,7 @@ en:
       na: "NA"
   users:
     donations: Donations
+    gifts: Gifts
     organizations: Organizations
     profile: My Profile
     link_accounts: Link accounts
