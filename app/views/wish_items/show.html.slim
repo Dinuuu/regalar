@@ -13,74 +13,74 @@
 		br
 		br
 
-	div
-		div.col-md-4
-		  - if @wish_item.main_image.present?
-		    = image_tag(@wish_item.main_image, height: 150, width: 150, class: "img-thumbnail img-profile")
-		  - else
-		    = image_tag('default_pic.png', height: 150, width: 150, class: "img-thumbnail img-profile")
+	div.col-md-4
+	  	
+	  	- if @wish_item.main_image.present?
+	    	= image_tag(@wish_item.main_image, height: 150, width: 150, class: "img-thumbnail img-profile")
+	  	- else
+	    	= image_tag('default_pic.png', height: 150, width: 150, class: "img-thumbnail img-profile")
+		
+		.progress
+			.progress-bar.progress-bar-success aria-valuemax="100" aria-valuemin="0" aria-valuenow="45" role="progressbar" style= "width: #{@wish_item.obtained/@wish_item.quantity*100}%" data-toggle="tooltip" data-placement="bottom"
+		.h5
+			= t('helpers.wish_item.obteined_quantity')
+			= @wish_item.obtained
+			= t('helpers.wish_item.of')
+			= @wish_item.quantity
 
-		div.col-md-8
 
-			p
-				- pending_donation = @wish_item.pending_donation(current_user)
+	div.col-md-8
 
-				- if @wish_item.quantity == 0
-					span.label.label-danger
-						= t('wish_items.status.gifted')
-					p
-						.h5
-							= t('helpers.wish_item.description')
-						= @wish_item.description
-					p
-						.h5
-							= t('helpers.wish_item.reason')
-						= @wish_item.reason
-					= link_to t('wish_items.gift'), '#',
-					     class: 'btn btn-default disabled',
-					      data: {disabled: 'disabled'}
+		p
+			- pending_donation = @wish_item.pending_donation(current_user)
 
-				- elsif pending_donation.present?
-					span.label.label-warning
-					       = t('wish_items.status.verifying')
-					p
-						.h5
-							= t('helpers.wish_item.obteined_quantity')
-						= @wish_item.obtained
-						= t('helpers.wish_item.of')
-						= @wish_item.quantity
-						= ' '
-						= t("helpers.wish_item.#{@wish_item.unit}")
-					
-					p
-						.h5
-							= t('helpers.wish_item.description')
-						= @wish_item.description 
-					p
-						.h5
-							= t('helpers.wish_item.reason')
-						= @wish_item.reason
-					= link_to t('gift.cancel'), cancel_donation_path(pending_donation), 
-					class: 'btn btn-danger', method: "delete"
-				    
-				- else
+			- if @wish_item.quantity == 0
+				span.label.label-danger
+					= t('wish_items.status.gifted')
+				p
 					.h5
-						= t('wish_items.quantity') 
-					= @wish_item.quantity
-					= ' '
-					= t("helpers.wish_item.#{@wish_item.unit}")
-					p
-						.h5
-							= t('helpers.wish_item.description')
-						= @wish_item.description
-					p
-						.h5
-							= t('helpers.wish_item.reason')
-					 	= @wish_item.reason
+						= t('helpers.wish_item.description')
+					= @wish_item.description
+				p
+					.h5
+						= t('helpers.wish_item.reason')
+					= @wish_item.reason
+				= link_to t('wish_items.gift'), '#',
+				     class: 'btn btn-default disabled',
+				      data: {disabled: 'disabled'}
 
-					= link_to t('wish_items.gift'), '#',
-					      class: 'btn btn-success',
-					      data: { toggle: 'modal', target: '#gift-modal' }      
+			- elsif pending_donation.present?
+				span.label.label-warning
+				       = t('wish_items.status.verifying')
+				p
+					.h5
+						= t('helpers.wish_item.description')
+					= @wish_item.description 
+				p
+					.h5
+						= t('helpers.wish_item.reason')
+					= @wish_item.reason
+				= link_to t('gift.cancel'), cancel_donation_path(pending_donation), 
+				class: 'btn btn-danger', method: "delete"
+			    
+			- else
+				.h5
+					= t('wish_items.quantity') 
+				= @wish_item.quantity
+				= ' '
+				= t("helpers.wish_item.#{@wish_item.unit}")
+				p
+					.h5
+						= t('helpers.wish_item.description')
+					= @wish_item.description
+				p
+					.h5
+						= t('helpers.wish_item.reason')
+				 	= @wish_item.reason
+
+				= link_to t('wish_items.gift'), '#',
+				      class: 'btn btn-success',
+				      data: { toggle: 'modal', target: '#gift-modal' }      
 
 = render 'wish_items/gift_modal', wish_item: @wish_item
 = render 'wish_items/donations_feed', wish_item: @wish_item

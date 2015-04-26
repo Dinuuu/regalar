@@ -19,7 +19,6 @@
             = "#{user_level.title}"
       .col-sm-4.col-sm-offset-4
         .progress
-
           .progress-bar.progress-bar-striped.active aria-valuemax="#{user_level.to - user_level.from}" aria-valuemin="0" aria-valuenow="45" role="progressbar" style= "width: #{(confirmed_donations - user_level.from)/(user_level.to - user_level.from).to_f*100.0}%" 
             
     .btn-group
