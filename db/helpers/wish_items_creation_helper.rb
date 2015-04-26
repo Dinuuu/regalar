@@ -21,15 +21,14 @@ module WishItemsCreationHelper
         reason: Faker::Lorem.paragraph,
         organization: Organization.all.sample,
         priority: ['low', 'medium', 'high'].sample,
-        quantity: Faker::Number.number(2),
+        quantity: Faker::Number.number(2).to_i + 1,
         description: Faker::Lorem.paragraph,
         unit: ['kilos', 'liters', 'units'].sample,
         main_image: Rails.root.join('app/assets/images/default_pic.png').open,
         active: true,
         obtained: 0
       )
-      wish_item.quantity = 0 if (time % 3) == 0
-      wish_item.save!
+    wish_item.save
     end
 
   end

@@ -4,8 +4,8 @@ class WishItem < ActiveRecord::Base
   has_many :comments, as: :commentable
   validates :title, :reason, :priority, :quantity, :obtained,
             :description, :main_image, :unit, presence: true
-  validates :quantity, :obtained, numericality: { greater_than_or_equal_to: 0 }
-
+  validates :quantity, numericality: { greater_than: 0 }
+  validates :obtained,  numericality: { greater_than_or_equal_to: 0 }
   mount_uploader :main_image, ImageUploader
 
   scope :for_organization, -> (organization) { where(organization: organization) }

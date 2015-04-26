@@ -3,7 +3,7 @@ FactoryGirl.define do
     title { Faker::Commerce.product_name }
     reason { Faker::Lorem.paragraph }
     description { Faker::Lorem.paragraph }
-    quantity { Faker::Number.digit }
+    quantity { Faker::Number.digit.to_i + 1 }
     priority 'medium'
     unit 'liters'
     obtained 0
