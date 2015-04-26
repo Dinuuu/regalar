@@ -94,6 +94,7 @@ en:
         finished: Recived Gifts
         verifying: Verifying Gifts
         verifying_expl: These are the gifts that needs your confirmation. If the transaction has been completed successfully click Confirm. If you could not recive the gift click Reject.
+        paused: Paused Gifts
   organizations: "Organizations"  
   organization-link: "Go to organization"
   purchase:
@@ -341,6 +342,8 @@ en:
     continue: Continue
     confirm: Confirm
     reject: Reject
+    pause: Pause
+    resume: Resume
   wish_items:
     gift: Gift
     gifts: Gifts

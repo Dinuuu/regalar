@@ -2,7 +2,7 @@ class WishItemsController < OrganizationAuthenticationController
   inherit_resources
   belongs_to :organization
   before_action :authenticate_user!, except: [:index, :list]
-  before_action :chek_authentication_for_organization, only: [:create, :destroy, :stop, :resume]
+  before_action :chek_authentication_for_organization, only: [:create, :destroy, :pause, :resume]
 
   def index
     @wish_items = WishItem.for_organization(@organization)
@@ -21,9 +21,9 @@ class WishItemsController < OrganizationAuthenticationController
     @wish_items = params[:query].present? ? WishItem.search(params[:query]) : WishItem.all
   end
 
-  def stop
+  def pause
     @wish_item = WishItem.find(params[:id])
-    @wish_item.stop
+    @wish_item.pause
     redirect_to organization_wish_item_path(@wish_item.organization, @wish_item)
   end
 

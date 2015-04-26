@@ -179,9 +179,9 @@ describe WishItemsController do
     end
   end
 
-  describe '#stop' do
+  describe '#pause' do
     let!(:wish_item) { create(:wish_item, organization_id: organization.id) }
-    context 'When stopping a wish item while logged ' do
+    context 'When pausing a wish item while logged ' do
       before(:each) do
         sign_in user
         user.reload
@@ -191,22 +191,22 @@ describe WishItemsController do
           organization.users << user
         end
         it 'redirects to wish_item' do
-          post :stop, organization_id: organization.id, id: wish_item.id
+          post :pause, organization_id: organization.id, id: wish_item.id
           expect(response)
             .to redirect_to "/organizations/#{organization.id}/wish_items/#{wish_item.id}"
         end
       end
       context 'When user does not belong to organization' do
         it 'returns status forbidden' do
-          post :stop, organization_id: organization.id, id: wish_item.id
+          post :pause, organization_id: organization.id, id: wish_item.id
           expect(response.status).to eq 403
         end
       end
     end
 
-    context 'When trying to stop a wish item while not logged' do
+    context 'When trying to pause a wish item while not logged' do
       it 'should render login page' do
-        post :stop, organization_id: organization.id, id: wish_item.id
+        post :pause, organization_id: organization.id, id: wish_item.id
         expect(response).to redirect_to '/users/sign_in'
       end
     end

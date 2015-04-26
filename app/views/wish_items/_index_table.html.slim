@@ -28,7 +28,7 @@
             
             = link_to t('gift.cancel'), cancel_donation_path(pending_donation), class: 'btn btn-danger', method: "delete"
 
-          - elsif item.quantity == 0
+          - elsif item.gifted?
             h3
               = link_to item.title, organization_wish_item_path(id: item.id, organization_id: item.organization.id)
               small.gift-label

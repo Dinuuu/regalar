@@ -9,8 +9,10 @@ class WishItem < ActiveRecord::Base
   mount_uploader :main_image, ImageUploader
 
   scope :for_organization, -> (organization) { where(organization: organization) }
-  scope :finished, -> { where(quantity: 0) }
-  scope :not_finished, -> { where.not(quantity: 0) }
+  scope :finished, -> { where('quantity < obtained') }
+  scope :not_finished, -> { where.not('quantity < obtained') }
+  scope :not_paused, -> { where(active: true) }
+  scope :paused, -> { where.not(active: true) }
 
   def confirmed_donations
     Donation.for_wish_item(self).confirmed
@@ -29,11 +31,15 @@ class WishItem < ActiveRecord::Base
           "%#{search_condition.downcase}%", "%#{search_condition.downcase}%")
   end
 
-  def stop
+  def pause
     update_attributes!(active: false)
   end
 
   def resume
     update_attributes!(active: true)
+  end
+
+  def gifted?
+    quantity < obtained
   end
 end

@@ -9,10 +9,13 @@ ul.nav.nav-tabs.org-tabs data-tabs="tabs"
     li
       a data-toggle="tab" href="#verifying"
         = t('helpers.wish_list.verifying')
+    li
+      a data-toggle="tab" href="#paused"
+        = t('helpers.wish_list.paused')
  
 .tab-content
   #not-finished.tab-pane.active
-    = render 'wish_items/index_cards', wish_items: WishItem.for_organization(organization).not_finished
+    = render 'wish_items/index_cards', wish_items: WishItem.for_organization(organization).not_finished.not_paused
     - if policy(organization).update?
       .row
         .col-md-6
@@ -30,3 +33,7 @@ ul.nav.nav-tabs.org-tabs data-tabs="tabs"
       - if pending_donations.present?
         = t('helpers.wish_list.verifying_expl')
     = render 'organization_donations/index_cards', gifts: pending_donations
+
+  #paused.tab-pane
+    = render 'wish_items/index_cards', wish_items: WishItem.for_organization(organization).paused
+    
