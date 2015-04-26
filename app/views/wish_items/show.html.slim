@@ -33,7 +33,6 @@
 
 		p
 			- pending_donation = @wish_item.pending_donation(current_user)
-
 			- if @wish_item.quantity == 0
 				span.label.label-danger
 					= t('wish_items.status.gifted')

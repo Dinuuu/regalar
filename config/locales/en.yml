@@ -1,6 +1,9 @@
 en:
   home:
-    slogan: REGALAR THE PLACE TO DONATE AND RECIEVE
+    slogan: REGALAR IS THE PLACE TO MAKE AND RECIEVE GIFTS
+    join_us: Join us to make awsome gifts to those who need it most
+    organization: If you are an organization looking for a gift
+    here: click here 
   application:
     title: Regalar
     no_results: No results found
@@ -57,6 +60,8 @@ en:
         edit_password: "Edit Password"
         done_edit_password: "Update"
         done_edit_user: "Update"
+      gift_item:
+        new: Make a gift
       wish_item:
         create: "Create Wish Item"
         new: "New Wish Item"
