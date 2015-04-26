@@ -38,6 +38,7 @@ class WishItemsController < OrganizationAuthenticationController
   def resource_params
     return [] if request.get?
     [params.require(:wish_item).permit(:title, :reason, :description, :priority, :active,
-                                       :quantity, :obtained, :unit, :organization_id, :main_image)]
+                                       :quantity, :obtained, :unit, :organization_id, :main_image,
+                                       :finish_date)]
   end
 end

@@ -1,9 +1,9 @@
 ul.nav.nav-tabs.org-tabs data-tabs="tabs" 
   li.active
-    a data-toggle="tab" href="#not-finished"
+    a data-toggle="tab" href="#goal-not-reached"
       = t('helpers.wish_list.name')
   li
-    a data-toggle="tab" href="#finished"
+    a data-toggle="tab" href="#goal-reached"
       = t('helpers.wish_list.finished')
   - if policy(organization).update?
     li
@@ -14,8 +14,8 @@ ul.nav.nav-tabs.org-tabs data-tabs="tabs"
         = t('helpers.wish_list.paused')
  
 .tab-content
-  #not-finished.tab-pane.active
-    = render 'wish_items/index_cards', wish_items: WishItem.for_organization(organization).not_finished.not_paused
+  #goal-not-reached.tab-pane.active
+    = render 'wish_items/index_cards', wish_items: WishItem.for_organization(organization).goal_not_reached.not_paused
     - if policy(organization).update?
       .row
         .col-md-6
@@ -23,8 +23,8 @@ ul.nav.nav-tabs.org-tabs data-tabs="tabs"
             = link_to t('helpers.wish_item.new'), new_organization_wish_item_path(organization)   , class: 'btn btn-primary btn-violet'
   
 
-  #finished.tab-pane
-    = render 'wish_items/index_cards', wish_items: WishItem.for_organization(organization).finished
+  #goal-reached.tab-pane
+    = render 'wish_items/index_cards', wish_items: WishItem.for_organization(organization).goal_reached
   
 
   #verifying.tab-pane

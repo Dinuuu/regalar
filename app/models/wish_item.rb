@@ -9,10 +9,14 @@ class WishItem < ActiveRecord::Base
   mount_uploader :main_image, ImageUploader
 
   scope :for_organization, -> (organization) { where(organization: organization) }
-  scope :finished, -> { where('quantity < obtained') }
-  scope :not_finished, -> { where.not('quantity < obtained') }
+  scope :goal_reached, -> { where('quantity < obtained') }
+  scope :goal_not_reached, -> { where.not('quantity < obtained') }
+  scope :finished, -> { where('(?) >= finish_date', Time.current) }
+  scope :not_finished, -> { where('(?) < finish_date') }
   scope :not_paused, -> { where(active: true) }
   scope :paused, -> { where.not(active: true) }
+
+  validate :check_finish_date, if: proc { finish_date.present? && self.finish_date_changed? }
 
   def confirmed_donations
     Donation.for_wish_item(self).confirmed
@@ -41,5 +45,17 @@ class WishItem < ActiveRecord::Base
 
   def gifted?
     quantity < obtained
+  end
+
+  def finished?
+    return false unless finish_date.present?
+    finish_date < DateTime.current
+  end
+
+  private
+
+  def check_finish_date
+    return true if finish_date > DateTime.current
+    errors.add(:finish_date, 'it has to finish after now')
   end
 end
