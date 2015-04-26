@@ -7,10 +7,11 @@ class UserDonationsController < ApplicationController
   before_action :check_ownership, only: [:destroy]
   before_action :cancelable, only: [:destroy]
   before_action :check_finish_date, only: [:create]
+  before_action :check_active, only: [:create]
   FIELDS = [:user_id, :wish_item_id, :quantity, :organization_id]
 
   def create
-    @wish_item = WishItem.find(params[:id])
+    wish_item
     create! do |success, failure|
       success.html do
         send_creation_mail(@wish_item)
@@ -33,7 +34,19 @@ class UserDonationsController < ApplicationController
   private
 
   def check_finish_date
-    WishItem.find(params[:id]).finished?
+    return true unless wish_item.finished?
+    render status: :forbidden,
+           text: 'The request has already finished'
+  end
+
+  def check_active
+    return true if wish_item.active?
+    render status: :forbidden,
+           text: 'The request is paused'
+  end
+
+  def wish_item
+    @wish_item ||= WishItem.find(params[:id])
   end
 
   def send_creation_mail(wish_item)

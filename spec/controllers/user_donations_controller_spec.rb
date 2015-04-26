@@ -75,6 +75,23 @@ describe UserDonationsController do
           end).not_to change { ActionMailer::Base.deliveries.count }
         end
       end
+      context 'when trying to create a donation on a paused wish item' do
+        before :each do
+          wish_item.update_attributes!(active: false)
+        end
+        it 'does not increment the donations' do
+          (expect do
+            post :create, organization_id: organization.id,
+                          id: wish_item.id, donation: donation.attributes
+          end).not_to change { Donation.count }
+        end
+        it 'does not send an email' do
+          (expect do
+            post :create, organization_id: organization.id,
+                          id: wish_item.id, donation: donation.attributes
+          end).not_to change { ActionMailer::Base.deliveries.count }
+        end
+      end
     end
     context 'When creating a donation while unlogged ' do
       it 'does not increment the donations' do
