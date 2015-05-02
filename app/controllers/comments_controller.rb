@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
   def create
     build_resource.user = current_user
     create! do
-      parent_url
+      redirect_to :back && return
     end
   end
 

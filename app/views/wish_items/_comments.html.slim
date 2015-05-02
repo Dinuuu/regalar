@@ -1,0 +1,9 @@
+- if wish_item.comments.present?
+	.row
+	  .col-md-12
+	    legend
+	      = Comment.model_name.human(count: 2)
+	    - wish_item.comments.each do |comment|
+	      = render 'comments/comment_card', comment: comment
+
+= render 'comments/new', comment: @comment, url: organization_wish_item_comments_path(wish_item_id: wish_item.id, organization_id: wish_item.organization.id)
