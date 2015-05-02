@@ -18,6 +18,14 @@
     .col-md-4
       = f.text_area :description,  class: 'form-control col-md-2', required: true
   .form-group
+    = f.label :weight, t('helpers.wish_item.weight'),class: 'control-label col-sm-2'
+    .col-md-4
+      = f.text_field :weight,  class: 'form-control col-md-2'
+  .form-group
+    = f.label :measures, t('helpers.wish_item.measures'),class: 'control-label col-sm-2'
+    .col-md-4
+      = f.text_field :measures,  class: 'form-control col-md-2'
+  .form-group
       = f.label :priority, t('helpers.wish_item.priority'), class: 'control-label col-sm-2'
       .col-md-4
         = f.select :priority, [t('helpers.wish_item.low') ,t('helpers.wish_item.medium'), t('helpers.wish_item.high')] , { include_blank:  t('helpers.wish_item.select_priority') }, class: 'form-control col-md-2', required: true
