@@ -19,6 +19,11 @@ class OrganizationsController < ApplicationController
   end
 
   def index
+    if params[:query].present?
+      @organizations = Organization.search(params[:query])
+    else
+      @organizations = Organization.all
+    end
     index! { @organizations = @organizations.page(params[:page] || 1) }
   end
 

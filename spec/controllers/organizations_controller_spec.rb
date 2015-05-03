@@ -4,14 +4,31 @@ describe OrganizationsController do
   let!(:organization) { create(:organization) }
   let!(:user) { create(:user, organizations: [organization]) }
   describe '#index' do
-    context 'When a user is logged' do
-      before(:each) do
-        sign_in user
-        user.reload
+    context 'When exists organizations without search' do
+      let!(:organization2) { create(:organization) }
+      let!(:organization2) { create(:organization) }
+      before :each do
+        get :index
+      end
+      it 'render index' do
+        expect(response).to render_template 'index'
       end
       it 'renders all the organizations' do
-        get :list
-        expect(response).to render_template(:list)
+        expect(assigns(:organizations)).to eq Organization.all.page(1)
+      end
+    end
+    context 'When exists organizations with search' do
+      let!(:organization2) { create(:organization) }
+      let!(:organization2) { create(:organization) }
+      before :each do
+        @query = 'a'
+        get :index, query: @query
+      end
+      it 'render index' do
+        expect(response).to render_template 'index'
+      end
+      it 'renders all the organizations' do
+        expect(assigns(:organizations)).to eq Organization.search(@query).page(1)
       end
     end
   end

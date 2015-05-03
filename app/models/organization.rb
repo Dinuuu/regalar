@@ -28,4 +28,9 @@ class Organization < ActiveRecord::Base
   def trending_wish_items
     WishItem.for_organization(self).goal_not_reached.last(3)
   end
+
+  def self.search(search_condition)
+    where('lower(name) LIKE ? OR lower(description) LIKE ?',
+          "%#{search_condition.downcase}%", "%#{search_condition.downcase}%")
+  end
 end

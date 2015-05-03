@@ -112,4 +112,23 @@ describe Organization do
       end
     end
   end
+  describe '#search' do
+    let!(:medicos_sin_fronteras) do
+      create :organization, name: 'Medicos sin fronteras'
+    end
+    let!(:mediicos_sin_fronteras) do
+      create :organization, name: 'Mediicos sin fronteras', description: 'mediicos'
+    end
+    let!(:hospital_publico) do
+      create :organization, description: 'medicos para todos'
+    end
+    let!(:perros) do
+      create :organization, name: 'Huellitas', description: 'Hogar para perros'
+    end
+    context 'When searching medico' do
+      it 'returns 2 results' do
+        expect(Organization.search('medico').count).to eq 2
+      end
+    end
+  end
 end
