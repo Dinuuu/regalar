@@ -330,6 +330,8 @@ en:
     verifying: Verifying
     gifted: Gifted
   gift:
+    name: Gift
+    gift: Gift
     confirmation: Gift confirmation
     yes: Yes
     no: No
@@ -345,8 +347,7 @@ en:
     pause: Pause
     resume: Resume
   wish_items:
-    gift: Gift
-    gifts: Gifts
+    name: Wish Item
     organization: 'Organization: '
     location: 'Location: '
     quantity: 'Quantity needed: '
