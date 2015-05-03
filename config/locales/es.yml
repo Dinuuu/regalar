@@ -92,6 +92,8 @@ es:
       make_gift: 'Realizar regalo'
       gifted_by: 'Regalado por: '
       featured: 'Regalos Destacados'
+      measures: 'Medidas: '
+      weight: 'Peso: '
     wish_list:
       name: Lista de deseos
       finished: Regalos recibidos

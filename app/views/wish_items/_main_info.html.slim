@@ -1,12 +1,11 @@
 p
 	.h5
-		= t('helpers.wish_item.obteined_quantity')
-	= wish_item.obtained
-	= t('helpers.wish_item.of')
-	= wish_item.quantity
-	= ' '
-	= t("helpers.wish_item.#{wish_item.unit}")
-
+		= t('helpers.wish_item.measures')
+	= wish_item.measures
+p
+	.h5
+		= t('helpers.wish_item.weight')
+	= wish_item.weight
 p
 	.h5
 		= t('helpers.wish_item.description')

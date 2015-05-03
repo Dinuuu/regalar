@@ -89,6 +89,8 @@ en:
         make_gift: 'Make Gift'
         featured: 'Featured Wish Items'
         gifted_by: 'Gifted by: '
+        measures: 'Measures: '
+        weight: 'Weight: '
       wish_list:  
         name: Wish List
         finished: Recived Gifts
