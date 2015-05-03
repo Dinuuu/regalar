@@ -33,6 +33,11 @@ class WishItemsController < OrganizationAuthenticationController
     redirect_to organization_wish_item_path(@wish_item.organization, @wish_item)
   end
 
+  def show
+    @comment = Comment.new(commentable: WishItem.find(params[:id]))
+    show!
+  end
+
   private
 
   def resource_params
