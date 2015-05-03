@@ -97,6 +97,34 @@ en:
         verifying: Verifying Gifts
         verifying_expl: These are the gifts that needs your confirmation. If the transaction has been completed successfully click Confirm. If you could not recive the gift click Reject.
         paused: Paused Gifts
+      gift_item:
+        create: "Create Gift"
+        new: "New Gitf"
+        edit: "Edit Gift"
+        update: 'Update Gift'
+        remove: "Remove Gift"
+        title: 'Title'
+        description: 'Description: '
+        quantity: 'Quantity'
+        given_quantity: 'Given quantity: '
+        of: ' of '
+        select_units: 'Select units'
+        units: 'Units'
+        kilos: 'Kilos'
+        liters: 'Liters'
+        photo: 'Photo'
+        make_gift: 'Make Gift'
+        featured: 'Featured Gifts'
+        gifted_by: 'Gifted by: '
+        used_time: Used time
+        status: Status
+        select_status: Select status
+        excellent: Excellent
+        very_good: Very Good
+        good: Good
+        regular: Regular
+        measures: Measures
+        weight: Weight
   organizations: "Organizations"  
   organization-link: "Go to organization"
   purchase:
@@ -332,6 +360,8 @@ en:
     verifying: Verifying
     gifted: Gifted
   gift:
+    name: Gift
+    gift: Gift
     confirmation: Gift confirmation
     yes: Yes
     no: No
@@ -347,8 +377,7 @@ en:
     pause: Pause
     resume: Resume
   wish_items:
-    gift: Gift
-    gifts: Gifts
+    name: Wish Item
     organization: 'Organization: '
     location: 'Location: '
     quantity: 'Quantity needed: '

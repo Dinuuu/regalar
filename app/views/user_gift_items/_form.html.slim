@@ -1,0 +1,46 @@
+- if @gift_item.errors.present?
+  .alert.alert-danger
+    ul
+      - @gift_item.errors.each do |attr, msg|
+        li 
+          attr msg
+= form_for [current_user, @gift_item], html: { class: 'form-horizontal', role: 'form' } do |f|
+  .form-group
+    = f.label :title, t('helpers.gift_item.title'),class: 'control-label col-sm-2'
+    .col-md-4
+      = f.text_field :title, class: 'form-control col-md-2', required: true
+  .form-group
+    = f.label :description, t('helpers.gift_item.description'),class: 'control-label col-sm-2'
+    .col-md-4
+      = f.text_area :description,  class: 'form-control col-md-2', required: true
+  .form-group
+      = f.label :measures, t('helpers.gift_item.measures'), class: 'control-label col-sm-2'
+      .col-md-4
+        = f.text_area :measures,  class: 'form-control col-md-2', required: true
+  .form-group
+      = f.label :used_time, t('helpers.gift_item.used_time'), class: 'control-label col-sm-2'
+      .col-md-4
+        = f.text_area :used_time,  class: 'form-control col-md-2', required: true
+  .form-group
+      = f.label :weight, t('helpers.gift_item.weight'), class: 'control-label col-sm-2'
+      .col-md-4
+        = f.text_area :weight,  class: 'form-control col-md-2', required: true
+  .form-group
+      = f.label :status, t('helpers.gift_item.status'), class: 'control-label col-sm-2'
+      .col-md-4
+        = f.select :status, [t('helpers.gift_item.excellent') ,t('helpers.gift_item.good'), t('helpers.gift_item.very_good'), t('helpers.gift_item.regular')] , { include_blank:  t('helpers.gift_item.select_status') }, class: 'form-control col-md-2', required: true
+  .form-group
+    = f.label :quantity, t('helpers.gift_item.quantity'), class: 'control-label col-sm-2'
+    .col-md-4
+      = f.text_field :quantity, class: 'form-control col-md-2',type: 'number',  required: true
+
+      = f.select :unit, [t('helpers.gift_item.liters') ,t('helpers.gift_item.kilos'), t('helpers.gift_item.units')] , { include_blank:  t('helpers.gift_item.select_units') }, class: 'form-control col-md-2', required: true
+  / .form-group
+  /   = f.label :main_image, t('helpers.gift_item.photo'), class: 'control-label col-sm-2'
+  /   .col-md-4
+  /     = f.file_field :main_image
+  .form-group
+    = f.hidden_field :user_id, value: current_user.id
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit t('helpers.gift_item.new'), class: 'btn btn-primary btn-violet'

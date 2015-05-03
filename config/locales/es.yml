@@ -100,6 +100,34 @@ es:
       verifying: Regalos en verificación
       verifying_expl: Estos son los regalos que están pendientes de una confirmación. Si la transacción se ha realizado con éxito hacer click en Confirmar. Si no se pudo concretar el regalo hacer click en Rechazar.
       paused: Regalos pausados
+    gift_item:
+      create: "Crear Regalo"
+      new: "Nuevo Regalo"
+      edit: "Editar Regalo"
+      update: 'Actualizar Regalo'
+      remove: "Remover Regalo"
+      title: 'Título'
+      description: 'Descripción: '
+      quantity: 'Cantidad'
+      obteined_quantity: 'Cantidad obtenida: '
+      of: ' de '
+      select_units: 'Seleccionar unidad'
+      units: 'Unidades'
+      kilos: 'Kilos'
+      liters: 'Litros'
+      photo: 'Foto'
+      make_gift: 'Realizar regalo'
+      gifted_by: 'Regalado por: '
+      featured: 'Regalos Destacados'
+      used_time: Tiempo de uso
+      status: Estado
+      select_status: Selecciona el estado
+      excellent: Excelente
+      very_good: Muy bueno
+      good: Bueno
+      regular: Regular
+      measures: Medidas
+      weight: Peso
     page_entries_info:
       one_page:
         display_entries:
@@ -339,6 +367,8 @@ es:
       title: ¿Así que sólo me van a estar cobrando si la financiación tiene éxito?
       answer: ¡Sí! Si un proyecto no está financiado con éxito, nadie paga nada.
   gift:
+    name: Regalos
+    gift: Regalar
     confirmation: Confirmación de regalo
     yes: Si
     no: No
@@ -354,8 +384,8 @@ es:
     pause: Pausar
     resume: Reanudar
   wish_items:
+    name: Deseos
     gift: Regalar
-    gifts: Regalos
     organization: 'Organización: '
     location: 'Lugar: '
     quantity: 'Cantidad necesaria: '

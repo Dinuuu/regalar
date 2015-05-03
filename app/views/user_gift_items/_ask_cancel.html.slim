@@ -1,0 +1,15 @@
+- if current_user.present?
+	- pending_request = gift_item.pending_requests(current_user)
+
+- unless gift_item.gifted?
+    - if pending_request.present?
+		= link_to t('gift.cancel'), cancel_request_path(pending_request), class: 'btn btn-danger', method: "delete"
+	
+	- elsif gift_item.active?
+		= link_to t('gift_items.gift'), '#',
+		  class: 'btn btn-success glyphicon glyphicon-gift',
+		  data: { toggle: 'modal', target: '#request-modal' }
+	- else
+		  = link_to t('gift_items.gift'), '#',
+                 class: 'btn btn-default disabled',
+                  data: {disabled: 'disabled'}

@@ -1,0 +1,32 @@
+.col-md-7
+	.text-center
+		h3
+			= @gift_item.title + ' '
+		h5
+		.row
+			h5
+			.col-md-3.col-md-offset-3
+				= link_to @gift_item.user , @gift_item.user.name
+			.col-md-3
+		        = @gift_item.user.email
+		br
+		br
+
+	div.col-md-4
+	  	
+	  	- if @gift_item.main_image.present?
+	    	= image_tag(@gift_item.main_image, height: 150, width: 150, class: "img-thumbnail img-profile")
+	  	- else
+	    	= image_tag('default_pic.png', height: 150, width: 150, class: "img-thumbnail img-profile")
+		
+	div.col-md-8
+
+		p
+			- if @gift_item.gifted?
+				span.label.label-danger
+					= t('wish_items.status.gifted')
+			
+			= render 'user_gift_items/main_info', gift_item: @gift_item	
+			/ = render 'gift_items/ask_cancel_button', gift_item: @gift_item
+
+= render 'user_gift_items/gift_modal', gift_item: @gift_item

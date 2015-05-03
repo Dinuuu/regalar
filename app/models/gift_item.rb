@@ -15,10 +15,14 @@ class GiftItem < ActiveRecord::Base
     where('lower(title) LIKE ? OR lower(description) LIKE ?',
           "%#{search_condition.downcase}%", "%#{search_condition.downcase}%")
   end
-
   private
 
   def initialize_attributes
     self.given ||= 0
   end
+
+  def gifted?
+    quantity < given
+  end
+
 end
