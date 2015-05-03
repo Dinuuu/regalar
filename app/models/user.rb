@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :organizations
   has_many :comments
   has_many :donations
+  has_many :gift_requests
 
   mount_uploader :avatar, ImageUploader
 
@@ -43,6 +44,15 @@ class User < ActiveRecord::Base
     donations
   end
 
+  def confirmed_gift_requests
+    organizations_id = GiftRequest.for_user(self).confirmed.uniq.pluck(:organization_id)
+    gift_requests = []
+    organizations_id.each do |org_id|
+      gift_requests << concreted_gift_requests_for_organization(org_id)
+    end
+    gift_requests
+  end
+
   private
 
   def concreted_donations_for_organization(org_id)
@@ -52,5 +62,14 @@ class User < ActiveRecord::Base
     organization_donations[:donations] = Donation.for_user(self)
                                          .for_organization(organization).confirmed
     organization_donations
+  end
+
+  def concreted_gift_requests_for_organization(org_id)
+    organization = Organization.find(org_id)
+    organization_gift_requests = {}
+    organization_gift_requests[:organization] = organization
+    organization_gift_requests[:gift_requests] = GiftRequest.for_user(self)
+                                                 .for_organization(organization).confirmed
+    organization_gift_requests
   end
 end
