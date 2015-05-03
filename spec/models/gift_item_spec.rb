@@ -43,6 +43,15 @@ describe GiftItem do
         expect(gift_item.valid?).to be true
       end
     end
+    context 'Creating a valid gift item with images' do
+      it 'is valid' do
+        expect(GiftItem.new(gift_item.attributes
+                            .merge(gift_item_images_attributes: [file: Rack::Test::UploadedFile
+                            .new(File.open(File.join(Rails.root,
+                                                     '/spec/fixtures/images/default_pic.png')
+                            ))]).to_h)).to be_valid
+      end
+    end
   end
   describe '#search' do
     let!(:gift_items_silla) do
