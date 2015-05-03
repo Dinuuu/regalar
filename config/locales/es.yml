@@ -339,6 +339,8 @@ es:
       title: ¿Así que sólo me van a estar cobrando si la financiación tiene éxito?
       answer: ¡Sí! Si un proyecto no está financiado con éxito, nadie paga nada.
   gift:
+    name: Regalos
+    gift: Regalar
     confirmation: Confirmación de regalo
     yes: Si
     no: No
@@ -354,8 +356,8 @@ es:
     pause: Pausar
     resume: Reanudar
   wish_items:
+    name: Deseos
     gift: Regalar
-    gifts: Regalos
     organization: 'Organización: '
     location: 'Lugar: '
     quantity: 'Cantidad necesaria: '
