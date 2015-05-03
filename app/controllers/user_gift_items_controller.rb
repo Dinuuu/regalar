@@ -50,6 +50,8 @@ class UserGiftItemsController < ApplicationController
   def gift_item_params
     params.require(:gift_item).permit(:title, :quantity, :unit,
                                       :description, :used_time,
-                                      :measures, :weight, :status)
+                                      :measures, :weight, :status,
+                                      gift_item_images_attributes: [:gift_item_id, :file,
+                                                                    :remote_file_url])
   end
 end
