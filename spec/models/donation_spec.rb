@@ -87,6 +87,7 @@ describe Donation do
         expect(donation.valid?).to be true
       end
       it 'has no errors' do
+        donation.valid?
         expect(donation.errors).not_to be_present
       end
       it 'is not done' do

@@ -1,5 +1,7 @@
 class GiftItem < ActiveRecord::Base
   belongs_to :user
+  has_many :gift_requests
+  validates :title, :quantity, :unit, :description, :used_time, :status, presence: true
   validates :quantity, numericality: { greater_than: 0 }
   validates :given, numericality: { greater_than_or_equal_to: 0 }
   has_many :gift_item_images, inverse_of: :gift_item

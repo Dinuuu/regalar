@@ -3,6 +3,7 @@ class Organization < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :wish_items
   has_many :donations
+  has_many :gift_requests
   validates :name, :description, :locality, :email, :logo, presence: true
   validates :email, format: { with: Devise.email_regexp }
   validates :email, uniqueness: { case_sensitive: false }
@@ -23,6 +24,14 @@ class Organization < ActiveRecord::Base
 
   def confirmed_donations
     Donation.for_organization(self).confirmed
+  end
+
+  def pending_gift_requests
+    GiftRequest.for_organization(self).pending
+  end
+
+  def confirmed_gift_requests
+    GiftRequest.for_organization(self).confirmed
   end
 
   def trending_wish_items

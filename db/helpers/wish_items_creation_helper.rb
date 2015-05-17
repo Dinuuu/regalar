@@ -30,6 +30,5 @@ module WishItemsCreationHelper
       )
     wish_item.save
     end
-
   end
 end

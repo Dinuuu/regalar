@@ -7,6 +7,8 @@ when "development"
   OrganizationsCreationHelper.create_organizations(5)
   WishItemsCreationHelper.create_wish_items(25)
   DonationsCreationHelper.create_donations
+  GiftItemsCreationHelper.create_gift_items(25)
+  GiftRequestsCreationHelper.create_gift_requests
   LevelsCreationHelper.create_levels
   AdminUser.create(
    email: 'admin@regalar.com',

@@ -131,4 +131,75 @@ describe Organization do
       end
     end
   end
+  describe '#pending_gift_requests' do
+    context 'when user belongs to organization' do
+      before :each do
+        organization.users << user
+      end
+      let!(:gift_item) { create :gift_item, user: user, quantity: 10 }
+      let!(:gift_item2) { create :gift_item, user: user, quantity: 10 }
+      let!(:gift_requests_done) do
+        create_list :gift_request, 5, gift_item: gift_item, user: user,
+                                      organization: organization, done: true
+      end
+      let!(:gift_requests_undone) do
+        create_list :gift_request, 3, gift_item: gift_item, user: user,
+                                      organization: organization, done: false
+      end
+      let!(:gift_requests_done2) do
+        create_list :gift_request, 9, gift_item: gift_item2, user: user,
+                                      organization: organization2, done: true
+      end
+      let!(:gift_requests_undone2) do
+        create_list :gift_request, 7, gift_item: gift_item2, user: user,
+                                      organization: organization2, done: false
+      end
+      context 'asking for pending gift_requests' do
+        it 'returns gift_requests that are pending' do
+          expect(organization.pending_gift_requests
+            .all? { |gift_request| gift_request[:done] }).to be false
+        end
+        it 'returns gift_requests of organization' do
+          expect(organization.pending_gift_requests
+            .all? { |gift_request| gift_request[:organization_id] == organization.id }).to be true
+        end
+        it 'has to be 3' do
+          expect(organization.pending_gift_requests.count).to eq 3
+        end
+      end
+    end
+  end
+  describe '#confirmed_gift_requests' do
+    let!(:gift_item) { create :gift_item, user: user, quantity: 10 }
+    let!(:gift_item2) { create :gift_item, user: user, quantity: 10 }
+    let!(:gift_requests_done) do
+      create_list :gift_request, 5, gift_item: gift_item, user: user,
+                                    organization: organization, done: true
+    end
+    let!(:gift_requests_undone) do
+      create_list :gift_request, 3, gift_item: gift_item, user: user,
+                                    organization: organization, done: false
+    end
+    let!(:gift_requests_done2) do
+      create_list :gift_request, 9, gift_item: gift_item2, user: user,
+                                    organization: organization2, done: true
+    end
+    let!(:gift_requests_undone2) do
+      create_list :gift_request, 7, gift_item: gift_item2, user: user,
+                                    organization: organization2, done: false
+    end
+    context 'asking for confirmed gift_requests' do
+      it 'returns gift_requests that are confirmed' do
+        expect(organization.confirmed_gift_requests
+          .all? { |gift_request| gift_request[:done] }).to be true
+      end
+      it 'returns gift_requests of organization' do
+        expect(organization.confirmed_gift_requests
+          .all? { |gift_request| gift_request[:organization_id] == organization.id }).to be true
+      end
+      it 'has to be 5' do
+        expect(organization.confirmed_gift_requests.count).to eq 5
+      end
+    end
+  end
 end
