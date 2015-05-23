@@ -43,6 +43,7 @@ module UserAuthenticationHelper
       end
       aux_user.confirmed_at = Time.current
     end
+      user.update_attributes(remote_avatar_url: "#{auth.info[:image]}0") if auth.provider == 'google_oauth2'
     Identity.create(uid: auth.uid, provider: auth.provider, user: user)
     user
   end
