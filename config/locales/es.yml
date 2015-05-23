@@ -100,6 +100,35 @@ es:
       verifying: Regalos en verificación
       verifying_expl: Estos son los regalos que están pendientes de una confirmación. Si la transacción se ha realizado con éxito hacer click en Confirmar. Si no se pudo concretar el regalo hacer click en Rechazar.
       paused: Regalos pausados
+    gift_item:
+      create: "Crear Regalo"
+      new: "Nuevo Regalo"
+      edit: "Editar Regalo"
+      update: 'Actualizar Regalo'
+      remove: "Remover Regalo"
+      title: 'Título'
+      description: 'Descripción: '
+      quantity: 'Cantidad'
+      given_quantity: 'Cantidad obtenida: '
+      of: ' de '
+      select_units: 'Seleccionar unidad'
+      units: 'Unidades'
+      kilos: 'Kilos'
+      liters: 'Litros'
+      photo: 'Foto'
+      make_gift: 'Realizar regalo'
+      gifted_by: 'Regalado por: '
+      featured: 'Regalos Destacados'
+      used_time: Tiempo de uso
+      status: Estado
+      select_status: Selecciona el estado
+      excellent: Excelente
+      very_good: Muy bueno
+      good: Bueno
+      regular: Regular
+      measures: Medidas
+      weight: Peso
+      size_mesage: Maximum Size 4 MB
     page_entries_info:
       one_page:
         display_entries:
@@ -112,6 +141,7 @@ es:
   organization_link: "Ir a la organización"
   users:
     donations: Donaciones
+    gifts: Regalos
     organizations: Organizaciones
     profile: Mi Perfil
     link_accounts: Vincular cuentas

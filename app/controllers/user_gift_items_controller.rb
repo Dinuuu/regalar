@@ -12,6 +12,7 @@ class UserGiftItemsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new(commentable: GiftItem.find(params[:id]))
     gift_item
   end
 

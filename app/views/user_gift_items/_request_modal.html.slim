@@ -1,0 +1,36 @@
+- if current_user.present?
+  #gift-modal.modal.fade
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close aria-label="Close" data-dismiss="modal" type="button" 
+            span aria-hidden="true"  &times;
+          h4.modal-title
+            = t('gift.confirmation')
+        .modal-body
+            = t('gift.confirm') 
+            = " "
+            = t(gift_item.title)
+            = " "
+            = t('gift.toOrg')
+            = " "
+            = t(gift_item.user.full_name)
+            = "?"
+            p
+            = t('gift.wait_email')
+            p
+            = t('gift.introduce_quantity')
+            = form_for :request, url: gift_item_request_path(id: gift_item) do |f|
+              .form-inline
+                .form-group
+                  .input-group
+                    = f.text_field :quantity, class: 'form-control col-md-2', type: 'number', min: "1" , max: gift_item.quantity, required: true
+                    = f.select :organization_id, current_user.organizations , class: 'form-control col-md-2', required: true
+                    = f.hidden_field :organization_id, value: gift_item.organization.id
+                    = f.hidden_field :user_id, value: current_user.id
+                    = f.hidden_field :gift_item_id, value: gift_item.id
+                = f.submit t('helpers.gift_item.make_gift'), class: "btn btn-success"
+
+        .modal-footer
+          button.close data-dismiss="modal"  type="button" 
+            = t('gift.cancel_modal')

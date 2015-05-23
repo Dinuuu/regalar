@@ -1,12 +1,8 @@
-- user_level = @user.level
-- confirmed_donations = Donation.for_user(@user).confirmed.count
-
 .col-sm-12
   = render 'main_info', user: @user
-.row.user-donations
-  legend
-    = t('users.donations')
-  = render 'donations', donations: @user.confirmed_donations
+
+= render '/users/donations_gifts', user: @user
+
 br
 .row
   legend

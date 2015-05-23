@@ -108,6 +108,10 @@ gem 'kaminari'
 # Share Links
 gem 'shareable'
 
+# Image upload
+gem "nested_form"
+
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'

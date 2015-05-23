@@ -1,0 +1,6 @@
+- if current_user.present?
+	legend
+	  = t('helpers.gift_item.new')
+	= render 'form'
+- else
+	= render 'layouts/login_modal'

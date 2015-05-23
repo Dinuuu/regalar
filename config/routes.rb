@@ -6,7 +6,9 @@ Regalar::Application.routes.draw do
   root 'application#index'
   get '/about', to: 'application#about'
 
-  resources :gift_items, only: [:index]
+  resources :gift_items, only: [:index] do
+    resources :comments, except: [:edit, :update]
+  end
   # Users Routes
 
   resources :users do

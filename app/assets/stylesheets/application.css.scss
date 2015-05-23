@@ -5,6 +5,7 @@
  *= require_self
  *= require bootstrap_and_overrides
  *= require_directory .
+ 
 */
 
 /* COLORS */
@@ -272,11 +273,11 @@ a.btn-danger:link {color: #FFFFFF}
 .modal-backdrop.in {
   position: static !important;
 }
-.modal-title{
+.modal-title {
   color: grey;
 }
 
-.alert{
+.alert {
   position: fixed;
   z-index: 99999;
   width: 80%;
@@ -285,7 +286,7 @@ a.btn-danger:link {color: #FFFFFF}
   margin-top: -60px;
 
 }
-.container{
+.container {
     margin-top: 45px;
 }
 .brand-img{
@@ -297,16 +298,19 @@ button:hover {
   opacity: 0.75;
 }
 
-.btn-facebook{
+.btn-facebook {
 background-color: $facebook-blue;
 }
-.btn-twitter{
+.btn-twitter {
 background-color: $twitter-blue;
 }
-.btn-google{
+.btn-google {
 background-color: $google-red;
 }
-
-.campaign-card{
+.campaign-card {
   height: 450px;
+}
+.img-gift {
+ height: 300px !important; 
+ width: 350px !important; 
 }
