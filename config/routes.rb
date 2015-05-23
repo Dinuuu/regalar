@@ -6,13 +6,13 @@ Regalar::Application.routes.draw do
   root 'application#index'
   get '/about', to: 'application#about'
 
-  resources :gift_items, only: [:index] do
+  resources :gift_items, only: [:index, :new, :create] do
     resources :comments, except: [:edit, :update]
   end
   # Users Routes
-
+  
   resources :users do
-    resources :gift_items, controller: 'user_gift_items', except: [:destroy]
+    resources :gift_items, controller: 'user_gift_items', except: [:destroy, :new, :create]
     member do
       get :edit_password
       patch :update_password

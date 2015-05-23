@@ -12,7 +12,7 @@ class WishItem < ActiveRecord::Base
   scope :goal_reached, -> { where('quantity < obtained') }
   scope :goal_not_reached, -> { where.not('quantity < obtained') }
   scope :finished, -> { where('(?) >= finish_date', Time.current) }
-  scope :not_finished, -> { where('(?) < finish_date') }
+  scope :not_finished, -> { where('(?) < finish_date', Time.current) }
   scope :not_paused, -> { where(active: true) }
   scope :paused, -> { where.not(active: true) }
 
@@ -27,7 +27,7 @@ class WishItem < ActiveRecord::Base
   end
 
   def self.trending
-    WishItem.not_finished.last(4)
+    WishItem.goal_not_reached.last(4)
   end
 
   def self.search(search_condition)

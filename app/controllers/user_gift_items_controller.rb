@@ -2,15 +2,6 @@ class UserGiftItemsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
   before_action :validate_user, except: [:show]
 
-  def create
-    @gift_item = GiftItem.new(gift_item_params.merge(user: current_user))
-    if @gift_item.save
-      redirect_to user_gift_item_path(current_user.id, @gift_item.id)
-    else
-      render 'new'
-    end
-  end
-
   def show
     @comment = Comment.new(commentable: GiftItem.find(params[:id]))
     gift_item

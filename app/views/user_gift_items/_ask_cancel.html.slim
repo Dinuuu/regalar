@@ -6,10 +6,10 @@
 		= link_to t('gift.cancel'), cancel_request_path(pending_request), class: 'btn btn-danger', method: "delete"
 	
 	- elsif gift_item.active?
-		= link_to t('gift_items.gift'), '#',
+		= link_to t('helpers.gift_item.claim_gift'), '#',
 		  class: 'btn btn-success glyphicon glyphicon-gift',
 		  data: { toggle: 'modal', target: '#request-modal' }
 	- else
-		  = link_to t('gift_items.gift'), '#',
+		  = link_to t('helpers.gift_item.claim_gift'), '#',
                  class: 'btn btn-default disabled',
                   data: {disabled: 'disabled'}

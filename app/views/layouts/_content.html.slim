@@ -6,11 +6,7 @@
 	  		= t('home.slogan')
 	  	.h2
 			= t('home.join_us')
-		- if user_signed_in?
-			= link_to t('helpers.submit.gift_item.new'), new_user_gift_item_path(current_user), class: 'btn btn-primary btn-lg call-to-action'
-		- else
-			= link_to t('helpers.submit.gift_item.new'), '#', class: 'btn btn-primary btn-lg call-to-action',
-                  data: { toggle: 'modal', target: '#login-modal' }
+		= link_to t('helpers.gift_item.new'), new_gift_item_path, class: 'btn btn-primary btn-lg call-to-action'
 		.h4
 			= t('home.organization')
 			= ' '
@@ -19,6 +15,6 @@
 legend
     = t('helpers.wish_item.featured')
 #campaigns-cards
-  = render 'wish_items/index_cards', wish_items: WishItem.trending
+  = render 'user_gift_items/index_cards', gifts: GiftItem.trending
 
-= link_to t('application.all'), list_wish_items_path, class: 'btn btn-primary'
+= link_to t('application.all'), gift_items_path, class: 'btn btn-primary'
