@@ -48,6 +48,8 @@ gem 'inherited_resources'
 # Uploader images
 gem 'carrierwave'
 
+gem 'fog'
+
 # Upload videos
 gem 'carrierwave-video'
 gem 'postgresql_lo_streamer'
