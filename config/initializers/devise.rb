@@ -232,7 +232,8 @@ Devise.setup do |config|
   require "omniauth-facebook"
   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
   config.omniauth :facebook, AppConfiguration.for(:facebook).app_id,
-                             AppConfiguration.for(:facebook).app_secret
+                             AppConfiguration.for(:facebook).app_secret,
+                             { image_size: { widht: 500, height: 500 } }
 
   config.omniauth :google_oauth2, AppConfiguration.for(:google).google_key,
                                   AppConfiguration.for(:google).google_secret,
