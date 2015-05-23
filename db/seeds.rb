@@ -16,18 +16,7 @@ when "development"
    password_confirmation: '123123123',
   )
 when "staging"
-  UsersCreationHelper.create_users
-  OrganizationsCreationHelper.create_organizations(5)
-  WishItemsCreationHelper.create_wish_items(25)
-  AdminUser.create(
-   email: 'admin@example.com',
-   password: '123123123',
-   password_confirmation: '123123123',
-  )
+  LevelsCreationHelper.create_levels
 when "production"
-  AdminUser.create(
-   email: 'admin@example.com',
-   password: '123123123',
-   password_confirmation: '123123123',
-  )
+  LevelsCreationHelper.create_levels
 end
