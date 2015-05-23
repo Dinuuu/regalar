@@ -13,47 +13,47 @@
             = image_tag('default_pic.png', height: 150, width: 150, class: "img-thumbnail img-profile")
 
         div.col-md-6
-          - pending_request = item.pending_requests(current_user)
+          / - pending_request = item.pending_requests(current_user)
           
-          - if pending_request.present?
-            h3
-              = link_to item.title, user_gift_item_path(id: item.id, user_id: item.user.id)
-              small.gift-label
-                 span.label.label-warning
-                   = t('helpers.gift_items.status.verifying')
-            h5
-              = t('helpers.gift_item.gifted_by')
-              = link_to item.user.first_name, item.user
-            p
-              = item.description 
+          / - if pending_request.present?
+          /   h3
+          /     = link_to item.title, user_gift_item_path(id: item.id, user_id: item.user.id)
+          /     small.gift-label
+          /        span.label.label-warning
+          /          = t('helpers.gift_items.status.verifying')
+          /   h5
+          /     = t('helpers.gift_item.gifted_by')
+          /     = link_to item.user.first_name, item.user
+          /   p
+          /     = item.description 
             
-            =render 'user_gift_items/ask_cancel', gift_item: item
+          /   =render 'user_gift_items/ask_cancel', gift_item: item
 
-          - elsif item.gifted?
-            h3
-              = link_to item.title, user_gift_item_path(id: item.id, user_id: item.user.id)
-              small.gift-label
-                 span.label.label-danger
-                   = t('helpers.gift_items.status.gifted')
-            h5
-              = t('helpers.gift_item.gifted_by')
-              = link_to item.user.first_name, item.user
-            p
-              = item.description
-            = link_to t('helpers.gift_items.claim_gift'), '#',
-                 class: 'btn btn-default disabled',
-                  data: {disabled: 'disabled'}
+          / - elsif item.gifted?
+          /   h3
+          /     = link_to item.title, user_gift_item_path(id: item.id, user_id: item.user.id)
+          /     small.gift-label
+          /        span.label.label-danger
+          /          = t('helpers.gift_items.status.gifted')
+          /   h5
+          /     = t('helpers.gift_item.gifted_by')
+          /     = link_to item.user.first_name, item.user
+          /   p
+          /     = item.description
+          /   = link_to t('helpers.gift_items.claim_gift'), '#',
+          /        class: 'btn btn-default disabled',
+          /         data: {disabled: 'disabled'}
                 
-          - else
-            h3
-              = link_to item.title, user_gift_item_path(id: item.id, user_id: item.user.id)
-            h5
-              = t('helpers.gift_item.gifted_by')
-              = link_to item.user.first_name, item.user
-            p
-              = item.description
+          / - else
+          /   h3
+          /     = link_to item.title, user_gift_item_path(id: item.id, user_id: item.user.id)
+          /   h5
+          /     = t('helpers.gift_item.gifted_by')
+          /     = link_to item.user.first_name, item.user
+          /   p
+          /     = item.description
             
-            =render 'user_gift_items/ask_cancel', gift_item: item
+          /   =render 'user_gift_items/ask_cancel', gift_item: item
         
           / = render 'gift_items/gift_modal', wish_item: item
 

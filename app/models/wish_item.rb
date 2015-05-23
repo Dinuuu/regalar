@@ -9,7 +9,7 @@ class WishItem < ActiveRecord::Base
   mount_uploader :main_image, ImageUploader
 
   scope :for_organization, -> (organization) { where(organization: organization) }
-  scope :goal_reached, -> { where('quantity < obtained') }
+  scope :goal_reached, -> { where('quantity <= obtained') }
   scope :goal_not_reached, -> { where.not('quantity < obtained') }
   scope :finished, -> { where('(?) >= finish_date', Time.current) }
   scope :not_finished, -> { where('(?) < finish_date', Time.current) }

@@ -15,6 +15,6 @@
 legend
     = t('helpers.wish_item.featured')
 #campaigns-cards
-  = render 'user_gift_items/index_cards', gifts: GiftItem.trending
+  = render 'gift_items/index_cards', gifts: GiftItem.trending
 
 = link_to t('application.all'), gift_items_path, class: 'btn btn-primary'
