@@ -1,0 +1,7 @@
+- if gifts.empty?
+	h4.nav-margin
+	  p
+	    = t('application.no_results')
+.row
+  - gifts.each do |gift|
+    = render 'gift_items/card', item: gift

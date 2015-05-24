@@ -22,7 +22,7 @@ module GiftItemsCreationHelper
         quantity: Faker::Number.number(2).to_i + 1,
         description: Faker::Lorem.paragraph,
         unit: ['kilos', 'liters', 'units'].sample,
-        main_image: Rails.root.join('app/assets/images/default_pic.png').open,
+        gift_item_images: Rails.root.join('app/assets/images/default_pic.png').open,
         used_time: 'Dos meses',
         status: 'Como nuevo',
         active: true,

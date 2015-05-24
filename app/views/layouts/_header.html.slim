@@ -32,7 +32,7 @@ nav.navbar.navbar-default
         .form-group
           = form_tag list_wish_items_path, method: 'get' do
             = text_field_tag 'query', params[:query], class: 'form-control', placeholder: t('application.header.search')
-            = select_tag "search-select", "<option value=#{list_wish_items_path}>#{t('wish_items.name')}</option><option selected='selected' value=#{gift_items_path}>#{t('gift.name')}</option><option value=#{organizations_path}>#{t('organizations')}</option>".html_safe, {onChange: '$(this).parent().attr(\'action\', $(this).val());;', class: 'form-control'}
+            = select_tag "search-select", "<option value=#{list_wish_items_path}>#{t('wish_items.name')}</option><option value=#{gift_items_path}>#{t('gift.name')}</option><option value=#{organizations_path}>#{t('organizations')}</option>".html_safe, {onChange: '$(this).parent().attr(\'action\', $(this).val());;', class: 'form-control'}
             button.btn.btn-default aria-label=("Left Align") type="submit"
               span.glyphicon.glyphicon-search aria-hidden="true" 
 
