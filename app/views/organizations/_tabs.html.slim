@@ -12,7 +12,13 @@ ul.nav.nav-tabs.org-tabs data-tabs="tabs"
     li
       a data-toggle="tab" href="#paused"
         = t('helpers.wish_list.paused')
- 
+  li
+    a data-toggle="tab" href="#gifts-received"
+      = t('helpers.gift_item.received')
+  li
+    a data-toggle="tab" href="#gifts-pending"
+      = t('helpers.gift_item.pending')
+
 .tab-content
   #goal-not-reached.tab-pane.active
     = render 'wish_items/index_cards', wish_items: WishItem.for_organization(organization).goal_not_reached.not_paused
@@ -36,4 +42,10 @@ ul.nav.nav-tabs.org-tabs data-tabs="tabs"
 
   #paused.tab-pane
     = render 'wish_items/index_cards', wish_items: WishItem.for_organization(organization).paused
+
+  #gifts-received.tab-pane
+    = render 'gift_items/index_cards', gifts: GiftRequest.for_organization(organization).confirmed
+
+  #gifts-pending.tab-pane
+    = render 'gift_items/index_cards', gifts: GiftRequest.for_organization(organization).pending
     

@@ -4,7 +4,7 @@
 	.progress
 		.progress-bar.progress-bar-success aria-valuemax="100" aria-valuemin="0" aria-valuenow="45" role="progressbar" style= "width: #{@gift_item.given/@gift_item.quantity*100}%" data-toggle="tooltip" data-placement="bottom"
 	.h5
-		= t('helpers.wish_item.obteined_quantity')
+		= t('helpers.gift_item.gifted_quantity')
 		= @gift_item.given
 		= t('helpers.wish_item.of')
 		= @gift_item.quantity

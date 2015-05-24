@@ -20,7 +20,7 @@
             = t('gift.wait_email')
             p
             = t('gift.introduce_quantity')
-            = form_for :request, url: gift_item_request_path(id: gift_item) do |f|
+            = form_for :request, url: gift_requests_path(id: gift_item) do |f|
               .form-inline
                 .form-group
                   .input-group

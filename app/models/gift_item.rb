@@ -10,6 +10,7 @@ class GiftItem < ActiveRecord::Base
   validates :title, :quantity, :unit, :description, :used_time,
             :status, presence: true
   scope :for_user, -> (user) { where(user: user) }
+  scope :still_available, -> { where('given < quantity') }
 
   after_initialize :initialize_attributes
 
@@ -20,6 +21,14 @@ class GiftItem < ActiveRecord::Base
 
   def gifted?
     quantity < given
+  end
+
+  def self.trending
+    GiftItem.still_available.last(4)
+  end
+
+  def main_image
+    gift_item_images.first.file
   end
 
   private

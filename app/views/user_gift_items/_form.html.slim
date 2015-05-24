@@ -4,7 +4,7 @@
       - @gift_item.errors.each do |attr, msg|
         li 
           attr msg
-= nested_form_for [current_user, @gift_item], html: { class: 'form-horizontal', role: 'form' } do |f|
+= nested_form_for [@gift_item], html: { class: 'form-horizontal', role: 'form' } do |f|
   .form-group
     = f.label :title, t('helpers.gift_item.title'),class: 'control-label col-sm-2'
     .col-md-4
@@ -39,18 +39,19 @@
   - if f.object.new_record?
       = f.fields_for :gift_item_images do |attachment_form|
         .form-group
-          .col-sm-offset-3.col-sm-8
+          .col-sm-8
             = attachment_form.label :file
             br/
             = attachment_form.file_field :file
             = attachment_form.link_to_remove t('remove_attachment')
       .form-group
-        .col-sm-offset-3.col-sm-8
+        .col-sm-offset-2.col-sm-8
           strong
             = f.link_to_add t('add_attachment'), :gift_item_images
-        .col-sm-offset-3.col-sm-6
+        .col-sm-offset-2.col-sm-6
           p
             = t('helpers.gift_item.size_mesage')
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit t('helpers.gift_item.new'), class: 'btn btn-primary btn-violet'
+      

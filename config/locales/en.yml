@@ -2,7 +2,7 @@ en:
   home:
     slogan: REGALAR IS THE PLACE TO MAKE AND RECIEVE GIFTS
     join_us: Join us to make awsome gifts to those who need it most
-    organization: If you are an organization looking for a gift
+    organization: If you want to make a gift to a specific organization
     here: click here 
   application:
     title: Regalar
@@ -60,8 +60,6 @@ en:
         edit_password: "Edit Password"
         done_edit_password: "Update"
         done_edit_user: "Update"
-      gift_item:
-        new: Make a gift
       wish_item:
         create: "Create Wish Item"
         new: "New Wish Item"
@@ -93,11 +91,13 @@ en:
         weight: 'Weight: '
       wish_list:  
         name: Wish List
-        finished: Recived Gifts
-        verifying: Verifying Gifts
+        finished: Wishes Fulfilled
+        verifying: Verifying Wishes
         verifying_expl: These are the gifts that needs your confirmation. If the transaction has been completed successfully click Confirm. If you could not recive the gift click Reject.
-        paused: Paused Gifts
+        paused: Paused Wishes
       gift_item:
+        name: Gifts
+        make_gift: Gift
         create: "Create Gift"
         new: "New Gitf"
         edit: "Edit Gift"
@@ -113,7 +113,6 @@ en:
         kilos: 'Kilos'
         liters: 'Liters'
         photo: 'Photo'
-        make_gift: 'Make Gift'
         featured: 'Featured Gifts'
         gifted_by: 'Gifted by: '
         used_time: Used time
@@ -125,7 +124,11 @@ en:
         regular: Regular
         measures: Measures
         weight: Weight
-        size_mesage: Tamaño máximo 4 MB
+        size_mesage: Max size 4 MB
+        claim_gift: Claim Gift
+        gifted_quantity: 'Quantity Gifted: '
+        received: Gifts received
+        pending: Pending gifts
   organizations: "Organizations"  
   organization-link: "Go to organization"
   purchase:
@@ -134,8 +137,8 @@ en:
       awaiting_mp_response: "Awaiting MercadoPago confirmation"
       na: "NA"
   users:
-    donations: Donations
-    gifts: Gifts
+    donations: Wishes Fulfilled
+    gifts: Given Gifts 
     organizations: Organizations
     profile: My Profile
     link_accounts: Link accounts

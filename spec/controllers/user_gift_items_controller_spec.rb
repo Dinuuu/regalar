@@ -27,36 +27,6 @@ describe UserGiftItemsController do
     end
   end
 
-  describe '#create' do
-    context 'When a user is logged' do
-      before(:each) do
-        sign_in user
-        user.reload
-      end
-      it 'increments the count of gift_items' do
-        (expect do
-          post :create, user_id: user.id, gift_item: attributes_for(:gift_item, user: user)
-        end).to change(GiftItem, :count).by(1)
-      end
-      it 'redirects' do
-        post :create, user_id: user.id, gift_item: attributes_for(:gift_item, user: user)
-        expect(response.status).to eq 302
-      end
-    end
-
-    context 'when a user is not logged' do
-      it 'does not increment the count of organizations' do
-        (expect do
-          post :create, user_id: user.id, gift_item: attributes_for(:gift_item, user: user)
-        end).not_to change { GiftItem.count }
-      end
-      it 'redirects to login' do
-        post :create, user_id: user.id, gift_item: attributes_for(:gift_item, user: user)
-        expect(response.status).to eq 302
-      end
-    end
-  end
-
   describe '#edit' do
     context 'when the user is logged' do
       before(:each) do
@@ -127,30 +97,6 @@ describe UserGiftItemsController do
       end
       it 'renders the correct gift_item' do
         expect(assigns(:gift_item)).to eq gift_item
-      end
-    end
-  end
-
-  describe '#new' do
-    context 'when the user is logged' do
-      before(:each) do
-        sign_in user
-        user.reload
-        get :new, user_id: user.id
-      end
-      it 'renders the new template' do
-        expect(response).to render_template 'new'
-      end
-      it 'returns http status 200' do
-        expect(response.status).to eq 200
-      end
-    end
-    context 'when the user is not logged' do
-      before :each do
-        get :new, user_id: user.id
-      end
-      it 'returns http status 302' do
-        expect(response.status).to eq 302
       end
     end
   end
