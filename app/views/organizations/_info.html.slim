@@ -1,19 +1,23 @@
 .main-name
-	.row
-		.col-md-8.col-md-offset-2
-		    - if @organization.logo.present?
-		      = image_tag(@organization.logo_url, class: "img-organization img-thumbnail")
-		    - else
-		      = image_tag('default_org.png', class: "img-organization img-thumbnail")
-		    h3
-		    	= link_to @organization.name, @organization
-			
-	.row
-		.col-md-8.col-md-offset-2
-			h6
-				= @organization.description
-			h4
+  .row
+    .col-md-8.col-md-offset-2
+      - if @organization.logo.present?
+	      = image_tag(@organization.logo_url, class: "img-organization img-thumbnail")
+      - else
+	      = image_tag('default_org.png', class: "img-organization img-thumbnail")
+      h3
+        = link_to @organization.name, @organization
+  .row
+    .col-md-8.col-md-offset-2
+      h4
 				i.fa.fa-map-marker
 			    = @organization.locality
-	- if policy(@organization).update?
-		= link_to t('helpers.submit.organization.edit'), edit_organization_path(@organization), class: 'btn btn-primary btn-violet'
+      h6
+        = @organization.description
+      h4
+        - if @organization.website.present?
+					i.fa.fa-globe
+						=link_to t('helpers.organization.website'), @organization.website, target: '_blank'
+  - if policy(@organization).update?
+    = link_to t('helpers.wish_item.new'), new_organization_wish_item_path(@organization)   , class: 'btn btn-primary btn-violet'
+    = link_to t('helpers.submit.organization.edit'), edit_organization_path(@organization), class: 'btn btn-primary btn-violet margin-right-20'

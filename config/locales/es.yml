@@ -2,8 +2,8 @@ es:
   home:
     slogan: REGALAR ES EL LUGAR DONDE DONAR Y RECIBIR
     join_us: Únete para hacer regalos a aquellos que más lo necesitan
-    organization: Si quieres hacer un regalo pedido por una organización haz
-    here: clik aquí
+    organization: "Si quieres concederle un deseo a una organización haz"
+    here: click aquí
   save: Guardar
   application:
     title: Regalar
@@ -92,6 +92,9 @@ es:
       featured: 'Regalos Destacados'
       measures: 'Medidas: '
       weight: 'Peso: '
+      finish_date: Fecha de finalización
+      days_left: ' Días restantes'
+      finished: El deseo ha terminado
     wish_list:
       name: Lista de deseos
       finished: Deseos recibidos
@@ -132,9 +135,11 @@ es:
       gifted_quantity: 'Cantidad Regalada: '
       received: Regalos recibidos
       pending: Regalos pendientes
+      wants_to_gift: quiere regalar
     organization:
       logo: Logo
       users: Elije los usuarios que pertenecen a la organización
+      website: ' Website'
     page_entries_info:
       one_page:
         display_entries:

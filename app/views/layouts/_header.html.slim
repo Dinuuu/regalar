@@ -39,6 +39,9 @@ nav.navbar.navbar-default
       ul.nav.navbar-nav
         li
           = link_to t('organizations'), list_organizations_path
+        - if user_signed_in?
+          li
+            = link_to t('helpers.gift_item.new'), new_gift_item_path
             
             
 

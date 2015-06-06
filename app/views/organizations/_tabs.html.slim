@@ -22,13 +22,7 @@ ul.nav.nav-tabs.org-tabs data-tabs="tabs"
 .tab-content
   #goal-not-reached.tab-pane.active
     = render 'wish_items/index_cards', wish_items: WishItem.for_organization(organization).goal_not_reached.not_paused
-    - if policy(organization).update?
-      .row
-        .col-md-6
-          p
-            = link_to t('helpers.wish_item.new'), new_organization_wish_item_path(organization)   , class: 'btn btn-primary btn-violet'
-  
-
+    
   #goal-reached.tab-pane
     = render 'wish_items/index_cards', wish_items: WishItem.for_organization(organization).goal_reached
   

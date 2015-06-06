@@ -12,6 +12,7 @@ class OrganizationsController < ApplicationController
   def create
     create! do
       if @organization.valid?
+        byebug
         @organization.users << current_user
         organization_path @organization
       end

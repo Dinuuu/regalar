@@ -3,7 +3,7 @@
     .row
       .img-campaign-thumbnail
         - if item.gift_item_images.present?
-            = image_tag(item.main_image, height: 150, width: 150, class: "img-thumbnail img-profile")
+            = image_tag(item.gift_item_images[0].file.url, height: 150, width: 150, class: "img-thumbnail img-profile")
         - else
           = image_tag('default_pic.png', height: 150, width: 150, class: "img-thumbnail img-profile")
       .container-fluid
@@ -11,8 +11,8 @@
           h4.campaign-name
             = link_to item.title.truncate(21), user_gift_item_path(id: item.id, user_id: item.user.id)
           h5
-            = t('helpers.gift_item.gifted_by')
             = link_to item.user.full_name.truncate(30), item.user
+            = t('helpers.gift_item.wants_to_gift')
           p.card-description
             = item.description.truncate(120)
           p

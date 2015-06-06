@@ -39,6 +39,9 @@ $google-red: #F03B3B;
 .margin-top-8{
   margin-top: 8px;
 }
+.margin-right-20{
+  margin-right: 20px;
+}
 #header {
   
   position:fixed !important;
@@ -154,74 +157,55 @@ a.btn-danger:link {color: #FFFFFF}
   height: 40px;
 }
 
-#content {
-
-  margin: 30px 0 40px 0;
-
-  #pagination {
-    margin: 0 auto;
-    margin-left: 36%;
-  }
-
-  #header-carousel {
-
-    img {
-      height: 395px;
-    }
-  }
-
-  #campaigns-title {
-    margin: 30px 0;
-    background-color: $violet;
-    color: white;
-    font-size: 20px;
-    padding: 5px 20px;
-
-    a {
-      color: white;
-    }
-  }
-
-  #title {
-  
-  background: 
-    linear-gradient(
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.5)
-    ),
-  url(home.jpg);
-  background-size: cover;
-  height: 500px;
-  margin-left: -150px;
-  width: 119%;
-  margin-top: -97px;
-  margin-bottom: 30px;
-
-  .h1{
-    color: white;
-    text-transform: uppercase;
-    font-size: 40px;
-  }
-  .h2{
-    color: white;
-  }
-  .h4{
-    color: white;  
-  }
-  .slogan{
-    padding-top: 150px;
-    padding-left: 100px;
-  }
-  .call-to-action{
-    padding: 20px;
-    width: 275px;
-  }
-  .photo{
-    margin-top: 20px;
-    height: 150px
-  }
-   
+#pagination {
+  margin: 0 auto;
+  margin-left: 36%;
 }
+
+#header-carousel {
+
+  img {
+    height: 395px;
+  }
+}
+
+#campaigns-title {
+  margin: 30px 0;
+  background-color: $violet;
+  color: white;
+  font-size: 20px;
+  padding: 5px 20px;
+
+  a {
+    color: white;
+  }
+}
+
+.title-photo{
+background: 
+  linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  );
+background-size: cover;
+height: 500px;
+margin-left: -150px;
+width: 119%;
+margin-bottom: 30px;
+-webkit-filter: blur(12px);
+filter: blur(12px);
+}
+
+.slogan{
+  padding-top: 150px;
+  padding-left: 100px;
+  color: white;
+}
+.call-to-action{
+  padding: 20px;
+  width: 275px;
+}
+
 .jumbotron {
   padding: 30px;
   margin-bottom: 30px;
@@ -245,31 +229,31 @@ a.btn-danger:link {color: #FFFFFF}
 }
 
 
-  #slogan {
-    margin: 30px 0;
-    text-align: center;
-    font-size: 30px;
-  }
+#slogan {
+  margin: 30px 0;
+  text-align: center;
+  font-size: 30px;
+}
 
-  #slogan-images {
-    margin: 10px 0;
-    text-align: center;
-    font-size: 22px;
-    font-weight: bold;
+#slogan-images {
+  margin: 10px 0;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
 
-    img {
-      width: 120px;
-      height: 120px;
-      margin-bottom: 15px;
-    }
-  }
-
-  .omniauth-button {
-    margin-bottom: 10px;
-    padding: 8px;
-    color: white;
+  img {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 15px;
   }
 }
+
+.omniauth-button {
+  margin-bottom: 10px;
+  padding: 8px;
+  color: white;
+}
+
 
 .modal-backdrop.in {
   position: static !important;
@@ -314,4 +298,16 @@ background-color: $google-red;
 .img-gift {
  height: 300px !important; 
  width: 350px !important; 
+}
+.main-text{
+  position: absolute; 
+  top: 190px; 
+  left: 0; 
+  width: 100%; 
+  color: white;
+  
+}
+.photo{
+  margin-top: 20px;
+  height: 150px
 }
