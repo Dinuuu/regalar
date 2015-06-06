@@ -129,6 +129,9 @@ en:
         gifted_quantity: 'Quantity Gifted: '
         received: Gifts received
         pending: Pending gifts
+      organization:
+        logo: Logo
+        users: Select the users that belogs to the organization
   organizations: "Organizations"  
   organization-link: "Go to organization"
   purchase:
