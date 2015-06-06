@@ -132,6 +132,9 @@ es:
       gifted_quantity: 'Cantidad Regalada: '
       received: Regalos recibidos
       pending: Regalos pendientes
+    organization:
+      logo: Logo
+      users: Elije los usuarios que pertenecen a la organización
     page_entries_info:
       one_page:
         display_entries:
