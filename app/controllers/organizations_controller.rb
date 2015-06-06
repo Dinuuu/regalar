@@ -13,6 +13,16 @@ class OrganizationsController < ApplicationController
     create! do
       if @organization.valid?
         @organization.users << current_user
+        @organization.users << User.where(id: users_ids)
+        organization_path @organization
+      end
+    end
+  end
+
+  def update
+    update! do
+      if @organization.valid?
+        @organization.users << User.where(id: users_ids)
         organization_path @organization
       end
     end
@@ -33,6 +43,15 @@ class OrganizationsController < ApplicationController
   end
 
   private
+
+  def users_ids
+    return [] unless params[:organization][:users].present?
+    user_ids = []
+    params[:organization][:users].each do |id|
+      user_ids << id unless @organization.users.ids.include? id.to_i
+    end
+    user_ids
+  end
 
   def resource_params
     return [] if request.get?
