@@ -1,15 +1,16 @@
 class OrganizationGiftRequestsController < ApplicationController
   inherit_resources
-  belongs_to :gift_item
+  belongs_to :gift_item, optional: true
   defaults resource_class: GiftRequest, collection_name: 'gift_requests',
            instance_name: 'gift_request'
   before_action :authenticate_user!
+  before_action :check_organization, only: [:create]
   before_action :check_ownership, only: [:destroy]
   before_action :cancelable, only: [:destroy]
   FIELDS = [:user_id, :gift_item_id, :quantity, :organization_id]
 
   def create
-    gift_request
+    gift_item
     create! do |success, failure|
       success.html do
         redirect_to :back
@@ -19,7 +20,6 @@ class OrganizationGiftRequestsController < ApplicationController
   end
 
   def destroy
-    @gift_item = gift_request.gift_item
     destroy! do |success, _failure|
       success.html do
         redirect_to :back
@@ -33,7 +33,14 @@ class OrganizationGiftRequestsController < ApplicationController
     @organization = GiftRequest.find(params[:id]).organization
     return true if @organization.users.include? current_user
     render status: :forbidden,
-           text: 'You must belong to the organization to access to this section'
+           text: 'You must belong to the organization to do that'
+  end
+
+  def check_organization
+    organization = Organization.find(resource_params[0][:organization_id])
+    return true if current_user.organizations.include? organization
+    render status: :forbidden,
+           text: 'You must belong to the organization to do that'
   end
 
   def cancelable

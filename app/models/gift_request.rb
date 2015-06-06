@@ -9,4 +9,12 @@ class GiftRequest < ActiveRecord::Base
   scope :for_gift_item, -> (gift_item) { where(gift_item: gift_item) }
   scope :confirmed, -> { where(done: true) }
   scope :pending, -> { where(done: false) }
+  validate :check_quantity, if: proc { quantity.present? && gift_item_id.present? }
+
+  private
+
+  def check_quantity
+    return true if quantity <= (gift_item.quantity - gift_item.given)
+    errors.add(:quantity, 'it has to be less than what the user has to give')
+  end
 end

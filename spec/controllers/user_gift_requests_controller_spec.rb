@@ -25,7 +25,8 @@ describe UserGiftRequestsController do
             end
             it 'changes done to true' do
               post :confirm, id: gift_request.id
-              expect(gift_request.reload.done).to be true
+              gift_request.reload
+              expect(gift_request.done).to be true
             end
             it 'redirects' do
               post :confirm, id: gift_request.id
@@ -62,17 +63,18 @@ describe UserGiftRequestsController do
                 .not_to change { gift_item.reload.given }
             end
           end
-          context 'When having something to give' do
+          context 'When asking more than what is left' do
             before(:each) do
-              gift_item.update_attributes(given: 0, quantity: 10)
+              gift_request.update_attributes(quantity: 6)
             end
-            context 'When asking more than what is left' do
+            context 'When having something to give' do
               before(:each) do
-                gift_request.update_attributes(quantity: 15)
+                gift_item.update_attributes(given: 5, quantity: 10)
               end
               it 'increments given to quantity' do
                 post :confirm, id: gift_request.id
-                expect(gift_item.reload.given).to eq gift_item.quantity
+                gift_item.reload
+                expect(gift_item.given).to eq gift_item.quantity
               end
             end
             context 'When asking less that what is left' do
@@ -81,7 +83,7 @@ describe UserGiftRequestsController do
               end
               it 'increments given gift_request.quantity' do
                 expect { post :confirm, id: gift_request.id }
-                  .to change { gift_item.reload.given }.by gift_request.quantity
+                  .to change { gift_item.reload.given }.by gift_request.reload.quantity
               end
             end
           end
