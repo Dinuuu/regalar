@@ -12,12 +12,23 @@ Regalar::Application.routes.draw do
   # Users Routes
   
   resources :users do
-    resources :gift_items, controller: 'user_gift_items', except: [:destroy, :new, :create]
+    resources :gift_items, controller: 'user_gift_items', except: [:destroy] do
+      member do
+        resources :gift_requests, controller: 'organization_gift_requests', only: [:new, :create]
+      end
+      resources :gift_requests, controller: 'organization_gift_requests', only: [:show]
+    end
     member do
       get :edit_password
       patch :update_password
     end
     collection do
+      resources :gift_requests, controller: 'user_gift_requests', only: [:show] do
+        member do
+          delete :cancel
+          post :confirm
+        end
+      end
       resources :donations, controller: 'user_donations', only: [:destroy], as: 'cancel_donation'
     end 
   end
@@ -41,11 +52,11 @@ Regalar::Application.routes.draw do
 
     collection do
       get :list
+      resources :gift_requests, controller: 'organization_gift_requests', only: [:destroy], as: 'cancel_gift_request'
     end
 
     resources :comments, except: [:edit, :update]
 
-    
     # OrganizationDonations Routes
     resources :donations, controller: 'organization_donations', only: [:show, :index] do
       member do

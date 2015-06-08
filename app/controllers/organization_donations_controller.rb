@@ -21,19 +21,16 @@ class OrganizationDonationsController < OrganizationAuthenticationController
 
   def show
     @donation = Donation.find(params[:id])
-    render 'show'
   end
 
   def confirmed
     organization = Organization.find(params[:organization_id])
     @confirmed = organization.confirmed_donations
-    render 'confirmed'
   end
 
   def pending
     organization = Organization.find(params[:organization_id])
     @pending = organization.pending_donations
-    render 'pending'
   end
 
   private
