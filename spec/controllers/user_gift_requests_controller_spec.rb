@@ -2,9 +2,12 @@ require 'spec_helper'
 
 describe UserGiftRequestsController do
   let!(:user) { create :user }
+  let!(:user2) { create :user }
   let!(:organization) { create :organization }
   let!(:organization2) { create :organization }
+  let!(:organization3) { create :organization }
   let!(:gift_item) { build :gift_item }
+  let!(:gift_item2) { build :gift_item }
   describe '#confirm' do
     context 'When logged' do
       before(:each) do
@@ -196,6 +199,74 @@ describe UserGiftRequestsController do
       end
       it 'should render login page' do
         get :show, id: gift_request.id
+        expect(response).to redirect_to '/users/sign_in'
+      end
+    end
+  end
+  describe '#confirmed' do
+    before :each do
+      gift_item.update_attributes(user: user)
+      gift_item2.update_attributes(user: user2)
+    end
+    let!(:gift_request1) do
+      create :gift_request, organization: organization, user: user,
+                            gift_item: gift_item, done: true
+    end
+    let!(:gift_request2) do
+      create :gift_request, organization: organization2, user: user,
+                            gift_item: gift_item, done: true
+    end
+    let!(:gift_request3) do
+      create :gift_request, organization: organization3, user: user,
+                            gift_item: gift_item, done: false
+    end
+    let!(:gift_request4) do
+      create :gift_request, organization: organization, user: user2,
+                            gift_item: gift_item, done: true
+    end
+    let!(:gift_request5) do
+      create :gift_request, organization: organization2, user: user2,
+                            gift_item: gift_item, done: true
+    end
+    let!(:gift_request6) do
+      create :gift_request, organization: organization3, user: user2,
+                            gift_item: gift_item, done: false
+    end
+    before :each do
+      get :confirmed, id: user.id
+    end
+    context 'asking for confirmed gift_requests' do
+      it 'renders confirmed' do
+        expect(response).to render_template 'confirmed'
+      end
+    end
+  end
+  describe '#pending' do
+    context 'When logged' do
+      before(:each) do
+        sign_in user
+        user.reload
+      end
+      context 'when logged user asks for his pending' do
+        before :each do
+          get :pending, id: user.id
+        end
+        it 'renders pending' do
+          expect(response).to render_template 'pending'
+        end
+      end
+      context 'when logged user asks for another users pending' do
+        before :each do
+          get :pending, id: user2.id
+        end
+        it 'returns status forbidden' do
+          expect(response.status).to eq 403
+        end
+      end
+    end
+    context 'When unlogged' do
+      it 'should render login page' do
+        get :pending, id: user2.id
         expect(response).to redirect_to '/users/sign_in'
       end
     end

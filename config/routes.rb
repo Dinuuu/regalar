@@ -21,6 +21,12 @@ Regalar::Application.routes.draw do
     member do
       get :edit_password
       patch :update_password
+      resources :gift_requests, controller: 'user_gift_requests', only: [] do
+        collection do
+          get :confirmed
+          get :pending
+        end
+      end
     end
     collection do
       resources :gift_requests, controller: 'user_gift_requests', only: [:show] do
