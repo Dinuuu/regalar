@@ -39,6 +39,11 @@ describe UserGiftRequestsController do
               post :confirm, id: gift_request.id
               expect(response).to redirect_to user_gift_item_path(user, gift_item)
             end
+            it 'sends an email' do
+              (expect do
+                post :confirm, id: gift_request.id
+              end).to change { ActionMailer::Base.deliveries.count }.by(1)
+            end
           end
           context 'When gift_request done is true' do
             before(:each) do
@@ -47,6 +52,11 @@ describe UserGiftRequestsController do
             it 'responds status forbidden' do
               post :confirm, id: gift_request.id
               expect(response.status).to eq 403
+            end
+            it 'does not send an email' do
+              (expect do
+                post :confirm, id: gift_request.id
+              end).not_to change { ActionMailer::Base.deliveries.count }
             end
           end
           context 'When nothing to give left' do
@@ -64,6 +74,11 @@ describe UserGiftRequestsController do
             it 'does not change given of gift_item' do
               expect { post :confirm, id: gift_request.id }
                 .not_to change { gift_item.reload.given }
+            end
+            it 'does not send an email' do
+              (expect do
+                post :confirm, id: gift_request.id
+              end).not_to change { ActionMailer::Base.deliveries.count }
             end
           end
           context 'When asking more than what is left' do
@@ -112,7 +127,29 @@ describe UserGiftRequestsController do
           it 'does not change given of gift_item' do
             expect { post :confirm, id: gift_request.id }.not_to change { gift_item.reload.given }
           end
+          it 'does not send an email' do
+            (expect do
+              post :confirm, id: gift_request.id
+            end).not_to change { ActionMailer::Base.deliveries.count }
+          end
         end
+      end
+    end
+    context 'When user is unlogged' do
+      before :each do
+        gift_item.update_attributes(user: user)
+      end
+      let!(:gift_request) do
+        create :gift_request, organization: organization, user: user, gift_item: gift_item
+      end
+      it 'should render login page' do
+        post :confirm, id: gift_request.id
+        expect(response).to redirect_to '/users/sign_in'
+      end
+      it 'does not send an email' do
+        (expect do
+          post :confirm, id: gift_request.id
+        end).not_to change { ActionMailer::Base.deliveries.count }
       end
     end
   end
@@ -136,6 +173,11 @@ describe UserGiftRequestsController do
           delete :cancel, id: gift_request
           expect(response).to redirect_to user_gift_item_path(user, gift_item)
         end
+        it 'sends an email' do
+          (expect do
+            delete :cancel, id: gift_request
+          end).to change { ActionMailer::Base.deliveries.count }.by(1)
+        end
       end
       context 'When user does not own the gift item' do
         let!(:user2) { create :user }
@@ -150,7 +192,29 @@ describe UserGiftRequestsController do
             delete :cancel, id: gift_request.id
             expect(response.status).to eq 403
           end
+          it 'does not send an email' do
+            (expect do
+              delete :cancel, id: gift_request.id
+            end).not_to change { ActionMailer::Base.deliveries.count }
+          end
         end
+      end
+    end
+    context 'When user is unlogged' do
+      before :each do
+        gift_item.update_attributes(user: user)
+      end
+      let!(:gift_request) do
+        create :gift_request, organization: organization, user: user, gift_item: gift_item
+      end
+      it 'should render login page' do
+        delete :cancel, id: gift_request.id
+        expect(response).to redirect_to '/users/sign_in'
+      end
+      it 'does not send an email' do
+        (expect do
+          delete :cancel, id: gift_request.id
+        end).not_to change { ActionMailer::Base.deliveries.count }
       end
     end
   end

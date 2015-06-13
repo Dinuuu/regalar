@@ -419,3 +419,38 @@ es:
       available: Disponible
       verifying: Verificando
       gifted: Regalado
+  mailer:
+    donation:
+      confirmed: 'Una donacion fue confirmada'
+      canceled: 'Una donacion fue cancelada'
+      new: 'Tienes una nueva donacion'
+      thanks: 'Gracias por donar'
+    gift_request:
+      created: 'Un pedido fue creado'
+      new: 'Tienes un nuevo pedido'
+      canceled: 'Un pedido fue cancelado'
+      confirmed: 'Un pedido fue confirmado'
+    hello: 'Hola'
+    organization: 'organizacion'
+    confirmed: 'confirmo'
+    canceled: 'cancelo'
+    donation: 'donacion'
+    the_f: 'la'
+    the_m: 'el'
+    The_f: 'La'
+    The_m: 'El'
+    for: 'para'
+    from: 'de'
+    you_can_contact: 'Puedes contactar a'
+    writing_to: 'escribiendo a'
+    have_great_day: 'Que tengas un buen dia!'
+    thank_you: 'Gracias'
+    your: 'tu'
+    will_be_notified: 'recibira una notificacion'
+    you_have_a_new_f: 'Tienes una nueva'
+    you_have_a_new_m: 'Tienes un nuevo'
+    gift_request: 'pedido'
+    was_created_f: 'fue creada'
+    was_created_m: 'fue creado'
+    was_canceled_f: 'fue cancelada'
+    was_canceled_m: 'fue cancelado'

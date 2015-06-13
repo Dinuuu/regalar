@@ -5,10 +5,10 @@
   </head>
   <body>
     <p>
-      Hello <%= @organization.name %>
-        You have a new donation from <%= @user.full_name %> for <%= link_to @wish_item.title, organization_wish_item_path(@wish_item.organization.id, @wish_item.id) %>
-        You can contact <%= @user.full_name %> writing to <%= @user.email %>
-      <p>Have a great day!</p>
+      t('mailer.hello') <%= @organization.name %>
+        t('mailer.you_have_a_new_f') t('mailer.donation') t('mailer.from') <%= @user.full_name %> t('mailer.for') <%= link_to @wish_item.title, organization_wish_item_path(@wish_item.organization.id, @wish_item.id) %>
+        t('mailer.you_can_contact') <%= @user.full_name %> t('mailer.writing_to') <%= @user.email %>
+      <p>t('mailer.have_great_day')</p>
     </p>
   </body>
 </html>
