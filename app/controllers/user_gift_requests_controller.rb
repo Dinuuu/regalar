@@ -1,7 +1,8 @@
 class UserGiftRequestsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :check_ownership
+  before_action :authenticate_user!, except: [:confirmed]
+  before_action :check_ownership, except: [:confirmed, :pending]
   before_action :check_confirmable, only: [:confirm]
+  before_action :validate_user, only: [:pending]
 
   def confirm
     gift_request.gift_item.update_attributes(given: given_quantity(gift_request))
@@ -16,6 +17,16 @@ class UserGiftRequestsController < ApplicationController
 
   def show
     gift_request
+  end
+
+  def confirmed
+    user = User.find(params[:id])
+    user.confirmed_gift_requests
+  end
+
+  def pending
+    user = User.find(params[:id])
+    user.pending_gift_requests
   end
 
   private
@@ -45,5 +56,11 @@ class UserGiftRequestsController < ApplicationController
                     give or is already confirmed" if (gift_request.gift_item.given >=
                                                      gift_request.gift_item.quantity) ||
                                                      gift_request.done
+  end
+
+  def validate_user
+    return true if params[:id].to_i == current_user.id
+    render status: :forbidden,
+           text: 'You must be the specified user to access to this section'
   end
 end
