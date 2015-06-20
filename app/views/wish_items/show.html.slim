@@ -1,4 +1,4 @@
-.col-md-7
+.col-md-7.border-right
 	.text-center
 		h3
 			= @wish_item.title + ' '
@@ -11,6 +11,14 @@
 		        i.fa.fa-map-marker
 		        = @wish_item.organization.locality
 		br
+		- if @wish_item.finish_date.present?
+			- diff = (@wish_item.finish_date.to_date - Time.zone.today).to_int
+			- if diff > 0
+				.h3
+					= diff		 
+					= t('helpers.wish_item.days_left')
+			- else
+				= t('helpers.wish_item.finished')
 		br
 
 	div.col-md-4
@@ -27,7 +35,6 @@
 			= @wish_item.obtained
 			= t('helpers.wish_item.of')
 			= @wish_item.quantity
-
 
 	div.col-md-8
 

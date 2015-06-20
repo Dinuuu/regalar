@@ -2,11 +2,12 @@
 
 = render 'tabs', organization: @organization
 
-.row
-  .col-md-12
-    legend
-      = Comment.model_name.human(count: 2)
-    - @organization.comments.each do |comment|
-      = render 'comments/comment_card', comment: comment
+- if @organization.comments.present?
+	.row
+	  .col-md-12
+	    legend
+	      = Comment.model_name.human(count: 2)
+	    - @organization.comments.each do |comment|
+	      = render 'comments/comment_card', comment: comment
       
 = render 'comments/new', comment: @comment, url: organization_comments_path(@organization)

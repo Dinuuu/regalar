@@ -2,7 +2,7 @@ en:
   home:
     slogan: REGALAR IS THE PLACE TO MAKE AND RECIEVE GIFTS
     join_us: Join us to make awsome gifts to those who need it most
-    organization: If you want to make a gift to a specific organization
+    organization: If you want to concede a wish to an organization
     here: click here 
   application:
     title: Regalar
@@ -89,6 +89,9 @@ en:
         gifted_by: 'Gifted by: '
         measures: 'Measures: '
         weight: 'Weight: '
+        finish_date: Deadline
+        days_left: ' Days left'
+        finished: This wish item is finished
       wish_list:  
         name: Wish List
         finished: Wishes Fulfilled
@@ -129,9 +132,11 @@ en:
         gifted_quantity: 'Quantity Gifted: '
         received: Gifts received
         pending: Pending gifts
+        wants_to_gift: wants to gift
       organization:
         logo: Logo
         users: Select the users that belogs to the organization
+        website: ' Website'
   organizations: "Organizations"  
   organization-link: "Go to organization"
   purchase:
