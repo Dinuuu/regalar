@@ -1,9 +1,17 @@
 en:
   home:
-    slogan: REGALAR IS THE PLACE TO MAKE AND RECIEVE GIFTS
-    join_us: Join us to make awsome gifts to those who need it most
-    organization: If you want to concede a wish to an organization
-    here: click here 
+    slogan: GIVE AWAY THE THINGS YOU ARE NOT USING
+    organization: If you are an organization looking for a gift
+    here: click here
+    how_does_it_works: How does it works 
+    expl: Regalar in a site where you can gift all those things you are not using any more. In 3 simple steps you can make NGOs wishes come true. 
+    step1: Upload your gift
+    step1_exp: Upload your gift and give us a shor description of the item you want to give away 
+    step2: Choose the organization
+    step2_exp: You can choose the organization you will be giving your gift from all those who claim it
+    step3: Arrange the delivery
+    step3_exp: We are going to put you in contact with the organization so you can arrange the delivery details
+    other_option: Some organizations also have specific needs. You can see all those wishes by  
   application:
     title: Regalar
     no_results: No results found
@@ -13,6 +21,8 @@ en:
     easy: EASY
     vital: VITAL
     transparent: TRANSPARENT
+    discover: Discover
+    Create: Create
     header:
       search: Search
     footer:
@@ -128,11 +138,14 @@ en:
         measures: Measures
         weight: Weight
         size_mesage: Max size 4 MB
+        remove_attachment: Remove image
+        add_attachment: Add image
         claim_gift: Claim Gift
         gifted_quantity: 'Quantity Gifted: '
         received: Gifts received
         pending: Pending gifts
         wants_to_gift: wants to gift
+        make: Make a gift
       organization:
         logo: Logo
         users: Select the users that belogs to the organization

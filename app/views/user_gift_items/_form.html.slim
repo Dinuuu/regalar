@@ -40,14 +40,12 @@
       = f.fields_for :gift_item_images do |attachment_form|
         .form-group
           .col-sm-8
-            = attachment_form.label :file
-            br/
             = attachment_form.file_field :file
-            = attachment_form.link_to_remove t('remove_attachment')
+            = attachment_form.link_to_remove t('helpers.gift_item.remove_attachment')
       .form-group
         .col-sm-offset-2.col-sm-8
           strong
-            = f.link_to_add t('add_attachment'), :gift_item_images
+            = f.link_to_add t('helpers.gift_item.add_attachment'), :gift_item_images
         .col-sm-offset-2.col-sm-6
           p
             = t('helpers.gift_item.size_mesage')

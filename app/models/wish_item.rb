@@ -44,7 +44,7 @@ class WishItem < ActiveRecord::Base
   end
 
   def gifted?
-    quantity < obtained
+    quantity <= obtained
   end
 
   def finished?

@@ -13,7 +13,8 @@
             = image_tag('default_pic.png', height: 150, width: 150, class: "img-thumbnail img-profile")
 
         div.col-md-6
-          - pending_donation = item.pending_donation(current_user)
+          - if current_user.present?
+            - pending_donation = item.pending_donation(current_user)
           
           - if pending_donation.present?
             h3
@@ -50,10 +51,16 @@
             p
               = item.description
             
-            = link_to t('wish_items.gift'), '#',
+            - if current_user.present?
+              = link_to t('wish_items.gift'), '#',
                   class: 'btn btn-success',
-                  data: { toggle: 'modal', target: '#gift-modal' }      
-        
+                  data: { toggle: 'modal', target: '#gift-modal' } 
+            - else
+              = link_to t('wish_items.gift'), '#',
+                  class: 'btn btn-success',
+                  data: { toggle: 'modal', target: '#login-modal' } 
+          
+          = render 'layouts/login_modal'
           = render 'wish_items/gift_modal', wish_item: item
 
 #pagination

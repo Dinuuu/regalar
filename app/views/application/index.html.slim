@@ -1,1 +1,33 @@
-= render 'layouts/content', campaigns: @campaigns
+= render 'layouts/main_image'
+.container
+  .row.h1.col-md-offset-5.home-works-margin
+    = t('home.how_does_it_works')
+  .h4.home-expl
+    = t('home.expl')
+  .row.home-works-margin
+    .col-lg-4
+      = image_tag('upload.png', class: 'img-circle', style: 'width: 140px; height: 140px;')
+      .h2
+        = t('home.step1')
+      .p
+        = t('home.step1_exp')
+    .col-lg-4
+      = image_tag('choose.png', class: 'img-circle', style: 'width: 140px; height: 140px;')
+      .h2
+        = t('home.step2')
+      .p
+        = t('home.step2_exp')
+    .col-lg-4
+      = image_tag('deliver.png', class: 'img-circle', style: 'width: 140px; height: 140px;')
+      .h2
+        = t('home.step3')
+      .p
+        = t('home.step3_exp')
+  .h2.home-expl.home-other.home-works-margin
+    = t('home.other_option')
+    = link_to t('home.here'), list_wish_items_path
+legend
+    = t('helpers.wish_item.featured')
+#campaigns-cards
+  = render 'gift_items/index_cards', gifts: GiftItem.trending
+  = link_to t('application.all'), gift_items_path, class: 'btn btn-primary'
