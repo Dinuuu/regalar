@@ -15,9 +15,10 @@ ul.nav.nav-tabs.org-tabs data-tabs="tabs"
   li
     a data-toggle="tab" href="#gifts-received"
       = t('helpers.gift_item.received')
-  li
-    a data-toggle="tab" href="#gifts-pending"
-      = t('helpers.gift_item.pending')
+  - if policy(organization).update?
+    li
+      a data-toggle="tab" href="#gifts-pending"
+        = t('helpers.gift_item.verifying')
 
 .tab-content
   #goal-not-reached.tab-pane.active

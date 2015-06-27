@@ -149,6 +149,7 @@ es:
       received: Regalos recibidos
       pending: Regalos pendientes
       wants_to_gift: quiere regalar
+      verifying: Regalos en verificación
     organization:
       logo: Logo
       users: Elije los usuarios que pertenecen a la organización
@@ -392,6 +393,24 @@ es:
     question3:
       title: ¿Así que sólo me van a estar cobrando si la financiación tiene éxito?
       answer: ¡Sí! Si un proyecto no está financiado con éxito, nadie paga nada.
+  request_modal:
+    name: Regalos
+    ask: Pedir
+    confirmation: Confirmación de regalo
+    yes: Si
+    no: No
+    cancel_modal: Cancelar
+    cancel: Cancelar regalo
+    modal_confirm: Está pidiendo el regalo 
+    toOrg: a la organización
+    introduce_quantity: 'Elija la cantidad que quiere pedir: '
+    introduce_org: 'Elija la organización que recibirá el regalo: '
+    wait_email: El usuario se va a estar contactando con vos a la brevedad para coordinar la entrega del mismo.
+    continue: Continuar
+    confirm: Confirmar
+    reject: Rechazar
+    pause: Pausar
+    resume: Reanudar
   gift:
     name: Regalos
     gift: Regalar
@@ -401,7 +420,7 @@ es:
     cancel_modal: Cancelar
     cancel: Cancelar regalo
     confirm: Confirma que quiere realizar el regalo
-    toOrg:  a la organización
+    toOrg: a la organización
     introduce_quantity: 'Elija la cantidad que quiere donar: '
     wait_email: La organización se va a estar contactando con vos a la brevedad para coordinar la entrega del mismo.
     continue: Continuar

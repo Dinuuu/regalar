@@ -146,6 +146,7 @@ en:
         pending: Pending gifts
         wants_to_gift: wants to gift
         make: Make a gift
+        verifying: Verifying Gifts
       organization:
         logo: Logo
         users: Select the users that belogs to the organization
@@ -385,6 +386,24 @@ en:
     available: Available
     verifying: Verifying
     gifted: Gifted
+  request_modal:
+    name: Gift
+    ask: Pedir
+    confirmation: Gift confirmation
+    yes: Yes
+    no: No
+    cancel_modal: Cancel
+    cancel: Cancel gift
+    modal_confirm: You are going to claim the gift
+    toOrg: to the organization
+    introduce_quantity: 'Choose the quantity you want to claim: '
+    introduce_org: 'Choose the organization that will recieve the gift: '
+    wait_email: The organization will contact you to arrange the delivery.
+    continue: Continue
+    confirm: Confirm
+    reject: Reject
+    pause: Pause
+    resume: Resume
   gift:
     name: Gift
     gift: Gift
