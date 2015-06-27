@@ -1,9 +1,17 @@
 es:
   home:
-    slogan: REGALAR ES EL LUGAR DONDE DONAR Y RECIBIR
-    join_us: Únete para hacer regalos a aquellos que más lo necesitan
-    organization: "Si quieres concederle un deseo a una organización haz"
+    slogan: REGALA LAS COSAS QUE YA NO UTILIZAS
+    organization: Si eres una organización en busca de un regalo haz
     here: click aquí
+    how_does_it_works: Cómo funciona
+    expl: Regalar es un sitio mediante el cual podrás regalar aquellas cosas que tienes en desuso. Con solo 3 simples pasos podrás hacer realidad el deseo de organizaciones sin fines de lucro que puede darle utilidad a las cosas que ya no usas. 
+    step1: Sube tu regalo
+    step1_exp: Sube aquellas cosas que ya no utilizas al sitio y danos una breve descripción de lo que deseas regalar
+    step2: Elige la organización 
+    step2_exp: Podrás elegir a qué organización le darás el regalo entre las que lo hayan solicitado
+    step3: Coordina la entrega
+    step3_exp: Te pondremos en contacto con la organización para que puedan coordinar los detalles de entrega
+    other_option: 'Algunas organizaciones tienen pedidos de necesidades puntuales. Puedes verlos haciendo '
   save: Guardar
   application:
     title: Regalar
@@ -14,6 +22,8 @@ es:
     easy: FÁCIL
     vital: VITAL
     transparent: TRANSPARENTE
+    discover: Descubrir
+    Create: Crear
     header:
       search: Buscar
     footer:
@@ -130,8 +140,11 @@ es:
       regular: Regular
       measures: Medidas
       weight: Peso
-      size_mesage: Maximum Size 4 MB
+      size_mesage: Máximo tamaño 4 MB
+      remove_attachment: Remover imagen
+      add_attachment: Agregar imagen
       claim_gift: Pedir Regalo
+      make: Hacer un regalo
       gifted_quantity: 'Cantidad Regalada: '
       received: Regalos recibidos
       pending: Regalos pendientes

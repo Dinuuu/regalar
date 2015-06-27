@@ -182,18 +182,16 @@ a.btn-danger:link {color: #FFFFFF}
 }
 
 .title-photo{
-background: 
+  background: 
   linear-gradient(
-    rgba(0, 0, 0, 0.5),
-    rgba(0, 0, 0, 0.5)
+  rgba(0, 0, 0, 0.5),
+  rgba(0, 0, 0, 0.5)
   );
-background-size: cover;
-height: 500px;
-margin-left: -150px;
-width: 119%;
-margin-bottom: 30px;
--webkit-filter: blur(12px);
-filter: blur(12px);
+  height: 410px;
+  width: 100%;
+  margin-bottom: 30px;
+  -webkit-filter: blur(4px);
+  margin-top: -20px;
 }
 
 .slogan{
@@ -305,7 +303,8 @@ background-color: $google-red;
   left: 0; 
   width: 100%; 
   color: white;
-  
+  text-align: center;
+  letter-spacing: 1.5px;
 }
 .photo{
   margin-top: 20px;

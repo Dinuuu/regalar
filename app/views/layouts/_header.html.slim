@@ -35,14 +35,32 @@ nav.navbar.navbar-default
             = select_tag "search-select", "<option value=#{list_wish_items_path}>#{t('wish_items.name')}</option><option value=#{gift_items_path}>#{t('gift.name')}</option><option value=#{organizations_path}>#{t('organizations')}</option>".html_safe, {onChange: '$(this).parent().attr(\'action\', $(this).val());;', class: 'form-control'}
             button.btn.btn-default aria-label=("Left Align") type="submit"
               span.glyphicon.glyphicon-search aria-hidden="true" 
-
+      
       ul.nav.navbar-nav
-        li
-          = link_to t('organizations'), list_organizations_path
-        - if user_signed_in?
-          li
-            = link_to t('helpers.gift_item.new'), new_gift_item_path
-            
+        li.dropdown
+          a.dropdown-toggle aria-expanded="false" data-toggle="dropdown" href="#" role="button" 
+            = t('application.discover')
+            span.caret
+          ul.dropdown-menu role="menu" 
+            li
+              = link_to t('organizations'), list_organizations_path
+            li
+              = link_to t('helpers.gift_item.name'), gift_items_path
+            li
+              = link_to t('wish_items.name'), list_wish_items_path
+
+      - if user_signed_in?
+        ul.nav.navbar-nav
+          li.dropdown
+            a.dropdown-toggle aria-expanded="false" data-toggle="dropdown" href="#" role="button" 
+              = t('application.Create')
+              span.caret
+            ul.dropdown-menu role="menu" 
+              li
+                = link_to t('helpers.gift_item.new'), new_gift_item_path
+              li
+                = link_to t('helpers.submit.organization.new'), new_organization_path
+              
             
 
       - if user_signed_in?

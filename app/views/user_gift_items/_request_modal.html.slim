@@ -20,15 +20,12 @@
             = t('gift.wait_email')
             p
             = t('gift.introduce_quantity')
-            = form_for :request, url: gift_requests_path(id: gift_item) do |f|
+            = form_for :request, url: new_user_gift_request_path(id: gift_item, user_id: current_user.id) do |f|
               .form-inline
                 .form-group
                   .input-group
                     = f.text_field :quantity, class: 'form-control col-md-2', type: 'number', min: "1" , max: gift_item.quantity, required: true
                     = f.select :organization_id, current_user.organizations , class: 'form-control col-md-2', required: true
-                    = f.hidden_field :organization_id, value: gift_item.organization.id
-                    = f.hidden_field :user_id, value: current_user.id
-                    = f.hidden_field :gift_item_id, value: gift_item.id
                 = f.submit t('helpers.gift_item.make_gift'), class: "btn btn-success"
 
         .modal-footer
