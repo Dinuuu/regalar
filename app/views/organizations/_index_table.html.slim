@@ -7,20 +7,19 @@
       .thumbnail.fixed-height
         .caption
           h3
-            = link_to organization.name.truncate(25), organization
+            = link_to organization.name.truncate(20), organization
           .description
             p
-              = organization.description.truncate(170)
+              = organization.description.truncate(165)
           h5
             i.fa.fa-map-marker
             = organization.locality
-          p
-            
-            = link_to t('organization_link'), organization, class: 'btn btn-primary'
+          .row
+            = link_to t('organization_link'), organization, class: 'btn btn-success'
           .row
             - organization.trending_wish_items.each do |item|
               .col-sm-6.col-md-4
-                = link_to item.title.truncate(10), organization_wish_item_path(organization, item)
+                = link_to item.title.truncate(16), organization_wish_item_path(organization, item)
                 - if item.main_image.present?
                   = image_tag(item.main_image, class: "img-wishlist")
                 - else

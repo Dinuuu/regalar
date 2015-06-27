@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :donations
   has_many :gift_requests
+  has_many :gift_items
 
   mount_uploader :avatar, ImageUploader
 

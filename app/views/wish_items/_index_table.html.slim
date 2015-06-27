@@ -54,7 +54,7 @@
             - if current_user.present?
               = link_to t('wish_items.gift'), '#',
                   class: 'btn btn-success',
-                  data: { toggle: 'modal', target: '#gift-modal' } 
+                  data: { toggle: 'modal', target: "#gift-modal#{item.id}" } 
             - else
               = link_to t('wish_items.gift'), '#',
                   class: 'btn btn-success',

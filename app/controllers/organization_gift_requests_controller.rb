@@ -1,6 +1,6 @@
 class OrganizationGiftRequestsController < ApplicationController
   inherit_resources
-  belongs_to :gift_item, optional: true
+  nested_belongs_to :user, :gift_item, optional: true
   defaults resource_class: GiftRequest, collection_name: 'gift_requests',
            instance_name: 'gift_request'
   before_action :authenticate_user!
@@ -15,7 +15,9 @@ class OrganizationGiftRequestsController < ApplicationController
         send_creation_mail
         redirect_to :back
       end
-      failure.html { render 'new' }
+      failure.html do
+        render 'new'
+      end
     end
   end
 
