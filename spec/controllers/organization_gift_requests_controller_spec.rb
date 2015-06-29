@@ -30,6 +30,11 @@ describe OrganizationGiftRequestsController do
           post :create, user_id: user.id, id: gift_item.id, gift_request: gift_request.attributes
           expect(response.status).to eq 302
         end
+        it 'sends two email' do
+          (expect do
+            post :create, user_id: user.id, id: gift_item.id, gift_request: gift_request.attributes
+          end).to change { ActionMailer::Base.deliveries.count }.by(2)
+        end
       end
       context 'when trying to create a request for a organization that you do not belongs to' do
         before :each do
@@ -44,6 +49,11 @@ describe OrganizationGiftRequestsController do
         it 'returns 403' do
           post :create, user_id: user.id, id: gift_item.id, gift_request: gift_request.attributes
           expect(response.status).to eq 403
+        end
+        it 'does not send an email' do
+          (expect do
+            post :create, user_id: user.id, id: gift_item.id, gift_request: gift_request.attributes
+          end).not_to change { ActionMailer::Base.deliveries.count }
         end
       end
       context 'when trying to create a request for item with
@@ -78,6 +88,11 @@ describe OrganizationGiftRequestsController do
           expect { delete :destroy, id: gift_request.id }
             .to change(GiftRequest, :count).by(-1)
         end
+        it 'sends two emails' do
+          (expect do
+            delete :destroy, id: gift_request.id
+          end).to change { ActionMailer::Base.deliveries.count }.by(2)
+        end
         it 'redirects' do
           delete :destroy, id: gift_request.id
           expect(response.status).to eq 302
@@ -95,6 +110,11 @@ describe OrganizationGiftRequestsController do
         it 'returns 403' do
           delete :destroy, id: gift_request.id
           expect(response.status).to eq 403
+        end
+        it 'does not send an email' do
+          (expect do
+            delete :destroy, id: gift_request.id
+          end).not_to change { ActionMailer::Base.deliveries.count }
         end
       end
     end
@@ -115,6 +135,11 @@ describe OrganizationGiftRequestsController do
         it 'returns 403' do
           delete :destroy, id: gift_request.id
           expect(response.status).to eq 403
+        end
+        it 'does not send an email' do
+          (expect do
+            delete :destroy, id: gift_request.id
+          end).not_to change { ActionMailer::Base.deliveries.count }
         end
       end
     end

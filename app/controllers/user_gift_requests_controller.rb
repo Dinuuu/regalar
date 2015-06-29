@@ -7,11 +7,13 @@ class UserGiftRequestsController < ApplicationController
   def confirm
     gift_request.gift_item.update_attributes(given: given_quantity(gift_request))
     gift_request.update_attributes(done: true)
+    send_confirmation_email
     redirect_to user_gift_item_path(current_user, gift_request.gift_item)
   end
 
   def cancel
     gift_request.destroy
+    send_cancelation_email
     redirect_to user_gift_item_path(current_user, gift_request.gift_item)
   end
 
@@ -56,6 +58,18 @@ class UserGiftRequestsController < ApplicationController
                     give or is already confirmed" if (gift_request.gift_item.given >=
                                                      gift_request.gift_item.quantity) ||
                                                      gift_request.done
+  end
+
+  def send_confirmation_email
+    UserMailer.confirm_gift_request_email_to_org(@gift_request.user,
+                                                 @gift_request.organization,
+                                                 @gift_request.gift_item).deliver
+  end
+
+  def send_cancelation_email
+    UserMailer.cancel_gift_request_email_to_org(@gift_request.user,
+                                                @gift_request.organization,
+                                                @gift_request.gift_item).deliver
   end
 
   def validate_user
