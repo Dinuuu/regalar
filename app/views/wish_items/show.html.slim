@@ -1,5 +1,7 @@
-.col-md-7.border-right
+.col-md-8.border-right
 	.text-center
+		- if @organization.logo.present?
+	      = image_tag(@wish_item.organization.logo_url, class: "img-organization img-thumbnail")
 		h3
 			= @wish_item.title + ' '
 		h5
@@ -21,7 +23,7 @@
 				= t('helpers.wish_item.finished')
 		br
 
-	div.col-md-4
+	.div.col-md-3
 	  	
 	  	- if @wish_item.main_image.present?
 	    	= image_tag(@wish_item.main_image, height: 150, width: 150, class: "img-thumbnail img-profile")
@@ -30,9 +32,10 @@
 		
 		.progress
 			.progress-bar.progress-bar-success aria-valuemax="100" aria-valuemin="0" aria-valuenow="45" role="progressbar" style= "width: #{@wish_item.obtained/@wish_item.quantity*100}%" data-toggle="tooltip" data-placement="bottom"
-		.h5
+		.h5.text-center
 			= t('helpers.wish_item.obteined_quantity')
-			= @wish_item.obtained
+			p
+            = @wish_item.obtained
 			= t('helpers.wish_item.of')
 			= @wish_item.quantity
 

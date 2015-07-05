@@ -7,7 +7,7 @@
 
       div.col-md-8.col-md-offset-1.wishitem
         div.col-md-6
-          - if item.main_image.present?
+          - if item.gift_item_images.present?
             = image_tag(item.main_image, height: 150, width: 150, class: "img-thumbnail img-profile")
           - else
             = image_tag('default_pic.png', height: 150, width: 150, class: "img-thumbnail img-profile")
@@ -32,8 +32,8 @@
           - else
             = link_to t('helpers.gift_item.claim_gift'), '#',
               class: 'btn btn-success glyphicon glyphicon-gift',
-              data: { toggle: 'modal', target: "#gift-modal" }
- 
+              data: { toggle: 'modal', target: "#gift-modal#{item.id}" }
+               
       = render 'user_gift_items/request_modal', gift_item: item
 
 #pagination

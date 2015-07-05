@@ -12,10 +12,10 @@ class OrganizationGiftRequestsController < ApplicationController
   def create
     create! do |success, failure|
       success.html do
+        send_creation_mail
         redirect_to :back
       end
       failure.html do
-        
         render 'new'
       end
     end
@@ -24,6 +24,7 @@ class OrganizationGiftRequestsController < ApplicationController
   def destroy
     destroy! do |success, _failure|
       success.html do
+        send_cancelation_mail
         redirect_to :back
       end
     end
@@ -39,7 +40,6 @@ class OrganizationGiftRequestsController < ApplicationController
   end
 
   def check_organization
-    organization = Organization.find(resource_params[0][:organization_id])
     return true if current_user.organizations.include? organization
     render status: :forbidden,
            text: 'You must belong to the organization to do that'
@@ -58,8 +58,30 @@ class OrganizationGiftRequestsController < ApplicationController
     @gift_request ||= GiftRequest.find(params[:id])
   end
 
+  def organization
+    @organization = Organization.find(resource_params[0][:organization_id])
+  end
+
   def resource_params
     return [] if request.get?
     [params.require(:gift_request).permit(FIELDS)]
+  end
+
+  def send_creation_mail
+    OrganizationMailer.create_gift_request_email_to_org(@gift_request.user,
+                                                        @gift_request.organization,
+                                                        @gift_request.gift_item).deliver
+    OrganizationMailer.create_gift_request_email_to_user(@gift_request.user,
+                                                         @gift_request.organization,
+                                                         @gift_request.gift_item).deliver
+  end
+
+  def send_cancelation_mail
+    OrganizationMailer.cancel_gift_request_email_to_org(@gift_request.user,
+                                                        @gift_request.organization,
+                                                        @gift_request.gift_item).deliver
+    OrganizationMailer.cancel_gift_request_email_to_user(@gift_request.user,
+                                                         @gift_request.organization,
+                                                         @gift_request.gift_item).deliver
   end
 end

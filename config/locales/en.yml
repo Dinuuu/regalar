@@ -140,11 +140,11 @@ en:
         size_mesage: Max size 4 MB
         remove_attachment: Remove image
         add_attachment: Add image
-        claim_gift: Claim Gift
+        claim_gift: " Claim"
         gifted_quantity: 'Quantity Gifted: '
         received: Gifts received
         pending: Pending gifts
-        wants_to_gift: wants to gift
+        wants_to_gift: " wants to gift"
         make: Make a gift
         verifying: Verifying Gifts
       organization:
@@ -426,3 +426,38 @@ en:
     organization: 'Organization: '
     location: 'Location: '
     quantity: 'Quantity needed: '
+  mailer:
+    donation:
+      confirmed: 'A donation was confirmed'
+      canceled: 'A donation was canceled'
+      new: 'You have a new donation'
+      thanks: 'Thanks for donating'
+    gift_request:
+      created: 'A gift request was created'
+      new: 'You have a new gift request'
+      canceled: 'A gift request was canceled'
+      confirmed: 'A gift request was confirmed'
+    hello: 'Hello'
+    organization: 'organization'
+    confirmed: 'confirmed'
+    canceled: 'canceled'
+    donation: 'donation'
+    the_f: 'the'
+    the_m: 'the'
+    The_f: 'The'
+    The_m: 'The'
+    for: 'for'
+    from: 'from'
+    you_can_contact: 'You can contact'
+    writing_to: 'writing to'
+    have_great_day: 'Have a great day!'
+    thank_you: 'Thank you'
+    your: 'your'
+    will_be_notified: 'will be notified'
+    you_have_a_new_f: 'You have a new'
+    you_have_a_new_m: 'You have a new'
+    gift_request: 'gift request'
+    was_created_f: 'was created'
+    was_created_m: 'was created'
+    was_canceled_f: 'was canceled'
+    was_canceled_m: 'was canceled'

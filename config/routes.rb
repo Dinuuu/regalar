@@ -79,32 +79,6 @@ Regalar::Application.routes.draw do
 
   # End Organizations Routes
 
-  # Campaigns Routes
-
-  resources :campaigns do
-    collection do
-      get :search
-      post :search
-      get :landing
-    end
-    member do
-      post :approve
-      get :configure
-      post :configure_step2
-      post :configure_step3
-    end
-  end
-
-  resources :purchases do
-    collection do
-      get :success_mercadopago_callback
-      get :pending_mercadopago_callback
-      get :failure_mercadopago_callback
-    end
-  end
-
-  # End Campaigns Routes
-  
   resources :wish_items, only: [] do  
     collection do
       get :list
