@@ -1,33 +1,34 @@
 - if current_user.present?
-  #gift-modal.modal.fade
+  .modal.fade id="gift-modal#{gift_item.id}"
     .modal-dialog
       .modal-content
         .modal-header
           button.close aria-label="Close" data-dismiss="modal" type="button" 
             span aria-hidden="true"  &times;
           h4.modal-title
-            = t('gift.confirmation')
+            = t('request_modal.confirmation')
         .modal-body
-            = t('gift.confirm') 
+            = t('request_modal.modal_confirm') 
             = " "
-            = t(gift_item.title)
+            = gift_item.title
             = " "
-            = t('gift.toOrg')
-            = " "
-            = t(gift_item.user.full_name)
-            = "?"
             p
-            = t('gift.wait_email')
+            = t('request_modal.wait_email')
             p
-            = t('gift.introduce_quantity')
-            = form_for :request, url: new_user_gift_request_path(id: gift_item, user_id: current_user.id) do |f|
+            = t('request_modal.introduce_org')
+            = form_for :gift_request, url: user_gift_item_gift_requests_path(user_id: current_user.id, gift_item_id: gift_item.id) do |f|
               .form-inline
                 .form-group
                   .input-group
+                    = f.select :organization_id, options_from_collection_for_select(current_user.organizations, :id, :name), {}, {multiple: false, class: "form-control col-md-2", required: true}  
+                    p
+                    = t('request_modal.introduce_quantity')
                     = f.text_field :quantity, class: 'form-control col-md-2', type: 'number', min: "1" , max: gift_item.quantity, required: true
-                    = f.select :organization_id, current_user.organizations , class: 'form-control col-md-2', required: true
-                = f.submit t('helpers.gift_item.make_gift'), class: "btn btn-success"
+                .form-group
+                  = f.hidden_field :user_id, value: current_user.id
+                p   
+                = f.submit t('request_modal.ask'), class: "btn btn-success"
 
         .modal-footer
           button.close data-dismiss="modal"  type="button" 
-            = t('gift.cancel_modal')
+            = t('request_modal.cancel_modal')

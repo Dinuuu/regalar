@@ -3,7 +3,7 @@
     .row
       .img-campaign-thumbnail
         - if item.gift_item_images.present?
-            = image_tag(item.gift_item_images[0].file.url, height: 150, width: 150, class: "img-thumbnail img-profile")
+          = image_tag(item.main_image, height: 150, width: 150, class: "img-thumbnail img-profile")
         - else
           = image_tag('default_pic.png', height: 150, width: 150, class: "img-thumbnail img-profile")
       .container-fluid
@@ -16,6 +16,5 @@
           p.card-description
             = item.description.truncate(120)
           p
-            / =render 'user_gift_items/ask_cancel', gift_item: item
         
-/ = render 'user_gift_items/request_modal', gift_item: @gift_item
+  = render 'user_gift_items/request_modal', gift_item: item
