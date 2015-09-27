@@ -154,7 +154,7 @@ es:
     organization:
       logo: Logo
       users: Elije los usuarios que pertenecen a la organización
-      website: ' Website'
+      website: ' Sitio web: '
     page_entries_info:
       one_page:
         display_entries:

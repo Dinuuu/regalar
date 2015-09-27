@@ -151,7 +151,7 @@ en:
       organization:
         logo: Logo
         users: Select the users that belogs to the organization
-        website: ' Website'
+        website: ' Website: '
   organizations: "Organizations"  
   organization-link: "Go to organization"
   purchase:
