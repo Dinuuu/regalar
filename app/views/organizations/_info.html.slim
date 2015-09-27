@@ -9,15 +9,15 @@
         = link_to @organization.name, @organization
   .row
     .col-md-8.col-md-offset-2
-      h4
-				i.fa.fa-map-marker
-			    = @organization.locality
       h5
+        - if @organization.website.present?
+          = t('helpers.organization.website')
+          =link_to Addressable::URI.parse(@organization.website).host, @organization.website, target: '_blank'
+      h6
         = @organization.description
       h4
-        - if @organization.website.present?
-					i.fa.fa-globe
-						=link_to t('helpers.organization.website'), @organization.website, target: '_blank'
+        i.fa.fa-map-marker
+          = " #{@organization.locality}"
   - if policy(@organization).update?
     = link_to t('helpers.wish_item.new'), new_organization_wish_item_path(@organization)   , class: 'btn btn-primary btn-violet'
     = link_to t('helpers.submit.organization.edit'), edit_organization_path(@organization), class: 'btn btn-primary btn-violet margin-right-20'
