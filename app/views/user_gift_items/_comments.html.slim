@@ -1,6 +1,6 @@
 - if gift_item.comments.present?
 	.row
-	  .col-md-12
+	  .col-md-8
 	    legend
 	      = Comment.model_name.human(count: 2)
 	    - gift_item.comments.each do |comment|
