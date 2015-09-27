@@ -100,6 +100,7 @@ describe OrganizationDonationsController do
     end
   end
   describe '#cancel' do
+    let!(:cancelation_params) { { reason: Faker::Lorem.paragraph } }
     context 'When logged' do
       before(:each) do
         sign_in user
@@ -115,17 +116,20 @@ describe OrganizationDonationsController do
         end
         it 'decrements by 1 the amount of donations' do
           (expect do
-            delete :cancel, organization_id: organization.id, id: donation.id
+            delete :cancel, organization_id: organization.id, id: donation.id,
+                            donation: cancelation_params
           end).to change { Donation.count }.by(-1)
         end
         it 'redirects to wish_item' do
-          delete :cancel, organization_id: organization.id, id: donation.id
+          delete :cancel, organization_id: organization.id, id: donation.id,
+                          donation: cancelation_params
           expect(response)
             .to redirect_to "/organizations/#{organization.id}/wish_items/#{wish_item.id}"
         end
         it 'sends an email' do
           (expect do
-            delete :cancel, organization_id: organization.id, id: donation.id
+            delete :cancel, organization_id: organization.id, id: donation.id,
+                            donation: cancelation_params
           end).to change { ActionMailer::Base.deliveries.count }.by(1)
         end
       end
@@ -136,16 +140,19 @@ describe OrganizationDonationsController do
         end
         it 'does not change the amount of donations' do
           (expect do
-            delete :cancel, organization_id: organization.id, id: donation.id
+            delete :cancel, organization_id: organization.id, id: donation.id,
+                            donation: cancelation_params
           end).not_to change { Donation.count }
         end
         it 'returns status forbidden' do
-          delete :cancel, organization_id: organization.id, id: donation.id
+          delete :cancel, organization_id: organization.id, id: donation.id,
+                          donation: cancelation_params
           expect(response.status).to eq 403
         end
         it 'does not send an email' do
           (expect do
-            delete :cancel, organization_id: organization.id, id: donation.id
+            delete :cancel, organization_id: organization.id, id: donation.id,
+                            donation: cancelation_params
           end).not_to change { ActionMailer::Base.deliveries.count }
         end
       end

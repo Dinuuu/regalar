@@ -103,6 +103,9 @@ en:
         finish_date: Deadline
         days_left: ' Days left'
         finished: This wish item is finished
+        reason: 'Reason: '
+        cancel_req: Cancel gift request
+        reject_req: Reject gift request
       wish_list:  
         name: Wish List
         finished: Wishes Fulfilled
@@ -455,6 +458,7 @@ en:
     thank_you: 'Thank you'
     your: 'your'
     will_be_notified: 'will be notified'
+    reason: The reason was
     you_have_a_new_f: 'You have a new'
     you_have_a_new_m: 'You have a new'
     gift_request: 'gift request'

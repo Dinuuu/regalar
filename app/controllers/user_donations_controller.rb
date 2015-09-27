@@ -25,7 +25,7 @@ class UserDonationsController < ApplicationController
     @wish_item = donation.wish_item
     destroy! do |success, _failure|
       success.html do
-        send_cancelation_mail(@wish_item)
+        send_cancelation_mail(@wish_item, cancelation_params[:reason])
         redirect_to :back
       end
     end
@@ -56,11 +56,11 @@ class UserDonationsController < ApplicationController
                                              wish_item.organization, wish_item).deliver
   end
 
-  def send_cancelation_mail(wish_item)
+  def send_cancelation_mail(wish_item, reason)
     UserMailer.cancel_donation_email_to_org(current_user,
-                                            wish_item.organization, wish_item).deliver
+                                            wish_item.organization, wish_item, reason).deliver
     UserMailer.cancel_donation_email_to_user(current_user,
-                                             wish_item.organization, wish_item).deliver
+                                             wish_item.organization, wish_item, reason).deliver
   end
 
   def check_ownership
@@ -80,5 +80,9 @@ class UserDonationsController < ApplicationController
   def resource_params
     return [] if request.get?
     [params.require(:donation).permit(FIELDS)]
+  end
+
+  def cancelation_params
+    params.require(:donation).permit(:reason)
   end
 end
