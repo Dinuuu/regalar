@@ -15,6 +15,7 @@ class WishItem < ActiveRecord::Base
   scope :not_finished, -> { where('(?) < finish_date', Time.current) }
   scope :not_paused, -> { where(active: true) }
   scope :paused, -> { where.not(active: true) }
+  after_initialize :initialize_attributes
 
   validate :check_finish_date, if: proc { finish_date.present? && self.finish_date_changed? }
 
@@ -57,5 +58,10 @@ class WishItem < ActiveRecord::Base
   def check_finish_date
     return true if finish_date > DateTime.current
     errors.add(:finish_date, 'it has to finish after now')
+  end
+
+  def initialize_attributes
+    self.measures ||= 'N/A'
+    self.weight ||= 'N/A'
   end
 end

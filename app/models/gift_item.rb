@@ -39,5 +39,7 @@ class GiftItem < ActiveRecord::Base
   def initialize_attributes
     self.given ||= 0
     self.visits ||= 0
+    self.measures ||= 'N/A'
+    self.weight ||= 'N/A'
   end
 end
