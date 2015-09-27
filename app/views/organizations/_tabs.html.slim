@@ -39,8 +39,8 @@ ul.nav.nav-tabs.org-tabs data-tabs="tabs"
     = render 'wish_items/index_cards', wish_items: WishItem.for_organization(organization).paused
 
   #gifts-received.tab-pane
-    = render 'gift_items/index_cards', gifts: GiftRequest.for_organization(organization).confirmed
+    = render 'gift_items/index_request_cards', gifts_request: GiftRequest.for_organization(organization).confirmed
 
   #gifts-pending.tab-pane
-    = render 'gift_items/index_cards', gifts: GiftRequest.for_organization(organization).pending
+    = render 'gift_items/index_request_cards', gifts_request: GiftRequest.for_organization(organization).pending
     
