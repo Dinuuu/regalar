@@ -78,15 +78,24 @@ describe OrganizationsController do
   end
 
   describe '#update' do
+    let!(:update_params) { { name: Faker::Name.name } }
+    let!(:user2) { create :user }
+    let!(:user3) { create :user }
     context 'when the user is logged' do
       before(:each) do
         sign_in user
         user.reload
       end
+      context 'when trying update a organization you dont belongs to' do
+        let!(:organization2) { create :organization }
+        it 'does not changes the organization users' do
+          (expect do
+            post :update, id: organization2.id,
+                          organization: update_params.merge(users: [user2.id, user3.id])
+          end).not_to change { organization.reload.users.count }
+        end
+      end
       context 'when adding more people' do
-        let!(:user2) { create :user }
-        let!(:user3) { create :user }
-        let!(:update_params) { { name: Faker::Name.name } }
         it 'add 2 users to the organization' do
           (expect do
             post :update, id: organization.id,

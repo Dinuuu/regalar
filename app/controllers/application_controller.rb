@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:locale] || I18n.default_locale
   end
 
-  def user_not_authorized
+  def user_not_authorized(exception)
     policy_name = exception.policy.class.to_s.underscore
 
     flash[:error] = t("pundit.#{policy_name}.#{exception.query}",

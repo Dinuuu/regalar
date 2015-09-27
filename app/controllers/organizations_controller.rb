@@ -19,7 +19,13 @@ class OrganizationsController < ApplicationController
     end
   end
 
+  def edit
+    authorize Organization.find(params[:id])
+    edit!
+  end
+
   def update
+    authorize Organization.find(params[:id])
     update! do
       if @organization.valid?
         @organization.users << User.where(id: users_ids)
