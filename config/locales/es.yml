@@ -102,6 +102,7 @@ es:
       featured: 'Regalos Destacados'
       measures: 'Medidas: '
       weight: 'Peso: '
+      organization: 'Organización: '
       finish_date: Fecha de finalización
       days_left: ' Días restantes'
       finished: El deseo ha terminado

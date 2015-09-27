@@ -99,6 +99,7 @@ en:
         gifted_by: 'Gifted by: '
         measures: 'Measures: '
         weight: 'Weight: '
+        organization: 'Organization: '
         finish_date: Deadline
         days_left: ' Days left'
         finished: This wish item is finished

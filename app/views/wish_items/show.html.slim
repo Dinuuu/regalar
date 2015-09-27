@@ -1,17 +1,11 @@
 .col-md-8.border-right
 	.text-center
-		- if @organization.logo.present?
-	      = image_tag(@wish_item.organization.logo_url, class: "img-organization img-thumbnail")
+		- if @wish_item.main_image.present?
+	    	= image_tag(@wish_item.main_image, height: 150, width: 150, class: "img-thumbnail img-profile")
+	  	- else
+	    	= image_tag('default_pic.png', height: 150, width: 150, class: "img-thumbnail img-profile")
 		h3
 			= @wish_item.title + ' '
-		h5
-		.row
-			h5
-			.col-md-3.col-md-offset-3
-				= link_to @wish_item.organization.name , @wish_item.organization
-			.col-md-3
-		        i.fa.fa-map-marker
-		        = @wish_item.organization.locality
 		br
 		- if @wish_item.finish_date.present?
 			- diff = (@wish_item.finish_date.to_date - Time.zone.today).to_int
@@ -22,14 +16,6 @@
 			- else
 				= t('helpers.wish_item.finished')
 		br
-
-	.div.col-md-3
-	  	
-	  	- if @wish_item.main_image.present?
-	    	= image_tag(@wish_item.main_image, height: 150, width: 150, class: "img-thumbnail img-profile")
-	  	- else
-	    	= image_tag('default_pic.png', height: 150, width: 150, class: "img-thumbnail img-profile")
-		
 		.progress
 			.progress-bar.progress-bar-success aria-valuemax="100" aria-valuemin="0" aria-valuenow="45" role="progressbar" style= "width: #{@wish_item.obtained/@wish_item.quantity*100}%" data-toggle="tooltip" data-placement="bottom"
 		.h5.text-center
@@ -38,9 +24,7 @@
             = @wish_item.obtained
 			= t('helpers.wish_item.of')
 			= @wish_item.quantity
-
-	div.col-md-8
-
+	div.col-md-8.col-md-offset-2
 		p
 			- pending_donation = @wish_item.pending_donation(current_user)
 			- if @wish_item.gifted?
