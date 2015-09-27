@@ -1,4 +1,14 @@
 .col-sm-12.comment-card
-  .row
-    h4= comment.user.email
-    p= comment.message
+  .commenterImage.margin-top-8
+    - if comment.user.avatar.present?
+      = image_tag(comment.user.avatar_url, class: "img-thumbnail")
+    - else
+      = image_tag('default_avatar.png', class: "img-thumbnail")
+  .col-md-2
+    h4
+      = "#{comment.user.first_name} #{comment.user.last_name} "
+    h5
+      = "( #{distance_of_time_in_words(Time.current, comment.created_at)} )"
+  .col-md-6.col-offset-1.margin-top-8
+      = comment.message
+    
