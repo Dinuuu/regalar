@@ -12,7 +12,8 @@
           h4.campaign-name
             = link_to item.title.truncate(15), organization_wish_item_path(id: item.id, organization_id: item.organization.id)
             .pull-right.span.label.label-default
-              = gift.created_at.to_s(:short)
+              .time
+                = gift.created_at.to_s(:short)
           h5
             = t('helpers.wish_item.gifted_by')
             = link_to gift.user.first_name, gift.user
