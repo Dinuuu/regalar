@@ -22,8 +22,12 @@ class GiftItem < ActiveRecord::Base
     quantity < given
   end
 
+  def visit
+    update_attributes(visits: visits + 1)
+  end
+
   def self.trending
-    GiftItem.still_available.last(4)
+    GiftItem.still_available.order(visits: :desc).first(4)
   end
 
   def main_image
@@ -34,5 +38,6 @@ class GiftItem < ActiveRecord::Base
 
   def initialize_attributes
     self.given ||= 0
+    self.visits ||= 0
   end
 end
