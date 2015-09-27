@@ -1,9 +1,8 @@
 - if gift_item.comments.present?
 	.row
-	  .col-md-8
-	    legend
-	      = Comment.model_name.human(count: 2)
-	    - gift_item.comments.each do |comment|
-	      = render 'comments/comment_card', comment: comment
+        legend
+          = Comment.model_name.human(count: 2)
+        - gift_item.comments.each do |comment|
+          = render 'comments/comment_card', comment: comment
 
 = render 'comments/new', comment: @comment, url: gift_item_comments_path(gift_item_id: gift_item.id)
