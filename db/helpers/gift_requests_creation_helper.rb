@@ -22,15 +22,15 @@ module GiftRequestsCreationHelper
           user: gift_item.user,
           organization: Organization.all.sample,
           gift_item: gift_item,
-          quantity: Faker::Number.number(2).to_i + 1,
+          quantity: Faker::Number.between(6, 15),
           done: [true, false].sample,
         )
-        gift_request.done = true if gift_item.pending_gift_request(gift_request.user).present?
+        gift_request.done = true if GiftRequest.where(user: gift_request.user, gift_item: gift_item).pending.present?
         total_qty += gift_request.quantity if gift_request.done?
         gift_request.save!
       end
+      gift_item.given = total_qty
       if (rand < 0.5)
-        gift_item.given = total_qty
         gift_item.quantity = total_qty
       end
       gift_item.save!
