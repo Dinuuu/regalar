@@ -13,7 +13,8 @@ module OrganizationsCreationHelper
           locality: Faker::Address.city,
           user_ids: User.all.pluck(:id).sample(rand(1..User.count)),
           email: Faker::Internet.email,
-          remote_logo_url: Faker::Company.logo
+          remote_logo_url: Faker::Company.logo,
+          website: Faker::Internet.url
         )
       end
 
