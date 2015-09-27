@@ -1,5 +1,9 @@
 p
 	.h5
+		= t('helpers.wish_item.organization')
+	= link_to @wish_item.organization.name , @wish_item.organization
+p
+	.h5
 		= t('helpers.wish_item.measures')
 	= wish_item.measures
 p
