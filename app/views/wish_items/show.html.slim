@@ -17,7 +17,7 @@
 				= t('helpers.wish_item.finished')
 		br
 		.progress
-			.progress-bar.progress-bar-success aria-valuemax="100" aria-valuemin="0" aria-valuenow="45" role="progressbar" style= "width: #{@wish_item.obtained/@wish_item.quantity*100}%" data-toggle="tooltip" data-placement="bottom"
+			.progress-bar.progress-bar-success aria-valuemax="100" aria-valuemin="0" aria-valuenow="45" role="progressbar" style= "width: #{@wish_item.obtained.to_f/@wish_item.quantity.to_f*100}%" data-toggle="tooltip" data-placement="bottom"
 		.h5.text-center
 			= t('helpers.wish_item.obteined_quantity')
 			p
