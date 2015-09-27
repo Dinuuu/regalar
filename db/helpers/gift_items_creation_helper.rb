@@ -19,10 +19,10 @@ module GiftItemsCreationHelper
       gift_item = GiftItem.new(
         title: Faker::Commerce.product_name,
         user: User.all.sample,
-        quantity: Faker::Number.number(2).to_i + 1,
+        quantity: Faker::Number.between(100, 150),
         description: Faker::Lorem.paragraph,
         unit: ['kilos', 'liters', 'units'].sample,
-        gift_item_images: Rails.root.join('app/assets/images/default_pic.png').open,
+        gift_item_images_attributes: [ { file: Rails.root.join('app/assets/images/default_pic.png').open } ],
         used_time: 'Dos meses',
         status: 'Como nuevo',
         active: true,
