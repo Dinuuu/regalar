@@ -106,6 +106,9 @@ es:
       finish_date: Fecha de finalización
       days_left: ' Días restantes'
       finished: El deseo ha terminado
+      reason: 'Razón: '
+      cancel_req: Cancelar regalo
+      reject_req: Rechazar regalo
     wish_list:
       name: Lista de deseos
       finished: Deseos recibidos
@@ -467,6 +470,7 @@ es:
     thank_you: 'Gracias'
     your: 'tu'
     will_be_notified: 'recibira una notificacion'
+    reason: La razón fue
     you_have_a_new_f: 'Tienes una nueva'
     you_have_a_new_m: 'Tienes un nuevo'
     gift_request: 'pedido'

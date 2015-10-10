@@ -132,6 +132,7 @@ describe UserDonationsController do
     end
   end
   describe '#destroy' do
+    let!(:cancelation_params) { { reason: Faker::Lorem.paragraph } }
     context 'When logged' do
       before(:each) do
         sign_in user
@@ -145,27 +146,27 @@ describe UserDonationsController do
         context 'when canceling it' do
           it 'decrements by 1 the amount of donations' do
             (expect do
-              delete :destroy, id: donation.id
+              delete :destroy, id: donation.id, donation: cancelation_params
             end).to change(Donation, :count).by(-1)
           end
           it 'decrements by 1 the amount of user donations' do
             (expect do
-              delete :destroy, id: donation.id
+              delete :destroy, id: donation.id, donation: cancelation_params
             end).to change(user.donations, :count).by(-1)
           end
           it 'decrements by 1 the amount of organization donations' do
             (expect do
-              delete :destroy, id: donation.id
+              delete :destroy, id: donation.id, donation: cancelation_params
             end).to change(organization.donations, :count).by(-1)
           end
           it 'decrements by 1 the amount of wish item donations' do
             (expect do
-              delete :destroy, id: donation.id
+              delete :destroy, id: donation.id, donation: cancelation_params
             end).to change(wish_item.donations, :count).by(-1)
           end
           it 'sends two emails' do
             (expect do
-              delete :destroy, id: donation.id
+              delete :destroy, id: donation.id, donation: cancelation_params
             end).to change { ActionMailer::Base.deliveries.count }.by(2)
           end
         end
@@ -178,21 +179,23 @@ describe UserDonationsController do
           donation.save!
         end
         it 'returns status forbidden' do
-          delete :destroy, id: donation.id
+          delete :destroy, id: donation.id, donation: cancelation_params
           expect(response.status).to eq 403
         end
         it 'does not changes the amount of donations' do
-          expect { delete :destroy, id: donation.id }.not_to change { Donation.count }
+          expect { delete :destroy, id: donation.id, donation: cancelation_params }
+            .not_to change { Donation.count }
         end
         it 'does not send an email' do
           (expect do
-            delete :destroy, id: donation.id
+            delete :destroy, id: donation.id, donation: cancelation_params
           end).not_to change { ActionMailer::Base.deliveries.count }
         end
       end
       context 'when a donation does not exist' do
         it 'raise record not found' do
-          expect { delete :destroy, id: 0 }.to raise_error ActiveRecord::RecordNotFound
+          expect { delete :destroy, id: 0, donation: cancelation_params }
+            .to raise_error ActiveRecord::RecordNotFound
         end
       end
     end
@@ -204,15 +207,16 @@ describe UserDonationsController do
         end
         context 'when canceling it' do
           it 'should render login page' do
-            delete :destroy, id: donation.id
+            delete :destroy, id: donation.id, donation: cancelation_params
             expect(response).to redirect_to '/users/sign_in'
           end
           it 'does not changes the amount of donations' do
-            expect { delete :destroy, id: donation.id }.not_to change { Donation.count }
+            expect { delete :destroy, id: donation.id, donation: cancelation_params }
+              .not_to change { Donation.count }
           end
           it 'does not send an email' do
             (expect do
-              delete :destroy, id: donation.id
+              delete :destroy, id: donation.id, donation: cancelation_params
             end).not_to change { ActionMailer::Base.deliveries.count }
           end
         end

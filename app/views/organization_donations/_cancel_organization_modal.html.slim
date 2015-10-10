@@ -1,0 +1,31 @@
+#cancel-organization-modal.modal.fade.bs-example-modal-sm
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close aria-label="Close" data-dismiss="modal" type="button" 
+          span aria-hidden="true"  &times;
+        h4.modal-title
+          = t('helpers.wish_item.reject_req')  
+      .modal-body
+        = form_for(:donation, url: cancel_organization_donation_path(organization_id: gift.organization.id , id: gift.id), method: "delete") do |f|
+          .form-group
+            = f.text_field :reason, placeholder: t('helpers.wish_item.reason'), class: 'form-control', required: true
+          .form-group
+            = f.submit t('gift.reject'),
+              class: 'btn btn-danger'          
+                
+          
+
+
+
+
+
+
+
+
+
+            
+
+
+
+

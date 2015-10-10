@@ -15,7 +15,7 @@ class OrganizationDonationsController < OrganizationAuthenticationController
   def cancel
     @donation = Donation.find(params[:id])
     @donation.destroy
-    send_cancelation_email(@donation)
+    send_cancelation_email(@donation, cancelation_params[:reason])
     redirect_to organization_wish_item_path(@donation.organization, @donation.wish_item)
   end
 
@@ -41,10 +41,10 @@ class OrganizationDonationsController < OrganizationAuthenticationController
                                                       donation.wish_item).deliver
   end
 
-  def send_cancelation_email(donation)
+  def send_cancelation_email(donation, reason)
     OrganizationMailer.cancel_donation_email_to_user(donation.user,
                                                      donation.organization,
-                                                     donation.wish_item).deliver
+                                                     donation.wish_item, reason).deliver
   end
 
   def chek_authentication_for_donation
@@ -52,5 +52,9 @@ class OrganizationDonationsController < OrganizationAuthenticationController
     return true if @organization.users.include? current_user
     render status: :forbidden,
            text: 'You must belong to the organization to access to this section'
+  end
+
+  def cancelation_params
+    params.require(:donation).permit(:reason)
   end
 end

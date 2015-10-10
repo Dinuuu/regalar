@@ -27,7 +27,10 @@
             p
               = item.description 
             
-            = link_to t('gift.cancel'), cancel_donation_path(pending_donation), class: 'btn btn-danger', method: "delete"
+      
+            = link_to t('gift.cancel'), '#', class: 'btn btn-danger',
+                  data: { toggle: 'modal', target: '#cancel-modal' }
+            = render 'organization_donations/cancel_modal', donation: pending_donation
 
           - elsif item.gifted?
             h3
@@ -62,6 +65,8 @@
           
           = render 'layouts/login_modal'
           = render 'wish_items/gift_modal', wish_item: item
+
+          
 
 #pagination
   = paginate wish_items
