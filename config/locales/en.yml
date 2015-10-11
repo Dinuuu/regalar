@@ -107,10 +107,10 @@ en:
         cancel_req: Cancel gift request
         reject_req: Reject gift request
       wish_list:  
-        name: Wish List
+        name: Your Wishes
         finished: Wishes Fulfilled
-        verifying: Verifying Wishes
-        verifying_expl: These are the gifts that needs your confirmation. If the transaction has been completed successfully click Confirm. If you could not recive the gift click Reject.
+        verifying: Wishes to verify
+        verifying_expl: These are the gifts that needs your verification. If the transaction has been completed successfully click Confirm. If you could not recive the gift click Reject.
         paused: Paused Wishes
       gift_item:
         name: Gifts
@@ -150,7 +150,8 @@ en:
         pending: Pending gifts
         wants_to_gift: " wants to gift"
         make: Make a gift
-        verifying: Verifying Gifts
+        verifying: Gifts to verify
+        verifying_expl:  These are the gifts that needs your verification. If the transaction has been completed successfully click Confirm. If you could not recive the gift click Reject.
       organization:
         logo: Logo
         users: Select the users that belogs to the organization
