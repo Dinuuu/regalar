@@ -23,9 +23,15 @@
         = t('home.step3')
       .p
         = t('home.step3_exp')
-  .h2.home-expl.home-other.home-works-margin
-    = t('home.other_option')
-    = link_to t('home.here'), list_wish_items_path
+
+.about-to-complete-container
+  // TODO CAMBIAR A LOS QUE CORRESPONDE
+  legend
+    = t('helpers.about_to_complete.title')
+  .p.about-to-complete-description
+    = t('helpers.about_to_complete.description')
+  = render 'gift_items/about_to_complete', gifts: WishItem.first(3)
+
 legend
     = t('helpers.wish_item.featured')
 #campaigns-cards

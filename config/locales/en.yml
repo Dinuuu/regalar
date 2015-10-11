@@ -1,6 +1,6 @@
 en:
   home:
-    slogan: GIVE AWAY THE THINGS YOU ARE NOT USING
+    slogan: Give away the things you are not using
     organization: If you are an organization looking for a gift
     here: click here
     how_does_it_works: How does it works 
@@ -156,6 +156,11 @@ en:
         logo: Logo
         users: Select the users that belogs to the organization
         website: ' Website: '
+      about_to_complete:
+        title: Your wishes near completion
+        description: These are your wishes that are near completion. Share them to achieve your objective!
+        share_facebook: Share on Facebook
+        share_twitter: Share on Twitter
   organizations: "Organizations"  
   organization-link: "Go to organization"
   purchase:

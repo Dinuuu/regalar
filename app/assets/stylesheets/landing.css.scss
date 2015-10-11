@@ -22,3 +22,64 @@ $green: #40E246;
   }
 }
 
+$space: 20px;
+
+.about-to-complete-container {
+  background-color: #ededed;
+  background-image: url("balloons.svg");
+  background-repeat: repeat-x;
+  background-position: top center;
+  padding: 60px $space $space $space;
+  margin-bottom: $space;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+
+  legend, .about-to-complete-description {
+    text-align: center;
+  }
+
+  legend {
+    border: 0;
+    margin: 0;
+  }
+
+  .about-to-complete-description {
+    margin: $space 0;
+  }
+
+  .about-to-complete-card {
+    height: auto;
+    .thumbnail {
+      height: auto;
+
+      .card-description {
+        height: auto;
+        margin: 0;
+      }
+    }
+  }
+  .share-buttons {
+    margin: $space auto 0 auto;
+    a:first-child {
+      margin-right: 5px;
+    }
+
+    .share-facebook {
+      background: #3B5998;
+    }
+
+    .share-twitter {
+      background: #55acee;
+    }
+
+    .share-facebook, .share-twitter {
+      color: white;
+    }
+  }
+
+  .progress {
+    margin: $space auto 0 auto;
+    width: 90%;
+  }
+}

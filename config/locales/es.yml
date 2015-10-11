@@ -1,6 +1,6 @@
 es:
   home:
-    slogan: REGALA LAS COSAS QUE YA NO UTILIZAS
+    slogan: Regala las cosas que ya no utilizas
     organization: Si eres una organización en busca de un regalo haz
     here: click aquí
     how_does_it_works: Cómo funciona
@@ -157,8 +157,13 @@ es:
       verifying_expl: Estos son los regalos que te han hecho y que tienes que verificar. Si la transacción se ha realizado con éxito hacer click en Confirmar. Si no se pudo concretar el regalo hacer click en Rechazar.
     organization:
       logo: Logo
-      users: Elije los usuarios que pertenecen a la organización
+      users: Elige los usuarios que pertenecen a la organización
       website: ' Sitio web: '
+    about_to_complete:
+      title: Tus deseos cerca de completarse
+      description: Estos deseos están a punto de llegar a su meta. ¡Compartilos para lograr el objetivo!
+      share_facebook: Compartir en Facebook
+      share_twitter: Compartir en Twitter
     page_entries_info:
       one_page:
         display_entries:
