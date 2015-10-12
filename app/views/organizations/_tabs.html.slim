@@ -9,9 +9,6 @@ ul.nav.nav-tabs.org-tabs data-tabs="tabs"
     li
       a data-toggle="tab" href="#verifying"
         = t('helpers.wish_list.verifying')
-    li
-      a data-toggle="tab" href="#paused"
-        = t('helpers.wish_list.paused')
   li
     a data-toggle="tab" href="#gifts-received"
       = t('helpers.gift_item.received')
@@ -22,7 +19,7 @@ ul.nav.nav-tabs.org-tabs data-tabs="tabs"
 
 .tab-content
   #goal-not-reached.tab-pane.active
-    = render 'wish_items/index_cards', wish_items: WishItem.for_organization(organization).goal_not_reached.not_paused
+    = render 'wish_items/index_cards', wish_items: WishItem.for_organization(organization).goal_not_reached
     
   #goal-reached.tab-pane
     = render 'wish_items/index_cards', wish_items: WishItem.for_organization(organization).goal_reached
@@ -34,9 +31,6 @@ ul.nav.nav-tabs.org-tabs data-tabs="tabs"
       - if pending_donations.present?
         = t('helpers.wish_list.verifying_expl')
     = render 'organization_donations/index_cards', gifts: pending_donations
-
-  #paused.tab-pane
-    = render 'wish_items/index_cards', wish_items: WishItem.for_organization(organization).paused
 
   #gifts-received.tab-pane
     = render 'gift_items/index_request_cards', gifts_request: GiftRequest.for_organization(organization).confirmed

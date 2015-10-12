@@ -24,7 +24,7 @@ module WishItemsCreationHelper
         quantity: Faker::Number.between(100, 200),
         description: Faker::Lorem.paragraph,
         unit: ['kilos', 'liters', 'units'].sample,
-        main_image: Rails.root.join('app/assets/images/default_pic.png').open,
+        main_image: Rails.root.join('app/assets/images/default_wish_item_pic.jpg').open,
         active: true,
         obtained: 0
       )

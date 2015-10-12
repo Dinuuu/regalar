@@ -1,8 +1,8 @@
-- unless wish_item.gifted?
-	- if policy(wish_item.organization).update? 
-		- if wish_item.active?
-			= link_to t('gift.pause'), pause_organization_wish_item_path(id: wish_item.id, organization_id: wish_item.organization.id), class: 'btn btn-default pull-right glyphicon glyphicon-pause', method: "PUT"
+- unless item.gifted?
+	- if policy(item.organization).update? 
+		- if item.active?
+			= link_to t('gift.pause'), pause_organization_wish_item_path(id: item.id, organization_id: item.organization.id), class: 'btn btn-default pull-right glyphicon glyphicon-pause', method: "PUT"
 
 		- else
-			= link_to t('gift.resume'), resume_organization_wish_item_path(id: wish_item.id, organization_id: wish_item.organization.id), class: 'btn btn-default pull-right glyphicon glyphicon-play', method: "PUT"
+			= link_to t('gift.resume'), resume_organization_wish_item_path(id: item.id, organization_id: item.organization.id), class: 'btn btn-default pull-right glyphicon glyphicon-play', method: "PUT"
 

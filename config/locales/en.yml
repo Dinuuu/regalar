@@ -1,6 +1,6 @@
 en:
   home:
-    slogan: GIVE AWAY THE THINGS YOU ARE NOT USING
+    slogan: Give away the things you are not using
     organization: If you are an organization looking for a gift
     here: click here
     how_does_it_works: How does it works 
@@ -107,10 +107,10 @@ en:
         cancel_req: Cancel gift request
         reject_req: Reject gift request
       wish_list:  
-        name: Wish List
+        name: Your Wishes
         finished: Wishes Fulfilled
-        verifying: Verifying Wishes
-        verifying_expl: These are the gifts that needs your confirmation. If the transaction has been completed successfully click Confirm. If you could not recive the gift click Reject.
+        verifying: Wishes to verify
+        verifying_expl: These are the gifts that needs your verification. If the transaction has been completed successfully click Confirm. If you could not recive the gift click Reject.
         paused: Paused Wishes
       gift_item:
         name: Gifts
@@ -150,11 +150,17 @@ en:
         pending: Pending gifts
         wants_to_gift: " wants to gift"
         make: Make a gift
-        verifying: Verifying Gifts
+        verifying: Gifts to verify
+        verifying_expl:  These are the gifts that needs your verification. If the transaction has been completed successfully click Confirm. If you could not recive the gift click Reject.
       organization:
         logo: Logo
         users: Select the users that belogs to the organization
         website: ' Website: '
+      about_to_complete:
+        title: Your wishes near completion
+        description: These are your wishes that are near completion. Share them to achieve your objective!
+        share_facebook: Share on Facebook
+        share_twitter: Share on Twitter
   organizations: "Organizations"  
   organization-link: "Go to organization"
   purchase:
