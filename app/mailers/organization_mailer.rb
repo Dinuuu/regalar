@@ -33,6 +33,6 @@ class OrganizationMailer < Notifier
 
   def confirm_gift_request_email_to_user(user, organization, gift_item)
     gift_request_email_elements(user, organization, gift_item)
-    mail to: @user.email, subject: I18n.t('mailer.gift_request.confirm')
+    mail to: @user.email, subject: I18n.t('mailer.gift_request.confirmed')
   end
 end

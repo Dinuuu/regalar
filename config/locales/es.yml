@@ -454,7 +454,7 @@ es:
     organization: 'organizacion'
     confirmed: 'confirmo'
     canceled: 'cancelo'
-    donation: 'donacion'
+    donation_model: 'donacion'
     the_f: 'la'
     the_m: 'el'
     The_f: 'La'
@@ -470,7 +470,7 @@ es:
     reason: La razón fue
     you_have_a_new_f: 'Tienes una nueva'
     you_have_a_new_m: 'Tienes un nuevo'
-    gift_request: 'pedido'
+    gift_request_model: 'pedido'
     was_created_f: 'fue creada'
     was_created_m: 'fue creado'
     was_canceled_f: 'fue cancelada'
