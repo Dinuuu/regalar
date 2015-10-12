@@ -1,21 +1,21 @@
-.campaign-card.col-md-3
-  .thumbnail
-    .row
+.item  
+  .well-masonry
+    .thumbnail
       .img-campaign-thumbnail
         - if item.main_image.present?
             = image_tag(item.main_image, height: 150, width: 150, class: "img-thumbnail img-profile")
         - else
           = image_tag('default_pic.png', height: 150, width: 150, class: "img-thumbnail img-profile")
-      .container-fluid
         .caption
-          h4.campaign-name
-            = link_to item.title.truncate(21), organization_wish_item_path(id: item.id, organization_id: item.organization.id)
+          h4
+            = link_to item.title, organization_wish_item_path(id: item.id, organization_id: item.organization.id)
           h5
-            = link_to item.organization.name.truncate(30), item.organization
-          p.card-description
+            = link_to item.organization.name, item.organization
+          p
             = item.description.truncate(120)
           p
-            =render 'wish_items/gift_cancel_button', wish_item: item
+          =render 'wish_items/gift_cancel_button', wish_item: item
+          .pull-right
             =render 'wish_items/pause_and_resume', wish_item: item
         
 = render 'wish_items/gift_modal', wish_item: item

@@ -2,27 +2,24 @@
   p
     = t('application.no_results')
 - else
-  - organizations.each do |organization|
-    .col-sm-6.col-md-4.organization
-      .thumbnail.fixed-height
-        .caption
-          h3
-            = link_to organization.name.truncate(20), organization
-          .description
-            p
-              = organization.description.truncate(165)
-          h5
-            i.fa.fa-map-marker
-            = organization.locality
-          .row
-            = link_to t('organization_link'), organization, class: 'btn btn-success'
-          .row
-            - organization.trending_wish_items.each do |item|
-              .col-sm-6.col-md-4
-                = link_to item.title.truncate(13), organization_wish_item_path(organization, item)
-                - if item.main_image.present?
-                  = image_tag(item.main_image, class: "img-wishlist")
+  .card-list
+    .row
+      - organizations.each do |organization|
+        .item  
+          .well-masonry
+            .thumbnail
+              .caption
+                h3
+                  = link_to organization.name, organization
+                - if organization.logo.present?
+                  = image_tag(organization.logo_url, class: "img-organization img-thumbnail")
                 - else
-                  = image_tag('default_pic.png', class: "img-wishlist")
-#pagination
-  = paginate organizations
+                  = image_tag('default_org.png', class: "img-organization img-thumbnail")
+                .description
+                  p
+                    = organization.description.truncate(300)
+                h5
+                  i.fa.fa-map-marker
+                  = organization.locality
+    #pagination
+      = paginate organizations

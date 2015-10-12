@@ -1,10 +1,30 @@
 .col-sm-12
   = render 'main_info', user: @user
 
-= render '/users/donations_gifts', user: @user
+#accordion.panel-group
+  .panel.panel-default
+    .panel-heading
+      h4.panel-title
+        a data-parent="#accordion" data-toggle="collapse" href="#collapseOne"
+          = t('users.my_organizations')          
+    #collapseOne.panel-collapse.collapse.in
+      .panel-body
+        = render '/organizations/index_table', organizations: paginate_scope(@user.organizations,6)
+  .panel.panel-default
+    .panel-heading
+      h4.panel-title
+        a data-parent="#accordion" data-toggle="collapse" href="#collapseTwo" 
+          = t('users.gifts')
+    #collapseTwo.panel-collapse.collapse
+      .panel-body
+        | LOS REGALOS QUE FALTA AGARRAR
+  .panel.panel-default
+    .panel-heading
+      h4.panel-title
+        a data-parent="#accordion" data-toggle="collapse" href="#collapseThree" 
+          = t('users.donations')
+    #collapseThree.panel-collapse.collapse
+      .panel-body
+        = render 'donations', donations: @user.confirmed_donations
+        
 
-br
-.row
-  legend
-    = t('users.organizations')
-  = render '/organizations/index_table', organizations: paginate_scope(@user.organizations,6)
