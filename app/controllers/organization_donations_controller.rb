@@ -1,4 +1,5 @@
 class OrganizationDonationsController < OrganizationAuthenticationController
+  include OrganizationMailerHelper
   before_action :authenticate_user!, except: [:confirmed]
   before_action :chek_authentication_for_donation, except: [:confirmed, :pending]
   before_action :chek_authentication_for_organization, only: [:pending]
@@ -34,18 +35,6 @@ class OrganizationDonationsController < OrganizationAuthenticationController
   end
 
   private
-
-  def send_confirmation_email(donation)
-    OrganizationMailer.confirm_donation_email_to_user(donation.user,
-                                                      donation.organization,
-                                                      donation.wish_item).deliver
-  end
-
-  def send_cancelation_email(donation, reason)
-    OrganizationMailer.cancel_donation_email_to_user(donation.user,
-                                                     donation.organization,
-                                                     donation.wish_item, reason).deliver
-  end
 
   def chek_authentication_for_donation
     @organization = Donation.find(params[:id]).organization

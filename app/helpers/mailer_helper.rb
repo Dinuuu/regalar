@@ -6,9 +6,10 @@ module MailerHelper
     @reason = reason
   end
 
-  def gift_request_email_elements(user, organization, gift_item)
+  def gift_request_email_elements(user, organization, gift_item, reason = nil)
     @user = user
     @organization = organization
     @gift_item = gift_item
+    @reason = reason
   end
 end
