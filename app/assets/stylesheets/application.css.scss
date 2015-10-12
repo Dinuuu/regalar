@@ -290,9 +290,6 @@ background-color: $twitter-blue;
 .btn-google {
 background-color: $google-red;
 }
-.campaign-card {
-  height: 450px;
-}
 .img-gift {
  height: 200px !important; 
  margin-left: 60px;
@@ -312,4 +309,11 @@ background-color: $google-red;
 }
 .time {
   font-size: 10px;
+}
+.padding-right-20{
+  padding-right: 20px;
+}
+.profile-image{
+  height: 23px;
+  margin-right: 10px;
 }
