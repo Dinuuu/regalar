@@ -1,21 +1,12 @@
-#carousel-example-generic.carousel.slide data-ride="carousel" 
-  /! Indicators
-  / ol.carousel-indicators
-  /   li.active data-slide-to="0" data-target="#carousel-example-generic" 
-  /   - (1..images.count-1).each do |i|
-  /     li data-slide-to=i data-target="#carousel-example-generic" 
-  /! Wrapper for slides
-  .carousel-inner role="listbox" 
-    .item.active
-      =image_tag(images[0].file.url, class: "img-gift" )
-    - (1..images.count-1).each do |i|
-      - if images[i].file.present?
-        .item
-          =image_tag(images[i].file.url, class: "img-gift")
-  /! Controls
-  a.left.carousel-control data-slide="prev" href="#carousel-example-generic" role="button" 
-    span.glyphicon.glyphicon-chevron-left aria-hidden="true" 
-    span.sr-only Previous
-  a.right.carousel-control data-slide="next" href="#carousel-example-generic" role="button" 
-    span.glyphicon.glyphicon-chevron-right aria-hidden="true" 
-    span.sr-only Next
+- if images.size == 1
+  = image_tag(images.first().file.url, style: "max-width: 500px; max-height: 300px; margin-left: 30%;")
+- else
+  #slider
+    a.control_next href="#"
+      span.glyphicon.glyphicon-chevron-right
+    a.control_prev href="#"  
+      span.glyphicon.glyphicon-chevron-left
+    ul
+      - images.each do |image|
+        li
+          = image_tag(image.file.url, style: "max-width: 500px; max-height: 300px;")
