@@ -1,15 +1,8 @@
 class UserGiftRequestsController < ApplicationController
+  include UserMailerHelper
   before_action :authenticate_user!, except: [:confirmed]
   before_action :check_ownership, except: [:confirmed, :pending]
-  before_action :check_confirmable, only: [:confirm]
   before_action :validate_user, only: [:pending]
-
-  def confirm
-    gift_request.gift_item.update_attributes(given: given_quantity(gift_request))
-    gift_request.update_attributes(done: true)
-    send_confirmation_email
-    redirect_to user_gift_item_path(current_user, gift_request.gift_item)
-  end
 
   def cancel
     gift_request.destroy
@@ -33,16 +26,6 @@ class UserGiftRequestsController < ApplicationController
 
   private
 
-  def given_quantity(gift_request)
-    gift_item = gift_request.gift_item
-    left = gift_item.quantity - gift_item.given
-    if left >= gift_request.quantity
-      return gift_request.quantity + gift_item.given
-    else
-      return gift_item.quantity
-    end
-  end
-
   def gift_request
     @gift_request ||= GiftRequest.find(params[:id])
   end
@@ -50,26 +33,6 @@ class UserGiftRequestsController < ApplicationController
   def check_ownership
     return render status: :forbidden,
                   text: "You don't own the item" unless gift_request.user_id == current_user.id
-  end
-
-  def check_confirmable
-    return render status: :forbidden,
-                  text: "You don't have items to
-                    give or is already confirmed" if (gift_request.gift_item.given >=
-                                                     gift_request.gift_item.quantity) ||
-                                                     gift_request.done
-  end
-
-  def send_confirmation_email
-    UserMailer.confirm_gift_request_email_to_org(@gift_request.user,
-                                                 @gift_request.organization,
-                                                 @gift_request.gift_item).deliver
-  end
-
-  def send_cancelation_email
-    UserMailer.cancel_gift_request_email_to_org(@gift_request.user,
-                                                @gift_request.organization,
-                                                @gift_request.gift_item).deliver
   end
 
   def validate_user

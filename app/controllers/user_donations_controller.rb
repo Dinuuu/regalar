@@ -1,4 +1,5 @@
 class UserDonationsController < ApplicationController
+  include UserMailerHelper
   inherit_resources
   belongs_to :wish_item, optional: true
   defaults resource_class: Donation, collection_name: 'donations', instance_name: 'donation'
@@ -47,20 +48,6 @@ class UserDonationsController < ApplicationController
 
   def wish_item
     @wish_item ||= WishItem.find(params[:id])
-  end
-
-  def send_creation_mail(wish_item)
-    UserMailer.create_donation_email_to_org(current_user,
-                                            wish_item.organization, wish_item).deliver
-    UserMailer.create_donation_email_to_user(current_user,
-                                             wish_item.organization, wish_item).deliver
-  end
-
-  def send_cancelation_mail(wish_item, reason)
-    UserMailer.cancel_donation_email_to_org(current_user,
-                                            wish_item.organization, wish_item, reason).deliver
-    UserMailer.cancel_donation_email_to_user(current_user,
-                                             wish_item.organization, wish_item, reason).deliver
   end
 
   def check_ownership

@@ -21,13 +21,18 @@ class OrganizationMailer < Notifier
     mail to: @user.email, subject: I18n.t('mailer.donation.canceled')
   end
 
-  def cancel_gift_request_email_to_org(user, organization, gift_item)
-    gift_request_email_elements(user, organization, gift_item)
+  def cancel_gift_request_email_to_org(user, organization, gift_item, reason)
+    gift_request_email_elements(user, organization, gift_item, reason)
     mail to: @organization.email, subject: I18n.t('mailer.gift_request.canceled')
   end
 
-  def cancel_gift_request_email_to_user(user, organization, gift_item)
-    gift_request_email_elements(user, organization, gift_item)
+  def cancel_gift_request_email_to_user(user, organization, gift_item, reason)
+    gift_request_email_elements(user, organization, gift_item, reason)
     mail to: @user.email, subject: I18n.t('mailer.gift_request.canceled')
+  end
+
+  def confirm_gift_request_email_to_user(user, organization, gift_item)
+    gift_request_email_elements(user, organization, gift_item)
+    mail to: @user.email, subject: I18n.t('mailer.gift_request.confirm')
   end
 end

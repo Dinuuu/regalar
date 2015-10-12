@@ -6,8 +6,7 @@
   <body>
     <p>
       <%= t('mailer.hello') %> <%= @user.full_name %>
-        <%= @organization.name %> <%= t('mailer.canceled') %> <%= t('mailer.the_m') %> <%= t('mailer.gift_request') %> <%= t('mailer.for') %> <%= link_to @gift_item.title, user_gift_item_path(@gift_item.user.id, @gift_item.id) %>.
-        <%= t('mailer.reason') %>: <%= @reason %>
+        <%= @organization.name %> <%= t('mailer.confirmed') %> <%= t('mailer.the_m') %> <%= t('mailer.gift_request') %> <%= t('mailer.for') %> <%= link_to @gift_item.title, user_gift_item_path(@gift_item.user.id, @gift_item.id) %>.
         <%= t('mailer.you_can_contact') %> <%= @organization.name %> <%= t('mailer.writing_to') %> <%= @organization.email %>
       <p> <%= t('mailer.have_great_day')%></p>
     </p>

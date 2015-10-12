@@ -1,12 +1,14 @@
 class OrganizationGiftRequestsController < ApplicationController
   inherit_resources
+  include OrganizationMailerHelper
   nested_belongs_to :user, :gift_item, optional: true
   defaults resource_class: GiftRequest, collection_name: 'gift_requests',
            instance_name: 'gift_request'
   before_action :authenticate_user!
   before_action :check_organization, only: [:create]
-  before_action :check_ownership, only: [:destroy]
+  before_action :check_ownership, only: [:destroy, :confirm]
   before_action :cancelable, only: [:destroy]
+  before_action :check_confirmable, only: [:confirm]
   FIELDS = [:user_id, :gift_item_id, :quantity, :organization_id]
 
   def create
@@ -21,6 +23,13 @@ class OrganizationGiftRequestsController < ApplicationController
     end
   end
 
+  def confirm
+    gift_request.gift_item.update_attributes(given: given_quantity(gift_request))
+    gift_request.update_attributes(done: true)
+    send_confirmation_mail
+    redirect_to :back
+  end
+
   def destroy
     destroy! do |success, _failure|
       success.html do
@@ -32,15 +41,27 @@ class OrganizationGiftRequestsController < ApplicationController
 
   private
 
+  def given_quantity(gift_request)
+    gift_item = gift_request.gift_item
+    left = gift_item.quantity - gift_item.given
+    if left >= gift_request.quantity
+      return gift_request.quantity + gift_item.given
+    else
+      return gift_item.quantity
+    end
+  end
+
   def check_ownership
     @organization = GiftRequest.find(params[:id]).organization
-    return true if @organization.users.include? current_user
-    render status: :forbidden,
-           text: 'You must belong to the organization to do that'
+    belongs_to_org?(organization)
   end
 
   def check_organization
-    return true if current_user.organizations.include? organization
+    belongs_to_org?(organization)
+  end
+
+  def belongs_to_org?(org)
+    return true if current_user.organizations.include? org
     render status: :forbidden,
            text: 'You must belong to the organization to do that'
   end
@@ -59,7 +80,7 @@ class OrganizationGiftRequestsController < ApplicationController
   end
 
   def organization
-    @organization = Organization.find(resource_params[0][:organization_id])
+    @organization ||= Organization.find(resource_params[0][:organization_id])
   end
 
   def resource_params
@@ -67,21 +88,10 @@ class OrganizationGiftRequestsController < ApplicationController
     [params.require(:gift_request).permit(FIELDS)]
   end
 
-  def send_creation_mail
-    OrganizationMailer.create_gift_request_email_to_org(@gift_request.user,
-                                                        @gift_request.organization,
-                                                        @gift_request.gift_item).deliver
-    OrganizationMailer.create_gift_request_email_to_user(@gift_request.user,
-                                                         @gift_request.organization,
-                                                         @gift_request.gift_item).deliver
-  end
-
-  def send_cancelation_mail
-    OrganizationMailer.cancel_gift_request_email_to_org(@gift_request.user,
-                                                        @gift_request.organization,
-                                                        @gift_request.gift_item).deliver
-    OrganizationMailer.cancel_gift_request_email_to_user(@gift_request.user,
-                                                         @gift_request.organization,
-                                                         @gift_request.gift_item).deliver
+  def check_confirmable
+    return render status: :forbidden,
+                  text: "You don't have items to give or is already confirmed" if
+                  (gift_request.gift_item.given >= gift_request.gift_item.quantity) ||
+                  gift_request.done
   end
 end
