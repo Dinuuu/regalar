@@ -442,7 +442,7 @@ en:
     organization: 'organization'
     confirmed: 'confirmed'
     canceled: 'canceled'
-    donation: 'donation'
+    donation_model: 'donation'
     the_f: 'the'
     the_m: 'the'
     The_f: 'The'
@@ -458,7 +458,7 @@ en:
     reason: The reason was
     you_have_a_new_f: 'You have a new'
     you_have_a_new_m: 'You have a new'
-    gift_request: 'gift request'
+    gift_request_model: 'gift request'
     was_created_f: 'was created'
     was_created_m: 'was created'
     was_canceled_f: 'was canceled'
