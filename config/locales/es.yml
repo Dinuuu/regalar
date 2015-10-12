@@ -450,16 +450,6 @@ es:
       verifying: Verificando
       gifted: Regalado
   mailer:
-    donation:
-      confirmed: 'Una donacion fue confirmada'
-      canceled: 'Una donacion fue cancelada'
-      new: 'Tienes una nueva donacion'
-      thanks: 'Gracias por donar'
-    gift_request:
-      created: 'Un pedido fue creado'
-      new: 'Tienes un nuevo pedido'
-      canceled: 'Un pedido fue cancelado'
-      confirmed: 'Un pedido fue confirmado'
     hello: 'Hola'
     organization: 'organizacion'
     confirmed: 'confirmo'
@@ -485,3 +475,13 @@ es:
     was_created_m: 'fue creado'
     was_canceled_f: 'fue cancelada'
     was_canceled_m: 'fue cancelado'
+    donation:
+      confirmed: 'Una donacion fue confirmada'
+      canceled: 'Una donacion fue cancelada'
+      new: 'Tienes una nueva donacion'
+      thanks: 'Gracias por donar'
+    gift_request:
+      created: 'Un pedido fue creado'
+      new: 'Tienes un nuevo pedido'
+      canceled: 'Un pedido fue cancelado'
+      confirmed: 'Un pedido fue confirmado'
