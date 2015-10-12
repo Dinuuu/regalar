@@ -2,6 +2,7 @@
 	h4.nav-margin
 	  p
 	    = t('application.no_results')
-.row
-  - gifts.each do |gift|
-    = render 'gift_items/about_to_complete_item', item: gift
+.card-list
+    .wishes-row
+	  - gifts.each do |gift|
+	    = render 'gift_items/about_to_complete_item', item: gift

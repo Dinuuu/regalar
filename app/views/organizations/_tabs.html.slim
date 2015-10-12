@@ -1,7 +1,7 @@
 ul.nav.nav-tabs.org-tabs data-tabs="tabs" 
   li.active
     a data-toggle="tab" href="#goal-not-reached"
-      = t('helpers.wish_list.name')
+      = "#{t('helpers.wish_list.tabs')} #{organization.name}"
   li
     a data-toggle="tab" href="#goal-reached"
       = t('helpers.wish_list.finished')
@@ -36,4 +36,6 @@ ul.nav.nav-tabs.org-tabs data-tabs="tabs"
     = render 'gift_items/index_request_cards', gifts_request: GiftRequest.for_organization(organization).confirmed
 
   #gifts-pending.tab-pane
-    = render 'gift_items/index_request_cards', gifts_request: GiftRequest.for_organization(organization).pending
+    .expl-text.h4
+      = t('helpers.gift_item.verifying_expl')
+    = render 'gift_items/index_request_cards_verify', gifts_request: GiftRequest.for_organization(organization).pending

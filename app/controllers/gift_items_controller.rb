@@ -15,7 +15,8 @@ class GiftItemsController < ApplicationController
   end
 
   def index
-    @gift_items = params[:query].present? ? GiftItem.search(params[:query]) : GiftItem.all
+    @gift_items = GiftItem.still_available
+    @gift_items = params[:query].present? ? @gift_items.search(params[:query]) : @gift_items
   end
 
   private

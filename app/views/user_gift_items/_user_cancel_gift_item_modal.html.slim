@@ -1,0 +1,19 @@
+- req = GiftRequest.for_user(current_user).for_gift_item(item).pending.any?
+- if req.present?
+  - id = GiftRequest.for_user(current_user).for_gift_item(item).pending.first.id
+#user-cancel-gift-item-modal.modal.fade.bs-example-modal-sm
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close aria-label="Close" data-dismiss="modal" type="button" 
+          span aria-hidden="true"  &times;
+        h4.modal-title
+          = t('helpers.wish_item.reject_req')  
+          = item.title
+      .modal-body
+        = form_for(:donation, url: cancel_gift_request_path(id: id), method: "delete") do |f|
+          .form-group
+            = f.text_field :reason, placeholder: t('helpers.wish_item.reason'), class: 'form-control', required: true
+          .form-group
+            = f.submit t('gift.reject'),
+              class: 'btn btn-danger'

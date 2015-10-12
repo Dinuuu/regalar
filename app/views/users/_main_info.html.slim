@@ -4,9 +4,9 @@
 .panel.main-name
     = user.full_name
     - if user.avatar.present?
-      = image_tag(user.avatar_url, class: "img-thumbnail img-profile")
+      = image_tag(user.avatar_url, class: "img-thumbnail img-profile img-circle")
     - else
-      = image_tag('default_avatar.png',class: "img-thumbnail img-profile")
+      = image_tag('default_avatar.png',class: "img-thumbnail img-profile img-circle")
 
     .panel-body.main-email
       = user.email
@@ -20,12 +20,12 @@
       .col-sm-4.col-sm-offset-4
         .progress
           .progress-bar.progress-bar-striped.active aria-valuemax="#{user_level.to - user_level.from}" aria-valuemin="0" aria-valuenow="45" role="progressbar" style= "width: #{(confirmed_donations.to_f - user_level.from.to_f)/(user_level.to.to_f - user_level.from.to_f).to_f*100.0}%" 
-            
-    .btn-group
-      .button
-        a
-          = link_to t('helpers.submit.user.edit'), edit_user_path(user), class: 'btn btn-default'
-    .btn-group
-      .button
-        a
-          = link_to t('helpers.submit.user.edit_password'), edit_password_user_path(user), class: 'btn btn-default'
+    - if current_user.id == user.id       
+      .btn-group
+        .button
+          a
+            = link_to t('helpers.submit.user.edit'), edit_user_path(user), class: 'btn btn-default'
+      .btn-group
+        .button
+          a
+            = link_to t('helpers.submit.user.edit_password'), edit_password_user_path(user), class: 'btn btn-default'

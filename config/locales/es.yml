@@ -110,10 +110,11 @@ es:
       cancel_req: Cancelar regalo
       reject_req: Rechazar regalo
     wish_list:
+      tabs: Deseos de
       name: Tus deseos
       finished: Deseos recibidos
       verifying: Deseos a verificar
-      verifying_expl: Estos son los deseos que te han cumplido y que tienes que verificar. Si la transacción se ha realizado con éxito hacer click en Confirmar. Si no se pudo concretar el regalo hacer click en Rechazar.
+      verifying_expl: Estos son los deseos que te han ofrecido y que tienes que verificar. Si la transacción se ha realizado con éxito hacer click en Confirmar. Si no se pudo concretar hacer click en Rechazar.
       paused: Deseos pausados
     gift_item:
       name: Regalos
@@ -155,6 +156,7 @@ es:
       wants_to_gift: quiere regalar
       verifying: Regalos a verificar
       verifying_expl: Estos son los regalos que te han hecho y que tienes que verificar. Si la transacción se ha realizado con éxito hacer click en Confirmar. Si no se pudo concretar el regalo hacer click en Rechazar.
+      already_asked: Ya pedido
     organization:
       logo: Logo
       users: Elige los usuarios que pertenecen a la organización

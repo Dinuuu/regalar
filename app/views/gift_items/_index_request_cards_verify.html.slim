@@ -1,0 +1,8 @@
+- if gifts_request.empty?
+	h4.nav-margin
+	  p
+	    = t('application.no_results')
+.card-list
+    .small-row
+  		- gifts_request.each do |req|
+    		= render 'gift_items/verify_card', request: req
