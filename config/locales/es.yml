@@ -57,6 +57,7 @@ es:
     edit_profile: "Editar perfil"
     new_account: "Crear una cuenta"
   helpers:
+    all: Todo
     submit:
       comment:
         create: "Comentar"
