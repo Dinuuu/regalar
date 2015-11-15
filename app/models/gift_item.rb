@@ -33,8 +33,9 @@ class GiftItem < ActiveRecord::Base
     update_attributes(visits: visits + 1)
   end
 
-  def self.trending
-    GiftItem.still_available.order(visits: :desc).first(4)
+  def self.trending(last_visits)
+    return GiftItem.still_available.first(4) unless last_visits.present?
+    GiftItem.still_available.where(id: last_visits.uniq).first(4)
   end
 
   def main_image
