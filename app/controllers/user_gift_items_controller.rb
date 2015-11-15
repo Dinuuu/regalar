@@ -5,6 +5,7 @@ class UserGiftItemsController < ApplicationController
   def show
     @comment = Comment.new(commentable: GiftItem.find(params[:id]))
     gift_item.visit
+    add_visit_to_cookie
     gift_item
   end
 
@@ -46,5 +47,14 @@ class UserGiftItemsController < ApplicationController
                                       :measures, :weight, :status,
                                       gift_item_images_attributes: [:gift_item_id, :file,
                                                                     :remote_file_url])
+  end
+
+  def add_visit_to_cookie
+    cookies.permanent[:visited_gift_items] = JSON.generate(new_visits)
+  end
+
+  def new_visits
+    return [params[:id]] unless cookies[:visited_gift_items].present?
+    JSON.parse(cookies[:visited_gift_items]) << params[:id]
   end
 end

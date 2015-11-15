@@ -9,6 +9,7 @@ class WishItem < ActiveRecord::Base
   mount_uploader :main_image, ImageUploader
 
   scope :for_organization, -> (organization) { where(organization: organization) }
+  scope :for_organizations, -> (organizations) { where(organization_id: organizations) }
   scope :goal_reached, -> { where('quantity <= obtained') }
   scope :goal_not_reached, -> { where.not('quantity <= obtained') }
   scope :finished, -> { where('(?) >= finish_date', Time.current) }
@@ -27,8 +28,15 @@ class WishItem < ActiveRecord::Base
     Donation.for_wish_item(self).for_user(user).where.not(done: true).first
   end
 
-  def self.trending
-    WishItem.goal_not_reached.last(4)
+  def self.trending(user)
+    return WishItem.last(4) unless user.present?
+    WishItem
+      .for_organizations(user.organizations.ids)
+      .goal_not_reached
+      .not_paused
+      .not_finished
+      .order('(wish_items.quantity - wish_items.obtained) ASC')
+      .last(3)
   end
 
   def self.search(search_condition)

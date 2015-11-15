@@ -30,10 +30,10 @@
     = t('helpers.about_to_complete.title')
   .p.about-to-complete-description
     = t('helpers.about_to_complete.description')
-  = render 'gift_items/about_to_complete', gifts: WishItem.first(3)
+  = render 'gift_items/about_to_complete', gifts: WishItem.trending(current_user)
 
 legend
     = t('helpers.wish_item.featured')
 #campaigns-cards
-  = render 'gift_items/index_cards', gifts: GiftItem.trending
+  = render 'gift_items/index_cards', gifts: GiftItem.trending(JSON.parse(cookies[:visited_gift_items]))
   = link_to t('application.all'), gift_items_path, class: 'btn btn-primary'
