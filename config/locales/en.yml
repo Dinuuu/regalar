@@ -107,6 +107,7 @@ en:
         cancel_req: Cancel gift request
         reject_req: Reject gift request
       wish_list:  
+        tabs: Wishes of
         name: Your Wishes
         finished: Wishes Fulfilled
         verifying: Wishes to verify
@@ -152,6 +153,7 @@ en:
         make: Make a gift
         verifying: Gifts to verify
         verifying_expl:  These are the gifts that needs your verification. If the transaction has been completed successfully click Confirm. If you could not recive the gift click Reject.
+        already_asked: Already claimed
       organization:
         logo: Logo
         users: Select the users that belogs to the organization

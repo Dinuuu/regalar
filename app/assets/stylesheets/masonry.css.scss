@@ -8,6 +8,7 @@
    -webkit-column-width: 25em;
    -moz-column-gap: 1em;
    -webkit-column-gap:1em; 
+   text-align: center;
     
   }
 
@@ -16,6 +17,17 @@
    -webkit-column-width: 18em;
    -moz-column-gap: 1em;
    -webkit-column-gap:1em; 
+   text-align: center;
+  }
+
+  .wishes-row{
+    -moz-column-width: 17em;
+   -webkit-column-width: 18em;
+   -moz-column-gap: 6em;
+   -webkit-column-gap:6em; 
+   text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
   }
 
 

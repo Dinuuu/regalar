@@ -1,0 +1,17 @@
+- if GiftRequest.for_user(current_user).confirmed.for_gift_item(item).any?
+  = link_to t('helpers.gift_item.already_asked'), '#',
+         class: 'btn btn-default disabled',
+          data: {disabled: 'disabled'}
+
+- elsif GiftRequest.for_user(current_user).pending.for_gift_item(item).any?
+  = link_to t('gift.cancel'), '#', 
+    class: 'btn btn-danger',
+    data: { toggle: 'modal', target: '#user-cancel-gift-item-modal' }
+  = render 'user_gift_items/user_cancel_gift_item_modal', item: item
+
+- else
+  = link_to t('helpers.gift_item.claim_gift'), '#',
+    class: 'btn btn-success',
+    data: { toggle: 'modal', target: "#gift-modal#{item.id}" }
+  = render 'user_gift_items/request_modal', gift_item: item
+

@@ -26,7 +26,7 @@ class GiftItem < ActiveRecord::Base
   end
 
   def gifted?
-    quantity < given
+    quantity <= given
   end
 
   def visit

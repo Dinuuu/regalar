@@ -9,12 +9,5 @@
         .caption
           h4
             = link_to item.title, organization_wish_item_path(id: item.id, organization_id: item.organization.id)
-          h5
-            = link_to item.organization.name, item.organization
           p
             = item.description.truncate(120)
-          p
-          =render 'wish_items/gift_cancel_button', wish_item: item
-          .pull-right
-            =render 'wish_items/pause_and_resume', wish_item: item
-= render 'wish_items/gift_modal', wish_item: item

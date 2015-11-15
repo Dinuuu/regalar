@@ -1,12 +1,11 @@
-.campaign-card.about-to-complete-card.col-md-4
-  .thumbnail
-    .row
+.item  
+  .well-masonry
+    .thumbnail
       .img-campaign-thumbnail
         - if item.main_image.present?
           = image_tag(item.main_image, height: 150, width: 150, class: "img-thumbnail img-profile")
         - else
           = image_tag('default_pic.png', height: 150, width: 150, class: "img-thumbnail img-profile")
-      .container-fluid
         .caption
           h4.campaign-name
             = link_to item.title, organization_wish_item_path(id: item.id, organization_id: item.organization.id)
@@ -23,8 +22,4 @@
           .share-buttons
             a.share-facebook.btn
               = t("helpers.about_to_complete.share_facebook")
-            a.share-twitter.btn
-              = t("helpers.about_to_complete.share_twitter")
           p
-          / - if not request.done?
-            =render 'gift_items/verify_gift', gift: item

@@ -15,5 +15,4 @@
           = link_to item.title, user_gift_item_path(id: item.id, user_id: item.user.id)
         p.card-description
           = item.description
-
-    = render 'user_gift_items/request_modal', gift_item: item
+        = render 'gift_items/ask_buttons', item: item
