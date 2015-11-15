@@ -11,3 +11,5 @@
             = link_to item.title, organization_wish_item_path(id: item.id, organization_id: item.organization.id)
           p
             = item.description.truncate(120)
+
+          = render_shareable buttons: ['twitter', 'facebook'] , url: organization_wish_item_url(id: item.id, organization_id: item.organization.id), text: t('helpers.wish_item.share_text', organization: item.organization.name, item: item.title)
