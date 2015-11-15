@@ -1,7 +1,13 @@
 class SearchesController < ApplicationController
   def all
-    @organizations = Organization.search(params[:query]).page(params[:organizations_page]).per(4)
-    @gift_items = GiftItem.search(params[:query]).page(params[:gift_items_page]).per(4)
-    @wish_items = WishItem.search(params[:query]).page(params[:wish_items_page]).per(4)
+    @organizations = searches(Organization, :organizations_page)
+    @gift_items = searches(GiftItem, :gift_items_page)
+    @wish_items = searches(WishItem, :wish_items_page)
+  end
+
+  private
+
+  def searches(model, pagination_param)
+    model.search(params[:query]).page(params[pagination_param]).per(4)
   end
 end
