@@ -4,8 +4,12 @@
 	    	= image_tag(@wish_item.main_image, height: 150, width: 150, class: "img-thumbnail img-profile")
 	  	- else
 	    	= image_tag('default_pic.png', height: 150, width: 150, class: "img-thumbnail img-profile")
+		
 		h3
 			= @wish_item.title + ' '
+
+		= render_shareable buttons: ['twitter', 'facebook'] , url: organization_wish_item_url(id: @wish_item.id, organization_id: @wish_item.organization.id), text: t('helpers.wish_item.share_text', organization: @wish_item.organization.name, item: @wish_item.title)	
+		
 		br
 		- if @wish_item.finish_date.present?
 			- diff = (@wish_item.finish_date.to_date - Time.zone.today).to_int

@@ -107,6 +107,7 @@ en:
         reason: 'Reason: '
         cancel_req: Cancel gift request
         reject_req: Reject gift request
+        share_text: "The organization %{organization} needs %{item}. Can you help them?"
       wish_list:  
         tabs: Wishes of
         name: Your Wishes
