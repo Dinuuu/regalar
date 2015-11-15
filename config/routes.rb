@@ -85,6 +85,13 @@ Regalar::Application.routes.draw do
       get :list
     end
   end
+
+  resources :searches, only: :none do
+    collection do
+      get :all
+    end
+  end
+
  
   # Mails Preview Routes
 

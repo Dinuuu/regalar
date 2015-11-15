@@ -1,0 +1,11 @@
+- if wish_items.empty?
+  h4.nav-margin
+    p
+      = t('application.no_results')
+.card-list
+    .small-row
+      - wish_items.each do |wish_item|
+        = render 'wish_items/card', item: wish_item
+
+#pagination
+  = paginate wish_items, param_name: "wish_items_page"

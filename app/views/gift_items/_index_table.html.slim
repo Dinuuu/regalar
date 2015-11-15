@@ -19,7 +19,4 @@
             = link_to item.user.first_name, item.user
           p
             = item.description 
-          = render 'ask_buttons', item: item
-
-#pagination
-  = paginate gift_items
+          = render 'gift_items/ask_buttons', item: item

@@ -1,0 +1,25 @@
+- if organizations.empty?
+  p
+    = t('application.no_results')
+- else
+  .card-list
+    .row
+      - organizations.each do |organization|
+        .item  
+          .well-masonry
+            .thumbnail
+              .caption
+                h3
+                  = link_to organization.name, organization
+                - if organization.logo.present?
+                  = image_tag(organization.logo_url, class: "img-organization img-thumbnail")
+                - else
+                  = image_tag('default_org.png', class: "img-organization img-thumbnail")
+                .description
+                  p
+                    = organization.description.truncate(300)
+                h5
+                  i.fa.fa-map-marker
+                  = organization.locality
+#pagination
+  = paginate organizations, param_name: "organizations_page"

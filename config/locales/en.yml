@@ -56,6 +56,7 @@ en:
     edit_profile: "Edit Profile"
     new_account: "Create account"
   helpers:
+    all: All
     submit:
       comment:
         create: "Comentar"
