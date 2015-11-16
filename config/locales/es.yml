@@ -109,7 +109,7 @@ es:
       finished: El deseo ha terminado
       reason: 'Razón: '
       cancel_req: Cancelar regalo
-      reject_req: Rechazar regalo
+      reject_req: 'Rechazar regalo '
       share_text: "La organizacion %{organization} necesita que le regalen %{item}. Podes ayudarlos?"
     wish_list:
       tabs: Deseos de
