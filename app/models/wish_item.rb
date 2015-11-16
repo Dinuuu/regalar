@@ -29,7 +29,7 @@ class WishItem < ActiveRecord::Base
   end
 
   def self.trending(user)
-    return WishItem.last(4) unless user.present?
+    return WishItem.last(3) unless user.present?
     WishItem
       .for_organizations(user.organizations.ids)
       .goal_not_reached
