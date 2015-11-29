@@ -35,7 +35,7 @@ class GiftItem < ActiveRecord::Base
 
   def self.trending(last_visits)
     return GiftItem.still_available.first(4) unless last_visits.present?
-    GiftItem.still_available.where(id: last_visits.uniq).first(4)
+    GiftItem.still_available.where(id: JSON.parse(last_visits).uniq).first(4)
   end
 
   def main_image
