@@ -2,7 +2,7 @@
   .panel.panel-default
     .panel-heading
       h4.panel-title
-        a data-parent="#accordion" data-toggle="collapse" href="#collapseOne"
+        a data-parent="#accordion" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
           = t('wish_items.name')
     #collapseOne.panel-collapse.collapse.in
       .panel-body
@@ -10,7 +10,7 @@
   .panel.panel-default
     .panel-heading
       h4.panel-title
-        a data-parent="#accordion" data-toggle="collapse" href="#collapseTwo" 
+        a data-parent="#accordion" data-toggle="collapse" href="#collapseTwo"  aria-expanded="false" aria-controls="collapseTwo"
           = t('helpers.gift_item.name')
     #collapseTwo.panel-collapse.collapse
       .panel-body
@@ -18,7 +18,7 @@
   .panel.panel-default
     .panel-heading
       h4.panel-title
-        a data-parent="#accordion" data-toggle="collapse" href="#collapseThree" 
+        a data-parent="#accordion" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"
            = t('organizations')
     #collapseThree.panel-collapse.collapse
       .panel-body
