@@ -5,9 +5,9 @@
   - else
     - gifts.each do |g|
       h4
-        = link_to g[:user].full_name, g[:user]
+        = link_to g[:organization].name, g[:organization]
       .col-sm-offset-1
-          - g[:gifts].each do |d|
+          - g[:gift_requests].each do |d|
             .row
               .col-md-6
                 = d.gift_item.title.truncate(32)

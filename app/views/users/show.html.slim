@@ -17,7 +17,7 @@
           = t('users.gifts')
     #collapseTwo.panel-collapse.collapse
       .panel-body
-        | LOS REGALOS QUE FALTA AGARRAR
+        = render 'gifts', gifts: @user.confirmed_gift_requests
   .panel.panel-default
     .panel-heading
       h4.panel-title
@@ -26,5 +26,7 @@
     #collapseThree.panel-collapse.collapse
       .panel-body
         = render 'donations', donations: @user.confirmed_donations
+        
+        
         
 
