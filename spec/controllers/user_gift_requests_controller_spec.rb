@@ -22,15 +22,16 @@ describe UserGiftRequestsController do
           create :gift_request, organization: organization, user: user, gift_item: gift_item
         end
         it 'destroys the gift request' do
-          expect { delete :cancel, id: gift_request }.to change { GiftRequest.count }.by(-1)
+          expect { delete :cancel, organization_id: organization.id, gift_item_id: gift_item.id }
+            .to change { GiftRequest.count }.by(-1)
         end
         it 'redirects to gift_item' do
-          delete :cancel, id: gift_request
+          delete :cancel, organization_id: organization.id, gift_item_id: gift_item.id
           expect(response).to redirect_to user_gift_item_path(user, gift_item)
         end
         it 'sends an email' do
           (expect do
-            delete :cancel, id: gift_request
+            delete :cancel, organization_id: organization.id, gift_item_id: gift_item.id
           end).to change { ActionMailer::Base.deliveries.count }.by(1)
         end
       end
@@ -44,12 +45,12 @@ describe UserGiftRequestsController do
         end
         context 'When trying to cancel a request' do
           it 'responds status forbidden' do
-            delete :cancel, id: gift_request.id
+            delete :cancel, organization_id: organization.id, gift_item_id: gift_item.id
             expect(response.status).to eq 403
           end
           it 'does not send an email' do
             (expect do
-              delete :cancel, id: gift_request.id
+              delete :cancel, organization_id: organization.id, gift_item_id: gift_item.id
             end).not_to change { ActionMailer::Base.deliveries.count }
           end
         end
@@ -63,12 +64,12 @@ describe UserGiftRequestsController do
         create :gift_request, organization: organization, user: user, gift_item: gift_item
       end
       it 'should render login page' do
-        delete :cancel, id: gift_request.id
+        delete :cancel, organization_id: organization.id, gift_item_id: gift_item.id
         expect(response).to redirect_to '/users/sign_in'
       end
       it 'does not send an email' do
         (expect do
-          delete :cancel, id: gift_request.id
+          delete :cancel, organization_id: organization.id, gift_item_id: gift_item.id
         end).not_to change { ActionMailer::Base.deliveries.count }
       end
     end
