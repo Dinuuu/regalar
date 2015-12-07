@@ -12,7 +12,7 @@
   - if GiftRequest.for_user(current_user).pending.for_gift_item(item).any?
     = link_to t('gift.cancel'), '#', 
       class: 'btn btn-danger',
-      data: { toggle: 'modal', target: '#user-cancel-gift-item-modal' }
+      data: { toggle: 'modal', target: "#user-cancel-gift-item-modal#{item.id}" }
     = render 'user_gift_items/user_cancel_gift_item_modal', item: item
 
 

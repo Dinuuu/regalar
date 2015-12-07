@@ -1,5 +1,5 @@
 - req = GiftRequest.for_user(current_user).for_gift_item(item).pending.any?
-#user-cancel-gift-item-modal.modal.fade.bs-example-modal-sm
+.modal.fade id="user-cancel-gift-item-modal#{item.id}"
   .modal-dialog
     .modal-content
       .modal-header
