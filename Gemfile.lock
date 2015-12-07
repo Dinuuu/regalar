@@ -504,6 +504,7 @@ PLATFORMS
 DEPENDENCIES
   aasm
   activeadmin!
+  addressable
   app_configuration
   better_errors
   binding_of_caller

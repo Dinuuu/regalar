@@ -113,6 +113,8 @@ gem 'shareable'
 # Image upload
 gem "nested_form"
 
+gem 'addressable'
+
 
 group :development do
   gem 'better_errors'
