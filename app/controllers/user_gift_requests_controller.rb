@@ -5,6 +5,8 @@ class UserGiftRequestsController < ApplicationController
   before_action :validate_user, only: [:pending]
 
   def cancel
+    @gift_request = GiftRequest.find_by(organization_id: params[:organization_id],
+                                        gift_item_id: params[:gift_item_id])
     gift_request.destroy
     send_cancelation_email
     redirect_to user_gift_item_path(current_user, gift_request.gift_item)
@@ -31,6 +33,9 @@ class UserGiftRequestsController < ApplicationController
   end
 
   def check_ownership
+    request_to_cancel = GiftRequest.find_by(organization_id: params[:organization_id],
+                                            gift_item_id: params[:gift_item_id])
+    @gift_request = request_to_cancel || gift_request
     return render status: :forbidden,
                   text: "You don't own the item" unless gift_request.user_id == current_user.id
   end
