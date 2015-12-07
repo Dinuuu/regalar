@@ -156,6 +156,7 @@ en:
         verifying: Gifts to verify
         verifying_expl:  These are the gifts that needs your verification. If the transaction has been completed successfully click Confirm. If you could not recive the gift click Reject.
         already_asked: Already claimed
+        share_text: "%{user} wants to give up %{item}. Does your organization need it, just ask for it!"
       organization:
         logo: Logo
         users: Select the users that belogs to the organization
