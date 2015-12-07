@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
 
   def level
     confirmed_donations = Donation.for_user(self).confirmed.count
-    Level.where('levels.from <= ? AND levels.to > ?', confirmed_donations, confirmed_donations)
+    Level.where('levels.from <= ? AND levels.to >= ?', confirmed_donations, confirmed_donations)
       .first
   end
 

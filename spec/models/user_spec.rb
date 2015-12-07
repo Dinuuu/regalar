@@ -5,8 +5,8 @@ describe User do
   let!(:organization) { create :organization }
   let!(:wish_item) { create :wish_item, organization: organization }
   let!(:level1) { create :level, level: 1, from: 0, to: 10, title: 'Buen Samaritano' }
-  let!(:level2) { create :level, level: 2, from: 10, to: 20, title: 'Robin Hood' }
-  let!(:level3) { create :level, level: 3, from: 20, to: 30, title: 'Teresa de Calcuta' }
+  let!(:level2) { create :level, level: 2, from: 11, to: 20, title: 'Robin Hood' }
+  let!(:level3) { create :level, level: 3, from: 21, to: 30, title: 'Teresa de Calcuta' }
 
   describe '#level' do
     let!(:donations) do
@@ -14,8 +14,8 @@ describe User do
                                  organization: organization, done: true
     end
     context 'When asking for the level of the user' do
-      it 'returns the second level' do
-        expect(user.level).to eq level2
+      it 'returns the first level' do
+        expect(user.level).to eq level1
       end
     end
   end
@@ -66,7 +66,7 @@ describe User do
 
   describe '#level' do
     let!(:donations) do
-      create_list :donation, 10, user: user, wish_item: wish_item,
+      create_list :donation, 11, user: user, wish_item: wish_item,
                                  organization: organization, done: true
     end
     context 'When asking for the level of the user' do
