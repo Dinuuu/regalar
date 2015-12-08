@@ -6,6 +6,8 @@
           span aria-hidden="true"  &times;
         h4.modal-title
           = t('helpers.wish_item.reject_req')  
+          - byebug
+          = item.title
       .modal-body
         = form_for(:donation, url: organization_cancel_gift_request_path(id: request.id), method: "delete") do |f|
           .form-group
@@ -13,19 +15,3 @@
           .form-group
             = f.submit t('gift.reject'),
               class: 'btn btn-danger'          
-                
-          
-
-
-
-
-
-
-
-
-
-            
-
-
-
-

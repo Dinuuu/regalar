@@ -28,7 +28,7 @@
   .form-group
       = f.label :status, t('helpers.gift_item.status'), class: 'control-label col-sm-2'
       .col-md-4
-        = f.select :status, [t('helpers.gift_item.excellent') ,t('helpers.gift_item.good'), t('helpers.gift_item.very_good'), t('helpers.gift_item.regular')] , { include_blank:  t('helpers.gift_item.select_status') }, class: 'form-control col-md-2', required: true
+        = f.select :status, [t('helpers.gift_item.excellent') , t('helpers.gift_item.very_good'),t('helpers.gift_item.good'), t('helpers.gift_item.regular')] , { include_blank:  t('helpers.gift_item.select_status') }, class: 'form-control col-md-2', required: true
   .form-group
     = f.label :quantity, t('helpers.gift_item.quantity'), class: 'control-label col-sm-2'
     .col-md-4

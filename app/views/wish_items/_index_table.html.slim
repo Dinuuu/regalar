@@ -27,11 +27,9 @@
             p
               = item.description 
           
-            .pull-right.center
-              = render_shareable buttons: ['twitter', 'facebook'] , url: organization_wish_item_url(id: item.id, organization_id: item.organization.id), text: t('helpers.wish_item.share_text', organization: item.organization.name, item: item.title)
             .pull-left
               = link_to t('gift.cancel'), '#', class: 'btn btn-danger',
-                  data: { toggle: 'modal', target: '#cancel-modal' }
+                  data: { toggle: 'modal', target: "#cancel-modal#{pending_donation.id}" } 
             = render 'organization_donations/cancel_modal', donation: pending_donation
 
           - elsif item.gifted?

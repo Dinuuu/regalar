@@ -1,12 +1,13 @@
 .col-md-8.col.col-md-offset-2
-  .carousel
-    = render 'images', images: @gift_item.gift_item_images
+  - if @gift_item.gift_item_images.present?
+    .carousel
+      = render 'images', images: @gift_item.gift_item_images
   .text-center
     h3
       = @gift_item.title + ' '
     h5
       = link_to @gift_item.user.full_name , @gift_item.user
-
+    = render_shareable buttons: ['twitter', 'facebook'] , url: user_gift_item_url(id: @gift_item.id, user_id: @gift_item.user.id), text: t('helpers.gift_item.share_text', user: @gift_item.user.first_name, item: @gift_item.title)
   .progress
     .progress-bar.progress-bar-success aria-valuemax="100" aria-valuemin="0" aria-valuenow="45" role="progressbar" style= "width: #{@gift_item.given.to_f/@gift_item.quantity.to_f*100}%" data-toggle="tooltip" data-placement="bottom"
   .h5
@@ -24,7 +25,6 @@
     				= t('wish_items.status.gifted')
     		
   = render 'user_gift_items/main_info', gift_item: @gift_item	
-	/ = render 'user_gift_items/ask_cancel', gift_item: @gift_item
 
   = render 'user_gift_items/request_modal', gift_item: @gift_item
 
