@@ -58,7 +58,7 @@ es:
       sign_in_with_twitter: "Ingresar con Twitter"
       sign_in_with_provider: "Ingresar con %{provider}"
       forgot_password: "Olvidé mi contraseña"
-      reset_password_instructions: "Enviarme instrucciones para resetear la constraseña"
+      reset_password_instructions: "Enviarme instrucciones para resetear la contraseña"
       resend_confirmation_instructions: "Reenviar instrucciones de confirmación"
       change_password: 'Cambiar contraseña'
       remember_me: "Recordame"
