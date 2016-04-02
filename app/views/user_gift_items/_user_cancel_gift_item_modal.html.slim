@@ -10,7 +10,7 @@
           = item.title
       .modal-body
       
-        = form_for(:donation, url: cancel_gift_request_path(gift_item_id: item.id), method: "delete") do |f|
+        = form_for(:donation, url: cancel_gift_request_organization_gift_requests_path(organization_id: Organization.first.id , gift_item_id: item.id), method: "delete") do |f|
           .form-group
             = f.text_field :reason, placeholder: t('helpers.wish_item.reason'), class: 'form-control', required: true
             .h6

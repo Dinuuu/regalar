@@ -29,7 +29,7 @@ Regalar::Application.routes.draw do
       resources :organizations, only: :none do
         resources :gift_requests, controller: :user_gift_requests, only: :none do
           collection do
-            delete '/:gift_item_id/cancel', to: 'user_gift_requests#cancel'
+            delete '/:gift_item_id/cancel', to: 'user_gift_requests#cancel', as: 'cancel_gift_request'
           end
         end
       end
