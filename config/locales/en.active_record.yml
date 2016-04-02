@@ -51,6 +51,7 @@ en:
           attributes:
             email:
               already_confirmed: The email has been already confirmed
+              not_found: is not an active user
     models:
       organization:
         one: Organization

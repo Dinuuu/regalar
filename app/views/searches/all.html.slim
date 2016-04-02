@@ -1,29 +1,32 @@
 #accordion.panel-group
-  .panel.panel-default
-    .panel-heading
-      h4.panel-title
-        a data-parent="#accordion" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
-          = t('wish_items.name')
-    #collapseOne.panel-collapse.collapse.in
-      .panel-body
-        = render 'wish_items/search_cards', wish_items: @wish_items
-  .panel.panel-default
-    .panel-heading
-      h4.panel-title
-        a data-parent="#accordion" data-toggle="collapse" href="#collapseTwo"  aria-expanded="false" aria-controls="collapseTwo"
-          = t('helpers.gift_item.name')
-    #collapseTwo.panel-collapse.collapse
-      .panel-body
-        = render 'gift_items/search_cards', gifts: @gift_items
-  .panel.panel-default
-    .panel-heading
-      h4.panel-title
-        a data-parent="#accordion" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"
-           = t('organizations')
-    #collapseThree.panel-collapse.collapse
-      .panel-body
-        = render 'organizations/search_cards', organizations: @organizations
-        
+  - if @wish_items.present?
+    .panel.panel-default
+      .panel-heading
+        h4.panel-title
+          a data-parent="#accordion" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
+            = t('wish_items.name')
+      #collapseOne.panel-collapse.collapse.in
+        .panel-body
+          = render 'wish_items/search_cards', wish_items: @wish_items
+  - if @gift_items.present?          
+    .panel.panel-default
+      .panel-heading
+        h4.panel-title
+          a data-parent="#accordion" data-toggle="collapse" href="#collapseTwo"  aria-expanded="false" aria-controls="collapseTwo"
+            = t('helpers.gift_item.name')
+      #collapseTwo.panel-collapse.collapse
+        .panel-body
+          = render 'gift_items/search_cards', gifts: @gift_items
+  - if @organizations.present?
+    .panel.panel-default
+      .panel-heading
+        h4.panel-title
+          a data-parent="#accordion" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"
+             = t('organizations')
+      #collapseThree.panel-collapse.collapse
+        .panel-body
+          = render 'organizations/search_cards', organizations: @organizations
+          
 
 
 

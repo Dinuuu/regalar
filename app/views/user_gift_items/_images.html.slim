@@ -1,12 +1,19 @@
-- if images.size == 1
-  = image_tag(images.first().file.url, style: "max-width: 500px; max-height: 300px; margin-left: 30%;")
-- else
-  #slider
-    a.control_next href="#"
-      span.glyphicon.glyphicon-chevron-right
-    a.control_prev href="#"  
-      span.glyphicon.glyphicon-chevron-left
-    ul
-      - images.each do |image|
-        li
-          = image_tag(image.file.url, style: "max-width: 500px; max-height: 300px;")
+.carousel-container
+  .row-fluid
+    #myCarousel.carousel.slide
+      .carousel-inner
+        - images.each_with_index do |image, index|
+          - if index == 0
+            .item.active
+              .bannerImage
+                a href="#" 
+
+                  = image_tag(image.file.url, style: "max-height: 400px; display: block;margin-left: auto; margin-right: auto;")
+          - else
+            .item
+              .bannerImage
+                a href="#" 
+                  = image_tag(image.file.url, style: "max-height: 400px;    display: block;margin-left:auto; margin-right: auto;")
+      .control-box
+        a.carousel-control.left data-slide="prev" href="#myCarousel"  ‹
+        a.carousel-control.right data-slide="next" href="#myCarousel"  ›
