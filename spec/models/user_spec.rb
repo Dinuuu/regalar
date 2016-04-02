@@ -44,7 +44,7 @@ describe User do
         create :donation, user: user, organization: organization2,
                           wish_item: wish_items_org3[1], done: false
       end
-      let!(:donation4) do
+      let!(:donation5) do
         create :donation, user: user2, organization: organization2,
                           wish_item: wish_items_org3[1], done: true
       end
@@ -88,7 +88,7 @@ describe User do
         create :donation, user: user, organization: organization2,
                           wish_item: wish_items_org3[1], done: false
       end
-      let!(:donation4) do
+      let!(:donation5) do
         create :donation, user: user2, organization: organization2,
                           wish_item: wish_items_org3[1], done: true
       end
@@ -98,10 +98,10 @@ describe User do
       end
       it 'returns donations pending' do
         expect(user.pending_donations
-          .all? { |org_donation| org_donation[:donations].all? { |d| d[:done] } }).to be false
+          .all? { |org_donation| org_donation[:donations].any? { |d| d[:done] } }).to be false
       end
       it 'returns donations for the selected user' do
-        expect(user.confirmed_donations
+        expect(user.pending_donations
           .all? { |org_donation| org_donation[:donations].all? { |d| d.user_id == user.id } })
           .to eq true
       end

@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
   end
 
   def pending_donations
-    organizations_id = Donation.for_user(self).confirmed.uniq.pluck(:organization_id)
+    organizations_id = Donation.for_user(self).pending.uniq.pluck(:organization_id)
     donations = []
     organizations_id.each do |org_id|
       donations << pending_donations_for_organization(org_id)
