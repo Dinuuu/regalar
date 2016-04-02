@@ -1,5 +1,5 @@
 class GiftItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :new]
+  before_action :authenticate_user!, except: [:index, :new, :show]
 
   def new
     @gift_item = GiftItem.new

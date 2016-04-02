@@ -30,7 +30,8 @@
 			= @wish_item.quantity
 	div.col-md-8.col-md-offset-2
 		p
-			- pending_donation = @wish_item.pending_donation(current_user)
+			- if current_user.present?
+				- pending_donation = @wish_item.pending_donation(current_user)
 			- if @wish_item.gifted?
 				span.label.label-danger
 					= t('wish_items.status.gifted')
@@ -45,4 +46,5 @@
 
 = render 'wish_items/gift_modal', wish_item: @wish_item
 = render 'wish_items/donations_feed', wish_item: @wish_item
-= render 'wish_items/comments', wish_item: @wish_item
+- if current_user.present?
+	= render 'wish_items/comments', wish_item: @wish_item

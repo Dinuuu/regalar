@@ -9,5 +9,5 @@
 	      = Comment.model_name.human(count: 2)
 	    - @organization.comments.each do |comment|
 	      = render 'comments/comment_card', comment: comment
-      
-= render 'comments/new', comment: @comment, url: organization_comments_path(@organization)
+- if current_user.present?      
+	= render 'comments/new', comment: @comment, url: organization_comments_path(@organization)

@@ -28,4 +28,5 @@
 
   = render 'user_gift_items/request_modal', gift_item: @gift_item
 
-  = render 'user_gift_items/comments', gift_item: @gift_item
+  - if current_user.present?
+    = render 'user_gift_items/comments', gift_item: @gift_item

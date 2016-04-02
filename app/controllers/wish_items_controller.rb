@@ -1,7 +1,7 @@
 class WishItemsController < OrganizationAuthenticationController
   inherit_resources
   belongs_to :organization
-  before_action :authenticate_user!, except: [:index, :list]
+  before_action :authenticate_user!, except: [:index, :list, :show]
   before_action :chek_authentication_for_organization, only: [:create, :destroy, :pause, :resume]
 
   def index
