@@ -64,10 +64,6 @@ describe User do
     end
   end
 
-
-
-
-
   describe '#pending_donations' do
     context 'When there are existing donations for wish_items' do
       let!(:organization1) { create :organization }
@@ -78,7 +74,7 @@ describe User do
       let!(:wish_items_org3) { create_list :wish_item, 4, organization: organization2 }
       let!(:donation1) do
         create :donation, user: user, organization: organization,
-                          wish_item: wish_items_org1[0], done: true
+                          wish_item: wish_items_org1[0], done: false
       end
       let!(:donation2) do
         create :donation, user: user, organization: organization,
@@ -98,11 +94,11 @@ describe User do
       end
 
       it 'returns 2 organizations' do
-        expect(user.confirmed_donations.count).to eq 2
+        expect(user.pending_donations.count).to eq 2
       end
-      it 'returns donations confirmed' do
-        expect(user.confirmed_donations
-          .all? { |org_donation| org_donation[:donations].all? { |d| d[:done] } }).to be true
+      it 'returns donations pending' do
+        expect(user.pending_donations
+          .all? { |org_donation| org_donation[:donations].all? { |d| d[:done] } }).to be false
       end
       it 'returns donations for the selected user' do
         expect(user.confirmed_donations
@@ -111,12 +107,6 @@ describe User do
       end
     end
   end
-
-
-
-
-
-
 
   describe '#level' do
     let!(:donations) do
