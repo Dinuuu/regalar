@@ -45,6 +45,15 @@ class User < ActiveRecord::Base
     donations
   end
 
+  def pending_donations
+    organizations_id = Donation.for_user(self).confirmed.uniq.pluck(:organization_id)
+    donations = []
+    organizations_id.each do |org_id|
+      donations << pending_donations_for_organization(org_id)
+    end
+    donations
+  end
+
   def confirmed_gift_requests
     organizations_id = GiftRequest.for_user(self).confirmed.uniq.pluck(:organization_id)
     gift_requests = []
@@ -71,6 +80,15 @@ class User < ActiveRecord::Base
     organization_donations[:organization] = organization
     organization_donations[:donations] = Donation.for_user(self)
                                          .for_organization(organization).confirmed
+    organization_donations
+  end
+
+  def pending_donations_for_organization(org_id)
+    organization = Organization.find(org_id)
+    organization_donations = {}
+    organization_donations[:organization] = organization
+    organization_donations[:donations] = Donation.for_user(self)
+                                         .for_organization(organization).pending
     organization_donations
   end
 
