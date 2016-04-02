@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   inherit_resources
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
 
   FIELDS = [:first_name, :last_name, :email, :avatar, :password, :password_confirmation]
 

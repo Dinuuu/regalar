@@ -20,7 +20,7 @@
       .col-sm-4.col-sm-offset-4
         .progress
           .progress-bar.progress-bar-striped.active aria-valuemax="#{user_level.to - user_level.from}" aria-valuemin="0" aria-valuenow="45" role="progressbar" style= "width: #{(confirmed_donations.to_f - user_level.from.to_f)/(user_level.to.to_f - user_level.from.to_f).to_f*100.0}%" 
-    - if current_user.id == user.id       
+    - if current_user.present? && current_user.id == user.id       
       .btn-group
         .button
           a
