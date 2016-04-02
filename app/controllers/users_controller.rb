@@ -15,6 +15,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def gift_items
+    @gift_items = current_user.gift_items.page(params[:page]).per(params[:per])
+  end
+
   private
 
   def resource_params
