@@ -84,7 +84,6 @@ describe GiftRequest do
     end
     context 'When creating a valid gift_request' do
       it 'is valid' do
-        # byebug
         expect(gift_request.valid?).to be true
       end
       it 'has no errors' do

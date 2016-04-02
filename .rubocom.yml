@@ -1,0 +1,16 @@
+# This is the configuration used to check the rubocop source code.
+
+AllCops: Exclude:
+- features/support/env.rb
+- spec/spec_helper.rb
+- app/mercadopago/
+- db/**/
+- config/*/
+- app/model_helpers/user_authentication_helper.rb
+- app/controllers/omniauth_callbacks_controller.rb
+
+Documentation: Enabled: false
+
+HasAndBelongsToMany: Enabled: false
+
+LineLength: Max: 99
