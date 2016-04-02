@@ -51,6 +51,7 @@ es:
           attributes:
             email:
               already_confirmed: Email ya confirmado
+              not_found: incorrecto. No existe un usuario con el email ingresado
     models:
       comment:
         one: Comentario
