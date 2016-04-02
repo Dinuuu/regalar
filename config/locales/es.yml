@@ -24,6 +24,10 @@ es:
     transparent: TRANSPARENTE
     discover: Descubrir
     Create: Crear
+    manage:
+      manage: Administrar
+      gifts: Regalos creados
+      wishes: Deseos pedidos
     header:
       search: Buscar
     footer:
@@ -111,6 +115,8 @@ es:
       cancel_req: Cancelar regalo
       reject_req: 'Rechazar regalo '
       share_text: "La organizacion %{organization} necesita que le regalen %{item}. Podes ayudarlos?"
+      asked_by: 'Pedido por: '
+      
     wish_list:
       tabs: Deseos de
       name: Tus deseos
@@ -160,6 +166,9 @@ es:
       verifying_expl: Estos son los regalos que te han hecho y que tienes que verificar. Si la transacción se ha realizado con éxito hacer click en Confirmar. Si no se pudo concretar el regalo hacer click en Rechazar.
       already_asked: Ya pedido
       share_text: "%{user} quiere regalar %{item}. Tu organización lo necesita? Pedilo!"
+      available: Disponibles
+      edit: Editar
+      delete: Eliminar
     organization:
       logo: Logo
       users: Elige los usuarios que pertenecen a la organización
@@ -445,6 +454,7 @@ es:
     pause: Pausar
     resume: Reanudar
     selectOrg: Por favor elige qué organización está cancelando el pedido
+    to_verify: A verificar
   wish_items:
     name: Deseos
     gift: Regalar

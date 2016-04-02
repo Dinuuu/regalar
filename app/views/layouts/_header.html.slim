@@ -60,6 +60,17 @@ nav.navbar.navbar-default
                 = link_to t('helpers.gift_item.new'), new_gift_item_path
               li
                 = link_to t('helpers.submit.organization.new'), new_organization_path
+        
+        ul.nav.navbar-nav
+          li.dropdown
+            a.dropdown-toggle aria-expanded="false" data-toggle="dropdown" href="#" role="button" 
+              = t('application.manage.manage')
+              span.caret
+            ul.dropdown-menu role="menu" 
+              li
+                = link_to t('application.manage.gifts'), gift_items_and_requests_users_path
+              li
+                = link_to t('application.manage.wishes'), gift_items_and_requests_users_path
               
             
 

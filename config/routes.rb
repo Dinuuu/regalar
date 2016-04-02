@@ -33,7 +33,7 @@ Regalar::Application.routes.draw do
           end
         end
       end
-      get :gift_items
+      get :gift_items_and_requests
       resources :gift_requests, controller: 'user_gift_requests', only: [:show]
       resources :donations, controller: 'user_donations', only: [:destroy], as: 'cancel_donation'
     end 

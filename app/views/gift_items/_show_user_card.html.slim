@@ -1,0 +1,15 @@
+.item  
+  .well-masonry
+    .thumbnail
+      .img-campaign-thumbnail
+        - if item.gift_item_images.present?
+          = image_tag(item.main_image, height: 150, width: 150, class: "img-thumbnail img-profile")
+        - else
+          = image_tag('default_pic.png', height: 150, width: 150, class: "img-thumbnail img-profile")
+      .caption
+        p
+        h4.campaign-name
+          = link_to item.title, user_gift_item_path(id: item.id, user_id: item.user.id)
+        p.card-description
+          = item.description
+        
