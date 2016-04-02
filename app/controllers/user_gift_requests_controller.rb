@@ -27,15 +27,21 @@ class UserGiftRequestsController < ApplicationController
   private
 
   def gift_request
-    @gift_request ||= GiftRequest.find(params[:id])
+    @gift_request ||= GiftRequest.find_by_id(params[:id])
+  end
+
+  def gift_request_by_organization
+    GiftRequest.find_by(organization_id: params[:org],
+                        gift_item_id: params[:gift_item_id],
+                        user: current_user)
   end
 
   def check_ownership
-    request_to_cancel = GiftRequest.find_by(organization_id: params[:organization_id],
-                                            gift_item_id: params[:gift_item_id])
+    request_to_cancel = gift_request_by_organization
     @gift_request = request_to_cancel || gift_request
     return render status: :forbidden,
-                  text: "You don't own the item" unless gift_request.user_id == current_user.id
+                  text: "You don't own the item" unless gift_request.present? &&
+                                                        gift_request.user_id == current_user.id
   end
 
   def validate_user

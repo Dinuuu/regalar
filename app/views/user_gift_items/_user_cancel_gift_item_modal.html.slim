@@ -15,11 +15,7 @@
             = f.text_field :reason, placeholder: t('helpers.wish_item.reason'), class: 'form-control', required: true
             .h6
               = t('gift.selectOrg')
-            - opciones = ""
-            - GiftRequest.for_user(current_user).for_gift_item(item).pending.each do |req|
-              - opciones = opciones + "<option value=#{req.organization.name}>#{req.organization.name} ( #{req.quantity} #{req.gift_item.unit} ) </option>"
-
-            = select_tag "organization_id", opciones.html_safe, class: 'form-control'          
+            = select_tag :org, options_from_collection_for_select(GiftRequest.for_user(current_user).for_gift_item(item).pending.map(&:organization), :id, :name) 
           .form-group
             = f.submit t('gift.reject'),
               class: 'btn btn-danger'
