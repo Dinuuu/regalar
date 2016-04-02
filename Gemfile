@@ -123,13 +123,13 @@ group :development do
   gem 'railroady'
 end
 
-#group :debugging, :development, :test do
+# group :debugging, :development, :test do
 #  gem 'pry'
 #  gem 'debugger'
 #  gem 'debugger-pry'
 #  gem 'pry-nav'
 #  gem 'pry-stack_explorer'
-#end
+# end
 
 group :test, :development do
 

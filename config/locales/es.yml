@@ -444,6 +444,7 @@ es:
     reject: Rechazar
     pause: Pausar
     resume: Reanudar
+    selectOrg: Por favor elige qué organización está cancelando el pedido
   wish_items:
     name: Deseos
     gift: Regalar

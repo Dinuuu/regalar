@@ -437,6 +437,7 @@ en:
     reject: Reject
     pause: Pause
     resume: Resume
+    selectOrg: Please choose which organization is canceling the request
   wish_items:
     name: Wish Item
     organization: 'Organization: '
