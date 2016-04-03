@@ -2,7 +2,8 @@
 .main-text
   .col-md-6.col-md-offset-3
   	.h1
-    	= t('home.slogan')
+  		.break-word
+    		= t('home.slogan')
     = link_to t('helpers.gift_item.make'), new_gift_item_path, class: 'btn btn-primary btn-lg call-to-action home-buttons'
   	.h4
   		= t('home.organization')
