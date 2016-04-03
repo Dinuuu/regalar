@@ -25,15 +25,16 @@
         = t('home.step3_exp')
 
 .about-to-complete-container
-  // TODO CAMBIAR A LOS QUE CORRESPONDE
   legend
     = t('helpers.about_to_complete.title')
   .p.about-to-complete-description
     = t('helpers.about_to_complete.description')
   = render 'gift_items/about_to_complete', gifts: WishItem.trending(current_user)
 
-legend
-    = t('helpers.wish_item.featured')
-- visited_gi = cookies[:visited_gift_items].present? ? JSON.parse(cookies[:visited_gift_items]) : nil
-= render 'gift_items/index_cards', gifts: GiftItem.trending(visited_gi)
-= link_to t('application.all'), gift_items_path, class: 'btn btn-primary'
+.container
+  .home-works-margin
+    legend
+        = t('helpers.wish_item.featured')
+    - visited_gi = cookies[:visited_gift_items].present? ? JSON.parse(cookies[:visited_gift_items]) : nil
+    = render 'gift_items/index_cards', gifts: GiftItem.trending(visited_gi)
+    = link_to t('application.all'), gift_items_path, class: 'btn btn-margin btn-primary'
