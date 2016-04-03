@@ -1,0 +1,10 @@
+- if gift_items.empty?
+	h4.nav-margin
+	  p
+	    = t('application.no_results')
+.card-list
+    .small-row
+      - gift_items.each do |gift|
+        = render 'gift_items/show_user_card', item: gift
+#pagination
+  = paginate gift_items, param_name: "gift_items_page"

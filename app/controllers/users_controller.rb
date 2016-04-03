@@ -15,8 +15,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def gift_items
-    @gift_items = current_user.gift_items.page(params[:page]).per(params[:per])
+  def gift_items_and_requests
+    @gift_requests = current_user.gift_requests.pending.page(params[:page]).per(params[:per])
+    @gift_items = current_user.gift_items.still_available.page(params[:page]).per(params[:per])
   end
 
   def pending

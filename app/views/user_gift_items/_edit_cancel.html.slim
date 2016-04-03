@@ -1,0 +1,8 @@
+- if current_user == gift_item.user
+  = link_to t('helpers.gift_item.edit'), '#',
+     class: 'btn btn-default disabled',
+      data: {disabled: 'disabled'}
+  = link_to t('helpers.gift_item.delete'), '#',
+   class: 'btn btn-default disabled',
+      data: {disabled: 'disabled'}
+  
