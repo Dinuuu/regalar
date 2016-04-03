@@ -22,8 +22,8 @@
             = item.description.truncate(200)
           .verify-buttons
             .pull-left
-              = link_to t('gift.confirm'), confirm_organization_donation_path(organization_id: gift.organization.id , id: gift.id), class: 'btn btn-success', method: "put"
+              = link_to t('gift.confirm'), confirm_organization_donation_path(organization_id: gift.organization.id , id: gift.id), class: 'btn btn-success btn-margin', method: "put"
             .pull-right
-              = link_to t('gift.reject'), '#', class: 'btn btn-danger',
+              = link_to t('gift.reject'), '#', class: 'btn btn-danger btn-margin',
                     data: { toggle: 'modal', target: '#cancel-organization-modal' }
               = render 'organization_donations/cancel_organization_modal', gift: gift

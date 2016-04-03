@@ -18,8 +18,8 @@
             = item.description
           .verify-buttons
             .pull-left
-              = link_to t('gift.confirm'), organization_confirm_gift_request_path(id: request.id), class: 'btn btn-success', method: "post"
+              = link_to t('gift.confirm'), organization_confirm_gift_request_path(id: request.id), class: 'btn btn-success btn-margin', method: "post"
             .pull-right
-              = link_to t('gift.reject'), '#', class: 'btn btn-danger',
+              = link_to t('gift.reject'), '#', class: 'btn btn-danger btn-margin',
                     data: { toggle: 'modal', target: '#cancel-gift-item-modal' }
               = render 'gift_items/cancel_gift_item_modal', request: request

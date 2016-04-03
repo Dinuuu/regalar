@@ -3,7 +3,7 @@
 	- unless item.gifted?
 	    - if pending_donation.present?
 			.col-md-2.cancel-button-organization
-                = link_to t('gift.cancel'), '#', class: 'btn btn-danger',
+                = link_to t('gift.cancel'), '#', class: 'btn btn-margin btn-danger',
                   data: { toggle: 'modal', target: "#cancel-modal#{pending_donation.id}" }
                 = render 'organization_donations/cancel_modal', donation: pending_donation
 		
@@ -17,5 +17,5 @@
 	                 class: 'btn btn-default disabled',
 	                  data: {disabled: 'disabled'}
 - else
-	= link_to t('wish_items.gift'), '#', class: 'btn btn-success glyphicon glyphicon-gift',
+	= link_to t('wish_items.gift'), '#', class: 'btn btn-margin btn-success glyphicon glyphicon-gift',
                   data: { toggle: 'modal', target: '#login-modal' }
