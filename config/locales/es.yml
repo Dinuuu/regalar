@@ -119,7 +119,6 @@ es:
       reject_req: 'Rechazar regalo '
       share_text: "La organizacion %{organization} necesita que le regalen %{item}. Podes ayudarlos?"
       asked_by: 'Pedido por: '
-      
     wish_list:
       tabs: Deseos de
       name: Tus deseos
@@ -162,6 +161,7 @@ es:
       size_mesage: Máximo tamaño 4 MB
       remove_attachment: Remover imagen
       add_attachment: Agregar imagen
+      images: Imágenes
       claim_gift: " Pedir"
       make: Hacer un regalo
       gifted_quantity: 'Cantidad Regalada: '
@@ -176,6 +176,7 @@ es:
       edit: Editar
       delete: Eliminar
       remaining: Quedan %{count} %{unit} disponibles
+      save: Guardar
     organization:
       logo: Logo
       users: Elige los usuarios que pertenecen a la organización

@@ -1,0 +1,78 @@
+- if user_gift_item.errors.present?
+  .alert.alert-danger
+    ul
+      - user_gift_item.errors.each do |attr, msg|
+        li 
+          attr msg
+= nested_form_for user_gift_item, url: user_gift_item_path, html: { class: 'form-horizontal', role: 'form' } do |f|
+  .form-group
+    = f.label :title, t('helpers.gift_item.title'),class: 'control-label col-sm-2'
+    .col-md-4
+      = f.text_field :title, class: 'form-control col-md-2', required: true
+  .form-group
+    = f.label :description, t('helpers.gift_item.description'),class: 'control-label col-sm-2'
+    .col-md-4
+      = f.text_area :description,  class: 'form-control col-md-2', required: true
+  .form-group
+      = f.label :measures, t('helpers.gift_item.measures'), class: 'control-label col-sm-2'
+      .col-md-4
+        = f.text_area :measures,  class: 'form-control col-md-2', required: true
+  .form-group
+      = f.label :used_time, t('helpers.gift_item.used_time'), class: 'control-label col-sm-2'
+      .col-md-4
+        = f.text_area :used_time,  class: 'form-control col-md-2', required: true
+  .form-group
+      = f.label :weight, t('helpers.gift_item.weight'), class: 'control-label col-sm-2'
+      .col-md-4
+        = f.text_area :weight,  class: 'form-control col-md-2', required: true
+  .form-group
+      = f.label :status, t('helpers.gift_item.status'), class: 'control-label col-sm-2'
+      .col-md-4
+        = f.select :status, [t('helpers.gift_item.excellent') , t('helpers.gift_item.very_good'),t('helpers.gift_item.good'), t('helpers.gift_item.regular')] , { include_blank:  t('helpers.gift_item.select_status') }, class: 'form-control col-md-2', required: true
+  .form-group
+    = f.label :quantity, t('helpers.gift_item.quantity'), class: 'control-label col-sm-2'
+    .col-md-4
+      = f.text_field :quantity, class: 'form-control col-md-2',type: 'number',  required: true
+
+      = f.select :unit, [t('helpers.gift_item.liters') ,t('helpers.gift_item.kilos'), t('helpers.gift_item.units')] , { include_blank:  t('helpers.gift_item.select_units') }, class: 'form-control col-md-2', required: true
+  .form-group
+    = f.label :gift_item_images, t('helpers.gift_item.images'), class: 'control-label col-sm-2'
+    .col-md-4
+      / = f.fields_for :gift_item_images do |img|
+      /   .form-group
+      /     .col-md-6
+      /       .row
+      /         = image_tag img.object.file, style: "height: 100px;"
+      /       .row
+      /         = img.link_to_remove t('helpers.gift_item.remove_attachment')
+      / .form-group
+      /   .col-sm-offset-2.col-sm-8
+      /     strong
+      /       = f.link_to_add t('helpers.gift_item.add_attachment'), :gift_item_images
+      /   .col-sm-offset-2.col-sm-6
+      /     p
+      /       = t('helpers.gift_item.size_mesage')        
+      = f.fields_for :gift_item_images do |attachment_form|
+        .form-group
+          .col-sm-8
+            - if attachment_form.object.file.present?
+              .col-md-6
+                .row
+                  = image_tag attachment_form.object.file, style: "height: 100px;"
+                .row
+                  = attachment_form.link_to_remove t('helpers.gift_item.remove_attachment')
+            - else
+              = attachment_form.file_field :file
+      .form-group
+        .col-sm-offset-2.col-sm-8
+          strong
+            = f.link_to_add t('helpers.gift_item.add_attachment'), :gift_item_images
+        .col-sm-offset-2.col-sm-6
+          p
+            = t('helpers.gift_item.size_mesage')
+
+
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit t('helpers.gift_item.save'), class: 'btn btn-primary btn-violet'
+    
