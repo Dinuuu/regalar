@@ -90,8 +90,11 @@ en:
         of: ' of '
         select_units: 'Select units'
         units: 'Units'
+        Units: 'Units'
         kilos: 'Kilos'
+        Kilos: Kilos
         liters: 'Liters'
+        Liters: 'Liters'
         select_priority: 'Select Priority'
         low: 'Low'
         medium: 'Medium'
@@ -137,6 +140,9 @@ en:
         units: 'Units'
         kilos: 'Kilos'
         liters: 'Liters'
+        Units: 'Unidades'
+        Kilos: 'Kilos'
+        Liters: 'Litros'
         photo: 'Photo'
         featured: 'Featured Gifts'
         gifted_by: 'Gifted by: '
@@ -165,6 +171,7 @@ en:
         available: Available
         edit: Edit
         delete: Delete
+        remaining: There are %{count} %{unit} left
       organization:
         logo: Logo
         users: Select the users that belogs to the organization

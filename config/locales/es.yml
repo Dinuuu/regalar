@@ -93,8 +93,11 @@ es:
       of: ' de '
       select_units: 'Seleccionar unidad'
       units: 'Unidades'
+      Units: 'Unidades'
       kilos: 'Kilos'
+      Kilos: Kilos
       liters: 'Litros'
+      Liters: 'Litros'
       select_priority: 'Seleccionar prioridad'
       low: 'Baja'
       medium: 'Mediana'
@@ -141,6 +144,9 @@ es:
       units: 'Unidades'
       kilos: 'Kilos'
       liters: 'Litros'
+      Units: 'Unidades'
+      Kilos: 'Kilos'
+      Liters: 'Litros'
       photo: 'Foto'
       gifted_by: 'Regalado por: '
       featured: 'Regalos Destacados'
@@ -169,6 +175,7 @@ es:
       available: Disponibles
       edit: Editar
       delete: Eliminar
+      remaining: Quedan %{count} %{unit} disponibles
     organization:
       logo: Logo
       users: Elige los usuarios que pertenecen a la organización
