@@ -1,4 +1,5 @@
 class UserGiftItemsController < ApplicationController
+  include UserMailerHelper
   before_action :authenticate_user!, except: [:show]
   before_action :validate_user, except: [:show]
 
@@ -10,15 +11,19 @@ class UserGiftItemsController < ApplicationController
   end
 
   def edit
+    authorize gift_item
     gift_item
   end
 
   def destroy
-    # TODO: IMPLEMENTAR
+    authorize gift_item
+    gift_item.update_attributes(eliminated: true)
+    send_mails_to_undone_gift_requests
     redirect_to :back
   end
 
   def update
+    authorize gift_item
     if gift_item.update_attributes(gift_item_params)
       redirect_to user_gift_item_path(current_user.id, @gift_item.id)
     else
@@ -31,7 +36,7 @@ class UserGiftItemsController < ApplicationController
   end
 
   def index
-    @gift_items = GiftItem.for_user(current_user)
+    @gift_items = GiftItem.for_user(current_user).not_eliminated
   end
 
   private
@@ -61,5 +66,13 @@ class UserGiftItemsController < ApplicationController
   def new_visits
     return [params[:id]] unless cookies[:visited_gift_items].present?
     JSON.parse(cookies[:visited_gift_items]) << params[:id]
+  end
+
+  def send_mails_to_undone_gift_requests
+    gift_item.gift_requests.pending.each do |req|
+      @gift_request = req
+      req.destroy
+      send_cancelation_email
+    end
   end
 end

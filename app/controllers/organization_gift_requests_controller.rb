@@ -12,6 +12,7 @@ class OrganizationGiftRequestsController < ApplicationController
   FIELDS = [:user_id, :gift_item_id, :quantity, :organization_id]
 
   def create
+    authorize gift_item
     create! do |success, failure|
       success.html do
         send_creation_mail
@@ -72,7 +73,7 @@ class OrganizationGiftRequestsController < ApplicationController
   end
 
   def gift_item
-    @gift_item ||= GiftItem.find(params[:id])
+    @gift_item ||= GiftItem.find(params[:gift_item_id])
   end
 
   def gift_request

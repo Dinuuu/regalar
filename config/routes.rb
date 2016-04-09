@@ -13,8 +13,10 @@ Regalar::Application.routes.draw do
   
   resources :users do
     resources :gift_items, controller: 'user_gift_items', except: [:destroy] do
-      resources :gift_requests, controller: 'organization_gift_requests', only: [:new, :create, :show]      
-      delete :destroy, as: 'cancel'
+      resources :gift_requests, controller: 'organization_gift_requests', only: [:new, :create, :show]
+      member do
+        delete :destroy, as: 'cancel'
+      end
     end
     member do
       get :edit_password

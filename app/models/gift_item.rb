@@ -10,6 +10,7 @@ class GiftItem < ActiveRecord::Base
             :status, presence: true
   scope :for_user, -> (user) { where(user: user) }
   scope :still_available, -> { where('given < quantity') }
+  scope :not_eliminated, -> { where.not(eliminated: true) }
 
   after_initialize :initialize_attributes
 

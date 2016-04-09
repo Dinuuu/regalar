@@ -21,7 +21,7 @@ describe UserGiftItemsController do
           expect(response.status).to eq 200
         end
         it 'renders all the gift_items for that user' do
-          expect(assigns(:gift_items)).to eq GiftItem.for_user(user)
+          expect(assigns(:gift_items)).to eq GiftItem.for_user(user).not_eliminated
         end
       end
     end
@@ -97,6 +97,38 @@ describe UserGiftItemsController do
       end
       it 'renders the correct gift_item' do
         expect(assigns(:gift_item)).to eq gift_item
+      end
+    end
+  end
+
+  describe '#destroy' do
+    let!(:gift_item) { create :gift_item, user: user }
+    let!(:pending_gift_request) do
+      create :gift_request, gift_item: gift_item,
+                            organization: create(:organization), user: gift_item.user
+    end
+    let!(:finished_gift_request) do
+      create :gift_request, gift_item: gift_item, organization: create(:organization),
+                            done: true, user: gift_item.user
+    end
+    context 'when a user is eliminating a gift item' do
+      before(:each) do
+        sign_in user
+        user.reload
+        request.env['HTTP_REFERER'] = organizations_url
+      end
+      it 'marks it as eliminated' do
+        expect { delete :destroy, user_id: user.id, id: gift_item.id }
+          .to change { gift_item.reload.eliminated }.from(false).to(true)
+      end
+      it 'destroy its pending requests' do
+        expect { delete :destroy, user_id: user.id, id: gift_item.id }
+          .to change { gift_item.reload.gift_requests.pending.count }.from(1).to(0)
+      end
+      it 'sends as many emails as pending requests' do
+        (expect do
+           delete :destroy, user_id: user.id, id: gift_item.id
+         end).to change { ActionMailer::Base.deliveries.count }.by 1
       end
     end
   end
