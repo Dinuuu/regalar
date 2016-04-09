@@ -53,24 +53,58 @@ describe WishItemsController do
   end
 
   describe '#destroy' do
-    let!(:wish_item) { create(:wish_item, organization_id: organization.id) }
-
-    context 'When destroying a wish item while logged' do
+    let!(:organization2) { create :organization }
+    let!(:wish_item) do
+      create :wish_item, organization: organization, quantity: 10,
+                         eliminated: false
+    end
+    let!(:donations_done) do
+      create_list :donation, 5, wish_item: wish_item, user: user,
+                                organization: organization, done: true
+    end
+    let!(:donations_undone) do
+      create_list :donation, 3, wish_item: wish_item, user: user,
+                                organization: organization, done: false
+    end
+    let!(:donation_params) do
+      { reason: 'Me arrepenti' }
+    end
+    context 'When destroying a not_eliminated wish item while logged' do
       before(:each) do
         sign_in user
         user.reload
+        request.env['HTTP_REFERER'] = organizations_url
       end
       context 'When user belongs to organization' do
         before :each do
           organization.users << user
         end
-        it 'changes the count of wish items' do
-          expect { delete :destroy, organization_id: organization.id, id: wish_item.id }
-            .to change(WishItem, :count).by(-1)
+        it 'decrement the donations quantity for wish_item by 3' do
+          expect do
+            delete :destroy, organization_id: organization.id, id: wish_item.id,
+                             donation: donation_params
+          end
+            .to change { wish_item.reload.donations.count }.by(-3)
         end
-        it 'add a wish item to the organization' do
-          expect { delete :destroy, organization_id: organization.id, id: wish_item.id }
-            .to change(organization.wish_items, :count).by(-1)
+        it 'eliminate the 3 pending donations for wish_item' do
+          expect do
+            delete :destroy, organization_id: organization.id, id: wish_item.id,
+                             donation: donation_params
+          end
+            .to change { wish_item.reload.donations.pending.count }.from(3).to(0)
+        end
+        it 'does not change the quantity of confirmed donations for wish_item' do
+          expect do
+            delete :destroy, organization_id: organization.id, id: wish_item.id,
+                             donation: donation_params
+          end
+            .not_to change { wish_item.reload.donations.confirmed.count }
+        end
+        it 'sends as many emails as pending donations' do
+          (expect do
+            delete :destroy, organization_id: organization.id, id: wish_item.id,
+                             donation: donation_params
+          end).to change { ActionMailer::Base.deliveries.count }.by 3
         end
       end
       context 'When user does not belong to organization' do

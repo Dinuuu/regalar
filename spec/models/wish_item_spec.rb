@@ -111,8 +111,26 @@ describe WishItem do
       before :each do
         wish_item.resume
       end
-      it 'sets active to false' do
+      it 'sets active to true' do
         expect(wish_item.active).to be true
+      end
+    end
+  end
+
+  describe '#eliminate' do
+    context 'when eliminating a not_eliminated_wish_item' do
+      let!(:wish_item) do
+        create :wish_item, organization: organization, eliminated: false
+      end
+      it 'sets eliminated to true' do
+        expect(wish_item.eliminate).to be true
+      end
+      it 'changes the count of not eliminated wish items for organization by -1' do
+        expect { wish_item.eliminate }
+          .to change { organization.wish_items.not_eliminated.count }.by(-1)
+      end
+      it 'changes the count of eliminated wish items for organization by +1' do
+        expect { wish_item.eliminate }.to change { organization.wish_items.eliminated.count }.by(1)
       end
     end
   end

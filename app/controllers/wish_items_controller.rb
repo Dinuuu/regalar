@@ -1,16 +1,22 @@
 class WishItemsController < OrganizationAuthenticationController
+  include OrganizationMailerHelper
   inherit_resources
   belongs_to :organization
   before_action :authenticate_user!, except: [:index, :list, :show]
   before_action :chek_authentication_for_organization, only: [:create, :destroy, :pause, :resume]
-
+  before_action :check_eliminated, only: [:destroy]
   def index
-    @wish_items = WishItem.for_organization(@organization)
+    @wish_items = WishItem.for_organization(@organization).not_eliminated
     index!
   end
 
   def destroy
-    destroy! { @organization }
+    wish_item.eliminate
+    wish_item.donations.pending.each do |donation|
+      donation.destroy
+      send_cancelation_email(donation, cancelation_params[:reason])
+    end
+    redirect_to :back
   end
 
   def create
@@ -18,19 +24,18 @@ class WishItemsController < OrganizationAuthenticationController
   end
 
   def list
-    @wish_items = params[:query].present? ? WishItem.search(params[:query]) : WishItem.all
+    @wish_items = WishItem.not_eliminated
+    @wish_items = params[:query].present? ? @wish_items.search(params[:query]) : @wish_items
   end
 
   def pause
-    @wish_item = WishItem.find(params[:id])
-    @wish_item.pause
-    redirect_to organization_wish_item_path(@wish_item.organization, @wish_item)
+    wish_item.pause
+    redirect_to organization_wish_item_path(@wish_item.organization, wish_item)
   end
 
   def resume
-    @wish_item = WishItem.find(params[:id])
-    @wish_item.resume
-    redirect_to organization_wish_item_path(@wish_item.organization, @wish_item)
+    wish_item.resume
+    redirect_to organization_wish_item_path(@wish_item.organization, wish_item)
   end
 
   def show
@@ -40,10 +45,24 @@ class WishItemsController < OrganizationAuthenticationController
 
   private
 
+  def wish_item
+    @wish_item ||= WishItem.find(params[:id])
+  end
+
+  def check_eliminated
+    return true unless wish_item.eliminated?
+    render status: :forbidden,
+           text: 'The request is already eliminated'
+  end
+
   def resource_params
     return [] if request.get?
     [params.require(:wish_item).permit(:title, :reason, :description, :priority, :active,
                                        :quantity, :obtained, :unit, :organization_id, :main_image,
                                        :finish_date, :weight, :measures)]
+  end
+
+  def cancelation_params
+    params.require(:donation).permit(:reason)
   end
 end
