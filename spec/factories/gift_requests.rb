@@ -3,6 +3,6 @@ FactoryGirl.define do
     organization nil
     gift_item nil
     quantity 1
-    done nil
+    done false
   end
 end

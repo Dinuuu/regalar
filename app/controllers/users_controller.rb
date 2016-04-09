@@ -16,8 +16,8 @@ class UsersController < ApplicationController
   end
 
   def gift_items_and_requests
-    @gift_requests = current_user.gift_requests.pending.page(params[:page]).per(params[:per])
-    @gift_items = current_user.gift_items.still_available.page(params[:page]).per(params[:per])
+    @gift_requests = paginate(current_user.gift_requests)
+    @gift_items = paginate(current_user.gift_items.still_available)
   end
 
   def pending
@@ -25,6 +25,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def paginate(relation)
+    relation.page(params[:page]).per(params[:per])
+  end
 
   def resource_params
     return [] if request.get?
