@@ -13,6 +13,11 @@ class UserGiftItemsController < ApplicationController
     gift_item
   end
 
+  def destroy
+    # TODO: IMPLEMENTAR
+    redirect_to :back
+  end
+
   def update
     if gift_item.update_attributes(gift_item_params)
       redirect_to user_gift_item_path(current_user.id, @gift_item.id)

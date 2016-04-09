@@ -1,8 +1,9 @@
-- if current_user == gift_item.user
-  = link_to t('helpers.gift_item.edit'), '#',
-     class: 'btn btn-default disabled',
-      data: {disabled: 'disabled'}
-  = link_to t('helpers.gift_item.delete'), '#',
-   class: 'btn btn-default disabled',
-      data: {disabled: 'disabled'}
-  
+- if current_user.present? && current_user == gift_item.user
+  .btn-group
+    .button
+      a
+        = link_to t('helpers.gift_item.edit'), edit_user_gift_item_path(gift_item.user.id,gift_item.id), class: 'btn btn-default'
+  .btn-group
+    .button
+      a
+        = link_to t('helpers.gift_item.delete'), user_gift_item_cancel_path(gift_item.user.id, gift_item.id), method: 'DELETE', class: 'btn btn-default'

@@ -158,6 +158,7 @@ en:
         size_mesage: Max size 4 MB
         remove_attachment: Remove image
         add_attachment: Add image
+        images: Images
         claim_gift: " Claim"
         gifted_quantity: 'Quantity Gifted: '
         received: Gifts received
@@ -172,6 +173,7 @@ en:
         edit: Edit
         delete: Delete
         remaining: There are %{count} %{unit} left
+        save: Save
       organization:
         logo: Logo
         users: Select the users that belogs to the organization
