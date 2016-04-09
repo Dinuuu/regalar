@@ -16,6 +16,9 @@ class WishItem < ActiveRecord::Base
   scope :not_finished, -> { where('(?) < finish_date', Time.current) }
   scope :not_paused, -> { where(active: true) }
   scope :paused, -> { where.not(active: true) }
+  scope :eliminated, -> { where(eliminated: true) }
+  scope :not_eliminated, -> { where.not(eliminated: true) }
+
   after_initialize :initialize_attributes
 
   validate :check_finish_date, if: proc { finish_date.present? && self.finish_date_changed? }
@@ -35,6 +38,7 @@ class WishItem < ActiveRecord::Base
       .goal_not_reached
       .not_paused
       .not_finished
+      .not_eliminated
       .order('(wish_items.quantity - wish_items.obtained) ASC')
       .last(3)
   end
@@ -50,6 +54,10 @@ class WishItem < ActiveRecord::Base
 
   def resume
     update_attributes!(active: true)
+  end
+
+  def eliminate
+    update_attributes!(eliminated: true)
   end
 
   def gifted?

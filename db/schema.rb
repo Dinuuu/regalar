@@ -191,10 +191,11 @@ ActiveRecord::Schema.define(version: 20160409184639) do
     t.string   "unit"
     t.string   "main_image"
     t.boolean  "active",          default: true
-    t.integer  "obtained",        default: 0,    null: false
+    t.integer  "obtained",        default: 0,     null: false
     t.string   "measures"
     t.string   "weight"
     t.datetime "finish_date"
+    t.boolean  "eliminated",      default: false
   end
 
   add_index "wish_items", ["organization_id"], name: "index_wish_items_on_organization_id", using: :btree
