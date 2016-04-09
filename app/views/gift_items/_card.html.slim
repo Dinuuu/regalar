@@ -13,6 +13,9 @@
           = link_to item.user.full_name, item.user
         h4.campaign-name
           = link_to item.title, user_gift_item_path(id: item.id, user_id: item.user.id)
+        h5
+          = t('helpers.gift_item.remaining', count: (item.quantity - item.given) , unit: t("helpers.gift_item.#{item.unit}"))
+
         p.card-description
           = item.description
         = render 'gift_items/ask_buttons', item: item
