@@ -31,7 +31,7 @@
   .form-group
     = f.label :users, t('helpers.organization.users'), class: 'control-label col-sm-2'
     .col-xs-5
-      = f.select :users, options_from_collection_for_select(User.where.not(id: organization.users.ids), :id, :email), {}, {:multiple => true, :class => "contol-label col-sm-2", :style => "width:450px;" }  
+      = f.select :users, options_from_collection_for_select(User.where.not(id: organization.users.ids), :id, :email), {}, {:multiple => true, :class => "multiSelect contol-label col-sm-2", :style => "width:450px;" ,:id => "organizationForm"}  
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit nil, class: 'btn btn-primary btn-violet'
