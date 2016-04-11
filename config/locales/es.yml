@@ -92,12 +92,24 @@ es:
       obteined_quantity: 'Cantidad obtenida: '
       of: ' de '
       select_units: 'Seleccionar unidad'
-      units: 'Unidades'
-      Units: 'Unidades'
-      kilos: 'Kilos'
-      Kilos: Kilos
-      liters: 'Litros'
-      Liters: 'Litros'
+      units: 
+        one: 'Unidad'
+        other: 'Unidades'
+      Units:
+        one: 'Unidad'
+        other: 'Unidades'
+      kilos: 
+        one: Kilo
+        other: 'Kilos'
+      Kilos:
+        one: Kilo
+        other: 'Kilos'
+      liters:
+        one: Litro
+        other: Litros
+      Liters:
+        one: Litro
+        other: Litros
       select_priority: 'Seleccionar prioridad'
       low: 'Baja'
       medium: 'Mediana'
@@ -140,12 +152,24 @@ es:
       given_quantity: 'Cantidad obtenida: '
       of: ' de '
       select_units: 'Seleccionar unidad'
-      units: 'Unidades'
-      kilos: 'Kilos'
-      liters: 'Litros'
-      Units: 'Unidades'
-      Kilos: 'Kilos'
-      Liters: 'Litros'
+      units: 
+        one: 'Unidad'
+        other: 'Unidades'
+      Units:
+        one: 'Unidad'
+        other: 'Unidades'
+      kilos: 
+        one: Kilo
+        other: 'Kilos'
+      Kilos:
+        one: Kilo
+        other: 'Kilos'
+      liters:
+        one: Litro
+        other: Litros
+      Liters:
+        one: Litro
+        other: Litros
       photo: 'Foto'
       gifted_by: 'Regalado por: '
       featured: 'Regalos Destacados'

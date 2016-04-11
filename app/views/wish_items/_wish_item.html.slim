@@ -3,5 +3,5 @@ li.list-group-item
     = wish_item.title
   p.list-group-item-text
     = wish_item.quantity
-    = wish_item.unit
+    = t("helpers.wish_item.#{item.unit}", count: item.quantity))
     = link_to 'Donate', new_organization_wish_item_donation_path(wish_item.organization,wish_item)

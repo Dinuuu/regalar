@@ -16,7 +16,7 @@
       = t('helpers.gift_item.of')
       = @gift_item.quantity
       = ' '
-      = t("helpers.gift_item.#{@gift_item.unit}")
+      = t("helpers.gift_item.#{@gift_item.unit}", count: @gift_item.quantity)
     	p
     		- if @gift_item.gifted?
     			span.label.label-danger

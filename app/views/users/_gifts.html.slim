@@ -14,6 +14,6 @@
               .col-md-4
                 = d.quantity
                 = ' '
-                = t("helpers.gift_item.#{d.gift_item.unit}")
+                = t("helpers.gift_item.#{d.gift_item.unit}", count: d.quantity)
               .pull-right.span.label.label-default
                 = d.created_at.to_s(:short)
