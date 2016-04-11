@@ -1,20 +1,21 @@
-p
-	.h5
-		= t('helpers.wish_item.organization')
-	= link_to @wish_item.organization.name , @wish_item.organization
-p
-	.h5
-		= t('helpers.wish_item.measures')
-	= wish_item.measures
-p
-	.h5
-		= t('helpers.wish_item.weight')
-	= wish_item.weight
-p
-	.h5
-		= t('helpers.wish_item.description')
-	= wish_item.description 
-p
-	.h5
-		= t('helpers.wish_item.reason')
-	= wish_item.reason
+.well
+	p
+		.h5
+			= t('helpers.wish_item.organization')
+		= link_to @wish_item.organization.name , @wish_item.organization
+	p
+		.h5
+			= t('helpers.wish_item.measures')
+		= wish_item.measures
+	p
+		.h5
+			= t('helpers.wish_item.weight')
+		= wish_item.weight
+	p
+		.h5
+			= t('helpers.wish_item.description')
+		= wish_item.description 
+	p
+		.h5
+			= t('helpers.wish_item.reason')
+		= wish_item.reason
