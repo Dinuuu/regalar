@@ -24,12 +24,13 @@
       .p
         = t('home.step3_exp')
 
-.about-to-complete-container
-  legend
-    = t('helpers.about_to_complete.title')
-  .p.about-to-complete-description
-    = t('helpers.about_to_complete.description')
-  = render 'gift_items/about_to_complete', gifts: WishItem.trending(current_user)
+- if WishItem.trending(current_user).present?
+  .about-to-complete-container
+    legend
+      = t('helpers.about_to_complete.title')
+    .p.about-to-complete-description
+      = t('helpers.about_to_complete.description')
+    = render 'gift_items/about_to_complete', gifts: WishItem.trending(current_user)
 
 .container
   .home-works-margin
