@@ -116,6 +116,8 @@ gem "nested_form"
 
 gem 'addressable'
 
+gem 'multi-select-rails'
+
 
 group :development do
   gem 'better_errors'
