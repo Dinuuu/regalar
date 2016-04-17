@@ -18,7 +18,7 @@ class UserDonationsController < ApplicationController
         send_creation_mail(@wish_item)
         redirect_to :back
       end
-      failure.html { render 'new' }
+      failure.html { render layout: false }
     end
   end
 

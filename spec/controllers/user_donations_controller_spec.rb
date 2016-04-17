@@ -63,11 +63,6 @@ describe UserDonationsController do
                           id: wish_item.id, donation: donation.attributes
           end).not_to change { Donation.count }
         end
-        it 'renders same page' do
-          post :create, organization_id: organization.id,
-                        id: wish_item.id, donation: donation.attributes
-          expect(response).to render_template :new
-        end
         it 'does not send an email' do
           (expect do
             post :create, organization_id: organization.id,

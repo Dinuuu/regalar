@@ -9,6 +9,9 @@ describe UserGiftRequestsController do
   let!(:gift_item) { create :gift_item }
   let!(:gift_item2) { create :gift_item }
   describe '#cancel' do
+    before(:each) do
+      request.env['HTTP_REFERER'] = organizations_url
+    end
     context 'When logged' do
       before(:each) do
         sign_in user
@@ -27,11 +30,6 @@ describe UserGiftRequestsController do
                             org: organization
           end
             .to change { GiftRequest.count }.by(-1)
-        end
-        it 'redirects to gift_item' do
-          delete :cancel, organization_id: organization.id, gift_item_id: gift_item.id,
-                          org: organization
-          expect(response).to redirect_to user_gift_item_path(user, gift_item)
         end
         it 'sends an email' do
           (expect do
@@ -208,6 +206,9 @@ describe UserGiftRequestsController do
   let!(:gift_item) { create :gift_item }
   let!(:gift_item2) { create :gift_item }
   describe '#cancel' do
+    before(:each) do
+      request.env['HTTP_REFERER'] = organizations_url
+    end
     context 'When logged' do
       before(:each) do
         sign_in user
@@ -226,11 +227,6 @@ describe UserGiftRequestsController do
                             org: organization
           end
             .to change { GiftRequest.count }.by(-1)
-        end
-        it 'redirects to gift_item' do
-          delete :cancel, organization_id: organization.id, gift_item_id: gift_item.id,
-                          org: organization
-          expect(response).to redirect_to user_gift_item_path(user, gift_item)
         end
         it 'sends an email' do
           (expect do

@@ -7,7 +7,7 @@ class UserGiftRequestsController < ApplicationController
   def cancel
     gift_request.destroy
     send_cancelation_email
-    redirect_to user_gift_item_path(current_user, gift_request.gift_item)
+    redirect_to :back
   end
 
   def show

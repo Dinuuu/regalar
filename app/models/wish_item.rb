@@ -33,10 +33,10 @@ class WishItem < ActiveRecord::Base
 
   def self.trending(user)
     wishes = WishItem.goal_not_reached
-      .not_paused
-      .not_finished
-      .not_eliminated
-      .order('(wish_items.quantity - wish_items.obtained) ASC')
+             .not_paused
+             .not_finished
+             .not_eliminated
+             .order('(wish_items.quantity - wish_items.obtained) ASC')
     return wishes.last(3) unless user.present?
     wishes
       .for_organizations(user.organizations.ids)
