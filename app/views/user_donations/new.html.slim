@@ -1,15 +1,14 @@
 = form_for :donation, url: organization_donations_path do |f|
-  
-  - if @donation.errors.present?
-    .alert.alert-danger
-      ul
-        - @donation.errors.full_messages.each do |msg|
-          li = msg
   p
     br
     = f.label :quantity
     br
     = f.text_field :quantity, type: 'number', class: 'control-label col-sm-2'
+    .col-md-4
+      - errors = @donation.errors[:quantity].first
+      - if errors.present?
+        .error-form
+            = errors
 
     = f.hidden_field :organization_id, value: params[:organization_id]
     = f.hidden_field :user_id, value: current_user.id

@@ -1,41 +1,76 @@
-- if @gift_item.errors.present?
-  .alert.alert-danger
-    ul
-      - @gift_item.errors.each do |attr, msg|
-        li 
-          attr msg
 = nested_form_for [@gift_item], html: { class: 'form-horizontal', role: 'form' } do |f|
   .form-group
     = f.label :title, t('helpers.gift_item.title'),class: 'control-label col-sm-2'
     .col-md-4
       = f.text_field :title, class: 'form-control col-md-2', required: true
+    .col-md-4
+      - errors = @gift_item.errors[:title].first
+      - if errors.present?
+        .error-form
+            = errors
   .form-group
     = f.label :description, t('helpers.gift_item.description'),class: 'control-label col-sm-2'
     .col-md-4
       = f.text_area :description,  class: 'form-control col-md-2', required: true
+    .col-md-4
+      - errors = @gift_item.errors[:description].first
+      - if errors.present?
+        .error-form
+            = errors
   .form-group
       = f.label :measures, t('helpers.gift_item.measures'), class: 'control-label col-sm-2'
       .col-md-4
         = f.text_area :measures,  class: 'form-control col-md-2', required: true
+      .col-md-4
+        - errors = @gift_item.errors[:measures].first
+        - if errors.present?
+          .error-form
+              = errors
   .form-group
       = f.label :used_time, t('helpers.gift_item.used_time'), class: 'control-label col-sm-2'
       .col-md-4
         = f.text_area :used_time,  class: 'form-control col-md-2', required: true
+      .col-md-4
+        - errors = @gift_item.errors[:used_time].first
+        - if errors.present?
+          .error-form
+              = errors
   .form-group
       = f.label :weight, t('helpers.gift_item.weight'), class: 'control-label col-sm-2'
       .col-md-4
         = f.text_area :weight,  class: 'form-control col-md-2', required: true
+        .col-md-4
+        - errors = @gift_item.errors[:weight].first
+        - if errors.present?
+          .error-form
+              = errors
   .form-group
       = f.label :status, t('helpers.gift_item.status'), class: 'control-label col-sm-2'
       .col-md-4
         = f.select :status, [t('helpers.gift_item.excellent') , t('helpers.gift_item.very_good'),t('helpers.gift_item.good'), t('helpers.gift_item.regular')] , { include_blank:  t('helpers.gift_item.select_status') }, class: 'form-control col-md-2', required: true
+      .col-md-4
+        - errors = @gift_item.errors[:status].first
+        - if errors.present?
+          .error-form
+              = errors
   .form-group
     = f.label :quantity, t('helpers.gift_item.quantity'), class: 'control-label col-sm-2'
     .col-md-4
       = f.text_field :quantity, class: 'form-control col-md-2',type: 'number',  required: true
-
-      = f.select :unit, [t('helpers.gift_item.liters', count: 2) ,t('helpers.gift_item.kilos',count: 2), t('helpers.gift_item.units',count: 2)] , { include_blank:  t('helpers.gift_item.select_units') }, class: 'form-control col-md-2', required: true
-  
+    .col-md-4
+      - errors = @gift_item.errors[:quantity].first
+      - if errors.present?
+        .error-form
+            = errors
+  .form-group
+    = f.label :unit, t('helpers.wish_item.unit'), class: 'control-label col-sm-2'
+    .col-md-4
+      = f.select :unit, [t('helpers.gift_item.liters') ,t('helpers.gift_item.kilos'), t('helpers.gift_item.units')] , { include_blank:  t('helpers.gift_item.select_units') }, class: 'form-control col-md-2', required: true
+    .col-md-4
+      - errors = @gift_item.errors[:unit].first
+      - if errors.present?
+        .error-form
+            = errors  
   - if f.object.new_record?
       = f.fields_for :gift_item_images do |attachment_form|
         .form-group
@@ -49,6 +84,11 @@
         .col-sm-offset-2.col-sm-6
           p
             = t('helpers.gift_item.size_mesage')
+      .col-md-4
+        - errors = @gift_item.errors[:gift_item_images].first
+        - if errors.present?
+          .error-form
+              = errors
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit t('helpers.gift_item.new'), class: 'btn btn-primary btn-violet'

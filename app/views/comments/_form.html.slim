@@ -1,12 +1,12 @@
-- if comment.errors.present?
-  .alert.alert-danger
-    ul
-      - comment.errors.each do |attr, msg|
-        li= msg
 = form_for comment, url: url, html: { class: 'form-horizontal', role: 'form' } do |f|
   .form-group
     .col-md-4
       = f.text_area :message, class: 'form-control col-md-2', required: true
+    .col-md-4
+      - errors = comment.errors[:message].first
+      - if errors.present?
+        .error-form
+            = errors
   .form-group
     .col-sm-10
       = f.submit nil, class: 'btn btn-primary btn-violet'

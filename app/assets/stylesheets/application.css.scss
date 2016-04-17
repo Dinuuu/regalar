@@ -141,8 +141,8 @@ $google-red: #F03B3B;
 
 
 /* CONTENT */
-a.btn-success:visited {color: #FFFFFF; margin:15px;}
-a.btn-success:link {color: #FFFFFF; margin:15px;}
+a.btn-success:visited {color: #FFFFFF; }
+a.btn-success:link {color: #FFFFFF; }
 a.btn-danger:visited {color: #FFFFFF}
 a.btn-danger:link {color: #FFFFFF}
 
@@ -391,4 +391,8 @@ a.control_next {
 
 .carousel{
   height: 287px;
+}
+
+.card-description{
+  height: 90px;
 }

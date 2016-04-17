@@ -1,48 +1,94 @@
-- if @wish_item.errors.present?
-  .alert.alert-danger
-    ul
-      - @wish_item.errors.each do |attr, msg|
-        li 
-          attr msg
 = form_for [@organization, @wish_item], html: { class: 'form-horizontal', role: 'form' } do |f|
   .form-group
     = f.label :title, t('helpers.wish_item.title'),class: 'control-label col-sm-2'
     .col-md-4
       = f.text_field :title, class: 'form-control col-md-2', required: true
+    .col-md-4
+      - errors = @wish_item.errors[:title].first
+      - if errors.present?
+        .error-form
+          = errors
   .form-group
     = f.label :reason, t('helpers.wish_item.reason'),class: 'control-label col-sm-2'
     .col-md-4
       = f.text_area :reason, class: 'form-control col-md-2', required: true
+    .col-md-4
+      - errors = @wish_item.errors[:reason].first
+      - if errors.present?
+        .error-form
+          = errors
   .form-group
     = f.label :description, t('helpers.wish_item.description'),class: 'control-label col-sm-2'
     .col-md-4
       = f.text_area :description,  class: 'form-control col-md-2', required: true
+    .col-md-4
+      - errors = @wish_item.errors[:description].first
+      - if errors.present?
+        .error-form
+          = errors
   .form-group
     = f.label :weight, t('helpers.wish_item.weight'),class: 'control-label col-sm-2'
     .col-md-4
       = f.text_field :weight,  class: 'form-control col-md-2'
+    .col-md-4
+      - errors = @wish_item.errors[:weight].first
+      - if errors.present?
+        .error-form
+          = errors
   .form-group
     = f.label :measures, t('helpers.wish_item.measures'),class: 'control-label col-sm-2'
     .col-md-4
       = f.text_field :measures,  class: 'form-control col-md-2'
+    .col-md-4
+      - errors = @wish_item.errors[:measures].first
+      - if errors.present?
+        .error-form
+          = errors
   .form-group
       = f.label :priority, t('helpers.wish_item.priority'), class: 'control-label col-sm-2'
       .col-md-4
         = f.select :priority, [t('helpers.wish_item.low') ,t('helpers.wish_item.medium'), t('helpers.wish_item.high')] , { include_blank:  t('helpers.wish_item.select_priority') }, class: 'form-control col-md-2', required: true
+      .col-md-4
+        - errors = @wish_item.errors[:priority].first
+        - if errors.present?
+          .error-form
+            = errors
   .form-group
     = f.label :quantity, t('helpers.wish_item.quantity'), class: 'control-label col-sm-2'
     .col-md-4
       = f.text_field :quantity, class: 'form-control col-md-2',type: 'number',  required: true
-
-      = f.select :unit, [t('helpers.wish_item.liters', count: 2) ,t('helpers.wish_item.kilos', count: 2), t('helpers.wish_item.units', count: 2)] , { include_blank:  t('helpers.wish_item.select_units', count: 2) }, class: 'form-control col-md-2', required: true
+    .col-md-4
+      - errors = @wish_item.errors[:quantity].first
+      - if errors.present?
+        .error-form
+            = errors
+  .form-group
+    = f.label :unit, t('helpers.wish_item.unit'), class: 'control-label col-sm-2'
+    .col-md-4
+      = f.select :unit, [t('helpers.wish_item.liters') ,t('helpers.wish_item.kilos'), t('helpers.wish_item.units')] , { include_blank:  t('helpers.wish_item.select_units') }, class: 'form-control col-md-2', required: true
+    .col-md-4
+      - errors = @wish_item.errors[:unit].first
+      - if errors.present?
+        .error-form
+            = errors
   .form-group
     = f.label :finish_date, t('helpers.wish_item.finish_date'),class: 'control-label col-sm-2'
     .col-md-4
       = f.date_field :finish_date,  class: 'form-control col-md-2'
+    .col-md-4
+      - errors = @wish_item.errors[:finish_date].first
+      - if errors.present?
+        .error-form
+          = errors
   .form-group
     = f.label :main_image, t('helpers.wish_item.photo'), class: 'control-label col-sm-2'
     .col-md-4
       = f.file_field :main_image
+    .col-md-4
+      - errors = @wish_item.errors[:main_image].first
+      - if errors.present?
+        .error-form
+          = errors
   .form-group
     = f.hidden_field :organization_id, value: @organization.id
   .form-group
