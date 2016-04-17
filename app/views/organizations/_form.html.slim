@@ -1,37 +1,62 @@
-- if organization.errors.present?
-  .alert.alert-danger
-    ul
-      - organization.errors.each do |attr, msg|
-        li= msg
 = form_for organization, html: { class: 'form-horizontal', role: 'form' } do |f|
   .form-group
     = f.label :name, class: 'control-label col-sm-2'
     .col-md-4
       = f.text_field :name, class: 'form-control col-md-2', required: true
+    .col-md-4
+      - errors = organization.errors[:name].first
+      - if errors.present?
+        .error-form
+            = errors
   .form-group
     = f.label :description, class: 'control-label col-sm-2'
     .col-md-4
       = f.text_area :description, class: 'form-control col-md-2', required: true
+    .col-md-4
+      - errors = organization.errors[:description].first
+      - if errors.present?
+        .error-form
+            = errors
   .form-group
     = f.label :locality, class: 'control-label col-sm-2'
     .col-md-4
       = f.text_field :locality, class: 'form-control col-md-2', required: true
+    .col-md-4
+      - errors = organization.errors[:locality].first
+      - if errors.present?
+        .error-form
+            = errors
   .form-group
     = f.label :email, class: 'control-label col-sm-2'
     .col-md-4
       = f.text_field :email, class: 'form-control col-md-2', required: true
+    .col-md-4
+      - errors = organization.errors[:email].first
+      - if errors.present?
+        .error-form
+            = errors
   .form-group
     = f.label :website, class: 'control-label col-sm-2'
     .col-md-4
       = f.url_field :website, class: 'form-control col-md-2'
+    .col-md-4
+      - errors = organization.errors[:website].first
+      - if errors.present?
+        .error-form
+            = errors
   .form-group
     = f.label :logo, t('helpers.organization.logo'), class: 'control-label col-sm-2'
     .col-md-4
       = f.file_field :logo
+    .col-md-4
+      - errors = organization.errors[:logo].first
+      - if errors.present?
+        .error-form
+            = errors
   .form-group
     = f.label :users, t('helpers.organization.users'), class: 'control-label col-sm-2'
     .col-xs-5
-      = f.select :users, options_from_collection_for_select(User.where.not(id: organization.users.ids), :id, :email), {}, {:multiple => true, :class => "multiSelect contol-label col-sm-2", :style => "width:450px;" ,:id => "organizationForm"}  
+      = f.select :users, options_from_collection_for_select(User.where.not(id: organization.users.ids+ [current_user.id]), :id, :email), {}, {:multiple => true, :class => "multiSelect contol-label col-sm-2", :style => "width:450px;" ,:id => "organizationForm"}  
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit nil, class: 'btn btn-primary btn-violet'

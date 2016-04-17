@@ -15,7 +15,7 @@
           = t('helpers.wish_item.asked_by')
           = link_to gift.organization.name, organization_path(id: gift.organization)
         p.card-description
-          = item.description
+          = item.description.truncate(120)
       = link_to t('helpers.wish_item.cancel_req'), cancel_gift_request_organization_gift_requests_path(organization_id: gift.organization.id, gift_item_id: item.id, org: gift.organization.id), method: "delete",
         class: 'btn btn-danger'
         

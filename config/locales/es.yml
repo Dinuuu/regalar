@@ -86,6 +86,7 @@ es:
       remove: "Remover Deseo"
       title: 'Título'
       reason: 'Razón: '
+      unit: Unidad
       description: 'Descripción: '
       priority: 'Prioridad'
       quantity: 'Cantidad'
@@ -474,6 +475,7 @@ es:
     reject: Rechazar
     pause: Pausar
     resume: Reanudar
+    no_organizations: No pertenecesa a ninguna organización por lo que no es posible pedir el regalo.
   gift:
     name: Regalos
     gift: Regalar

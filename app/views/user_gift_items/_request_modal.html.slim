@@ -15,19 +15,23 @@
             p
             = t('request_modal.wait_email')
             p
-            = t('request_modal.introduce_org')
-            = form_for :gift_request, url: user_gift_item_gift_requests_path(user_id: gift_item.user_id, gift_item_id: gift_item.id) do |f|
-              .form-inline
-                .form-group
-                  .input-group
-                    = f.select :organization_id, options_from_collection_for_select(current_user.organizations, :id, :name), {}, {multiple: false, class: "form-control col-md-2", required: true}  
-                    p
-                    = t('request_modal.introduce_quantity')
-                    = f.text_field :quantity, class: 'form-control col-md-2', type: 'number', min: "1" , max: gift_item.quantity, required: true
-                .form-group
-                  = f.hidden_field :user_id, value: current_user.id
-                p   
-                = f.submit t('request_modal.ask'), class: "btn btn-success"
+            - organizations = current_user.organizations
+            - if organizations.present?
+              = t('request_modal.introduce_org')
+              = form_for :gift_request, url: user_gift_item_gift_requests_path(user_id: gift_item.user_id, gift_item_id: gift_item.id) do |f|
+                .form-inline
+                  .form-group
+                    .input-group
+                      = f.select :organization_id, options_from_collection_for_select(organizations, :id, :name), {multiple: false, class: "form-control col-md-2", required: true}  
+                      p
+                      = t('request_modal.introduce_quantity')
+                      = f.text_field :quantity, class: 'form-control col-md-2', type: 'number', min: "1" , max: gift_item.quantity, required: true
+                  .form-group
+                    = f.hidden_field :user_id, value: current_user.id
+                  p   
+                  = f.submit t('request_modal.ask'), class: "btn btn-success"
+            - else
+              = t('request_modal.no_organizations')
 
         .modal-footer
           button.close data-dismiss="modal"  type="button" 

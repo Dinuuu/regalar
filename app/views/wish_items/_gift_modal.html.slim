@@ -24,7 +24,7 @@
               .form-inline
                 .form-group
                   .input-group
-                    = f.text_field :quantity, class: 'form-control col-md-2', type: 'number', min: "1" , max: wish_item.quantity, required: true
+                    = f.text_field :quantity, class: 'form-control col-md-2', type: 'number', min: "1" , max: wish_item.quantity, value: "1", required: true
                     = f.hidden_field :organization_id, value: wish_item.organization.id
                     = f.hidden_field :user_id, value: current_user.id
                     = f.hidden_field :wish_item_id, value: wish_item.id

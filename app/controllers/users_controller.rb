@@ -25,6 +25,10 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def my_organizations
+    @my_organizations = current_user.organizations
+  end
+
   private
 
   def paginate(relation)

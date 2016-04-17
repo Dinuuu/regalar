@@ -83,6 +83,7 @@ en:
         remove: "Remove Wish Item"
         title: 'Title'
         reason: 'Reason: '
+        unit: Unit
         description: 'Description: '
         priority: 'Priority'
         quantity: 'Quantity'
@@ -467,6 +468,7 @@ en:
     reject: Reject
     pause: Pause
     resume: Resume
+    no_organizations: You don't belong to any organization, so you can not ask for the gift.
   gift:
     name: Gift
     gift: Gift

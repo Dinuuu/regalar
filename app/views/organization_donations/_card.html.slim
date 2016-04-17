@@ -18,8 +18,8 @@
             .pull-right.span.label.label-default
               .time
                 = gift.created_at.to_s(:short)
-          p
-            = item.description.truncate(200)
+          p.card-description
+            = item.description.truncate(120)
           .verify-buttons
             .pull-left
               = link_to t('gift.confirm'), confirm_organization_donation_path(organization_id: gift.organization.id , id: gift.id), class: 'btn btn-success btn-margin', method: "put"
