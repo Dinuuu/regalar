@@ -28,6 +28,7 @@ en:
       wishes_and_gifts: Wishes and Gifts
       gifts: Gifts and wishes
       wishes: Wish Items claimed
+      my_organizations: My organizations
     header:
       search: Search
     footer:
@@ -62,6 +63,7 @@ en:
     new_account: "Create account"
   helpers:
     all: All
+    gift_and_wish_items: Deseos y regalos
     submit:
       comment:
         create: "Comentar"
@@ -205,7 +207,7 @@ en:
         verifying_expl:  These are the gifts that needs your verification. If the transaction has been completed successfully click Confirm. If you could not recive the gift click Reject.
         already_asked: Already claimed
         share_text: "%{user} wants to give up %{item}. Does your organization need it, just ask for it!"
-        available: Available
+        available: Available gifts
         edit: Edit
         delete: Delete
         remaining: There are %{count} %{unit} left
@@ -493,7 +495,8 @@ en:
     pause: Pause
     resume: Resume
     selectOrg: Please choose which organization is canceling the request
-    to_verify: To verify
+    to_verify: Gifts claimed by organizations
+    made: Gifts made to organizations
   wish_items:
     name: Wish Item
     organization: 'Organization: '

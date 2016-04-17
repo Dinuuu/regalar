@@ -1,0 +1,3 @@
+legend
+	= t('users.organizations', user: current_user.first_name)
+= render '/organizations/manage_organization', organizations: paginate_scope(current_user.organizations,6)

@@ -29,6 +29,7 @@ es:
       wishes_and_gifts: Regalos y Deseos
       gifts: Deseos y regalos
       wishes: Deseos pedidos
+      my_organizations: Mis organizaciones
     header:
       search: Buscar
     footer:
@@ -63,6 +64,7 @@ es:
     new_account: "Crear una cuenta"
   helpers:
     all: Todo
+    gift_and_wish_items: Gift and wish items
     submit:
       comment:
         create: "Comentar"
@@ -208,7 +210,7 @@ es:
       verifying_expl: Estos son los regalos que te han hecho y que tienes que verificar. Si la transacción se ha realizado con éxito hacer click en Confirmar. Si no se pudo concretar el regalo hacer click en Rechazar.
       already_asked: Ya pedido
       share_text: "%{user} quiere regalar %{item}. Tu organización lo necesita? Pedilo!"
-      available: Disponibles
+      available: Regalos creados
       edit: Editar
       delete: Eliminar
       remaining: Quedan %{count} %{unit} disponibles
@@ -500,7 +502,8 @@ es:
     pause: Pausar
     resume: Reanudar
     selectOrg: Por favor elige qué organización está cancelando el pedido
-    to_verify: A verificar
+    to_verify: Regalos pedidos por organizaciones
+    made: Regalos hechos a organizaciones
   wish_items:
     name: Deseos
     gift: Regalar

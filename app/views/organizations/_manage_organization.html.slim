@@ -1,0 +1,24 @@
+- if organizations.empty?
+  p
+    = t('application.no_results')
+- else
+  .card-list
+    .row
+      - organizations.each do |organization|
+        .item  
+          .well-masonry
+            .thumbnail
+              .caption
+                h3
+                  = link_to organization.name, organization
+                - if organization.logo.present?
+                  = image_tag(organization.logo_url, class: "img-organization")
+                - else
+                  = image_tag('default_org.png', class: "img-organization")
+                .description
+                  p
+                    = organization.description.truncate(250)
+                = link_to t('application.manage.manage'), '#', class: 'btn btn-primary btn-violet'
+                  
+    #pagination
+      = paginate organizations

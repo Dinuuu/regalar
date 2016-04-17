@@ -1,21 +1,30 @@
 legend
-  = t('helpers.gift_item.name')
+  = t('helpers.gift_and_wish_items')
 #accordion.panel-group
-  - if @gift_items.present?
-    .panel.panel-default
-      .panel-heading
-        h4.panel-title
-          a data-parent="#accordion" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
-            = t('helpers.gift_item.available')
-      #collapseOne.panel-collapse.collapse.in
-        .panel-body
-          = render 'gift_items/available_cards', gift_items: @gift_items
   - if @gift_requests.present?          
     .panel.panel-default
       .panel-heading
         h4.panel-title
-          a data-parent="#accordion" data-toggle="collapse" href="#collapseTwo"  aria-expanded="false" aria-controls="collapseTwo"
+          a data-parent="#accordion" data-toggle="collapse" href="#collapseOne"  aria-expanded="true" aria-controls="collapseOne"
             = t('gift.to_verify')
-      #collapseTwo.panel-collapse.collapse
+      #collapseOne.panel-collapse.collapse.in
         .panel-body
           = render 'user_gift_requests/pending_cards', gift_requests: @gift_requests
+  - if @donations.present?          
+    .panel.panel-default
+      .panel-heading
+        h4.panel-title
+          a data-parent="#accordion" data-toggle="collapse" href="#collapseTwo"  aria-expanded="false" aria-controls="collapseTwo"
+            = t('gift.made')
+      #collapseTwo.panel-collapse.collapse
+        .panel-body
+          / = render 'user_gift_requests/pending_cards', gift_requests: @gift_requests
+  - if @gift_items.present?
+    .panel.panel-default
+      .panel-heading
+        h4.panel-title
+          a data-parent="#accordion" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"
+            = t('helpers.gift_item.available')
+      #collapseThree.panel-collapse.collapse
+        .panel-body
+          = render 'gift_items/available_cards', gift_items: @gift_items
