@@ -89,12 +89,24 @@ en:
         obteined_quantity: 'Obtained quantity: '
         of: ' of '
         select_units: 'Select units'
-        units: 'Units'
-        Units: 'Units'
-        kilos: 'Kilos'
-        Kilos: Kilos
-        liters: 'Liters'
-        Liters: 'Liters'
+        units: 
+          one: 'Unit'
+          other: 'Units'
+        Units:
+          one: 'Unit'
+          other: 'Units'
+        kilos: 
+          one: Kilo
+          other: 'Kilos'
+        Kilos:
+          one: Kilo
+          other: 'Kilos'
+        liters:
+          one: Liter
+          other: Liters
+        Liters:
+          one: Liter
+          other: Liters
         select_priority: 'Select Priority'
         low: 'Low'
         medium: 'Medium'
@@ -137,12 +149,24 @@ en:
         given_quantity: 'Given quantity: '
         of: ' of '
         select_units: 'Select units'
-        units: 'Units'
-        kilos: 'Kilos'
-        liters: 'Liters'
-        Units: 'Unidades'
-        Kilos: 'Kilos'
-        Liters: 'Litros'
+        units: 
+          one: 'Unit'
+          other: 'Units'
+        Units:
+          one: 'Unit'
+          other: 'Units'
+        kilos: 
+          one: Kilo
+          other: 'Kilos'
+        Kilos:
+          one: Kilo
+          other: 'Kilos'
+        liters:
+          one: Liter
+          other: Liters
+        Liters:
+          one: Liter
+          other: Liters
         photo: 'Photo'
         featured: 'Featured Gifts'
         gifted_by: 'Gifted by: '

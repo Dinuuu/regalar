@@ -18,6 +18,6 @@
                 = t('helpers.wish_item.gifted')
                 = d.quantity 
                 = ' '
-                = t("helpers.wish_item.#{d.wish_item.unit}")
+                = t("helpers.wish_item.#{d.wish_item.unit}", count: d.wish_item.quantity)
               .pull-right.span.label.label-default
                 = d.created_at.to_s(:short)
