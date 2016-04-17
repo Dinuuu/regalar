@@ -11,5 +11,6 @@
         h4.campaign-name
           = link_to item.title, user_gift_item_path(id: item.id, user_id: item.user.id)
         p.card-description
-          = item.description
+          = item.description.truncate(120)
+        = link_to t('helpers.gift_item.delete'), cancel_user_gift_item_path(item.user.id, item.id), method: 'DELETE', class: 'btn btn-danger'
         

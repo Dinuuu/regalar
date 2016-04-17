@@ -61,6 +61,8 @@ en:
     view_profile: "View Profile"
     edit_profile: "Edit Profile"
     new_account: "Create account"
+  donation:
+    gifted_to: Offered to
   helpers:
     all: All
     gift_and_wish_items: Deseos y regalos

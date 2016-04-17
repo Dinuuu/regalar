@@ -18,7 +18,7 @@ legend
             = t('gift.made')
       #collapseTwo.panel-collapse.collapse
         .panel-body
-          / = render 'user_gift_requests/pending_cards', gift_requests: @gift_requests
+          = render 'user_donations/index_cards', donations: @donations
   - if @gift_items.present?
     .panel.panel-default
       .panel-heading
