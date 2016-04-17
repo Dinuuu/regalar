@@ -6,7 +6,7 @@
       = image_tag('default_avatar.png', class: "img-thumbnail")
   .col-md-4
     h4
-      = "#{comment.user.first_name} #{comment.user.last_name} "
+      = link_to "#{comment.user.first_name} #{comment.user.last_name} ", comment.user
     h5
       = "( #{distance_of_time_in_words(Time.current, comment.created_at)} )"
   .col-md-6.col-offset-1.margin-top-8
