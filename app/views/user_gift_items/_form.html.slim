@@ -65,7 +65,7 @@
   .form-group
     = f.label :unit, t('helpers.wish_item.unit'), class: 'control-label col-sm-2'
     .col-md-4
-      = f.select :unit, [t('helpers.gift_item.liters') ,t('helpers.gift_item.kilos'), t('helpers.gift_item.units')] , { include_blank:  t('helpers.gift_item.select_units') }, class: 'form-control col-md-2', required: true
+      = f.select :unit, [t('helpers.gift_item.liters', count: 2) ,t('helpers.gift_item.kilos', count: 2), t('helpers.gift_item.units', count: 2)] , { include_blank:  t('helpers.gift_item.select_units') }, class: 'form-control col-md-2', required: true
     .col-md-4
       - errors = @gift_item.errors[:unit].first
       - if errors.present?

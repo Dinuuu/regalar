@@ -1,5 +1,8 @@
 legend
-  = t('helpers.gift_and_wish_items')
+  = t('helpers.gift_item.name')
+- unless (@gift_items.present? || @gift_requests.present?)
+  .h2
+    = t('helpers.gift_item.no_results')
 #accordion.panel-group
   - if @gift_requests.present?          
     .panel.panel-default

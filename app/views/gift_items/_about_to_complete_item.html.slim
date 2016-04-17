@@ -12,7 +12,7 @@
           h5
             = link_to item.organization.name.truncate(30), item.organization
           p.card-description
-            = item.description.truncate(200)
+            = item.description.truncate(120)
           
           .progress
              .progress-bar.progress-bar-success aria-valuemax="100" aria-valuemin="0" aria-valuenow="45" role="progressbar" style= "width: #{item.obtained.to_f/item.quantity.to_f*100}%" data-toggle="tooltip" data-placement="bottom"

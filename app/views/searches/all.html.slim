@@ -1,3 +1,6 @@
+- unless (@wish_items.present? || @gift_items.present? || @organizations.present?)
+  .h2
+    = t('application.no_results')
 #accordion.panel-group
   - if @wish_items.present?
     .panel.panel-default

@@ -17,7 +17,7 @@ es:
     title: Regalar
     no_results: No se encontraron resultados
     slogan: Plataforma de Crowdfunding para ONG
-    all: Ver todo
+    all: Ver todos los regalos
     why_comunidar: "<span>¿Por qué COMUNI<strong>DAR</strong>?</span>"
     easy: FÁCIL
     vital: VITAL
@@ -149,6 +149,7 @@ es:
       expl-text2: Estos son los deseos que le han cumplido a %{org}
       expl-text3: Estos son los regalos que %{org} ha pedido y recibido
     gift_item:
+      no_results: No hay regalos para administrar
       name: Regalos
       make_gift: Regalar
       create: "Crear Regalo"
