@@ -26,7 +26,9 @@ en:
     manage:
       manage: Manage
       wishes_and_gifts: Wishes and Gifts
+      gifts: Gifts and wishes
       wishes: Wish Items claimed
+      my_organizations: My organizations
     header:
       search: Search
     footer:
@@ -59,8 +61,11 @@ en:
     view_profile: "View Profile"
     edit_profile: "Edit Profile"
     new_account: "Create account"
+  donation:
+    gifted_to: Offered to
   helpers:
     all: All
+    gift_and_wish_items: Deseos y regalos
     submit:
       comment:
         create: "Comentar"
@@ -70,6 +75,7 @@ en:
         new: "New Organization"
         edit: "Edit Organization"
         update: "Update Organization"
+        admin: Admin organization
       user:
         level: "Level"
         edit_password: "Edit Password"
@@ -130,12 +136,15 @@ en:
         share_text: "The organization %{organization} needs %{item}. Can you help them?"
         asked_by: 'Asked by: '
       wish_list:  
-        tabs: Wishes of
+        tabs: Wishes to be granted
         name: Your Wishes
-        finished: Wishes Fulfilled
+        finished: Wishes to be fulfilled
         verifying: Wishes to verify
         verifying_expl: These are the gifts that needs your verification. If the transaction has been completed successfully click Confirm. If you could not recive the gift click Reject.
         paused: Paused Wishes
+        expl-text1: These are the wishes of %{org}. If you want to give them the gift, press Gift
+        expl-text2: These are the wishes that have been conced to %{org}.
+        expl-text3: These are the gifts that %{org} has claimed and have been received
       gift_item:
         name: Gifts
         make_gift: Gift
@@ -200,7 +209,7 @@ en:
         verifying_expl:  These are the gifts that needs your verification. If the transaction has been completed successfully click Confirm. If you could not recive the gift click Reject.
         already_asked: Already claimed
         share_text: "%{user} wants to give up %{item}. Does your organization need it, just ask for it!"
-        available: Available
+        available: Available gifts
         edit: Edit
         delete: Delete
         remaining: There are %{count} %{unit} left
@@ -225,6 +234,7 @@ en:
     donations: Wishes Fulfilled
     gifts: Given Gifts 
     organizations: Organizations
+    organizations_belong: Organizations of %{user} 
     my_organizations: My Organizations
     profile: My Profile
     link_accounts: Link accounts
@@ -487,7 +497,8 @@ en:
     pause: Pause
     resume: Resume
     selectOrg: Please choose which organization is canceling the request
-    to_verify: To verify
+    to_verify: Gifts claimed by organizations
+    made: Gifts made to organizations
   wish_items:
     name: Wish Item
     organization: 'Organization: '

@@ -1,0 +1,23 @@
+- item = donation.wish_item
+
+.item  
+  .well-masonry
+    .thumbnail
+      .img-campaign-thumbnail
+        - if item.main_image.present?
+            = image_tag(item.main_image, height: 150, width: 150, class: "img-thumbnail img-profile")
+        - else
+          = image_tag('default_pic.png', height: 150, width: 150, class: "img-thumbnail img-profile")
+        .caption
+          h5
+            = t('donation.gifted_to')
+            p
+            = link_to item.organization.name, item.organization
+          h4
+            = link_to item.title, organization_wish_item_path(id: item.id, organization_id: item.organization.id)
+ 
+          p.card-description
+            = item.description.truncate(120)
+          
+          = link_to t('gift.cancel'), '#', class: 'btn btn-danger btn-margin',
+                    data: { toggle: 'modal', target: '#' }

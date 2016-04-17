@@ -27,7 +27,9 @@ es:
     manage:
       manage: Administrar
       wishes_and_gifts: Regalos y Deseos
+      gifts: Deseos y regalos
       wishes: Deseos pedidos
+      my_organizations: Mis organizaciones
     header:
       search: Buscar
     footer:
@@ -60,8 +62,11 @@ es:
     view_profile: "Ver perfil"
     edit_profile: "Editar perfil"
     new_account: "Crear una cuenta"
+  donation:
+    gifted_to: Ofrecido a
   helpers:
     all: Todo
+    gift_and_wish_items: Gift and wish items
     submit:
       comment:
         create: "Comentar"
@@ -71,6 +76,7 @@ es:
         new: "Nueva Organización"
         edit: "Editar Organización"
         update: "Actualizar Organización"
+        admin: Administrar organización
       user:
         level: "Nivel"
         edit: "Editar Perfil"
@@ -128,17 +134,20 @@ es:
       days_left: ' Días restantes'
       finished: El deseo ha terminado
       reason: 'Razón: '
-      cancel_req: Cancelar regalo
+      cancel_req: Eliminar regalo
       reject_req: 'Rechazar regalo '
       share_text: "La organizacion %{organization} necesita que le regalen %{item}. Podes ayudarlos?"
       asked_by: 'Pedido por: '
     wish_list:
-      tabs: Deseos de
+      tabs: Deseos a cumplir
       name: Tus deseos
-      finished: Deseos recibidos
+      finished: Deseos cumplidos
       verifying: Deseos a verificar
       verifying_expl: Estos son los deseos que te han ofrecido y que tienes que verificar. Si la transacción se ha realizado con éxito hacer click en Confirmar. Si no se pudo concretar hacer click en Rechazar.
       paused: Deseos pausados
+      expl-text1: Estos son los deseos que %{org} tiene. Si queres concederle alguno, presioná Regalar
+      expl-text2: Estos son los deseos que le han cumplido a %{org}
+      expl-text3: Estos son los regalos que %{org} ha pedido y recibido
     gift_item:
       name: Regalos
       make_gift: Regalar
@@ -203,7 +212,7 @@ es:
       verifying_expl: Estos son los regalos que te han hecho y que tienes que verificar. Si la transacción se ha realizado con éxito hacer click en Confirmar. Si no se pudo concretar el regalo hacer click en Rechazar.
       already_asked: Ya pedido
       share_text: "%{user} quiere regalar %{item}. Tu organización lo necesita? Pedilo!"
-      available: Disponibles
+      available: Regalos disponibles
       edit: Editar
       delete: Eliminar
       remaining: Quedan %{count} %{unit} disponibles
@@ -232,6 +241,7 @@ es:
     gifts: Regalos Hechos
     organizations: Organizaciones
     my_organizations: Mis organizaciones
+    organizations_belong: Organizaciones a las que pertenece %{user} 
     profile: Mi Perfil
     link_accounts: Vincular cuentas
   views:
@@ -494,7 +504,8 @@ es:
     pause: Pausar
     resume: Reanudar
     selectOrg: Por favor elige qué organización está cancelando el pedido
-    to_verify: A verificar
+    to_verify: Regalos pedidos por organizaciones
+    made: Regalos ofrecidos a organizaciones
   wish_items:
     name: Deseos
     gift: Regalar

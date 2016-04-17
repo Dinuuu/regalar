@@ -5,4 +5,4 @@
 .card-list
     .small-row
   		- gifts_request.each do |req|
-    		= render 'gift_items/card', item: req.gift_item
+    		= render 'gift_items/show_card', item: req.gift_item

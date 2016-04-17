@@ -1,0 +1,8 @@
+- if donations.empty?
+	h4.nav-margin
+	  p
+	    = t('application.no_results')
+.card-list
+    .small-row
+	  - donations.each do |donation|
+	    = render 'user_donations/card', donation: donation
