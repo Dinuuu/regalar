@@ -15,9 +15,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def gift_items_and_requests
-    @gift_requests = paginate(current_user.gift_requests)
+  def wishes_and_gifts
+    @gift_requests = paginate(current_user.gift_requests.pending)
     @gift_items = paginate(current_user.gift_items.still_available.not_eliminated)
+    @donations = paginate(current_user.donations.pending)
   end
 
   def pending
