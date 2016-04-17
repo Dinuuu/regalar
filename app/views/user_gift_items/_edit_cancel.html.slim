@@ -6,4 +6,4 @@
   .btn-group
     .button
       a
-        = link_to t('helpers.gift_item.delete'), user_gift_item_cancel_path(gift_item.user.id, gift_item.id), method: 'DELETE', class: 'btn btn-default'
+        = link_to t('helpers.gift_item.delete'), cancel_user_gift_item_path(gift_item.user.id, gift_item.id), method: 'DELETE', class: 'btn btn-default'
