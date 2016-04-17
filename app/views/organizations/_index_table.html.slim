@@ -12,9 +12,9 @@
                 h3
                   = link_to organization.name, organization
                 - if organization.logo.present?
-                  = image_tag(organization.logo_url, class: "img-organization img-thumbnail")
+                  = image_tag(organization.logo_url, class: "img-organization")
                 - else
-                  = image_tag('default_org.png', class: "img-organization img-thumbnail")
+                  = image_tag('default_org.png', class: "img-organization")
                 .description
                   p
                     = organization.description.truncate(300)
