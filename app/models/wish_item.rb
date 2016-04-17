@@ -13,7 +13,7 @@ class WishItem < ActiveRecord::Base
   scope :goal_reached, -> { where('quantity <= obtained') }
   scope :goal_not_reached, -> { where.not('quantity <= obtained') }
   scope :finished, -> { where('(?) >= finish_date', Time.current) }
-  scope :not_finished, -> { where('(?) < finish_date', Time.current) }
+  scope :not_finished, -> { where('(?) < finish_date OR finish_date IS NULL', Time.current) }
   scope :not_paused, -> { where(active: true) }
   scope :paused, -> { where.not(active: true) }
   scope :eliminated, -> { where(eliminated: true) }
@@ -32,14 +32,14 @@ class WishItem < ActiveRecord::Base
   end
 
   def self.trending(user)
-    return WishItem.last(3) unless user.present?
-    WishItem
-      .for_organizations(user.organizations.ids)
-      .goal_not_reached
+    wishes = WishItem.goal_not_reached
       .not_paused
       .not_finished
       .not_eliminated
       .order('(wish_items.quantity - wish_items.obtained) ASC')
+    return wishes.last(3) unless user.present?
+    wishes
+      .for_organizations(user.organizations.ids)
       .last(3)
   end
 
