@@ -16,7 +16,7 @@ en:
     title: Regalar
     no_results: No results found
     slogan: Crowdfunding platform for non-profits
-    all: See all
+    all: See all gifts
     why_comunidar: "<span>Why COMUNI<strong>DAR</strong>?</span>"
     easy: EASY
     vital: VITAL
@@ -146,6 +146,7 @@ en:
         expl-text2: These are the wishes that have been conced to %{org}.
         expl-text3: These are the gifts that %{org} has claimed and have been received
       gift_item:
+        no_results: No hay regalos para administrar
         name: Gifts
         make_gift: Gift
         create: "Create Gift"
