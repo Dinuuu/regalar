@@ -27,6 +27,7 @@ es:
     manage:
       manage: Administrar
       wishes_and_gifts: Regalos y Deseos
+      gifts: Deseos y regalos
       wishes: Deseos pedidos
     header:
       search: Buscar
@@ -71,6 +72,7 @@ es:
         new: "Nueva Organización"
         edit: "Editar Organización"
         update: "Actualizar Organización"
+        admin: Administrar organización
       user:
         level: "Nivel"
         edit: "Editar Perfil"
@@ -133,12 +135,15 @@ es:
       share_text: "La organizacion %{organization} necesita que le regalen %{item}. Podes ayudarlos?"
       asked_by: 'Pedido por: '
     wish_list:
-      tabs: Deseos de
+      tabs: Deseos a cumplir
       name: Tus deseos
-      finished: Deseos recibidos
+      finished: Deseos cumplidos
       verifying: Deseos a verificar
       verifying_expl: Estos son los deseos que te han ofrecido y que tienes que verificar. Si la transacción se ha realizado con éxito hacer click en Confirmar. Si no se pudo concretar hacer click en Rechazar.
       paused: Deseos pausados
+      expl-text1: Estos son los deseos que %{org} tiene. Si queres concederle alguno, presioná Regalar
+      expl-text2: Estos son los deseos que le han cumplido a %{org}
+      expl-text3: Estos son los regalos que %{org} ha pedido y recibido
     gift_item:
       name: Regalos
       make_gift: Regalar
@@ -232,6 +237,7 @@ es:
     gifts: Regalos Hechos
     organizations: Organizaciones
     my_organizations: Mis organizaciones
+    organizations_belong: Organizaciones a las que pertenece %{user} 
     profile: Mi Perfil
     link_accounts: Vincular cuentas
   views:

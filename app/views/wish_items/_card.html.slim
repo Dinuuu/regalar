@@ -12,4 +12,17 @@
           p.card-description
             = item.description.truncate(120)
 
+          - unless item.gifted?
+            - if current_user.present?
+                  = link_to t('wish_items.gift'), '#',
+                      class: 'btn btn-success',
+                      data: { toggle: 'modal', target: "#gift-modal#{item.id}" } 
+            - else
+              = link_to t('wish_items.gift'), '#',
+                  class: 'btn btn-success',
+                  data: { toggle: 'modal', target: '#login-modal' } 
+
+          = render 'layouts/login_modal'
+          = render 'wish_items/gift_modal', wish_item: item
+          p
           = render_shareable buttons: ['twitter', 'facebook'] , url: organization_wish_item_url(id: item.id, organization_id: item.organization.id), text: t('helpers.wish_item.share_text', organization: item.organization.name, item: item.title)

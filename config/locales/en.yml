@@ -26,6 +26,7 @@ en:
     manage:
       manage: Manage
       wishes_and_gifts: Wishes and Gifts
+      gifts: Gifts and wishes
       wishes: Wish Items claimed
     header:
       search: Search
@@ -70,6 +71,7 @@ en:
         new: "New Organization"
         edit: "Edit Organization"
         update: "Update Organization"
+        admin: Admin organization
       user:
         level: "Level"
         edit_password: "Edit Password"
@@ -130,12 +132,15 @@ en:
         share_text: "The organization %{organization} needs %{item}. Can you help them?"
         asked_by: 'Asked by: '
       wish_list:  
-        tabs: Wishes of
+        tabs: Wishes to be granted
         name: Your Wishes
-        finished: Wishes Fulfilled
+        finished: Wishes to be fulfilled
         verifying: Wishes to verify
         verifying_expl: These are the gifts that needs your verification. If the transaction has been completed successfully click Confirm. If you could not recive the gift click Reject.
         paused: Paused Wishes
+        expl-text1: These are the wishes of %{org}. If you want to give them the gift, press Gift
+        expl-text2: These are the wishes that have been conced to %{org}.
+        expl-text3: These are the gifts that %{org} has claimed and have been received
       gift_item:
         name: Gifts
         make_gift: Gift
@@ -225,6 +230,7 @@ en:
     donations: Wishes Fulfilled
     gifts: Given Gifts 
     organizations: Organizations
+    organizations_belong: Organizations of %{user} 
     my_organizations: My Organizations
     profile: My Profile
     link_accounts: Link accounts

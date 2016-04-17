@@ -6,7 +6,7 @@
     .panel-heading
       h4.panel-title
         a data-parent="#accordion" data-toggle="collapse" href="#collapseOne"
-          = t('users.organizations')          
+          = t('users.organizations_belong', user: @user.first_name)          
     #collapseOne.panel-collapse.collapse.in
       .panel-body
         = render '/organizations/index_table', organizations: paginate_scope(@user.organizations,6)

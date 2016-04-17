@@ -1,41 +1,25 @@
 ul.nav.nav-tabs.org-tabs data-tabs="tabs" 
   li.active
     a data-toggle="tab" href="#goal-not-reached"
-      = "#{t('helpers.wish_list.tabs')} #{organization.name}"
+      = t('helpers.wish_list.tabs')
   li
     a data-toggle="tab" href="#goal-reached"
       = t('helpers.wish_list.finished')
-  - if policy(organization).update?
-    li
-      a data-toggle="tab" href="#verifying"
-        = t('helpers.wish_list.verifying')
   li
     a data-toggle="tab" href="#gifts-received"
       = t('helpers.gift_item.received')
-  - if policy(organization).update?
-    li
-      a data-toggle="tab" href="#gifts-pending"
-        = t('helpers.gift_item.verifying')
-
 .tab-content
   #goal-not-reached.tab-pane.active
+    .expl-text.h4
+      = t('helpers.wish_list.expl-text1', org: organization.name)
     = render 'wish_items/index_cards', wish_items: WishItem.for_organization(organization).goal_not_reached
     
   #goal-reached.tab-pane
+    .expl-text.h4
+      = t('helpers.wish_list.expl-text2', org: organization.name)
     = render 'wish_items/index_cards', wish_items: WishItem.for_organization(organization).goal_reached
   
-
-  #verifying.tab-pane
-    .expl-text.h4
-      - pending_donations = organization.pending_donations
-      - if pending_donations.present?
-        = t('helpers.wish_list.verifying_expl')
-    = render 'organization_donations/index_cards', gifts: pending_donations
-
   #gifts-received.tab-pane
-    = render 'gift_items/index_request_cards', gifts_request: GiftRequest.for_organization(organization).confirmed
-
-  #gifts-pending.tab-pane
     .expl-text.h4
-      = t('helpers.gift_item.verifying_expl')
-    = render 'gift_items/index_request_cards_verify', gifts_request: GiftRequest.for_organization(organization).pending
+      = t('helpers.wish_list.expl-text3', org: organization.name)
+    = render 'gift_items/index_request_cards', gifts_request: GiftRequest.for_organization(organization).confirmed
