@@ -15,7 +15,7 @@ describe GiftItemsController do
         expect(response).to render_template 'index'
       end
       it 'assigns all the GiftItems' do
-        expect(assigns(:gift_items)).to eq GiftItem.still_available
+        expect(assigns(:gift_items)).to eq GiftItem.still_available.not_eliminated
       end
     end
   end
