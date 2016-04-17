@@ -158,6 +158,9 @@ es:
       Units:
         one: 'Unidad'
         other: 'Unidades'
+      Unidades:
+        one: 'Unidad'
+        other: 'Unidades'  
       kilos: 
         one: Kilo
         other: 'Kilos'
@@ -170,6 +173,9 @@ es:
       Liters:
         one: Litro
         other: Litros
+      Litros:
+        one: Litro
+        other: Litros  
       photo: 'Foto'
       gifted_by: 'Regalado por: '
       featured: 'Regalos Destacados'
