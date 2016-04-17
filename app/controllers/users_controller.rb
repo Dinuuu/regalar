@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   def gift_items_and_requests
     @gift_requests = paginate(current_user.gift_requests)
-    @gift_items = paginate(current_user.gift_items.still_available)
+    @gift_items = paginate(current_user.gift_items.still_available.not_eliminated)
   end
 
   def pending
