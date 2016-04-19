@@ -37,7 +37,12 @@ Regalar::Application.routes.draw do
         end
       end
       get :wishes_and_gifts
-      get :my_organizations
+      get :organizations
+      resources :organizations, as: 'organization_user'do
+        member do
+          get :administrate
+        end
+      end
       resources :gift_requests, controller: 'user_gift_requests', only: [:show]
       resources :donations, controller: 'user_donations', only: [:destroy], as: 'cancel_donation'
     end 

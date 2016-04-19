@@ -48,6 +48,13 @@ class OrganizationsController < ApplicationController
     show!
   end
 
+  def administrate
+    @organization = Organization.find(params[:id])
+    @pending_wishes = @organization.wish_items.goal_not_reached.not_eliminated
+    @pending_donations = @organization.donations.pending
+    @pending_gifts = @organization.gift_requests.pending
+  end
+
   private
 
   def users_ids
