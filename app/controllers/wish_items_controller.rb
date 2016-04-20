@@ -30,12 +30,12 @@ class WishItemsController < OrganizationAuthenticationController
 
   def pause
     wish_item.pause
-    redirect_to organization_wish_item_path(@wish_item.organization, wish_item)
+    redirect_to :back
   end
 
   def resume
     wish_item.resume
-    redirect_to organization_wish_item_path(@wish_item.organization, wish_item)
+    redirect_to :back
   end
 
   def show
