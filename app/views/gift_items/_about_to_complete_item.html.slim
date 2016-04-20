@@ -18,5 +18,18 @@
              .progress-bar.progress-bar-success aria-valuemax="100" aria-valuemin="0" aria-valuenow="45" role="progressbar" style= "width: #{item.obtained.to_f/item.quantity.to_f*100}%" data-toggle="tooltip" data-placement="bottom"
           .h6.text-center
               = "#{t('helpers.wish_item.obteined_quantity')} #{item.obtained} #{t('helpers.wish_item.of')} #{item.quantity}"
+          .organization-buttons    
+            - if current_user.present?
+              = link_to t('wish_items.gift'), '#',
+                      class: 'btn btn-success',
+                      data: { toggle: 'modal', target: "#gift-modal#{item.id}" } 
+              = render 'wish_items/gift_modal', wish_item: item
+            - else
+              = link_to t('wish_items.gift'), '#',
+                  class: 'btn btn-success',
+                  data: { toggle: 'modal', target: '#login-modal' } 
+
+              = render 'layouts/login_modal'
+
           = render_shareable buttons: ['twitter', 'facebook'] , url: organization_wish_item_url(id: item.id, organization_id: item.organization.id), text: t('helpers.wish_item.share_text', organization: item.organization.name, item: item.title)
           p

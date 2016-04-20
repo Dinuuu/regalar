@@ -23,6 +23,10 @@
           .form-group
             = f.submit t('devise.sessions.sign_in'),
             class: 'btn btn-succes'
+        
+        .h5
+          = t('application.have_no_account')
+          = link_to t('application.create_account'), new_user_registration_path
       .modal-footer
         .row.text-center
           .form-group

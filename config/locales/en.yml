@@ -58,6 +58,8 @@ en:
     separator: '.'
     delimiter: ','
     login: Login
+    have_no_account: "You don't have an account yet? "
+    create_account: Create an account
     view_profile: "View Profile"
     edit_profile: "Edit Profile"
     new_account: "Create account"
@@ -136,7 +138,7 @@ en:
         share_text: "The organization %{organization} needs %{item}. Can you help them?"
         asked_by: 'Asked by: '
       wish_list:  
-        tabs: Wishes to be granted
+        pending: Wishes pending
         name: Your Wishes
         finished: Wishes to be fulfilled
         verifying: Wishes to verify

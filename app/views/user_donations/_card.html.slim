@@ -18,21 +18,6 @@
  
           p.card-description
             = item.description.truncate(120)
-          
-          / = link_to t('gift.cancel'), '#', 
-          /   class: 'btn  btn-margin btn-danger',
-          /   data: { toggle: 'modal', target: "#user-cancel-gift-item-modal#{item.id}" }
-          / = render 'user_gift_items/user_cancel_gift_item_modal', item: item
-          
-          // ACA TENGO QUE PERTENECER A LA ORG
-          / = link_to t('gift.reject'), '#', class: 'btn btn-danger btn-margin',
-          /           data: { toggle: 'modal', target: '#cancel-organization-modal' }
-          / = render 'organization_donations/cancel_organization_modal', gift: donation
-
-          
-          / = link_to t('gift.reject'), '#', class: 'btn btn-margin btn-danger',
-          /       data: { toggle: 'modal', target: '#cancel-modal#{donation.id}' }
-          / = render 'gift_items/cancel_modal', donation: donation
 
           = link_to t('gift.cancel'), '#', class: 'btn btn-margin btn-danger',
                   data: { toggle: 'modal', target: "#cancel-modal#{donation.id}" } 

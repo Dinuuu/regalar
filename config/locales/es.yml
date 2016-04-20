@@ -59,6 +59,8 @@ es:
     separator: ','
     delimiter: '.'
     login: Iniciar sesión
+    have_no_account: "No tienes una cuenta aún? "
+    create_account: Crear una cuenta
     view_profile: "Ver perfil"
     edit_profile: "Editar perfil"
     new_account: "Crear una cuenta"
@@ -139,10 +141,10 @@ es:
       share_text: "La organizacion %{organization} necesita que le regalen %{item}. Podes ayudarlos?"
       asked_by: 'Pedido por: '
     wish_list:
-      tabs: Deseos a cumplir
+      pending: Deseos pendientes
       name: Tus deseos
       finished: Deseos cumplidos
-      verifying: Deseos a verificar
+      verifying: Deseos cumplidos a verificar
       verifying_expl: Estos son los deseos que te han ofrecido y que tienes que verificar. Si la transacción se ha realizado con éxito hacer click en Confirmar. Si no se pudo concretar hacer click en Rechazar.
       paused: Deseos pausados
       expl-text1: Estos son los deseos que %{org} tiene. Si queres concederle alguno, presioná Regalar

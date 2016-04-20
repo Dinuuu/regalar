@@ -1,0 +1,31 @@
+legend
+  = @organization.name
+ul.nav.nav-tabs.org-tabs data-tabs="tabs" 
+  li.active
+    a data-toggle="tab" href="#pending-wishes"
+      = t('helpers.wish_list.pending')
+  li
+    a data-toggle="tab" href="#pending-donations"
+      = t('helpers.wish_list.verifying')
+  li
+    a data-toggle="tab" href="#pending-gifts"
+      = t('helpers.gift_item.received')
+  
+
+.tab-content
+  #pending-wishes.tab-pane.active
+    .expl-text.h4
+      = t('helpers.wish_list.expl-text1', org: @organization.name)
+    = render 'wish_items/index_cards', wish_items: WishItem.for_organization(@organization).goal_not_reached
+    
+  #pending-donations.tab-pane
+    .expl-text.h4
+      - if @pending_donations.present?
+        = t('helpers.wish_list.verifying_expl')
+    = render 'organization_donations/index_cards', gifts: @pending_donations
+
+
+  #pending-gifts.tab-pane
+    .expl-text.h4
+      = t('helpers.gift_item.verifying_expl')
+    = render 'gift_items/index_request_cards_verify', gifts_request: @pending_gifts

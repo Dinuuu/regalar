@@ -62,6 +62,7 @@ es:
       resend_confirmation_instructions: "Reenviar instrucciones de confirmación"
       change_password: 'Cambiar contraseña'
       remember_me: "Recordame"
+      have_no_account: Crear una cuenta
     unlocks:
       send_instructions: 'Recibirás un email con instrucciones para desbloquear tu cuenta en unos minutos'
       send_paranoid_instructions: 'Si tu cuenta existe, recibirás instrucciones para desbloquear tu cuenta en unos minutos'
