@@ -22,4 +22,4 @@
   - if policy(@organization).update?
     = link_to t('helpers.wish_item.new'), new_organization_wish_item_path(@organization)   , class: 'btn btn-primary btn-violet margin-right-20'
     = link_to t('helpers.submit.organization.edit'), edit_organization_path(@organization), class: 'btn btn-primary btn-violet margin-right-20'
-    = link_to t('helpers.submit.organization.admin'), '#', class: 'btn btn-primary btn-violet margin-right-20'
+    = link_to t('helpers.submit.organization.admin'), administrate_organization_user_path(id: current_user.id), class: 'btn btn-primary btn-violet margin-right-20'

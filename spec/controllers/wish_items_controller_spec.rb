@@ -224,11 +224,6 @@ describe WishItemsController do
         before :each do
           organization.users << user
         end
-        it 'redirects to wish_item' do
-          post :pause, organization_id: organization.id, id: wish_item.id
-          expect(response)
-            .to redirect_to "/organizations/#{organization.id}/wish_items/#{wish_item.id}"
-        end
       end
       context 'When user does not belong to organization' do
         it 'returns status forbidden' do
@@ -256,11 +251,6 @@ describe WishItemsController do
       context 'When user belongs to organization' do
         before :each do
           organization.users << user
-        end
-        it 'redirects to wish_item' do
-          post :resume, organization_id: organization.id, id: wish_item.id
-          expect(response)
-            .to redirect_to "/organizations/#{organization.id}/wish_items/#{wish_item.id}"
         end
       end
       context 'When user does not belong to organization' do

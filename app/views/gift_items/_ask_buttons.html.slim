@@ -15,7 +15,9 @@
       data: { toggle: 'modal', target: "#user-cancel-gift-item-modal#{item.id}" }
     = render 'user_gift_items/user_cancel_gift_item_modal', item: item
 
+- else
+  = link_to t('helpers.gift_item.claim_gift'), '#',
+      class: 'btn btn-success',
+      data: { toggle: 'modal', target: '#login-modal' } 
 
-  
-    
-
+  = render 'layouts/login_modal'

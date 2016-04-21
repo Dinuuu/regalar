@@ -18,6 +18,7 @@
  
           p.card-description
             = item.description.truncate(120)
-          
-          = link_to t('gift.cancel'), '#', class: 'btn btn-danger btn-margin',
-                    data: { toggle: 'modal', target: '#' }
+
+          = link_to t('gift.cancel'), '#', class: 'btn btn-margin btn-danger',
+                  data: { toggle: 'modal', target: "#cancel-modal#{donation.id}" } 
+          = render 'organization_donations/cancel_modal', donation: donation

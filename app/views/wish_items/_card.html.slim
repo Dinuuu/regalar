@@ -11,16 +11,18 @@
             = link_to item.title, organization_wish_item_path(id: item.id, organization_id: item.organization.id)
           p.card-description
             = item.description.truncate(120)
-
-          - unless item.gifted?
+          
+          .verify-buttons
             - if current_user.present?
-                  = link_to t('wish_items.gift'), '#',
-                      class: 'btn btn-success',
-                      data: { toggle: 'modal', target: "#gift-modal#{item.id}" } 
+              = link_to t('wish_items.gift'), '#',
+                    class: 'btn btn-success',
+                    data: { toggle: 'modal', target: "#gift-modal#{item.id}" } 
+              
+              = render 'wish_items/pause_and_resume', item: item
             - else
               = link_to t('wish_items.gift'), '#',
-                  class: 'btn btn-success',
-                  data: { toggle: 'modal', target: '#login-modal' } 
+                class: 'btn btn-success',
+                data: { toggle: 'modal', target: '#login-modal' }     
 
           = render 'layouts/login_modal'
           = render 'wish_items/gift_modal', wish_item: item
