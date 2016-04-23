@@ -1,19 +1,18 @@
-.col-md-6
-  - if gifts.empty?
-    p
-      = t('application.no_results')
-  - else
-    - gifts.each do |g|
-      h4
-        = link_to g[:organization].name, g[:organization]
-      .col-sm-offset-1
-          - g[:gift_requests].each do |d|
-            .row
-              .col-md-6
-                = d.gift_item.title.truncate(32)
-              .col-md-4
-                = d.quantity
-                = ' '
-                = t("helpers.gift_item.#{d.gift_item.unit}", count: d.quantity)
-              .pull-right.span.label.label-default
-                = d.created_at.to_s(:short)
+- if gifts.empty?
+  p
+    = t('application.no_results')
+- else
+  - gifts.each do |g|
+    h4
+      = link_to g[:organization].name, g[:organization]
+    .col-sm-offset-1
+        - g[:gift_requests].each do |d|
+          .row
+            .col-md-6
+              = d.gift_item.title.truncate(32)
+            .col-md-3
+              = d.quantity
+              = ' '
+              = t("helpers.gift_item.#{d.gift_item.unit}", count: d.quantity)
+            .pull-right.span.label.label-default
+              = d.created_at.to_s(:short)

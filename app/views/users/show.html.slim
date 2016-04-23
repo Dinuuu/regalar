@@ -7,7 +7,7 @@
       h4.panel-title
         a data-parent="#accordion" data-toggle="collapse" href="#collapseOne"
           = t('users.organizations_belong', user: @user.first_name)          
-    #collapseOne.panel-collapse.collapse.in
+    #collapseOne.panel-collapse.collapse
       .panel-body
         = render '/organizations/index_table', organizations: paginate_scope(@user.organizations,6)
   .panel.panel-default
@@ -23,7 +23,7 @@
       h4.panel-title
         a data-parent="#accordion" data-toggle="collapse" href="#collapseThree" 
           = t('users.donations')
-    #collapseThree.panel-collapse.collapse
+  #collapseThree.panel-collapse.collapse.in
       .panel-body
         = render 'donations', donations: @user.confirmed_donations
         
