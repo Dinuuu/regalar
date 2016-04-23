@@ -520,6 +520,7 @@ es:
       verifying: Verificando
       gifted: Regalado
   mailer:
+    call_to: 'o telefonicamente al'
     hello: 'Hola'
     organization: 'organizacion'
     confirmed: 'confirmo'

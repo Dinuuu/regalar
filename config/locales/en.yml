@@ -508,6 +508,7 @@ en:
     location: 'Location: '
     quantity: 'Quantity needed: '
   mailer:
+    call_to: 'or via phone at'
     hello: 'Hello'
     organization: 'organization'
     confirmed: 'confirmed'

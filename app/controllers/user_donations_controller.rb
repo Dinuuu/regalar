@@ -15,7 +15,7 @@ class UserDonationsController < ApplicationController
     wish_item
     create! do |success, failure|
       success.html do
-        send_creation_mail(@wish_item)
+        send_creation_mail(@wish_item, params[:phone])
         redirect_to :back
       end
       failure.html { render layout: false }

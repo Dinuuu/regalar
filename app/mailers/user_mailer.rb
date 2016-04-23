@@ -1,8 +1,9 @@
 class UserMailer < Notifier
   include MailerHelper
 
-  def create_donation_email_to_org(user, organization, wish_item)
+  def create_donation_email_to_org(user, organization, wish_item, phone)
     donation_email_elements(user, organization, wish_item)
+    @phone = phone
     mail to: @organization.email, subject: I18n.t('mailer.donation.new')
   end
 

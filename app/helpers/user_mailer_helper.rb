@@ -1,9 +1,9 @@
 module UserMailerHelper
   private
 
-  def send_creation_mail(wish_item)
+  def send_creation_mail(wish_item, phone)
     UserMailer.create_donation_email_to_org(current_user,
-                                            wish_item.organization, wish_item).deliver
+                                            wish_item.organization, wish_item, phone).deliver
     UserMailer.create_donation_email_to_user(current_user,
                                              wish_item.organization, wish_item).deliver
   end
