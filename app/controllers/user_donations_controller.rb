@@ -4,7 +4,7 @@ class UserDonationsController < ApplicationController
   belongs_to :wish_item, optional: true
   defaults resource_class: Donation, collection_name: 'donations', instance_name: 'donation'
 
-  before_action :authenticate_user!, except: [:confirmed]
+  before_action :authenticate_user!, except: [:confirmed, :new]
   before_action :check_ownership, only: [:destroy]
   before_action :cancelable, only: [:destroy]
   before_action :check_finish_date, only: [:create]

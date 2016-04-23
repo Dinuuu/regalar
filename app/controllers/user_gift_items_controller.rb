@@ -1,6 +1,6 @@
 class UserGiftItemsController < ApplicationController
   include UserMailerHelper
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: [:show, :new]
   before_action :validate_user, except: [:show]
 
   def show
