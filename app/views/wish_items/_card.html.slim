@@ -9,7 +9,9 @@
         .caption
           h4
             = link_to item.title, organization_wish_item_path(id: item.id, organization_id: item.organization.id)
-          p.card-description
+          .card-description
+            h5
+              = t('helpers.gift_item.remaining', count: (item.quantity - item.obtained) , unit: t("helpers.gift_item.#{item.unit}", count: item.quantity))
             = item.description.truncate(120)
           
           .verify-buttons

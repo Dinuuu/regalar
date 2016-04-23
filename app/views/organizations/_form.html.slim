@@ -59,4 +59,11 @@
       = f.select :users, options_from_collection_for_select(User.where.not(id: organization.users.ids+ [current_user.try(:id)]), :id, :email), {}, {:multiple => true, :class => "multiSelect contol-label col-sm-2", :style => "width:450px;" ,:id => "organizationForm"}  
   .form-group
     .col-sm-offset-2.col-sm-10
-      = f.submit nil, class: 'btn btn-primary btn-violet'
+      - if current_user.present?
+        = f.submit nil, class: 'btn btn-primary btn-violet'
+      - else
+        = link_to t('helpers.submit.organization.create'), '#',
+            class: 'btn btn-primary btn-violet',
+            data: {toggle: 'modal', target: '#login-modal' } 
+
+        = render 'layouts/login_modal'

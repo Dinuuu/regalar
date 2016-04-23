@@ -10,7 +10,7 @@ legend
         h4.panel-title
           a data-parent="#accordion" data-toggle="collapse" href="#collapseOne"  aria-expanded="true" aria-controls="collapseOne"
             = t('gift.to_verify')
-      #collapseOne.panel-collapse.collapse.in
+      #collapseOne.panel-collapse.collapse
         .panel-body
           = render 'user_gift_requests/pending_cards', gift_requests: @gift_requests
   - if @donations.present?          
@@ -19,15 +19,20 @@ legend
         h4.panel-title
           a data-parent="#accordion" data-toggle="collapse" href="#collapseTwo"  aria-expanded="false" aria-controls="collapseTwo"
             = t('gift.made')
-      #collapseTwo.panel-collapse.collapse
-        .panel-body
-          = render 'user_donations/index_cards', donations: @donations
+      - if @gift_items.present?
+        #collapseTwo.panel-collapse.collapse
+          .panel-body
+            = render 'user_donations/index_cards', donations: @donations
+      - else
+        #collapseTwo.panel-collapse.collapse.in
+          .panel-body
+            = render 'user_donations/index_cards', donations: @donations
   - if @gift_items.present?
     .panel.panel-default
       .panel-heading
         h4.panel-title
           a data-parent="#accordion" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"
             = t('helpers.gift_item.available')
-      #collapseThree.panel-collapse.collapse
+      #collapseThree.panel-collapse.collapse.in
         .panel-body
           = render 'gift_items/available_cards', gift_items: @gift_items

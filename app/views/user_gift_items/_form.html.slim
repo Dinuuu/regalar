@@ -91,5 +91,12 @@
               = errors
   .form-group
     .col-sm-offset-2.col-sm-10
-      = f.submit t('helpers.gift_item.new'), class: 'btn btn-primary btn-violet'
+      - if current_user.present?
+        = f.submit t('helpers.gift_item.new'), class: 'btn btn-primary btn-violet'
+      - else
+        = link_to t('helpers.gift_item.new'), '#',
+            class: 'btn btn-primary btn-violet',
+            data: {toggle: 'modal', target: '#login-modal' } 
+        = render 'layouts/login_modal'
+
       

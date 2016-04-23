@@ -16,6 +16,5 @@
 //= require twitter/bootstrap
 //= require loadjs
 //= require tinymce-jquery
-//= require jquery.validate
 //= require_tree .
 //= require jquery_nested_form

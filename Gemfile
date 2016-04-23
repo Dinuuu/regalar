@@ -101,10 +101,6 @@ gem 'exception_notification'
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
 
-
-# Validate forms
-gem 'jquery-validation-rails'
-
 # Pagination
 gem 'kaminari'
 
