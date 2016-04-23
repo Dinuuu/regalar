@@ -74,7 +74,7 @@ es:
         create: "Comentar"
         new: "Nuevo Comentario"
       organization:
-        create: "Crear %{model}"
+        create: "Crear Organización"
         new: "Nueva Organización"
         edit: "Editar Organización"
         update: "Actualizar Organización"

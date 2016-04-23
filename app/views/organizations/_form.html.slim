@@ -62,8 +62,8 @@
       - if current_user.present?
         = f.submit nil, class: 'btn btn-primary btn-violet'
       - else
-        = link_to t('helpers.gift_item.claim_gift'), '#',
-            class: 'btn btn-success',
-            data: { toggle: 'modal', target: '#login-modal' } 
+        = link_to t('helpers.submit.organization.create'), '#',
+            class: 'btn btn-primary btn-violet',
+            data: {toggle: 'modal', target: '#login-modal' } 
 
-  = render 'layouts/login_modal'
+        = render 'layouts/login_modal'
