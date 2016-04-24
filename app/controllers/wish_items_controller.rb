@@ -1,6 +1,8 @@
 class WishItemsController < OrganizationAuthenticationController
   include OrganizationMailerHelper
   inherit_resources
+  defaults resource_class: WishItem, collection_name: 'wish_items', instance_name: 'wish_item',
+           finder: :find_by_slug_or_id
   belongs_to :organization
   before_action :authenticate_user!, except: [:index, :list, :show]
   before_action :chek_authentication_for_organization, only: [:create, :destroy, :pause, :resume]
@@ -39,14 +41,14 @@ class WishItemsController < OrganizationAuthenticationController
   end
 
   def show
-    @comment = Comment.new(commentable: WishItem.find(params[:id]))
+    @comment = Comment.new(commentable: WishItem.find_by_slug_or_id(params[:id]))
     show!
   end
 
   private
 
   def wish_item
-    @wish_item ||= WishItem.find(params[:id])
+    @wish_item ||= WishItem.find_by_slug_or_id(params[:id])
   end
 
   def check_eliminated

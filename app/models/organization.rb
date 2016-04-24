@@ -1,4 +1,7 @@
 class Organization < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   has_and_belongs_to_many :users
   has_many :comments, as: :commentable
   has_many :wish_items
@@ -9,6 +12,10 @@ class Organization < ActiveRecord::Base
   validates :email, uniqueness: { case_sensitive: false }
   validate :uri_format, if: proc { website.present? }
   mount_uploader :logo, ImageUploader
+
+  def self.find_by_slug_or_id(param)
+    friendly.find(param)
+  end
 
   def uri_format
     uri = URI.parse(website)

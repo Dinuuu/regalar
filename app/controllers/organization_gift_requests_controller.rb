@@ -73,7 +73,7 @@ class OrganizationGiftRequestsController < ApplicationController
   end
 
   def gift_item
-    @gift_item ||= GiftItem.find(params[:gift_item_id])
+    @gift_item ||= GiftItem.find_by_slug_or_id(params[:gift_item_id])
   end
 
   def gift_request
@@ -81,7 +81,7 @@ class OrganizationGiftRequestsController < ApplicationController
   end
 
   def organization
-    @organization ||= Organization.find(resource_params[0][:organization_id])
+    @organization ||= Organization.find_by_slug_or_id(resource_params[0][:organization_id])
   end
 
   def resource_params

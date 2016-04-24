@@ -1,4 +1,7 @@
 class WishItem < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   belongs_to :organization
   has_many :donations
   has_many :comments, as: :commentable
@@ -22,6 +25,10 @@ class WishItem < ActiveRecord::Base
   after_initialize :initialize_attributes
 
   validate :check_finish_date, if: proc { finish_date.present? && self.finish_date_changed? }
+
+  def self.find_by_slug_or_id(param)
+    friendly.find(param)
+  end
 
   def confirmed_donations
     Donation.for_wish_item(self).confirmed

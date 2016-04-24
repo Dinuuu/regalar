@@ -1,6 +1,9 @@
 class OrganizationsController < ApplicationController
   inherit_resources
 
+  defaults resource_class: Organization, collection_name: 'organizations',
+           instance_name: 'organization', finder: :find_by_slug_or_id
+
   before_action :authenticate_user!, except: [:index, :show, :new]
 
   FIELDS = [:name, :description, :locality, :email, :logo, :website]
@@ -20,12 +23,12 @@ class OrganizationsController < ApplicationController
   end
 
   def edit
-    authorize Organization.find(params[:id])
+    authorize Organization.find_by_slug_or_id(params[:id])
     edit!
   end
 
   def update
-    authorize Organization.find(params[:id])
+    authorize Organization.find_by_slug_or_id(params[:id])
     update! do
       if @organization.valid?
         @organization.users << User.where(id: users_ids)
@@ -44,12 +47,12 @@ class OrganizationsController < ApplicationController
   end
 
   def show
-    @comment = Comment.new(commentable: Organization.find(params[:id]))
+    @comment = Comment.new(commentable: Organization.find_by_slug_or_id(params[:id]))
     show!
   end
 
   def administrate
-    @organization = Organization.find(params[:id])
+    @organization = Organization.find_by_slug_or_id(params[:id])
     @pending_wishes = @organization.wish_items.goal_not_reached.not_eliminated
     @pending_donations = @organization.donations.pending
     @pending_gifts = @organization.gift_requests.pending

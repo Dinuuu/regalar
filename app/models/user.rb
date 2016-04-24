@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   extend UserAuthenticationHelper
+  extend FriendlyId
+  friendly_id :full_name, use: :slugged
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable, :confirmable,
@@ -13,6 +16,10 @@ class User < ActiveRecord::Base
   has_many :gift_items
 
   mount_uploader :avatar, ImageUploader
+
+  def self.find_by_slug_or_id(param)
+    friendly.find(param)
+  end
 
   def email_required?
     super && (provider.blank? || provider != 'twitter')
@@ -75,7 +82,7 @@ class User < ActiveRecord::Base
   private
 
   def concreted_donations_for_organization(org_id)
-    organization = Organization.find(org_id)
+    organization = Organization.find_by_slug_or_id(org_id)
     organization_donations = {}
     organization_donations[:organization] = organization
     organization_donations[:donations] = Donation.for_user(self)
@@ -84,7 +91,7 @@ class User < ActiveRecord::Base
   end
 
   def pending_donations_for_organization(org_id)
-    organization = Organization.find(org_id)
+    organization = Organization.find_by_slug_or_id(org_id)
     organization_donations = {}
     organization_donations[:organization] = organization
     organization_donations[:donations] = Donation.for_user(self)
@@ -93,7 +100,7 @@ class User < ActiveRecord::Base
   end
 
   def concreted_gift_requests_for_organization(org_id)
-    organization = Organization.find(org_id)
+    organization = Organization.find_by_slug_or_id(org_id)
     organization_gift_requests = {}
     organization_gift_requests[:organization] = organization
     organization_gift_requests[:gift_requests] = GiftRequest.for_user(self)
@@ -102,7 +109,7 @@ class User < ActiveRecord::Base
   end
 
   def pending_gift_requests_for_organization(org_id)
-    organization = Organization.find(org_id)
+    organization = Organization.find_by_slug_or_id(org_id)
     organization_gift_requests = {}
     organization_gift_requests[:organization] = organization
     organization_gift_requests[:gift_requests] = GiftRequest.for_user(self)

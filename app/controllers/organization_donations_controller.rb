@@ -25,12 +25,12 @@ class OrganizationDonationsController < OrganizationAuthenticationController
   end
 
   def confirmed
-    organization = Organization.find(params[:organization_id])
+    organization = Organization.find_by_slug_or_id(params[:organization_id])
     @confirmed = organization.confirmed_donations
   end
 
   def pending
-    organization = Organization.find(params[:organization_id])
+    organization = Organization.find_by_slug_or_id(params[:organization_id])
     @pending = organization.pending_donations
   end
 

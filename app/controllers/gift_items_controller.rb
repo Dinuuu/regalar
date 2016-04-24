@@ -1,4 +1,9 @@
 class GiftItemsController < ApplicationController
+  inherit_resources
+
+  defaults resource_class: GiftItem, collection_name: 'gift_items', instance_name: 'gift_item',
+           finder: :find_by_slug_or_id
+
   before_action :authenticate_user!, except: [:index, :new, :show]
 
   def new
