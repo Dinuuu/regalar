@@ -482,6 +482,10 @@ en:
     pause: Pause
     resume: Resume
     no_organizations: You don't belong to any organization, so you can not ask for the gift.
+  select_modal:
+    title: Create new wish item
+    description: Select the organization for wich you want to create the wish item
+    next: Next
   gift:
     name: Gift
     gift: Gift
