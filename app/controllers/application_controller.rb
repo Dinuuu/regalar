@@ -6,15 +6,15 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-  after_filter :store_location
+  after_action :store_location
 
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
-    return unless request.get? 
+    return unless request.get?
     session[:previous_url] = request.fullpath unless request.fullpath =~ /\/users/
   end
 
-  def after_sign_in_path_for(resource)
+  def after_sign_in_path_for(_resource)
     session[:previous_url] || root_path
   end
 
