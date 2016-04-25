@@ -16,7 +16,8 @@ class GiftItem < ActiveRecord::Base
 
   def self.search(search_condition)
     where('lower(title) LIKE ? OR lower(description) LIKE ?',
-          "%#{search_condition.downcase}%", "%#{search_condition.downcase}%").still_available.not_eliminated
+          "%#{search_condition.downcase}%", "%#{search_condition.downcase}%")
+      .still_available.not_eliminated
   end
 
   def available_organization_for_new_request_for_user(user)
