@@ -58,8 +58,12 @@ nav.navbar.navbar-default
               = link_to t('helpers.gift_item.new'), new_gift_item_path
             li
               = link_to t('helpers.submit.organization.new'), new_organization_path
-            li
-              / = link_to t('helpers.wish_item.new'), new_user_wish_item_path(current_user)
+            - if current_user.present?
+              li
+                = link_to t('helpers.wish_item.new'), '#', 
+                  data: {toggle: 'modal', target: "#select_org_modal" }
+        = render 'organizations/select_modal'
+
       - if user_signed_in?  
         ul.nav.navbar-nav
           li.dropdown

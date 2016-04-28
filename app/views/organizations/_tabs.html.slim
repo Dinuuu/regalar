@@ -1,31 +1,32 @@
-ul.nav.nav-tabs.org-tabs data-tabs="tabs" 
-  li.active
-    a data-toggle="tab" href="#goal-not-reached"
-      = t('helpers.wish_list.pending')
-  li
-    a data-toggle="tab" href="#goal-reached"
-      = t('helpers.wish_list.finished')
-  li
-    a data-toggle="tab" href="#gifts-received"
-      = t('helpers.gift_item.received')
-.tab-content
-  #goal-not-reached.tab-pane.active
-    - items = WishItem.for_organization(organization).goal_not_reached
-    - if items.present?
-      .expl-text.h4
-        = t('helpers.wish_list.expl-text1', org: organization.name)
-    = render 'wish_items/index_cards', wish_items: items
+#wish-item-tabs
+  ul.nav.nav-tabs.org-tabs data-tabs="tabs" 
+    li.active
+      a data-toggle="tab" href="#goal-not-reached"
+        = t('helpers.wish_list.pending')
+    li
+      a data-toggle="tab" href="#goal-reached"
+        = t('helpers.wish_list.finished')
+    li
+      a data-toggle="tab" href="#gifts-received"
+        = t('helpers.gift_item.received')
+  .tab-content
+    #goal-not-reached.tab-pane.active
+      - items = WishItem.for_organization(organization).goal_not_reached
+      - if items.present?
+        .expl-text.h4
+          = t('helpers.wish_list.expl-text1', org: organization.name)
+      = render 'wish_items/index_cards', wish_items: items
+      
+    #goal-reached.tab-pane
+      - items = WishItem.for_organization(organization).goal_reached
+      - if items.present?
+        .expl-text.h4
+          = t('helpers.wish_list.expl-text2', org: organization.name)
+      = render 'wish_items/index_cards', wish_items: items
     
-  #goal-reached.tab-pane
-    - items = WishItem.for_organization(organization).goal_reached
-    - if items.present?
-      .expl-text.h4
-        = t('helpers.wish_list.expl-text2', org: organization.name)
-    = render 'wish_items/index_cards', wish_items: items
-  
-  #gifts-received.tab-pane
-    - items = GiftRequest.for_organization(organization).confirmed
-    - if items.present?
-      .expl-text.h4
-        = t('helpers.wish_list.expl-text3', org: organization.name)
-    = render 'gift_items/index_request_cards', gifts_request: items
+    #gifts-received.tab-pane
+      - items = GiftRequest.for_organization(organization).confirmed
+      - if items.present?
+        .expl-text.h4
+          = t('helpers.wish_list.expl-text3', org: organization.name)
+      = render 'gift_items/index_request_cards', gifts_request: items
