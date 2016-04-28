@@ -24,13 +24,13 @@ class GiftItem < ActiveRecord::Base
   def self.search(search_condition)
     where('lower(title) LIKE ? OR lower(description) LIKE ?',
           "%#{search_condition.downcase}%", "%#{search_condition.downcase}%")
+      .still_available.not_eliminated
   end
 
   def available_organization_for_new_request_for_user(user)
     user.organizations
       .where.not(id: gift_requests.where(organization_id: user.organizations.ids)
-                                  .pluck(:organization_id)
-                )
+                                  .pluck(:organization_id))
   end
 
   def gifted?

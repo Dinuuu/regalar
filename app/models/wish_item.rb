@@ -52,7 +52,7 @@ class WishItem < ActiveRecord::Base
 
   def self.search(search_condition)
     where('lower(title) LIKE ? OR lower(description) LIKE ?',
-          "%#{search_condition.downcase}%", "%#{search_condition.downcase}%")
+          "%#{search_condition.downcase}%", "%#{search_condition.downcase}%").not_eliminated
   end
 
   def pause
