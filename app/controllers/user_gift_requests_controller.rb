@@ -5,7 +5,7 @@ class UserGiftRequestsController < ApplicationController
   before_action :validate_user, only: [:pending]
 
   def cancel
-    gift_request.destroy
+    @gift_request.destroy
     send_cancelation_email
     redirect_to :back
   end
@@ -31,7 +31,7 @@ class UserGiftRequestsController < ApplicationController
   end
 
   def gift_request_by_organization
-    GiftRequest.find_by(organization_id: params[:org],
+    GiftRequest.find_by(organization_id: params[:organization_id],
                         gift_item_id: params[:gift_item_id],
                         user: current_user)
   end

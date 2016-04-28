@@ -38,7 +38,7 @@ describe OrganizationDonationsController do
           it 'redirects to wish_item' do
             put :confirm, organization_id: organization.id, id: donation.id
             expect(response)
-              .to redirect_to "/organizations/#{organization.id}/wish_items/#{wish_item.id}"
+              .to redirect_to "/organizations/#{organization.slug}/wish_items/#{wish_item.slug}"
           end
           it 'sends an email' do
             (expect do
@@ -124,7 +124,7 @@ describe OrganizationDonationsController do
           delete :cancel, organization_id: organization.id, id: donation.id,
                           donation: cancelation_params
           expect(response)
-            .to redirect_to "/organizations/#{organization.id}/wish_items/#{wish_item.id}"
+            .to redirect_to "/organizations/#{organization.slug}/wish_items/#{wish_item.slug}"
         end
         it 'sends an email' do
           (expect do

@@ -47,7 +47,7 @@ class UserDonationsController < ApplicationController
   end
 
   def wish_item
-    @wish_item ||= WishItem.find(params[:id])
+    @wish_item ||= WishItem.find_by_slug_or_id(params[:id])
   end
 
   def check_ownership

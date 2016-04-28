@@ -4,7 +4,7 @@ class UserGiftItemsController < ApplicationController
   before_action :validate_user, except: [:show]
 
   def show
-    @comment = Comment.new(commentable: GiftItem.find(params[:id]))
+    @comment = Comment.new(commentable: GiftItem.find_by_slug_or_id(params[:id]))
     gift_item.visit
     add_visit_to_cookie
     gift_item
@@ -48,7 +48,7 @@ class UserGiftItemsController < ApplicationController
   end
 
   def gift_item
-    @gift_item ||= GiftItem.find(params[:id])
+    @gift_item ||= GiftItem.find_by_slug_or_id(params[:id])
   end
 
   def gift_item_params

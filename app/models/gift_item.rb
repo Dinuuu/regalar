@@ -1,4 +1,7 @@
 class GiftItem < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   has_many :comments, as: :commentable
   belongs_to :user
   has_many :gift_requests
@@ -13,6 +16,10 @@ class GiftItem < ActiveRecord::Base
   scope :not_eliminated, -> { where.not(eliminated: true) }
 
   after_initialize :initialize_attributes
+
+  def self.find_by_slug_or_id(param)
+    friendly.find(param)
+  end
 
   def self.search(search_condition)
     where('lower(title) LIKE ? OR lower(description) LIKE ?',
