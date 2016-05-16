@@ -9,7 +9,7 @@
         - g[:gift_requests].each do |d|
           .row
             .col-md-6
-              = link_to d.gift_item.title.truncate(32), user_gift_item_path(id: d.gift_item.id, user_id: d.gift_item.user.id)
+              = link_to d.gift_item.title.truncate(32), user_gift_item_path(id: d.gift_item.slug, user_id: d.gift_item.user.slug)
             .col-md-3
               = d.quantity
               = ' '

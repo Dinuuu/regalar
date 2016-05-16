@@ -13,7 +13,7 @@ class GiftItemsController < ApplicationController
   def create
     @gift_item = GiftItem.new(gift_item_params.merge(user: current_user))
     if @gift_item.save
-      redirect_to user_gift_item_path(current_user.id, @gift_item.id)
+      redirect_to user_gift_item_path(current_user.slug, @gift_item.slug)
     else
       render 'new'
     end

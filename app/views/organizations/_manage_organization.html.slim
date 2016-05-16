@@ -18,7 +18,7 @@
                 .description
                   p
                     = organization.description.truncate(250)
-                = link_to t('application.manage.manage'), administrate_organization_user_path(id: current_user.id), class: 'btn btn-primary btn-violet'
+                = link_to t('application.manage.manage'), administrate_organization_user_path(id: current_user.slug), class: 'btn btn-primary btn-violet'
                   
     #pagination
       = paginate organizations

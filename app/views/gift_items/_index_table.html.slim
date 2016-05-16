@@ -13,7 +13,7 @@
             = image_tag('default_pic.png', height: 150, width: 150, class: "img-thumbnail img-profile")
         div.col-md-6
           h3
-            = link_to item.title, user_gift_item_path(id: item.id, user_id: item.user.id)
+            = link_to item.title, user_gift_item_path(id: item.slug, user_id: item.user.slug)
           h5
             = t('helpers.gift_item.gifted_by')
             = link_to item.user.first_name, item.user
@@ -23,4 +23,4 @@
             = item.description 
           = render 'gift_items/ask_buttons', item: item
           p
-            = render_shareable buttons: ['twitter', 'facebook'] , url: user_gift_item_url(id: item.id, user_id: item.user.id), text: t('helpers.gift_item.share_text', user: item.user.first_name, item: item.title)
+            = render_shareable buttons: ['twitter', 'facebook'] , url: user_gift_item_url(id: item.slug, user_id: item.user.slug), text: t('helpers.gift_item.share_text', user: item.user.first_name, item: item.title)

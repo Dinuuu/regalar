@@ -25,7 +25,7 @@ class UserGiftItemsController < ApplicationController
   def update
     authorize gift_item
     if gift_item.update_attributes(gift_item_params)
-      redirect_to user_gift_item_path(current_user.id, @gift_item.id)
+      redirect_to user_gift_item_path(current_user.slug, @gift_item.slug)
     else
       render 'edit'
     end

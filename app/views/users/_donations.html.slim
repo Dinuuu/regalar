@@ -9,7 +9,7 @@
         - o[:donations].each do |d|
           .row.padding-right-20
             .col-md-6
-              = link_to d.wish_item.title.truncate(32), organization_wish_item_path(id: d.wish_item.id, organization_id: d.wish_item.organization.id)
+              = link_to d.wish_item.title.truncate(32), organization_wish_item_path(id: d.wish_item.slug, organization_id: d.wish_item.organization.slug)
             .col-md-3
               = d.quantity
               = ' '

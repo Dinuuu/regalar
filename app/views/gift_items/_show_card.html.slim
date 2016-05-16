@@ -12,12 +12,12 @@
           = t('helpers.gift_item.gifted_by')
           = link_to item.user.full_name, item.user
         h4.campaign-name
-          = link_to item.title, user_gift_item_path(id: item.id, user_id: item.user.id)
+          = link_to item.title, user_gift_item_path(id: item.slug, user_id: item.user.slug)
         h5
           = t('helpers.gift_item.remaining', count: (item.quantity - item.given) , unit: t("helpers.gift_item.#{item.unit}", count: item.quantity))
 
         p.card-description
           = item.description.truncate(120)
       .center
-        = render_shareable buttons: ['twitter', 'facebook'] , url: user_gift_item_url(id: item.id, user_id: item.user.id), text: t('helpers.gift_item.share_text', user: item.user.first_name, item: item.title)
+        = render_shareable buttons: ['twitter', 'facebook'] , url: user_gift_item_url(id: item.slug, user_id: item.user.slug), text: t('helpers.gift_item.share_text', user: item.user.first_name, item: item.title)
         

@@ -2,8 +2,8 @@
   .btn-group
     .button
       a
-        = link_to t('helpers.gift_item.edit'), edit_user_gift_item_path(gift_item.user.id,gift_item.id), class: 'btn btn-primary btn-violet margin-right-20'
+        = link_to t('helpers.gift_item.edit'), edit_user_gift_item_path(gift_item.user.slug,gift_item.slug), class: 'btn btn-primary btn-violet margin-right-20'
   .btn-group
     .button
       a
-        = link_to t('helpers.gift_item.delete'), cancel_user_gift_item_path(gift_item.user.id, gift_item.id), method: 'DELETE', class: 'btn btn-primary btn-violet margin-right-20'
+        = link_to t('helpers.gift_item.delete'), cancel_user_gift_item_path(gift_item.user.slug, gift_item.slug), method: 'DELETE', class: 'btn btn-primary btn-violet margin-right-20'
