@@ -14,7 +14,7 @@
             p
             = link_to item.organization.name, item.organization
           h4
-            = link_to item.title, organization_wish_item_path(id: item.id, organization_id: item.organization.id)
+            = link_to item.title, organization_wish_item_path(id: item.slug, organization_id: item.organization.slug)
  
           p.card-description
             = item.description.truncate(120)

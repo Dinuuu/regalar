@@ -8,7 +8,7 @@
           = image_tag('default_pic.png', height: 150, width: 150, class: "img-thumbnail img-profile")
         .caption
           h4.campaign-name
-            = link_to item.title, organization_wish_item_path(id: item.id, organization_id: item.organization.id)
+            = link_to item.title, organization_wish_item_path(id: item.slug, organization_id: item.organization.slug)
           h5
             = link_to item.organization.name.truncate(30), item.organization
           p.card-description
@@ -31,5 +31,5 @@
 
               = render 'layouts/login_modal'
 
-          = render_shareable buttons: ['twitter', 'facebook'] , url: organization_wish_item_url(id: item.id, organization_id: item.organization.id), text: t('helpers.wish_item.share_text', organization: item.organization.name, item: item.title)
+          = render_shareable buttons: ['twitter', 'facebook'] , url: organization_wish_item_url(id: item.slug, organization_id: item.organization.slug), text: t('helpers.wish_item.share_text', organization: item.organization.name, item: item.title)
           p

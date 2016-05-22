@@ -13,7 +13,7 @@
             = t('helpers.wish_item.gifted_by')
             = link_to gift.user.first_name, gift.user
           h4
-            = link_to item.title, organization_wish_item_path(id: item.id, organization_id: item.organization.id)
+            = link_to item.title, organization_wish_item_path(id: item.slug, organization_id: item.organization.slug)
           h5
             .pull-right.span.label.label-default
               .time
@@ -22,7 +22,7 @@
             = item.description.truncate(120)
           .verify-buttons
             .pull-left
-              = link_to t('gift.confirm'), confirm_organization_donation_path(organization_id: gift.organization.id , id: gift.id), class: 'btn btn-success btn-margin', method: "put"
+              = link_to t('gift.confirm'), confirm_organization_donation_path(organization_id: gift.organization.slug , id: gift.slug), class: 'btn btn-success btn-margin', method: "put"
             .pull-right
               = link_to t('gift.reject'), '#', class: 'btn btn-danger btn-margin',
                     data: { toggle: 'modal', target: '#cancel-organization-modal' }

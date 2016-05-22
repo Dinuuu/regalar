@@ -7,7 +7,7 @@
       = @gift_item.title + ' '
     h5
       = link_to @gift_item.user.full_name , @gift_item.user
-    = render_shareable buttons: ['twitter', 'facebook'] , url: user_gift_item_url(id: @gift_item.id, user_id: @gift_item.user.id), text: t('helpers.gift_item.share_text', user: @gift_item.user.first_name, item: @gift_item.title)
+    = render_shareable buttons: ['twitter', 'facebook'] , url: user_gift_item_url(id: @gift_item.slug, user_id: @gift_item.user.slug), text: t('helpers.gift_item.share_text', user: @gift_item.user.first_name, item: @gift_item.title)
   .h5
     .text-center
       = t('helpers.gift_item.gifted_quantity')

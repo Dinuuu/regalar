@@ -18,7 +18,7 @@
           
           - if pending_donation.present?
             h3
-              = link_to item.title, organization_wish_item_path(id: item.id, organization_id: item.organization.id)
+              = link_to item.title, organization_wish_item_path(id: item.slug, organization_id: item.organization.slug)
               small.gift-label
                  span.label.label-warning
                    = t('wish_items.status.verifying')
@@ -34,7 +34,7 @@
 
           - elsif item.gifted?
             h3
-              = link_to item.title, organization_wish_item_path(id: item.id, organization_id: item.organization.id)
+              = link_to item.title, organization_wish_item_path(id: item.slug, organization_id: item.organization.slug)
               small.gift-label
                  span.label.label-danger
                    = t('wish_items.status.gifted')
@@ -48,14 +48,14 @@
                 
           - else
             h3
-              = link_to item.title, organization_wish_item_path(id: item.id, organization_id: item.organization.id)
+              = link_to item.title, organization_wish_item_path(id: item.slug, organization_id: item.organization.slug)
             h5
               = link_to item.organization.name, item.organization
             p
               = item.description
 
             .pull-right.center
-              = render_shareable buttons: ['twitter', 'facebook'] , url: organization_wish_item_url(id: item.id, organization_id: item.organization.id), text: t('helpers.wish_item.share_text', organization: item.organization.name, item: item.title)
+              = render_shareable buttons: ['twitter', 'facebook'] , url: organization_wish_item_url(id: item.slug, organization_id: item.organization.slug), text: t('helpers.wish_item.share_text', organization: item.organization.name, item: item.title)
             .pull-left
               - if current_user.present?
                 = link_to t('wish_items.gift'), '#',

@@ -13,7 +13,7 @@
             = t('helpers.gift_item.gifted_by')
             = link_to item.user.full_name, item.user
           h4.campaign-name
-            = link_to item.title, user_gift_item_path(id: item.id, user_id: item.user.id)
+            = link_to item.title, user_gift_item_path(id: item.slug, user_id: item.user.slug)
           p.card-description
             = item.description.truncate(120)
           .verify-buttons
