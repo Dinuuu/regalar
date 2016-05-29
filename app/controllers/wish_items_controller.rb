@@ -3,7 +3,7 @@ class WishItemsController < OrganizationAuthenticationController
   inherit_resources
   defaults resource_class: WishItem, collection_name: 'wish_items', instance_name: 'wish_item',
            finder: :find_by_slug_or_id
-  belongs_to :organization
+  belongs_to :organization, finder: :find_by_slug_or_id
   before_action :authenticate_user!, except: [:index, :list, :show]
   before_action :chek_authentication_for_organization, only: [:create, :destroy, :pause, :resume]
   before_action :check_eliminated, only: [:destroy]
