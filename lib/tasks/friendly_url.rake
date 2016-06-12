@@ -6,7 +6,7 @@ namespace :friendly_url do
   	end
   end
   
-  desc "add_slug_to_organization"
+  desc "add_slug_to_user"
   task add_slug_to_user: :environment do
     ActiveRecord::Base.transaction do
      	User.find_each(&:save!)
