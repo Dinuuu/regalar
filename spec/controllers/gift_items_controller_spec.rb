@@ -29,10 +29,12 @@ describe GiftItemsController do
       it 'increments the count of gift_items' do
         (expect do
           post :create, gift_item: attributes_for(:gift_item)
+            .merge(gift_item_images_attributes: [attributes_for(:gift_item_image)])
         end).to change(GiftItem, :count).by(1)
       end
       it 'redirects' do
         post :create, gift_item: attributes_for(:gift_item)
+          .merge(gift_item_images_attributes: [attributes_for(:gift_item_image)])
         expect(response.status).to eq 302
       end
     end

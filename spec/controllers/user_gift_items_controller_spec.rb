@@ -12,7 +12,7 @@ describe UserGiftItemsController do
       context 'When a user owns a couple gift_items' do
         let!(:gift_items) { create_list :gift_item, 10, user: user }
         before :each do
-          get :index, user_id: user.id
+          get :index, user_id: user.slug
         end
         it 'renders index' do
           expect(response).to render_template(:index)
@@ -36,7 +36,7 @@ describe UserGiftItemsController do
       context 'and a gift item for that user exists' do
         let!(:gift_item) { create :gift_item, user: user }
         before :each do
-          get :edit, user_id: user.id, id: gift_item.id
+          get :edit, user_id: user.slug, id: gift_item.slug
         end
         it 'renders edit' do
           expect(response).to render_template 'edit'
@@ -63,7 +63,7 @@ describe UserGiftItemsController do
         end
         it 'should change the title' do
           (expect do
-            put :update, user_id: user.id, id: gift_item.id,
+            put :update, user_id: user.slug, id: gift_item.slug,
                          gift_item: { title: Faker::Lorem.sentence }
           end).to change { gift_item.reload.title }
         end
@@ -74,7 +74,7 @@ describe UserGiftItemsController do
         let!(:gift_item) { create :gift_item, user: user }
         it 'should not change the title' do
           (expect do
-            put :update, user_id: user.id, id: gift_item.id,
+            put :update, user_id: user.slug, id: gift_item.slug,
                          gift_item: { title: Faker::Lorem.sentence }
           end).not_to change { gift_item.reload.title }
         end
@@ -86,7 +86,7 @@ describe UserGiftItemsController do
     context 'when a gift item for that user exists' do
       let!(:gift_item) { create :gift_item }
       before :each do
-        get :show, user_id: user.id, id: gift_item.id
+        get :show, user_id: user.slug, id: gift_item.slug
       end
 
       it 'returns http status 200' do
@@ -118,16 +118,16 @@ describe UserGiftItemsController do
         request.env['HTTP_REFERER'] = organizations_url
       end
       it 'marks it as eliminated' do
-        expect { delete :destroy, user_id: user.id, id: gift_item.id }
+        expect { delete :destroy, user_id: user.slug, id: gift_item.slug }
           .to change { gift_item.reload.eliminated }.from(false).to(true)
       end
       it 'destroy its pending requests' do
-        expect { delete :destroy, user_id: user.id, id: gift_item.id }
+        expect { delete :destroy, user_id: user.slug, id: gift_item.slug }
           .to change { gift_item.reload.gift_requests.pending.count }.from(1).to(0)
       end
       it 'sends as many emails as pending requests' do
         (expect do
-           delete :destroy, user_id: user.id, id: gift_item.id
+           delete :destroy, user_id: user.slug, id: gift_item.slug
          end).to change { ActionMailer::Base.deliveries.count }.by 1
       end
     end

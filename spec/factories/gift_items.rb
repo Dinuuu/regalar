@@ -6,5 +6,6 @@ FactoryGirl.define do
     description { Faker::Lorem.paragraph }
     used_time 'two years'
     status 'new'
+    gift_item_images { [build(:gift_item_image)] }
   end
 end

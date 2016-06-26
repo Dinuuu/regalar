@@ -56,7 +56,8 @@ class UserGiftItemsController < ApplicationController
                                       :description, :used_time,
                                       :measures, :weight, :status,
                                       gift_item_images_attributes: [:gift_item_id, :file,
-                                                                    :remote_file_url, :id, :_destroy])
+                                                                    :remote_file_url,
+                                                                    :id, :_destroy])
   end
 
   def add_visit_to_cookie
