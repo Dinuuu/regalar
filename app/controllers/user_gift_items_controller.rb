@@ -42,7 +42,7 @@ class UserGiftItemsController < ApplicationController
   private
 
   def validate_user
-    return true if params[:user_id].to_i == current_user.id
+    return true if params[:user_id] == current_user.slug
     render status: :forbidden,
            text: 'You must be the specified user to access to this section'
   end
@@ -56,7 +56,7 @@ class UserGiftItemsController < ApplicationController
                                       :description, :used_time,
                                       :measures, :weight, :status,
                                       gift_item_images_attributes: [:gift_item_id, :file,
-                                                                    :remote_file_url])
+                                                                    :remote_file_url, :id, :_destroy])
   end
 
   def add_visit_to_cookie
