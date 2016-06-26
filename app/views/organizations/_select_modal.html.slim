@@ -1,4 +1,4 @@
-- if current_user.present?
+- if current_user.present? && current_user.organizations.present?
   .modal.fade id="select_org_modal"
     .modal-dialog
       .modal-content
