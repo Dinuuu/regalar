@@ -58,5 +58,6 @@ class GiftItem < ActiveRecord::Base
     self.visits ||= 0
     self.measures ||= 'N/A'
     self.weight ||= 'N/A'
+    self.used_time ||= 'N/A'
   end
 end
