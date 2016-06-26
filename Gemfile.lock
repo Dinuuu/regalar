@@ -560,6 +560,3 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   unicorn
   validates_timeliness (~> 3.0)
-
-BUNDLED WITH
-   1.11.2

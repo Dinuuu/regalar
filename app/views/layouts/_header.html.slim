@@ -58,7 +58,7 @@ nav.navbar.navbar-default
               = link_to t('helpers.gift_item.new'), new_gift_item_path
             li
               = link_to t('helpers.submit.organization.new'), new_organization_path
-            - if current_user.present?
+            - if current_user.present? && current_user.organizations.present?
               li
                 = link_to t('helpers.wish_item.new'), '#', 
                   data: {toggle: 'modal', target: "#select_org_modal" }
