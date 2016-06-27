@@ -20,7 +20,6 @@ ul.nav.nav-tabs.org-tabs data-tabs="tabs"
     
   #pending-donations.tab-pane
     .expl-text.h4
-      / - if @pending_donations.present?
       = t('helpers.wish_list.verifying_expl')
     = render 'organization_donations/index_cards', gifts: @pending_donations
 
