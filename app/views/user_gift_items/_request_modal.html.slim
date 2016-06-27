@@ -12,11 +12,11 @@
             = " "
             = gift_item.title
             = " "
-            p
-            = t('request_modal.wait_email')
-            p
             - organizations = current_user.organizations
             - if organizations.present?
+              p
+              = t('request_modal.wait_email')
+              p
               = t('request_modal.introduce_org')
               = form_for :gift_request, url: user_gift_item_gift_requests_path(user_id: gift_item.user_id, gift_item_id: gift_item.id) do |f|
                 .form-inline
@@ -31,7 +31,8 @@
                   p   
                   = f.submit t('request_modal.ask'), class: "btn btn-success"
             - else
-              = t('request_modal.no_organizations')
+              .h4
+                = t('request_modal.no_organizations')
 
         .modal-footer
           button.close data-dismiss="modal"  type="button" 

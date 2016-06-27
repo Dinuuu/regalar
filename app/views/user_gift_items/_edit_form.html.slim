@@ -58,7 +58,7 @@
     .col-md-4
       = f.text_field :quantity, class: 'form-control col-md-2',type: 'number',  required: true
   .form-group  
-    = f.label :unit, t('helpers.gift_item.unit'), class: 'control-label col-sm-2'
+    = f.label :unit, t('helpers.wish_item.unit'), class: 'control-label col-sm-2'
     .col-md-4
       = f.select :unit, [t('helpers.gift_item.liters', count: 2) ,t('helpers.gift_item.kilos', count: 2), t('helpers.gift_item.units', count: 2)] , { include_blank:  t('helpers.gift_item.select_units') }, class: 'form-control col-md-2', required: true
   .form-group
@@ -82,7 +82,11 @@
         .col-sm-offset-2.col-sm-6
           p
             = t('helpers.gift_item.size_mesage')
-
+    .col-md-4
+          - errors = @gift_item.errors[:gift_item_images].first
+          - if errors.present?
+            .error-form
+                = errors
 
   .form-group
     .col-sm-offset-2.col-sm-10

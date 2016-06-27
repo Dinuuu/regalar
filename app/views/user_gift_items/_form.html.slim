@@ -93,11 +93,11 @@
             .col-sm-offset-2.col-sm-6
               p
                 = t('helpers.gift_item.size_mesage')
-      .col-md-4
-        - errors = @gift_item.errors[:gift_item_images].first
-        - if errors.present?
-          .error-form
-              = errors
+        .col-md-4
+          - errors = @gift_item.errors[:gift_item_images].first
+          - if errors.present?
+            .error-form
+                = errors
   .form-group
     .col-sm-offset-2.col-sm-10
       - if current_user.present?

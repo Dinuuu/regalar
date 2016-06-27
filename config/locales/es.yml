@@ -488,7 +488,7 @@ es:
     reject: Rechazar
     pause: Pausar
     resume: Reanudar
-    no_organizations: No pertenecesa a ninguna organización por lo que no es posible pedir el regalo.
+    no_organizations: No perteneces a a ninguna organización por lo que no es posible pedir el regalo.
   select_modal:
     title: Crear un nuevo deseo
     description: Selecciona la organizacion para la cual quieres crear un nuevo deseo    
