@@ -1,4 +1,4 @@
 - if current_user.present? && current_user == gift_item.user
 	.button
     a
-      = link_to t('helpers.gift_item.edit'), edit_user_gift_item_path(gift_item.user.slug,gift_item.slug), class: 'btn btn-primary btn-violet margin-right-20'
+      = link_to t('helpers.gift_item.edit'), edit_user_gift_item_path(gift_item.user.slug,gift_item.slug), class: 'btn btn-primary btn-margin btn-violet margin-right-20'
