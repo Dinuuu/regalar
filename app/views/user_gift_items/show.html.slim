@@ -24,10 +24,7 @@
 
   .text-center
     = render 'user_gift_items/edit_cancel', gift_item: @gift_item
-  
-  .row
-    .ask-buttons
-      = render 'gift_items/ask_buttons', item: @gift_item  
+    = render 'gift_items/ask_buttons', item: @gift_item  
   = render 'user_gift_items/main_info', gift_item: @gift_item	
 
   - if current_user.present?
