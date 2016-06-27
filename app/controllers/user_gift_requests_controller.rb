@@ -31,8 +31,8 @@ class UserGiftRequestsController < ApplicationController
   end
 
   def gift_request_by_organization
-    GiftRequest.find_by(organization_id: params[:organization_id],
-                        gift_item_id: params[:gift_item_id],
+    GiftRequest.find_by(organization: Organization.find(params[:organization_id]),
+                        gift_item: GiftItem.find(params[:gift_item_id]),
                         user: current_user)
   end
 
