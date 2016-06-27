@@ -9,13 +9,13 @@
           = t('helpers.wish_item.reject_req')  
           = item.title
       .modal-body
-      
-        = form_for(:donation, url: cancel_gift_request_organization_gift_requests_path(organization_id: Organization.first.slug , gift_item_id: item.slug), method: "delete") do |f|
+        - orgs = GiftRequest.for_user(current_user).for_gift_item(item).pending.map(&:organization)
+        = form_for(:donation, url: cancel_gift_request_organization_gift_requests_path(organization_id: orgs.first.slug , gift_item_id: item.slug), method: "delete") do |f|
           .form-group
             = f.text_field :reason, placeholder: t('helpers.wish_item.reason'), class: 'form-control', required: true
             .h6
               = t('gift.selectOrg')
-            = select_tag :org, options_from_collection_for_select(GiftRequest.for_user(current_user).for_gift_item(item).pending.map(&:organization), :id, :name) 
+            = select_tag :org, options_from_collection_for_select(orgs, :id, :name) 
           .form-group
             = f.submit t('gift.reject'),
               class: 'btn btn-danger'
