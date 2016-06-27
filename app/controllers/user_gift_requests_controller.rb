@@ -45,7 +45,7 @@ class UserGiftRequestsController < ApplicationController
   end
 
   def validate_user
-    return true if params[:id].to_i == current_user.id
+    return true if params[:id] == current_user.slug
     render status: :forbidden,
            text: 'You must be the specified user to access to this section'
   end
