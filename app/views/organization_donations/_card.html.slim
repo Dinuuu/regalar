@@ -22,7 +22,7 @@
             = item.description.truncate(120)
           .verify-buttons
             .pull-left
-              = link_to t('gift.confirm'), confirm_organization_donation_path(organization_id: gift.organization.slug , id: gift.slug), class: 'btn btn-success btn-margin', method: "put"
+              = link_to t('gift.confirm'), confirm_organization_donation_path(organization_id: gift.organization.slug , id: gift.id), class: 'btn btn-success btn-margin', method: "put"
             .pull-right
               = link_to t('gift.reject'), '#', class: 'btn btn-danger btn-margin',
                     data: { toggle: 'modal', target: '#cancel-organization-modal' }
