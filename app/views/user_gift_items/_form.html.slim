@@ -1,4 +1,4 @@
-= nested_form_for [@gift_item], html: { class: 'form-horizontal', role: 'form' } do |f|
+= nested_form_for [@gift_item], html: { class: 'form-horizontal', role: 'form', id: 'formGiftItem'} do |f|
   .form-group
     = f.label :title, t('helpers.gift_item.title'),class: 'control-label col-sm-2'
     .col-md-4
@@ -105,7 +105,8 @@
       - else
         = link_to t('helpers.gift_item.new'), '#',
             class: 'btn btn-primary btn-violet',
-            data: {toggle: 'modal', target: '#login-modal' } 
+            data: {toggle: 'modal', target: '#login-modal'},
+            onclick: " document.cookie = 'formValue='+ escape($('#formGiftItem')); "
         = render 'layouts/login_modal'
 
       
