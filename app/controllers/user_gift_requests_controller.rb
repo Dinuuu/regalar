@@ -15,12 +15,12 @@ class UserGiftRequestsController < ApplicationController
   end
 
   def confirmed
-    user = User.find_by_slug(params[:id])
+    user = User.find_by_slug_or_id(params[:id])
     user.confirmed_gift_requests
   end
 
   def pending
-    user = User.find_by_slug(params[:id])
+    user = User.find_by_slug_or_id(params[:id])
     user.pending_gift_requests
   end
 
@@ -31,14 +31,13 @@ class UserGiftRequestsController < ApplicationController
   end
 
   def gift_request_by_organization
-    GiftRequest.find_by(organization: Organization.find_by_slug(params[:organization_id]),
-                        gift_item: GiftItem.find_by_slug(params[:gift_item_id]),
+    GiftRequest.find_by(organization: Organization.find_by_slug_or_id(params[:organization_id]),
+                        gift_item: GiftItem.find_by_slug_or_id(params[:gift_item_id]),
                         user: current_user)
   end
 
   def check_ownership
-    request_to_cancel = gift_request_by_organization
-    @gift_request = request_to_cancel || gift_request
+    @gift_request = gift_request || gift_request_by_organization
 
     return render status: :forbidden,
                   text: "You don't own the item" unless gift_request.present? &&

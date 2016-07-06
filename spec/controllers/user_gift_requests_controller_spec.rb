@@ -171,7 +171,7 @@ describe UserGiftRequestsController do
       end
       context 'when logged user asks for his pending' do
         before :each do
-          get :pending, id: user.id
+          get :pending, id: user.slug
         end
         it 'renders pending' do
           expect(response).to render_template 'pending'
@@ -179,7 +179,7 @@ describe UserGiftRequestsController do
       end
       context 'when logged user asks for another users pending' do
         before :each do
-          get :pending, id: user2.id
+          get :pending, id: user2.slug
         end
         it 'returns status forbidden' do
           expect(response.status).to eq 403
@@ -188,7 +188,7 @@ describe UserGiftRequestsController do
     end
     context 'When unlogged' do
       it 'should render login page' do
-        get :pending, id: user2.id
+        get :pending, id: user2.slug
         expect(response).to redirect_to '/users/sign_in'
       end
     end

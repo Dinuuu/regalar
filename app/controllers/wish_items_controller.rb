@@ -8,7 +8,7 @@ class WishItemsController < OrganizationAuthenticationController
   before_action :chek_authentication_for_organization, only: [:create, :destroy, :pause, :resume]
   before_action :check_eliminated, only: [:destroy]
   def index
-    @wish_items = WishItem.for_organization(@organization).not_eliminated
+    @wish_items = WishItem.for_organization(@organization).not_eliminated.not_paused
     index!
   end
 
@@ -26,7 +26,7 @@ class WishItemsController < OrganizationAuthenticationController
   end
 
   def list
-    @wish_items = WishItem.not_eliminated
+    @wish_items = WishItem.not_eliminated.not_paused
     @wish_items = params[:query].present? ? @wish_items.search(params[:query]) : @wish_items
   end
 

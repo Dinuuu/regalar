@@ -27,7 +27,7 @@
                       = t('request_modal.introduce_quantity')
                       = f.text_field :quantity, class: 'form-control col-md-2', type: 'number', min: "1" , max: gift_item.quantity, required: true
                   .form-group
-                    = f.hidden_field :user_id, value: current_user.id
+                    = f.hidden_field :user_id, value: gift_item.user.id
                   p   
                   = f.submit t('request_modal.ask'), class: "btn btn-success"
             - else
