@@ -12,7 +12,7 @@
             = t('select_modal.description')
           = select_tag 'org_id', options_from_collection_for_select(current_user.organizations, "id","name"), class: 'form-control'
           .btn          
-            = link_to t('select_modal.next'), new_organization_wish_item_path(organization_id: current_user.organizations.first.id)   , class: 'btn btn-primary btn-violet margin-right-20', id: 'select-organization-modal-link'
+            = link_to t('select_modal.next'), new_organization_wish_item_path(organization_id: current_user.organizations.first.slug)   , class: 'btn btn-primary btn-violet margin-right-20', id: 'select-organization-modal-link'
             
         .modal-footer
           button.close data-dismiss="modal"  type="button" 
