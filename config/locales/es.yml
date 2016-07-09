@@ -358,6 +358,7 @@ es:
   errors:
     format:  '%{attribute} %{message}'
     messages:
+      extension_white_list_error: La extensión del archivo no esta permitada, solo png jpg y jpge
       accepted: debe ser aceptado
       blank: no puede estar en blanco
       confirmation: No coincide con la confirmación

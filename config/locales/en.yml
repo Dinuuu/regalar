@@ -341,6 +341,7 @@ en:
   errors:
     format:  '%{attribute} %{message}'
     messages:
+      extension_white_list_error: The extension of the file is not permitted, only png jpg and jpge
       accepted: must be accepted
       blank: can't be blank
       present: must be blank
