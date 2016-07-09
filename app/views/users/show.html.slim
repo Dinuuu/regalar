@@ -23,7 +23,7 @@
       h4.panel-title
         a data-parent="#accordion" data-toggle="collapse" href="#collapseThree" 
           = t('users.donations')
-  #collapseThree.panel-collapse.collapse.in
+    #collapseThree.panel-collapse.collapse.in
       .panel-body
         = render 'donations', donations: @user.confirmed_donations
         
