@@ -138,6 +138,7 @@ en:
         reject_req: 'Reject gift request '
         share_text: "The organization %{organization} needs %{item}. Can you help them?"
         asked_by: 'Asked by: '
+        remaining: There are still %{count} %{unit} in need 
       wish_list:  
         pending: Wishes pending
         name: Your Wishes
