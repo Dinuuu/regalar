@@ -14,11 +14,11 @@ module OrganizationMailerHelper
     OrganizationMailer.cancel_gift_request_email_to_org(@gift_request.user,
                                                         @gift_request.organization,
                                                         @gift_request.gift_item,
-                                                        params[:reason]).deliver
+                                                        params[:donation][:reason]).deliver
     OrganizationMailer.cancel_gift_request_email_to_user(@gift_request.user,
                                                          @gift_request.organization,
                                                          @gift_request.gift_item,
-                                                         params[:reason]).deliver
+                                                         params[:donation][:reason]).deliver
   end
 
   def send_confirmation_mail
