@@ -8,6 +8,7 @@ class SearchesController < ApplicationController
   private
 
   def searches(model, pagination_param)
-    model.search(params[:query]).page(params[pagination_param]).per(4)
+  	model = model.search(params[:query]) if params[:query].present?
+    model.page(params[pagination_param]).per(4)
   end
 end
