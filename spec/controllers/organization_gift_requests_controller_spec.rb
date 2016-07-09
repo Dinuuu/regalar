@@ -89,17 +89,18 @@ describe OrganizationGiftRequestsController do
         before :each do
           gift_request.save
         end
+        let!(:reason) { { reason: Faker::Lorem.paragraph } }
         it 'decrements the amount of gift request by 1' do
-          expect { delete :destroy, id: gift_request.id }
+          expect { delete :destroy, id: gift_request.id, donation: reason }
             .to change(GiftRequest, :count).by(-1)
         end
         it 'sends two emails' do
           (expect do
-            delete :destroy, id: gift_request.id
+            delete :destroy, id: gift_request.id, donation: reason
           end).to change { ActionMailer::Base.deliveries.count }.by(2)
         end
         it 'redirects' do
-          delete :destroy, id: gift_request.id
+          delete :destroy, id: gift_request.id, donation: reason
           expect(response.status).to eq 302
         end
       end

@@ -14,11 +14,11 @@ module OrganizationMailerHelper
     OrganizationMailer.cancel_gift_request_email_to_org(@gift_request.user,
                                                         @gift_request.organization,
                                                         @gift_request.gift_item,
-                                                        params[:donation][:reason]).deliver
+                                                        reason_params[:reason]).deliver
     OrganizationMailer.cancel_gift_request_email_to_user(@gift_request.user,
                                                          @gift_request.organization,
                                                          @gift_request.gift_item,
-                                                         params[:donation][:reason]).deliver
+                                                         reason_params[:reason]).deliver
   end
 
   def send_confirmation_mail
@@ -37,5 +37,11 @@ module OrganizationMailerHelper
     OrganizationMailer.cancel_donation_email_to_user(donation.user,
                                                      donation.organization,
                                                      donation.wish_item, reason).deliver
+  end
+
+  private
+
+  def reason_params
+    params.require(:donation).permit(:reason)
   end
 end
