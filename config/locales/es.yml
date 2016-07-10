@@ -141,7 +141,7 @@ es:
       reject_req: 'Rechazar regalo '
       share_text: "La organizacion %{organization} necesita que le regalen %{item}. Podes ayudarlos?"
       asked_by: 'Pedido por: '
-      remaining: Todavia faltan por recolectar %{count} %{unit} 
+      remaining: Todavia falta recolectar %{count} %{unit} 
     wish_list:
       pending: Deseos pendientes
       name: Tus deseos
