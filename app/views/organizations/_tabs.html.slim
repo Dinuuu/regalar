@@ -11,7 +11,7 @@
         = t('helpers.gift_item.received')
   .tab-content
     #goal-not-reached.tab-pane.active
-      - items = WishItem.for_organization(organization).goal_not_reached
+      - items = WishItem.for_organization(organization).goal_not_reached.not_paused.not_eliminated
       - if items.present?
         .expl-text.h4
           = t('helpers.wish_list.expl-text1', org: organization.name)
