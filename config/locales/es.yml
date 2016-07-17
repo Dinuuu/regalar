@@ -153,6 +153,7 @@ es:
       expl-text2: Estos son los deseos que le han cumplido a %{org}
       expl-text3: Estos son los regalos que %{org} ha pedido y recibido
     gift_item:
+      not_available: El regalo %{gift} ya no está disponible
       no_results: No hay regalos para administrar
       name: Regalos
       make_gift: Regalar

@@ -1,32 +1,36 @@
-.col-md-8.col.col-md-offset-2
-  - if @gift_item.gift_item_images.present?
-    .carousel
-      = render 'images', images: @gift_item.gift_item_images
-  .text-center
-    h3
-      = @gift_item.title + ' '
-    h5
-      = link_to @gift_item.user.full_name , @gift_item.user
-    = render_shareable buttons: ['twitter', 'facebook'] , url: user_gift_item_url(id: @gift_item.slug, user_id: @gift_item.user.slug), text: t('helpers.gift_item.share_text', user: @gift_item.user.first_name, item: @gift_item.title)
-  .h5
+- if @gift_item.eliminated
+  h3
+    = t('helpers.gift_item.not_available', gift: @gift_item.title)
+- else
+  .col-md-8.col.col-md-offset-2
+    - if @gift_item.gift_item_images.present?
+      .carousel
+        = render 'images', images: @gift_item.gift_item_images
     .text-center
-      = t('helpers.gift_item.gifted_quantity')
-      p
-      = @gift_item.given
-      = t('helpers.gift_item.of')
-      = @gift_item.quantity
-      = ' '
-      = t("helpers.gift_item.#{@gift_item.unit}", count: @gift_item.quantity)
-    	p
-    		- if @gift_item.gifted?
-    			span.label.label-danger
-    				= t('wish_items.status.gifted')
+      h3
+        = @gift_item.title + ' '
+      h5
+        = link_to @gift_item.user.full_name , @gift_item.user
+      = render_shareable buttons: ['twitter', 'facebook'] , url: user_gift_item_url(id: @gift_item.slug, user_id: @gift_item.user.slug), text: t('helpers.gift_item.share_text', user: @gift_item.user.first_name, item: @gift_item.title)
+    .h5
+      .text-center
+        = t('helpers.gift_item.gifted_quantity')
+        p
+        = @gift_item.given
+        = t('helpers.gift_item.of')
+        = @gift_item.quantity
+        = ' '
+        = t("helpers.gift_item.#{@gift_item.unit}", count: @gift_item.quantity)
+      	p
+      		- if @gift_item.gifted?
+      			span.label.label-danger
+      				= t('wish_items.status.gifted')
 
-  .text-center
-    .form-group
-      = render 'user_gift_items/edit_cancel', gift_item: @gift_item
-      = render 'gift_items/ask_buttons', item: @gift_item  
-  = render 'user_gift_items/main_info', gift_item: @gift_item	
+    .text-center
+      .form-group
+        = render 'user_gift_items/edit_cancel', gift_item: @gift_item
+        = render 'gift_items/ask_buttons', item: @gift_item  
+    = render 'user_gift_items/main_info', gift_item: @gift_item	
 
-  - if current_user.present?
-    = render 'user_gift_items/comments', gift_item: @gift_item
+    - if current_user.present?
+      = render 'user_gift_items/comments', gift_item: @gift_item
