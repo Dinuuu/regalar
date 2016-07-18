@@ -15,7 +15,7 @@
               - if (item.quantity - item.obtained > 0)
                 - quant = item.quantity - item.obtained
 
-              = t('helpers.wish_item.remaining', count: quant , unit: t("helpers.gift_item.#{item.unit}", count: item.quantity))
+              = t('helpers.gift_item.remaining', count: quant , unit: t("helpers.gift_item.#{item.unit}", count: item.quantity))
             = item.description.truncate(120)
           
           .verify-buttons

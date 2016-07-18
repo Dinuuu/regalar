@@ -223,7 +223,7 @@ es:
       edit: Editar
       delete: Eliminar
       remaining: 
-        0: no quedan unidades disponibles
+        zero: No quedan unidades disponibles
         other: Quedan %{count} %{unit} disponibles
       save: Guardar
     organization:
