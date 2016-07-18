@@ -17,7 +17,7 @@
           - quant = 0
           - if (item.quantity - item.given > 0)
             - quant = item.quantity - item.given
-          = t('helpers.gift_item.remaining', count: quant, unit: t("helpers.gift_item.#{item.unit}", count: item.quantity))
+          = t('helpers.gift_item.remaining', count: quant, unit: t("helpers.gift_item.#{item.unit}", count: quant))
 
         p.card-description
           = item.description.truncate(120)
