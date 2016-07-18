@@ -88,6 +88,7 @@ es:
         done_edit_user: "Actualizar"
         view: "Ver perfil"
     wish_item:
+      paused: Pausado
       create: "Crear Deseo"
       new: "Nuevo Deseo"
       edit: "Editar Deseo"
@@ -221,7 +222,9 @@ es:
       available: Regalos disponibles
       edit: Editar
       delete: Eliminar
-      remaining: Quedan %{count} %{unit} disponibles
+      remaining: 
+        0: no quedan unidades disponibles
+        other: Quedan %{count} %{unit} disponibles
       save: Guardar
     organization:
       logo: Logo

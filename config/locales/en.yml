@@ -85,6 +85,7 @@ en:
         done_edit_password: "Update"
         done_edit_user: "Update"
       wish_item:
+        paused: Paused
         create: "Create Wish Item"
         new: "New Wish Item"
         edit: "Edit Wish Item"
@@ -218,7 +219,9 @@ en:
         available: Available gifts
         edit: Edit
         delete: Delete
-        remaining: There are %{count} %{unit} left
+        remaining: 
+          0: No quedan unidades disponibles
+          other: Quedan %{count} %{unit} disponibles
         save: Save
       organization:
         logo: Logo

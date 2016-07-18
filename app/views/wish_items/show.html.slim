@@ -29,20 +29,23 @@
 			= t('helpers.wish_item.of')
 			= @wish_item.quantity
 	div.col-md-8.col-md-offset-2
-		p
+		.row
 			- if current_user.present?
 				- pending_donation = @wish_item.pending_donation(current_user)
+			- unless @wish_item.active?
+				span.label.label-warning
+					= t('helpers.wish_item.paused')
 			- if @wish_item.gifted?
 				span.label.label-danger
 					= t('wish_items.status.gifted')
-			
 			- elsif pending_donation.present?
 				span.label.label-warning
 				       = t('wish_items.status.verifying')
-				
-			= render 'wish_items/main_info', wish_item: @wish_item	
-			= render 'wish_items/gift_cancel_button', item: @wish_item
+
+			= render 'wish_items/gift_cancel_button', item: @wish_item	
 			= render 'wish_items/pause_and_resume', item: @wish_item
+		.row.margin-top-8
+			= render 'wish_items/main_info', wish_item: @wish_item	
 			
 = render 'wish_items/gift_modal', wish_item: @wish_item
 = render 'wish_items/donations_feed', wish_item: @wish_item
