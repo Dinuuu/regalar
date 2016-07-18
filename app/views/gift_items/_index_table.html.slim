@@ -18,9 +18,9 @@
             = t('helpers.gift_item.gifted_by')
             = link_to item.user.first_name, item.user
           h5
-          - quant = 0
-          - if (item.quantity - item.given > 0)
-            - quant = item.quantity - item.given
+            - quant = 0
+            - if (item.quantity - item.given > 0)
+              - quant = item.quantity - item.given
             = t('helpers.gift_item.remaining', count: quant , unit: t("helpers.gift_item.#{item.unit}", count: item.quantity))  
           p
             = item.description 
