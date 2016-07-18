@@ -12,7 +12,8 @@
     = render 'user_gift_items/user_cancel_gift_item_modal', item: item
 
 - else
-  = link_to t('helpers.gift_item.claim_gift'), '#',
+  - unless item.gifted?
+    = link_to t('helpers.gift_item.claim_gift'), '#',
       class: 'btn btn-success',
       data: { toggle: 'modal', target: '#login-modal' } 
 

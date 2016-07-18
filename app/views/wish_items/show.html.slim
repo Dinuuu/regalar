@@ -41,9 +41,9 @@
 			- elsif pending_donation.present?
 				span.label.label-warning
 				       = t('wish_items.status.verifying')
-
-			= render 'wish_items/gift_cancel_button', item: @wish_item	
-			= render 'wish_items/pause_and_resume', item: @wish_item
+			.row
+				= render 'wish_items/gift_cancel_button', item: @wish_item	
+				= render 'wish_items/pause_and_resume', item: @wish_item
 		.row.margin-top-8
 			= render 'wish_items/main_info', wish_item: @wish_item	
 			
