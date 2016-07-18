@@ -1,9 +1,5 @@
 - if current_user.present?
-  - if GiftRequest.for_user(current_user).confirmed.for_gift_item(item).any?
-    = link_to t('helpers.gift_item.already_asked'), '#',
-           class: 'btn btn-default btn-margin disabled',
-            data: {disabled: 'disabled'}
-  - else
+  - unless item.gifted?
     = link_to t('helpers.gift_item.claim_gift'), '#',
       class: 'btn btn-margin btn-success',
       data: { toggle: 'modal', target: "#gift-modal#{item.id}" }
