@@ -11,11 +11,10 @@
             = link_to item.title, organization_wish_item_path(id: item.slug, organization_id: item.organization.slug)
           .card-description
             h5
-              - quant = 0
               - if (item.quantity - item.obtained > 0)
-                - quant = item.quantity - item.obtained
-
-              = t('helpers.gift_item.remaining', count: quant , unit: t("helpers.gift_item.#{item.unit}", count: quant))
+                = t('helpers.gift_item.remaining', count: item.quantity - item.obtained , unit: t("helpers.gift_item.#{item.unit}", count: item.quantity - item.obtained))
+              - else
+                = t('helpers.gift_item.zero_remaining')
             = item.description.truncate(120)
           
           .verify-buttons

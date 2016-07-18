@@ -14,10 +14,10 @@
         h4.campaign-name
           = link_to item.title, user_gift_item_path(id: item.slug, user_id: item.user.slug)
         h5
-          - quant = 0
           - if (item.quantity - item.given > 0)
-            - quant = item.quantity - item.given
-          = t('helpers.gift_item.remaining', count: quant, unit: t("helpers.gift_item.#{item.unit}", count: quant))
+            = t('helpers.gift_item.remaining', count: item.quantity - item.given , unit: t("helpers.gift_item.#{item.unit}", count: item.quantity - item.given))
+          - else
+            = t('helpers.gift_item.zero_remaining') 
 
         p.card-description
           = item.description.truncate(120)

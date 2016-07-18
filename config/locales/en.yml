@@ -219,9 +219,8 @@ en:
         available: Available gifts
         edit: Edit
         delete: Delete
-        remaining: 
-          zero: There are no units remaining
-          other: There are %{count} %{unit} left
+        remaining: There are %{count} %{unit} left
+        zero_remaining: There are no units remaining
         save: Save
       organization:
         logo: Logo

@@ -222,9 +222,8 @@ es:
       available: Regalos disponibles
       edit: Editar
       delete: Eliminar
-      remaining: 
-        zero: No quedan unidades disponibles
-        other: Quedan %{count} %{unit} disponibles
+      remaining: Quedan %{count} %{unit} disponibles
+      zero_remaining: No quedan unidades disponibles
       save: Guardar
     organization:
       logo: Logo
