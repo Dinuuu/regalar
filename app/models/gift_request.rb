@@ -10,7 +10,7 @@ class GiftRequest < ActiveRecord::Base
   scope :confirmed, -> { where(done: true) }
   scope :pending, -> { where(done: false) }
   validate :check_quantity,
-            if: proc { quantity.present? && gift_item_id.present? && quantity_changed? }
+           if: proc { quantity.present? && gift_item_id.present? && quantity_changed? }
 
   private
 
