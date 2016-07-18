@@ -18,10 +18,10 @@
             = t('helpers.gift_item.gifted_by')
             = link_to item.user.first_name, item.user
           h5
-            - if (item.quantity - item.given > 0)
-              = t('helpers.gift_item.remaining', count: item.quantity - item.given , unit: t("helpers.gift_item.#{item.unit}", count: item.quantity - item.given))
-            - else
-              = t('helpers.gift_item.zero_remaining') 
+          - if (item.quantity - item.given <= 0)
+            = t('helpers.gift_item.zero_remaining')          
+          - else
+            = t('helpers.gift_item.remaining', count: item.quantity - item.given , unit: t("helpers.gift_item.#{item.unit}", count: item.quantity - item.given))
           p
             = item.description 
           = render 'gift_items/ask_buttons', item: item
