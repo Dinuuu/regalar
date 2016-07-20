@@ -1,11 +1,11 @@
 Documentación
 
-[Manual de instalación](Documentos/ManualDeInstalacion.pdf)
+[Manual de instalacion](Documentos/ManualdeInstalacion.pdf)
 
 [Diagrama UML](Documentos/DiagramaRegalarV2.pdf)
 
-[Diseño de arquitectura](Documentos/DiseñoDeArquitectura.pdf)
+[Diseño de arquitectura](Documentos/DiseñodeArquitectura.pdf)
 
-[Manual de usuario](Documentos/ManualDeUsuario.pdf)
+[Manual de usuario](Documentos/Manualdeusuario.pdf)
 
-[Historias de usuarios](Documentos/HistoriasDeUsuarios.pdf)
+[Historias de usuarios](Documentos/Historiasdeusuarios.pdf)
