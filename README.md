@@ -4,7 +4,7 @@ Documentación
 
 [Diagrama UML](Documentos/DiagramaRegalarV2.pdf)
 
-[Diseño de arquitectura](Documentos/DiseñodeArquitectura.pdf)
+[Diseño de arquitectura](Documentos/DiseñoDeArquitectura.pdf)
 
 [Manual de usuario](Documentos/ManualDeUsuario.pdf)
 
